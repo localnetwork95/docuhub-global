@@ -5,11 +5,11 @@ const hubDatabase = [
         title: "Standard Commercial Tax Invoice",
         desc: "Official tax invoice with auto calculation engine",
         fields: [
-            { id: "compName", label: "Company Name", val: "Taj Al Huda General Trading" },
-            { id: "clientName", label: "Client Name", val: "Bait Al Ezz Curtains" },
-            { id: "invNo", label: "Invoice Number", val: "INV-2026-098" },
-            { id: "desc1", label: "Item Description", val: "Supply of Curtain Fabrics & Sofasticated Upholstery" },
-            { id: "amount", label: "Amount Payable ($/PKR)", val: "45000" }
+            { id: "compName", label: "Company Name", val: "Acme Global Solutions Ltd." },
+            { id: "clientName", label: "Client Name", val: "Nexus International Corp" },
+            { id: "invNo", label: "Invoice Number", val: "INV-2026-001" },
+            { id: "desc1", label: "Item Description", val: "Professional Consulting & Software Services" },
+            { id: "amount", label: "Amount Payable ($/PKR)", val: "50000" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-8 bg-white font-sans text-slate-800 rounded-sm">
@@ -52,16 +52,16 @@ const hubDatabase = [
         title: "Official Employee Salary Slip",
         desc: "Monthly salary statement with allowance breakdown",
         fields: [
-            { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-            { id: "designation", label: "Designation", val: "Senior Accountant" },
-            { id: "basicSalary", label: "Basic Salary", val: "85000" },
-            { id: "allowance", label: "Allowances", val: "15000" }
+            { id: "empName", label: "Employee Name", val: "John Doe" },
+            { id: "designation", label: "Designation", val: "Operations Manager" },
+            { id: "basicSalary", label: "Basic Salary", val: "100000" },
+            { id: "allowance", label: "Allowances", val: "20000" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-8 bg-white font-sans text-slate-800">
                 <div class="text-center border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold uppercase tracking-wider text-slate-900">Taj Al Huda Trading</h2>
-                    <p class="text-xs text-slate-500">Employee Payslip — Month: September 2026</p>
+                    <h2 class="text-xl font-bold uppercase tracking-wider text-slate-900">Global Enterprise Ltd</h2>
+                    <p class="text-xs text-slate-500">Employee Payslip — Monthly Statement</p>
                 </div>
                 <div class="grid grid-cols-2 gap-3 text-sm mb-6 bg-slate-50 p-4 rounded">
                     <div><strong>Employee Name:</strong> ${f.empName}</div>
@@ -79,16 +79,16 @@ const hubDatabase = [
         id: "veh-01",
         category: "vehicle",
         title: "Daily Fuel & Oil Service Log Sheet",
-        desc: "Track petrol refill history, 10W-40 oil changes & mileage",
+        desc: "Track petrol refill history, oil changes & mileage",
         fields: [],
         render: () => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-6 bg-white font-sans text-slate-800">
                 <div class="border-b pb-3 mb-4 flex justify-between items-center">
                     <div>
-                        <h2 class="text-lg font-bold text-slate-900">Vehicle Fuel & Oil Maintenance Register</h2>
-                        <p class="text-xs text-slate-500">Union Star 70cc — Recommended Oil: HYUNDAI 10W-40</p>
+                        <h2 class="text-lg font-bold text-slate-900">Vehicle Fleet Fuel & Maintenance Register</h2>
+                        <p class="text-xs text-slate-500">Fleet ID: FLT-701 — Recommended Oil Change Interval: 1,000 KM</p>
                     </div>
-                    <span class="text-xs bg-slate-100 px-2.5 py-1 rounded font-mono">Oil Change: 850-900 KM</span>
+                    <span class="text-xs bg-slate-100 px-2.5 py-1 rounded font-mono">Status: Active Log</span>
                 </div>
                 <table class="w-full text-xs border border-collapse text-left">
                     <thead>
@@ -100,9 +100,9 @@ const hubDatabase = [
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b"><td class="p-2 border">18-Aug-2026</td><td class="p-2 border">12,450</td><td class="p-2 border">2.5 Ltrs (Hi-Octane)</td><td class="p-2 border">Level OK</td></tr>
-                        <tr class="border-b"><td class="p-2 border">23-Aug-2026</td><td class="p-2 border">13,320</td><td class="p-2 border">3.0 Ltrs</td><td class="p-2 border text-emerald-700 font-bold">Oil Changed (10W-40)</td></tr>
-                        <tr class="border-b"><td class="p-2 border">01-Sep-2026</td><td class="p-2 border">14,180</td><td class="p-2 border">2.8 Ltrs</td><td class="p-2 border">Checked OK</td></tr>
+                        <tr class="border-b"><td class="p-2 border">01-Jan-2026</td><td class="p-2 border">10,000</td><td class="p-2 border">10.0 Ltrs</td><td class="p-2 border">Level Normal</td></tr>
+                        <tr class="border-b"><td class="p-2 border">10-Jan-2026</td><td class="p-2 border">11,000</td><td class="p-2 border">12.0 Ltrs</td><td class="p-2 border text-emerald-700 font-bold">Engine Oil Replaced</td></tr>
+                        <tr class="border-b"><td class="p-2 border">20-Jan-2026</td><td class="p-2 border">12,000</td><td class="p-2 border">10.0 Ltrs</td><td class="p-2 border">Level Normal</td></tr>
                     </tbody>
                 </table>
             </div>`
