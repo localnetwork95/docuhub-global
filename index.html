@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocuHub Global | Free Templates & Live Calculators</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 text-white p-2 rounded-lg font-bold text-xl flex items-center justify-center w-10 h-10 shadow-lg">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight">DocuHub <span class="text-blue-400">Global</span></h1>
+                    <p class="text-xs text-slate-400">Enterprise Formats, Templates & Live Calculators Engine</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-3 text-sm">
+                <div class="bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 flex items-center space-x-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="text-slate-300 text-xs font-medium">500+ Library Database</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main App Workspace -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+        <!-- Search & Filter Controls -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6 no-print">
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                <div class="relative w-full md:w-96">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400"></i>
+                    <input type="text" id="searchInput" placeholder="Search 500+ formats, letters, calculators..." class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition" onkeyup="filterContent()">
+                </div>
+                
+                <div class="flex overflow-x-auto w-full md:w-auto space-x-1 pb-2 md:pb-0 text-sm" id="categoryTabs">
+                    <button onclick="setCategory('all')" class="cat-btn px-3 py-1.5 rounded-lg whitespace-nowrap bg-blue-50 text-blue-700 font-medium">All Formats</button>
+                    <button onclick="setCategory('accounting')" class="cat-btn px-3 py-1.5 rounded-lg whitespace-nowrap text-slate-600 hover:bg-slate-100">Accounting & Tax</button>
+                    <button onclick="setCategory('hr')" class="cat-btn px-3 py-1.5 rounded-lg whitespace-nowrap text-slate-600 hover:bg-slate-100">HR & Legal</button>
+                    <button onclick="setCategory('vehicle')" class="cat-btn px-3 py-1.5 rounded-lg whitespace-nowrap text-slate-600 hover:bg-slate-100">Vehicle & Maintenance</button>
+                    <button onclick="setCategory('calculators')" class="cat-btn px-3 py-1.5 rounded-lg whitespace-nowrap text-slate-600 hover:bg-slate-100">Calculators</button>
+                    <button onclick="setCategory('personal')" class="cat-btn px-3 py-1.5 rounded-lg whitespace-nowrap text-slate-600 hover:bg-slate-100">Personal & Fitness</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Sidebar Items List -->
+            <div class="lg:col-span-4 space-y-3 no-print max-h-[750px] overflow-y-auto pr-1" id="itemsList"></div>
+
+            <!-- Preview / Editor Panel -->
+            <div class="lg:col-span-8">
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden min-h-[650px] flex flex-col">
+                    <div class="bg-slate-100 px-6 py-3 border-b border-slate-200 flex flex-wrap justify-between items-center gap-3 no-print">
+                        <div>
+                            <span id="activeBadge" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 uppercase tracking-wider">
+                                Dynamic Editor
+                            </span>
+                            <h2 id="activeItemTitle" class="font-bold text-slate-800 text-base mt-1">Select Item</h2>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="window.print()" class="px-3 py-1.5 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-900 transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-print"></i> Print / PDF
+                            </button>
+                            <button onclick="copyToClipboard()" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-copy"></i> Copy Text
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Input Fields Bar -->
+                    <div id="interactiveInputs" class="p-4 bg-slate-50 border-b border-slate-200 no-print">
+                        <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 flex justify-between">
+                            <span><i class="fa-solid fa-sliders"></i> Customize Live Fields</span>
+                            <span class="text-slate-400">Updates Render Instantly</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="inputFormFields"></div>
+                    </div>
+
+                    <!-- Output Preview Container -->
+                    <div class="p-6 md:p-10 flex-grow bg-white print-area overflow-x-auto" id="documentPreview"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-4 mt-8 no-print text-center text-xs text-slate-500">
+        <p>© 2026 DocuHub Global — Enterprise Ready Documents Engine</p>
+    </footer>
+
+    <!-- External JavaScript Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

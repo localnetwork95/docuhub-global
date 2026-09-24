@@ -1,0 +1,9 @@
+@media print {
+    .no-print { display: none !important; }
+    .print-area { width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; }
+    body { background: white !important; color: black !important; }
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
