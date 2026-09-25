@@ -1,10 +1,10 @@
 // ==========================================
-// DOCUHUB GLOBAL - COMPLETE MASTER APP.JS (ALL 35+ TEMPLATES & CALCULATORS)
+// DOCUHUB GLOBAL - ULTIMATE MASTER APP.JS (ALL TEMPLATES, CALCULATORS, GEOMETRY & BIRTHDAY)
 // ==========================================
 
 const hubDatabase = [
     // ----------------------------------------------------
-    // 1. HR & RECRUITMENT LETTERS (7 Formats)
+    // 1. HR & RECRUITMENT LETTERS
     // ----------------------------------------------------
     {
         id: "letter-offer",
@@ -14,7 +14,7 @@ const hubDatabase = [
         fields: [
             { id: "candName", label: "Candidate Name", val: "Shah Rukh Siddiqui" },
             { id: "designation", label: "Designation", val: "Senior Accountant" },
-            { id: "company", label: "Company Name", val: "Taj Al Huda" },
+            { id: "company", label: "Company Name", val: "Enterprise Corp" },
             { id: "salary", label: "Monthly Salary (PKR)", val: "120,000" },
             { id: "joinDate", label: "Joining Date", val: "2026-10-01", type: "date" }
         ],
@@ -55,7 +55,7 @@ const hubDatabase = [
         fields: [
             { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
             { id: "designation", label: "Designation", val: "Senior Accountant" },
-            { id: "company", label: "Company Name", val: "Taj Al Huda" },
+            { id: "company", label: "Company Name", val: "Enterprise Corp" },
             { id: "probation", label: "Probation Period", val: "3 Months" }
         ],
         render: (f) => `
@@ -76,35 +76,6 @@ const hubDatabase = [
             </div>`
     },
     {
-        id: "letter-probation-confirm",
-        category: "hr",
-        title: "Probation Confirmation Letter",
-        desc: "Official confirmation letter upon successfully completing the probation period",
-        fields: [
-            { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-            { id: "designation", label: "Designation", val: "Senior Accountant" },
-            { id: "company", label: "Company Name", val: "Taj Al Huda" },
-            { id: "confDate", label: "Confirmation Date", val: "2026-09-01", type: "date" },
-            { id: "newSalary", label: "Revised Monthly Salary", val: "135,000" }
-        ],
-        render: (f) => `
-            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800 leading-relaxed">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">${f.company}</h2>
-                    <p class="text-xs text-slate-500">Human Resources Department</p>
-                </div>
-                <div class="text-sm space-y-4">
-                    <p>Dear <strong>${f.empName}</strong>,</p>
-                    <p>We are pleased to confirm your appointment as <strong>${f.designation}</strong> effective <strong>${f.confDate}</strong> following successful completion of your probation.</p>
-                    <p>Your revised monthly salary is fixed at <strong>PKR ${f.newSalary}</strong>.</p>
-                    <div class="pt-10">
-                        <p class="font-bold">HR Manager</p>
-                        <p class="text-xs text-slate-500">${f.company}</p>
-                    </div>
-                </div>
-            </div>`
-    },
-    {
         id: "letter-salary-cert",
         category: "hr",
         title: "Salary Certificate for Bank / Visa",
@@ -112,7 +83,7 @@ const hubDatabase = [
         fields: [
             { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
             { id: "designation", label: "Designation", val: "Senior Accountant" },
-            { id: "company", label: "Company Name", val: "Taj Al Huda" },
+            { id: "company", label: "Company Name", val: "Enterprise Corp" },
             { id: "salary", label: "Monthly Salary", val: "120,000 PKR" },
             { id: "purpose", label: "Purpose", val: "bank credit card and loan verification" }
         ],
@@ -132,6 +103,26 @@ const hubDatabase = [
                 </div>
             </div>`
     },
+    {
+        id: "letter-leave-app",
+        category: "hr",
+        title: "Leave Application Letter",
+        desc: "Formal application requesting leave approval from management",
+        fields: [
+            { id: "empName", label: "Your Name", val: "Shah Rukh Siddiqui" },
+            { id: "leaveType", label: "Leave Type", val: "Casual Leave" },
+            { id: "days", label: "Number of Days", val: "2 Days" }
+        ],
+        render: (f) => `
+            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
+                <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold">Leave Application</h2></div>
+                <div class="text-sm space-y-4">
+                    <p>To Management / HR,</p>
+                    <p>I am writing to request <strong>${f.days}</strong> of <strong>${f.leaveType}</strong> for urgent personal work.</p>
+                    <div class="pt-8"><p class="font-bold">${f.empName}</p></div>
+                </div>
+            </div>`
+    },
 
     // ----------------------------------------------------
     // 2. ACCOUNTING & TAX ENGINE
@@ -140,10 +131,10 @@ const hubDatabase = [
         id: "invoice-commercial",
         category: "accounting",
         title: "Commercial Tax Invoice (Dynamic Engine)",
-        desc: "Professional sales invoice with preset & manual tax rates (5%, 15%, 18%)",
+        desc: "Professional sales invoice with preset & manual tax rates",
         fields: [
-            { id: "clientName", label: "Client Name", val: "Bait Al Ezz Curtains" },
-            { id: "itemDesc", label: "Item / Service Description", val: "Sofa Fabric & Curtains Supply" },
+            { id: "clientName", label: "Client Name", val: "Valued Client" },
+            { id: "itemDesc", label: "Item / Service Description", val: "Professional Services & Supplies" },
             { id: "rate", label: "Unit Rate (PKR)", val: "50000" },
             { id: "qty", label: "Quantity", val: "3" },
             { id: "taxRate", label: "Sales Tax Rate (%)", val: "18" }
@@ -157,7 +148,7 @@ const hubDatabase = [
                 <div class="flex justify-between border-b pb-4 mb-6">
                     <div>
                         <h2 class="text-2xl font-black text-slate-900">TAX INVOICE</h2>
-                        <p class="text-xs text-slate-500">Taj Al Huda Trading & Accounts</p>
+                        <p class="text-xs text-slate-500">Prepared by Shah Rukh Siddiqui</p>
                     </div>
                     <div class="text-right text-xs">
                         <p><strong>Invoice #:</strong> INV-2026-991</p>
@@ -193,21 +184,21 @@ const hubDatabase = [
                         <div class="flex justify-between font-bold border-t pt-1 text-base"><span>Total:</span> <span>PKR ${total.toLocaleString()}</span></div>
                     </div>
                 </div>
-            </div>`;
+            `;
         }
     },
     {
         id: "payroll-slip",
         category: "accounting",
         title: "Employee Salary Slip & Payroll Breakdown",
-        desc: "Monthly payslip calculating allowances (House Rent, Utility, Fuel, Medical)",
+        desc: "Monthly payslip calculating allowances",
         fields: [
             { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
             { id: "designation", label: "Designation", val: "Senior Accountant" },
             { id: "basic", label: "Basic Salary (PKR)", val: "80000" },
             { id: "houseRent", label: "House Rent Allowance", val: "20000" },
             { id: "utility", label: "Utility Allowance", val: "10000" },
-            { id: "fuel", label: "Fuel Allowance (Motorcycle)", val: "10000" }
+            { id: "fuel", label: "Fuel Allowance", val: "10000" }
         ],
         render: (f) => {
             const basic = parseFloat(f.basic || 0);
@@ -218,19 +209,19 @@ const hubDatabase = [
             return `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
                 <div class="border-b pb-4 mb-6 text-center">
-                    <h2 class="text-xl font-bold">TAJ AL HUDA TRADING</h2>
-                    <p class="text-xs text-slate-500">Official Monthly Salary Slip</p>
+                    <h2 class="text-xl font-bold">ENTERPRISE PAYROLL</h2>
+                    <p class="text-xs text-slate-500">Accountant: Shah Rukh Siddiqui</p>
                 </div>
                 <div class="grid grid-cols-2 gap-4 text-sm mb-6 bg-slate-50 p-4 rounded">
                     <div><p><strong>Employee:</strong> ${f.empName}</p><p><strong>Designation:</strong> ${f.designation}</p></div>
-                    <div class="text-right"><p><strong>Pay Period:</strong> September 2026</p></div>
+                    <div class="text-right"><p><strong>Pay Period:</strong> Current Month</p></div>
                 </div>
                 <table class="w-full text-sm mb-6 border">
                     <tr class="bg-slate-100 border-b"><th class="p-2 text-left">Earnings / Allowances</th><th class="p-2 text-right">Amount (PKR)</th></tr>
                     <tr class="border-b"><td class="p-2">Basic Salary</td><td class="p-2 text-right">${basic.toLocaleString()}</td></tr>
                     <tr class="border-b"><td class="p-2">House Rent Allowance</td><td class="p-2 text-right">${hr.toLocaleString()}</td></tr>
                     <tr class="border-b"><td class="p-2">Utility Allowance</td><td class="p-2 text-right">${ut.toLocaleString()}</td></tr>
-                    <tr class="border-b"><td class="p-2">Fuel Allowance (70cc)</td><td class="p-2 text-right">${fu.toLocaleString()}</td></tr>
+                    <tr class="border-b"><td class="p-2">Fuel Allowance</td><td class="p-2 text-right">${fu.toLocaleString()}</td></tr>
                     <tr class="font-bold bg-slate-50"><td class="p-2">Gross Salary</td><td class="p-2 text-right">${gross.toLocaleString()}</td></tr>
                 </table>
             </div>`;
@@ -243,8 +234,8 @@ const hubDatabase = [
     {
         id: "vehicle-log",
         category: "vehicle",
-        title: "Vehicle Fuel & Maintenance Log (Union Star 70cc)",
-        desc: "Odometer, Hyundai 10W-40 oil change intervals (850-900 km), and fuel tracking",
+        title: "Vehicle Fuel & Maintenance Log",
+        desc: "Odometer, oil change intervals (850-900 km), and fuel tracking",
         fields: [
             { id: "vehicleNo", label: "Vehicle Reg No", val: "KHI-70CC-2026" },
             { id: "currentOdo", label: "Current Odometer (km)", val: "4500" },
@@ -260,12 +251,12 @@ const hubDatabase = [
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
                 <div class="border-b pb-4 mb-6">
                     <h2 class="text-xl font-bold">Vehicle Maintenance & Fuel Log</h2>
-                    <p class="text-xs text-slate-500">Union Star 70cc Fleet Tracking</p>
+                    <p class="text-xs text-slate-500">Fleet Managed by Shah Rukh Siddiqui</p>
                 </div>
                 <div class="space-y-4 text-sm mb-6">
                     <p><strong>Vehicle:</strong> ${f.vehicleNo}</p>
                     <p><strong>Current Odometer:</strong> ${current} km</p>
-                    <p><strong>Kilometers since last Hyundai 10W-40 oil change:</strong> ${diff} km</p>
+                    <p><strong>Kilometers since last oil change:</strong> ${diff} km</p>
                     <div class="p-4 rounded ${needsOil ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-emerald-50 text-emerald-700 border border-emerald-200'}">
                         <strong>Status:</strong> ${needsOil ? '⚠️ Oil change due! (Reached 850+ km interval)' : '✅ Engine oil condition optimal.'}
                     </div>
@@ -275,7 +266,7 @@ const hubDatabase = [
     },
 
     // ----------------------------------------------------
-    // 4. CALCULATORS (Live Calculation Engines)
+    // 4. CALCULATORS (Salary, Loan, Area, Volume, Size, Birthday)
     // ----------------------------------------------------
     {
         id: "calc-salary-tax",
@@ -297,7 +288,7 @@ const hubDatabase = [
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
                 <div class="border-b pb-4 mb-6">
                     <h2 class="text-xl font-bold text-blue-900">Live Salary & Tax Calculator Engine</h2>
-                    <p class="text-xs text-slate-500">Instant Fiscal Breakdown</p>
+                    <p class="text-xs text-slate-500">Designed by Shah Rukh Siddiqui</p>
                 </div>
                 <div class="grid grid-cols-2 gap-4 text-sm mb-6 bg-slate-50 p-4 rounded">
                     <div><p>Gross Monthly:</p><p class="font-bold">PKR ${monthly.toLocaleString()}</p></div>
@@ -311,31 +302,77 @@ const hubDatabase = [
         }
     },
     {
-        id: "calc-loan-emi",
+        id: "calc-area-volume",
         category: "calculators",
-        title: "Loan EMI & Financing Calculator",
-        desc: "Calculates monthly installments and total mark-up for bank loans",
+        title: "Area, Volume & Dimension Calculator",
+        desc: "Calculate rectangular area, perimeter, and box volume instantly",
         fields: [
-            { id: "loanAmount", label: "Loan Principal (PKR)", val: "500000" },
-            { id: "interestRate", label: "Annual Mark-up Rate (%)", val: "18" },
-            { id: "years", label: "Tenure (Years)", val: "2" }
+            { id: "length", label: "Length (ft / meters)", val: "15" },
+            { id: "width", label: "Width (ft / meters)", val: "10" },
+            { id: "height", label: "Height / Depth (for Volume)", val: "8" }
         ],
         render: (f) => {
-            const p = parseFloat(f.loanAmount || 0);
-            const r = (parseFloat(f.interestRate || 0) / 100) / 12;
-            const n = parseFloat(f.years || 0) * 12;
-            const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-            const totalPayment = emi * n;
+            const l = parseFloat(f.length || 0);
+            const w = parseFloat(f.width || 0);
+            const h = parseFloat(f.height || 0);
+            const area = l * w;
+            const perimeter = 2 * (l + w);
+            const volume = l * w * h;
             return `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
                 <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">Loan EMI Calculator</h2>
-                    <p class="text-xs text-slate-500">Installment & Repayment Schedule Engine</p>
+                    <h2 class="text-xl font-bold text-slate-900">Area, Volume & Size Calculator</h2>
+                    <p class="text-xs text-slate-500">Geometric Estimation Tool</p>
                 </div>
-                <div class="space-y-3 text-sm mb-6">
-                    <div class="flex justify-between border-b pb-2"><span>Principal Loan Amount:</span> <span class="font-bold">PKR ${p.toLocaleString()}</span></div>
-                    <div class="flex justify-between border-b pb-2"><span>Monthly Installment (EMI):</span> <span class="font-bold text-blue-700 text-lg">PKR ${Math.round(emi || 0).toLocaleString()}</span></div>
-                    <div class="flex justify-between border-b pb-2"><span>Total Payable with Mark-up:</span> <span class="font-bold">PKR ${Math.round(totalPayment || 0).toLocaleString()}</span></div>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between border-b pb-2"><span>Total Surface Area:</span> <span class="font-bold text-blue-700">${area.toLocaleString()} sq. units</span></div>
+                    <div class="flex justify-between border-b pb-2"><span>Perimeter:</span> <span class="font-bold">${perimeter.toLocaleString()} units</span></div>
+                    <div class="flex justify-between border-b pb-2"><span>Total Volume (3D Box):</span> <span class="font-bold text-emerald-700">${volume.toLocaleString()} cubic units</span></div>
+                </div>
+            </div>`;
+        }
+    },
+    {
+        id: "calc-birthday",
+        category: "calculators",
+        title: "Birthday & Exact Age Calculator",
+        desc: "Calculate exact age in years, months, and days from date of birth",
+        fields: [
+            { id: "dob", label: "Date of Birth", val: "1995-11-21", type: "date" }
+        ],
+        render: (f) => {
+            const birthDate = new Date(f.dob || "1995-11-21");
+            const today = new Date();
+            let years = today.getFullYear() - birthDate.getFullYear();
+            let months = today.getMonth() - birthDate.getMonth();
+            let days = today.getDate() - birthDate.getDate();
+            if (days < 0) {
+                months--;
+                days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+            }
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            return `
+            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
+                <div class="border-b pb-4 mb-6">
+                    <h2 class="text-xl font-bold text-purple-900">Birthday & Age Calculator</h2>
+                    <p class="text-xs text-slate-500">Exact Time Elapsed Calculator</p>
+                </div>
+                <div class="grid grid-cols-3 gap-4 text-center my-6">
+                    <div class="bg-purple-50 p-4 rounded border border-purple-200">
+                        <p class="text-2xl font-black text-purple-800">${years}</p>
+                        <p class="text-xs text-slate-600 uppercase font-bold mt-1">Years</p>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded border border-purple-200">
+                        <p class="text-2xl font-black text-purple-800">${months}</p>
+                        <p class="text-xs text-slate-600 uppercase font-bold mt-1">Months</p>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded border border-purple-200">
+                        <p class="text-2xl font-black text-purple-800">${days}</p>
+                        <p class="text-xs text-slate-600 uppercase font-bold mt-1">Days</p>
+                    </div>
                 </div>
             </div>`;
         }
@@ -348,7 +385,7 @@ const hubDatabase = [
         id: "personal-diet-plan",
         category: "personal",
         title: "Daily Diet, Sugar-Free & Smoothie Planner",
-        desc: "Customizable daily nutrition tracker (Dates, Milk, Bananas, Peanut Butter, Zero Refined Sugar)",
+        desc: "Customizable daily nutrition tracker",
         fields: [
             { id: "shakeBase", label: "Shake Ingredients", val: "Milk, Bananas, Dates, Unsweetened Peanut Butter" },
             { id: "sugarRule", label: "Sweetener Policy", val: "Strictly Zero Refined Sugar (Natural sweetness from dates)" },
@@ -358,7 +395,7 @@ const hubDatabase = [
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
                 <div class="border-b pb-4 mb-6">
                     <h2 class="text-xl font-bold text-emerald-800">Daily Health & Nutrition Plan</h2>
-                    <p class="text-xs text-slate-500">Clean Energy & Natural Dietary Routine</p>
+                    <p class="text-xs text-slate-500">Personalized for Shah Rukh Siddiqui</p>
                 </div>
                 <div class="space-y-4 text-sm">
                     <div class="p-4 bg-emerald-50 border border-emerald-200 rounded">
@@ -373,29 +410,6 @@ const hubDatabase = [
                         <p class="font-bold text-blue-900 mb-1">💧 Daily Hydration:</p>
                         <p class="text-slate-700">${f.hydration}</p>
                     </div>
-                </div>
-            </div>`
-    },
-    {
-        id: "personal-task-schedule",
-        category: "personal",
-        title: "Daily Office & Commute Routine Scheduler",
-        desc: "Daily timeline management for Karachi commute and accounting operations",
-        fields: [
-            { id: "commuteVehicle", label: "Commute Transport", val: "Union Star 70cc Motorcycle (35-40 km daily)" },
-            { id: "oilCheck", label: "Daily Checklist", val: "Check engine oil dipstick level before ignition" },
-            { id: "workFocus", label: "Primary Work Focus", val: "Excel Payroll, Pivot Tables, Ledger Reconciliations" }
-        ],
-        render: (f) => `
-            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">Daily Routine & Task Scheduler</h2>
-                    <p class="text-xs text-slate-500">Commute & Professional Workflow Manager</p>
-                </div>
-                <div class="space-y-4 text-sm">
-                    <div class="p-3 bg-slate-50 border rounded"><strong>🛵 Transport:</strong> ${f.commuteVehicle}</div>
-                    <div class="p-3 bg-slate-50 border rounded"><strong>🔧 Maintenance:</strong> ${f.oilCheck}</div>
-                    <div class="p-3 bg-slate-50 border rounded"><strong>📊 Professional Focus:</strong> ${f.workFocus}</div>
                 </div>
             </div>`
     }
