@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocuHub - Microsoft Style</title>
+    <title>DocuHub Global - Microsoft Style</title>
     <style>
         * {
             margin: 0;
@@ -37,6 +37,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
         }
 
         .logo span {
@@ -53,11 +54,13 @@
             text-decoration: none;
             color: #616161;
             font-size: 14px;
+            cursor: pointer;
             transition: color 0.2s;
         }
 
-        nav ul li a:hover {
+        nav ul li a:hover, nav ul li a.active {
             color: #0078d4;
+            font-weight: 600;
         }
 
         .nav-btns {
@@ -129,18 +132,33 @@
             cursor: pointer;
         }
 
-        /* Cards Grid Section */
+        /* Container & Grid */
         .container {
             max-width: 1200px;
-            margin: 50px auto;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
         .section-title {
             font-size: 28px;
             font-weight: 600;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             color: #1b1b1b;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 1px solid #c8c6c4;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .search-bar:focus {
+            border-color: #0078d4;
         }
 
         .grid {
@@ -177,15 +195,125 @@
             margin-bottom: 25px;
         }
 
-        .card a {
+        .card button, .card a {
+            background: none;
+            border: none;
             color: #0078d4;
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
+            cursor: pointer;
+            text-align: left;
+            padding: 0;
         }
 
-        .card a:hover {
+        .card button:hover, .card a:hover {
             text-decoration: underline;
+        }
+
+        /* Modal / Workspace View */
+        #workspace-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #fff;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .modal-header {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e1dfdd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 20px;
+            color: #1b1b1b;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #616161;
+        }
+
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media(max-width: 768px) {
+            .modal-body { grid-template-columns: 1fr; }
+        }
+
+        .form-section h4, .preview-section h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 2px solid #0078d4;
+            padding-bottom: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #616161;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #c8c6c4;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .preview-box {
+            background: #faf9f8;
+            border: 1px solid #e1dfdd;
+            padding: 20px;
+            border-radius: 4px;
+            min-height: 400px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .modal-footer {
+            padding: 15px 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e1dfdd;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
         }
     </style>
 </head>
@@ -193,18 +321,19 @@
 
     <!-- Header -->
     <header>
-        <div class="logo"><span>DocuHub</span> Global</div>
+        <div class="logo" onclick="app.showHome()"><span>DocuHub</span> Global</div>
         <nav>
             <ul>
-                <li><a href="#">HR Management</a></li>
-                <li><a href="#">Recruitment</a></li>
-                <li><a href="#">Separation</a></li>
-                <li><a href="#">Commercial</a></li>
+                <li><a onclick="app.filterCategory('all')" class="active" id="nav-all">All Modules</a></li>
+                <li><a onclick="app.filterCategory('hr')">HR Management</a></li>
+                <li><a onclick="app.filterCategory('recruitment')">Recruitment</a></li>
+                <li><a onclick="app.filterCategory('separation')">Separation</a></li>
+                <li><a onclick="app.filterCategory('accounting')">Commercial & B2B</a></li>
             </ul>
         </nav>
         <div class="nav-btns">
-            <button class="btn-outline">Sign In</button>
-            <button class="btn-primary">Get Started</button>
+            <button class="btn-outline" onclick="alert('Welcome! You are logged in as Shah Rukh Siddiqui (Senior Accountant).')">Profile</button>
+            <button class="btn-primary" onclick="app.scrollToTemplates()">Get Started</button>
         </div>
     </header>
 
@@ -213,45 +342,273 @@
         <h1>Aapke Business Ke Liye Smart Documentation</h1>
         <p>Ek hi platform par HR, letters, payroll, aur commercial workflows ko manage karein bilkul clean aur professional style ke sath.</p>
         <div class="hero-btns">
-            <button class="btn-primary">Explore Templates</button>
-            <button class="btn-outline">Learn More</button>
+            <button class="btn-primary" onclick="app.scrollToTemplates()">Explore Templates</button>
+            <button class="btn-outline" onclick="alert('DocuHub Global provides enterprise-grade document automation and accounting correspondence templates.')">Learn More</button>
         </div>
     </section>
 
-    <!-- Cards Section -->
-    <div class="container">
-        <h2 class="section-title">Core Modules</h2>
-        <div class="grid">
-            <div class="card">
-                <div>
-                    <h3>HR Letters</h3>
-                    <p>Offer letters, experience letters, increment letters aur all internal office communications ke ready-made templates.</p>
-                </div>
-                <a href="#">Explore HR &rarr;</a>
+    <!-- Cards Section / Templates Hub -->
+    <div class="container" id="templates-section">
+        <h2 class="section-title" id="section-heading">Core Modules & Interactive Templates</h2>
+        <input type="text" id="search-input" class="search-bar" placeholder="Search templates (e.g. Offer Letter, Resignation, Salary Certificate, Notice)..." oninput="app.handleSearch(this.value)">
+        
+        <div class="grid" id="templates-grid">
+            <!-- Dynamically populated via JavaScript -->
+        </div>
+    </div>
+
+    <!-- Workspace Modal -->
+    <div id="workspace-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Document Generator</h2>
+                <button class="close-btn" onclick="app.closeModal()">&times;</button>
             </div>
-            <div class="card">
-                <div>
-                    <h3>Recruitment</h3>
-                    <p>Candidate shortlisting se lekar interview schedules aur hiring pipeline ko asani se track aur manage karein.</p>
+            <div class="modal-body">
+                <div class="form-section">
+                    <h4>Customize Fields</h4>
+                    <div id="modal-form-fields"></div>
                 </div>
-                <a href="#">Explore Recruitment &rarr;</a>
+                <div class="preview-section">
+                    <h4>Live Document Preview</h4>
+                    <div class="preview-box" id="modal-live-preview"></div>
+                </div>
             </div>
-            <div class="card">
-                <div>
-                    <h3>Separation</h3>
-                    <p>Resignation acceptances, clearance forms, aur full and final settlement ke professional documents.</p>
-                </div>
-                <a href="#">Explore Separation &rarr;</a>
-            </div>
-            <div class="card">
-                <div>
-                    <h3>Commercial</h3>
-                    <p>Tax invoices, ledger statements, aur business agreements ke liye powerful formatting tools.</p>
-                </div>
-                <a href="#">Explore Commercial &rarr;</a>
+            <div class="modal-footer">
+                <button class="btn-outline" onclick="app.closeModal()">Close</button>
+                <button class="btn-primary" onclick="window.print()">Print / Export PDF</button>
             </div>
         </div>
     </div>
 
+    <script>
+        // Full Master Hub Database
+        const hubDatabase = [
+            {
+                id: "letter-offer",
+                category: "hr",
+                title: "Official Employment Offer Letter",
+                desc: "Standard formal job offer letter with salary and position details.",
+                fields: [
+                    { id: "candName", label: "Candidate Name", val: "Shah Rukh Siddiqui" },
+                    { id: "designation", label: "Designation", val: "Senior Accountant" },
+                    { id: "company", label: "Company Name", val: "Taj Al Huda" },
+                    { id: "salary", label: "Monthly Salary (PKR)", val: "120,000" },
+                    { id: "joinDate", label: "Joining Date", val: "2026-10-01" }
+                ],
+                render: (f) => `
+                    <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
+                        <div style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 15px; display: flex; justify-content: space-between;">
+                            <div><strong>${f.company}</strong><br><small style="color:666;">HR Division</small></div>
+                            <div style="text-align: right;"><small>Date: ${new Date().toISOString().split('T')[0]}</small></div>
+                        </div>
+                        <p>Dear <strong>${f.candName}</strong>,</p>
+                        <p>We are thrilled to offer you the position of <strong>${f.designation}</strong> at <strong>${f.company}</strong> starting from <strong>${f.joinDate}</strong>.</p>
+                        <p>Your starting monthly remuneration will be <strong>PKR ${f.salary}</strong>, subject to standard company tax policies.</p>
+                        <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+                            <div><strong>Authorized Signatory</strong><br><small>${f.company}</small></div>
+                            <div style="text-align: right;"><strong>Accepted By</strong><br><small>${f.candName}</small></div>
+                        </div>
+                    </div>`
+            },
+            {
+                id: "letter-appointment",
+                category: "hr",
+                title: "Formal Appointment Letter",
+                desc: "Comprehensive job appointment order with probation clauses.",
+                fields: [
+                    { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+                    { id: "designation", label: "Designation", val: "Senior Accountant" },
+                    { id: "company", label: "Company Name", val: "Taj Al Huda" },
+                    { id: "probation", label: "Probation Period", val: "3 Months" }
+                ],
+                render: (f) => `
+                    <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
+                        <h3>${f.company}</h3>
+                        <p><strong>Subject: Appointment Letter</strong></p>
+                        <p>Dear <strong>${f.empName}</strong>, we are pleased to appoint you as <strong>${f.designation}</strong> with a probation period of <strong>${f.probation}</strong>.</p>
+                        <div style="margin-top: 40px;"><strong>Director HR</strong><br><small>${f.company}</small></div>
+                    </div>`
+            },
+            {
+                id: "letter-salary-cert",
+                category: "accounting",
+                title: "Salary Certificate for Bank / Visa",
+                desc: "Employment and income verification letter for financial institutions.",
+                fields: [
+                    { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+                    { id: "designation", label: "Designation", val: "Senior Accountant" },
+                    { id: "company", label: "Company Name", val: "Taj Al Huda" },
+                    { id: "salary", label: "Monthly Salary", val: "120,000 PKR" },
+                    { id: "purpose", label: "Purpose", val: "bank credit card verification" }
+                ],
+                render: (f) => `
+                    <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
+                        <h3>${f.company}</h3>
+                        <h4 style="margin: 10px 0; color: #555;">TO WHOM IT MAY CONCERN</h4>
+                        <p>This is to certify that <strong>${f.empName}</strong> is a permanent employee of <strong>${f.company}</strong> working as <strong>${f.designation}</strong>.</p>
+                        <p>Their gross monthly salary is <strong>${f.salary}</strong>. Issued for <strong>${f.purpose}</strong>.</p>
+                        <div style="margin-top: 40px;"><strong>Accounts & Payroll Manager</strong><br><small>${f.company}</small></div>
+                    </div>`
+            },
+            {
+                id: "letter-resignation",
+                category: "separation",
+                title: "Standard Resignation Letter",
+                desc: "Formal resignation notice with handover commitment.",
+                fields: [
+                    { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+                    { id: "designation", label: "Designation", val: "Senior Accountant" },
+                    { id: "company", label: "Company Name", val: "Taj Al Huda" },
+                    { id: "lastDay", label: "Last Working Day", val: "2026-10-31" }
+                ],
+                render: (f) => `
+                    <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
+                        <p>To Management, <strong>${f.company}</strong></p>
+                        <p>Please accept this letter as formal notification that I am resigning from my position as <strong>${f.designation}</strong>. My last working day will be <strong>${f.lastDay}</strong>.</p>
+                        <p>I am committed to ensuring a smooth handover of all accounts before my departure.</p>
+                        <div style="margin-top: 40px;"><strong>${f.empName}</strong><br><small>${f.designation}</small></div>
+                    </div>`
+            },
+            {
+                id: "letter-payment-reminder",
+                category: "accounting",
+                title: "Soft Payment Reminder Letter",
+                desc: "Polite initial reminder letter for overdue invoice recovery.",
+                fields: [
+                    { id: "client", label: "Client Name", val: "Valued Client" },
+                    { id: "invNo", label: "Invoice No", val: "INV-2026-88" },
+                    { id: "amount", label: "Overdue Amount", val: "45,000 PKR" }
+                ],
+                render: (f) => `
+                    <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
+                        <h3>Payment Reminder Notice</h3>
+                        <p>To: <strong>${f.client}</strong></p>
+                        <p>This is a friendly reminder that invoice <strong>${f.invNo}</strong> amounting to <strong>${f.amount}</strong> is currently overdue. Kindly remit payment at your earliest convenience.</p>
+                        <div style="margin-top: 40px;"><strong>Accounts Manager</strong></div>
+                    </div>`
+            },
+            {
+                id: "letter-relieving",
+                category: "separation",
+                title: "Official Relieving Order & Experience Letter",
+                desc: "Formal discharge and service certificate issued on final working day.",
+                fields: [
+                    { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+                    { id: "designation", label: "Designation", val: "Senior Accountant" },
+                    { id: "company", label: "Company Name", val: "Taj Al Huda" },
+                    { id: "tenure", label: "Tenure Period", val: "2024 to 2026" }
+                ],
+                render: (f) => `
+                    <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
+                        <h3>${f.company}</h3>
+                        <h4 style="margin: 10px 0;">Service & Relieving Certificate</h4>
+                        <p>This is to certify that <strong>${f.empName}</strong> served as <strong>${f.designation}</strong> at <strong>${f.company}</strong> during <strong>${f.tenure}</strong>. All duties and handovers have been successfully cleared.</p>
+                        <div style="margin-top: 40px;"><strong>HR Director</strong><br><small>${f.company}</small></div>
+                    </div>`
+            }
+        ];
+
+        class DocuHubApp {
+            constructor() {
+                this.currentData = [...hubDatabase];
+                this.activeTemplate = null;
+                this.init();
+            }
+
+            init() {
+                this.renderGrid(this.currentData);
+            }
+
+            renderGrid(data) {
+                const grid = document.getElementById('templates-grid');
+                if (!grid) return;
+                grid.innerHTML = '';
+                if(data.length === 0) {
+                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:#666;">No templates found matching your search.</p>';
+                    return;
+                }
+                data.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <div>
+                            <h3>${item.title}</h3>
+                            <p>${item.desc}</p>
+                        </div>
+                        <button onclick="app.openModal('${item.id}')">Use Template &rarr;</button>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+
+            filterCategory(cat) {
+                document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
+                if(cat === 'all') {
+                    document.getElementById('nav-all').classList.add('active');
+                    this.currentData = [...hubDatabase];
+                } else {
+                    event.target.classList.add('active');
+                    this.currentData = hubDatabase.filter(i => i.category === cat);
+                }
+                this.renderGrid(this.currentData);
+            }
+
+            handleSearch(query) {
+                const q = query.toLowerCase();
+                const filtered = hubDatabase.filter(i => i.title.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q));
+                this.renderGrid(filtered);
+            }
+
+            scrollToTemplates() {
+                document.getElementById('templates-section').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            showHome() {
+                this.currentData = [...hubDatabase];
+                this.renderGrid(this.currentData);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            openModal(id) {
+                const template = hubDatabase.find(i => i.id === id);
+                if (!template) return;
+                this.activeTemplate = template;
+
+                document.getElementById('modal-title').innerText = template.title;
+                const formContainer = document.getElementById('modal-form-fields');
+                formContainer.innerHTML = '';
+
+                template.fields.forEach(f => {
+                    const group = document.createElement('div');
+                    group.className = 'form-group';
+                    group.innerHTML = `
+                        <label>${f.label}</label>
+                        <input type="text" id="field-${f.id}" value="${f.val}" oninput="app.updatePreview()">
+                    `;
+                    formContainer.appendChild(group);
+                });
+
+                this.updatePreview();
+                document.getElementById('workspace-modal').style.display = 'flex';
+            }
+
+            updatePreview() {
+                if (!this.activeTemplate) return;
+                const currentValues = {};
+                this.activeTemplate.fields.forEach(f => {
+                    const input = document.getElementById(`field-${f.id}`);
+                    currentValues[f.id] = input ? input.value : f.val;
+                });
+                document.getElementById('modal-live-preview').innerHTML = this.activeTemplate.render(currentValues);
+            }
+
+            closeModal() {
+                document.getElementById('workspace-modal').style.display = 'none';
+            }
+        }
+
+        const app = new DocuHubApp();
+    </script>
 </body>
 </html>
