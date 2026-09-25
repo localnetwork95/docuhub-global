@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocuHub Global - Microsoft Style</title>
+    <title>DocuHub Global - Professional Suite</title>
     <style>
         * {
             margin: 0;
@@ -17,7 +17,6 @@
             color: #333;
         }
 
-        /* Navbar */
         header {
             background: #ffffff;
             display: flex;
@@ -47,7 +46,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 20px;
         }
 
         nav ul li a {
@@ -76,6 +75,7 @@
             font-size: 14px;
             cursor: pointer;
             font-weight: 600;
+            border-radius: 2px;
             transition: background 0.2s;
         }
 
@@ -91,6 +91,7 @@
             font-size: 14px;
             cursor: pointer;
             font-weight: 600;
+            border-radius: 2px;
             transition: background 0.2s;
         }
 
@@ -98,41 +99,27 @@
             background: #106ebe;
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 80px 40px;
+            padding: 60px 40px;
             text-align: center;
             border-bottom: 1px solid #e1dfdd;
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 600;
             color: #1b1b1b;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 16px;
             color: #616161;
             max-width: 700px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 25px auto;
         }
 
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .hero-btns button {
-            padding: 12px 24px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        /* Container & Grid */
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -140,9 +127,9 @@
         }
 
         .section-title {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 600;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             color: #1b1b1b;
         }
 
@@ -170,7 +157,8 @@
         .card {
             background: #ffffff;
             border: 1px solid #e1dfdd;
-            padding: 30px;
+            padding: 25px;
+            border-radius: 4px;
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
@@ -178,28 +166,27 @@
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.08);
         }
 
         .card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
+            font-size: 18px;
+            margin-bottom: 12px;
             color: #1b1b1b;
         }
 
         .card p {
-            font-size: 14px;
+            font-size: 13px;
             color: #616161;
             line-height: 1.5;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
-        .card button, .card a {
+        .card button {
             background: none;
             border: none;
             color: #0078d4;
-            text-decoration: none;
             font-weight: 600;
             font-size: 14px;
             cursor: pointer;
@@ -207,11 +194,11 @@
             padding: 0;
         }
 
-        .card button:hover, .card a:hover {
+        .card button:hover {
             text-decoration: underline;
         }
 
-        /* Modal / Workspace View */
+        /* Modal Workspace */
         #workspace-modal {
             display: none;
             position: fixed;
@@ -226,7 +213,7 @@
         .modal-content {
             background: #fff;
             width: 100%;
-            max-width: 900px;
+            max-width: 950px;
             max-height: 90vh;
             border-radius: 6px;
             display: flex;
@@ -245,7 +232,7 @@
         }
 
         .modal-header h2 {
-            font-size: 20px;
+            font-size: 18px;
             color: #1b1b1b;
         }
 
@@ -270,7 +257,7 @@
         }
 
         .form-section h4, .preview-section h4 {
-            font-size: 16px;
+            font-size: 15px;
             margin-bottom: 15px;
             color: #333;
             border-bottom: 2px solid #0078d4;
@@ -278,23 +265,23 @@
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .form-group label {
             display: block;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: #616161;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
-        .form-group input {
+        .form-group input, .form-group select {
             width: 100%;
-            padding: 10px;
+            padding: 8px 10px;
             border: 1px solid #c8c6c4;
             border-radius: 4px;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .preview-box {
@@ -302,8 +289,8 @@
             border: 1px solid #e1dfdd;
             padding: 20px;
             border-radius: 4px;
-            min-height: 400px;
-            max-height: 500px;
+            min-height: 380px;
+            max-height: 480px;
             overflow-y: auto;
         }
 
@@ -319,58 +306,49 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header>
         <div class="logo" onclick="app.showHome()"><span>DocuHub</span> Global</div>
         <nav>
             <ul>
-                <li><a onclick="app.filterCategory('all')" class="active" id="nav-all">All Modules</a></li>
-                <li><a onclick="app.filterCategory('hr')">HR Management</a></li>
-                <li><a onclick="app.filterCategory('recruitment')">Recruitment</a></li>
+                <li><a onclick="app.filterCategory('all')" class="active" id="nav-all">All Hub</a></li>
+                <li><a onclick="app.filterCategory('hr')">HR Letters</a></li>
                 <li><a onclick="app.filterCategory('separation')">Separation</a></li>
-                <li><a onclick="app.filterCategory('accounting')">Commercial & B2B</a></li>
+                <li><a onclick="app.filterCategory('commercial')">Commercial & B2B</a></li>
+                <li><a onclick="app.filterCategory('calculators')">Calculators & Tools</a></li>
             </ul>
         </nav>
         <div class="nav-btns">
-            <button class="btn-outline" onclick="alert('Welcome! You are logged in as Shah Rukh Siddiqui (Senior Accountant).')">Profile</button>
-            <button class="btn-primary" onclick="app.scrollToTemplates()">Get Started</button>
+            <button class="btn-outline" onclick="alert('Logged in as Shah Rukh Siddiqui (Senior Accountant)')">User Profile</button>
+            <button class="btn-primary" onclick="app.scrollToTemplates()">Explore</button>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <h1>Aapke Business Ke Liye Smart Documentation</h1>
-        <p>Ek hi platform par HR, letters, payroll, aur commercial workflows ko manage karein bilkul clean aur professional style ke sath.</p>
-        <div class="hero-btns">
-            <button class="btn-primary" onclick="app.scrollToTemplates()">Explore Templates</button>
-            <button class="btn-outline" onclick="alert('DocuHub Global provides enterprise-grade document automation and accounting correspondence templates.')">Learn More</button>
-        </div>
+        <h1>Smart Documentation & Accounting Suite</h1>
+        <p>Manage all HR letters, commercial invoices, salary slips, and payroll calculations instantly in one unified platform.</p>
     </section>
 
-    <!-- Cards Section / Templates Hub -->
     <div class="container" id="templates-section">
-        <h2 class="section-title" id="section-heading">Core Modules & Interactive Templates</h2>
-        <input type="text" id="search-input" class="search-bar" placeholder="Search templates (e.g. Offer Letter, Resignation, Salary Certificate, Notice)..." oninput="app.handleSearch(this.value)">
+        <h2 class="section-title">All Documents & Calculators</h2>
+        <input type="text" id="search-input" class="search-bar" placeholder="Search any letter, invoice or calculator (e.g. Offer Letter, Increment, Payroll, Tax Calculator)..." oninput="app.handleSearch(this.value)">
         
-        <div class="grid" id="templates-grid">
-            <!-- Dynamically populated via JavaScript -->
-        </div>
+        <div class="grid" id="templates-grid"></div>
     </div>
 
-    <!-- Workspace Modal -->
+    <!-- Modal Workspace -->
     <div id="workspace-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modal-title">Document Generator</h2>
+                <h2 id="modal-title">Workspace Generator</h2>
                 <button class="close-btn" onclick="app.closeModal()">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="form-section">
-                    <h4>Customize Fields</h4>
+                    <h4>Parameters & Inputs</h4>
                     <div id="modal-form-fields"></div>
                 </div>
                 <div class="preview-section">
-                    <h4>Live Document Preview</h4>
+                    <h4>Live Result / Preview</h4>
                     <div class="preview-box" id="modal-live-preview"></div>
                 </div>
             </div>
@@ -382,130 +360,222 @@
     </div>
 
     <script>
-        // Full Master Hub Database
         const hubDatabase = [
+            // HR LETTERS
             {
-                id: "letter-offer",
+                id: "offer-letter",
                 category: "hr",
-                title: "Official Employment Offer Letter",
-                desc: "Standard formal job offer letter with salary and position details.",
+                title: "Employment Offer Letter",
+                desc: "Standard formal job offer letter with salary breakdown and designation.",
                 fields: [
-                    { id: "candName", label: "Candidate Name", val: "Shah Rukh Siddiqui" },
-                    { id: "designation", label: "Designation", val: "Senior Accountant" },
-                    { id: "company", label: "Company Name", val: "Taj Al Huda" },
+                    { id: "cand", label: "Candidate Name", val: "Shah Rukh Siddiqui" },
+                    { id: "desig", label: "Designation", val: "Senior Accountant" },
+                    { id: "comp", label: "Company Name", val: "Taj Al Huda" },
                     { id: "salary", label: "Monthly Salary (PKR)", val: "120,000" },
-                    { id: "joinDate", label: "Joining Date", val: "2026-10-01" }
+                    { id: "date", label: "Joining Date", val: "2026-10-01" }
                 ],
                 render: (f) => `
-                    <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
-                        <div style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 15px; display: flex; justify-content: space-between;">
-                            <div><strong>${f.company}</strong><br><small style="color:666;">HR Division</small></div>
-                            <div style="text-align: right;"><small>Date: ${new Date().toISOString().split('T')[0]}</small></div>
-                        </div>
-                        <p>Dear <strong>${f.candName}</strong>,</p>
-                        <p>We are thrilled to offer you the position of <strong>${f.designation}</strong> at <strong>${f.company}</strong> starting from <strong>${f.joinDate}</strong>.</p>
-                        <p>Your starting monthly remuneration will be <strong>PKR ${f.salary}</strong>, subject to standard company tax policies.</p>
-                        <div style="margin-top: 40px; display: flex; justify-content: space-between;">
-                            <div><strong>Authorized Signatory</strong><br><small>${f.company}</small></div>
-                            <div style="text-align: right;"><strong>Accepted By</strong><br><small>${f.candName}</small></div>
-                        </div>
+                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
+                        <h3>${f.comp}</h3>
+                        <p><small>Date: ${new Date().toISOString().split('T')[0]}</small></p>
+                        <p>Dear <strong>${f.cand}</strong>,</p>
+                        <p>We are excited to offer you the position of <strong>${f.desig}</strong> at <strong>${f.comp}</strong> starting <strong>${f.date}</strong> with a monthly remuneration of <strong>PKR ${f.salary}</strong>.</p>
+                        <div style="margin-top:30px;"><strong>Authorized Signatory</strong><br><small>${f.comp}</small></div>
                     </div>`
             },
             {
-                id: "letter-appointment",
+                id: "increment-letter",
                 category: "hr",
-                title: "Formal Appointment Letter",
-                desc: "Comprehensive job appointment order with probation clauses.",
+                title: "Salary Increment & Promotion Letter",
+                desc: "Official notice announcing annual appraisal, pay revision, and promotion.",
                 fields: [
-                    { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-                    { id: "designation", label: "Designation", val: "Senior Accountant" },
-                    { id: "company", label: "Company Name", val: "Taj Al Huda" },
-                    { id: "probation", label: "Probation Period", val: "3 Months" }
+                    { id: "emp", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+                    { id: "desig", label: "New Designation", val: "Senior Accountant" },
+                    { id: "comp", label: "Company Name", val: "Taj Al Huda" },
+                    { id: "oldSal", label: "Previous Salary (PKR)", val: "100,000" },
+                    { id: "newSal", label: "Revised Salary (PKR)", val: "120,000" }
                 ],
                 render: (f) => `
-                    <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
-                        <h3>${f.company}</h3>
-                        <p><strong>Subject: Appointment Letter</strong></p>
-                        <p>Dear <strong>${f.empName}</strong>, we are pleased to appoint you as <strong>${f.designation}</strong> with a probation period of <strong>${f.probation}</strong>.</p>
-                        <div style="margin-top: 40px;"><strong>Director HR</strong><br><small>${f.company}</small></div>
+                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
+                        <h3>${f.comp} - HR Department</h3>
+                        <h4>Subject: Salary Revision & Promotion</h4>
+                        <p>Dear <strong>${f.emp}</strong>,</p>
+                        <p>In recognition of your dedicated performance, management is pleased to promote you to <strong>${f.desig}</strong>. Your monthly salary has been revised from PKR ${f.oldSal} to <strong>PKR ${f.newSal}</strong>.</p>
+                        <div style="margin-top:30px;"><strong>Director HR</strong></div>
                     </div>`
             },
             {
-                id: "letter-salary-cert",
-                category: "accounting",
-                title: "Salary Certificate for Bank / Visa",
-                desc: "Employment and income verification letter for financial institutions.",
+                id: "probation-letter",
+                category: "hr",
+                title: "Probation Confirmation Letter",
+                desc: "Letter confirming permanent employment status after successful probation.",
                 fields: [
-                    { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-                    { id: "designation", label: "Designation", val: "Senior Accountant" },
-                    { id: "company", label: "Company Name", val: "Taj Al Huda" },
-                    { id: "salary", label: "Monthly Salary", val: "120,000 PKR" },
-                    { id: "purpose", label: "Purpose", val: "bank credit card verification" }
+                    { id: "emp", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+                    { id: "desig", label: "Designation", val: "Senior Accountant" },
+                    { id: "comp", label: "Company Name", val: "Taj Al Huda" },
+                    { id: "confDate", label: "Confirmation Date", val: "2026-10-01" }
                 ],
                 render: (f) => `
-                    <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
-                        <h3>${f.company}</h3>
-                        <h4 style="margin: 10px 0; color: #555;">TO WHOM IT MAY CONCERN</h4>
-                        <p>This is to certify that <strong>${f.empName}</strong> is a permanent employee of <strong>${f.company}</strong> working as <strong>${f.designation}</strong>.</p>
-                        <p>Their gross monthly salary is <strong>${f.salary}</strong>. Issued for <strong>${f.purpose}</strong>.</p>
-                        <div style="margin-top: 40px;"><strong>Accounts & Payroll Manager</strong><br><small>${f.company}</small></div>
+                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
+                        <h3>${f.comp}</h3>
+                        <h4>Confirmation of Employment</h4>
+                        <p>Dear <strong>${f.emp}</strong>,</p>
+                        <p>We are pleased to inform you that following the successful completion of your probation period, your employment as <strong>${f.desig}</strong> is confirmed permanent effective <strong>${f.confDate}</strong>.</p>
+                        <div style="margin-top:30px;"><strong>HR Manager</strong></div>
                     </div>`
             },
             {
-                id: "letter-resignation",
+                id: "warning-letter",
+                category: "hr",
+                title: "Official Warning / Disciplinary Letter",
+                desc: "Formal notice addressing attendance or policy infractions.",
+                fields: [
+                    { id: "emp", label: "Employee Name", val: "Employee Name" },
+                    { id: "comp", label: "Company Name", val: "Taj Al Huda" },
+                    { id: "reason", label: "Infraction Reason", val: "Repeated unauthorized lateness" }
+                ],
+                render: (f) => `
+                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
+                        <h3>${f.comp}</h3>
+                        <h4 style="color:#d9534f;">DISCIPLINARY WARNING NOTICE</h4>
+                        <p>To: <strong>${f.emp}</strong></p>
+                        <p>This letter serves as a formal warning regarding <strong>${f.reason}</strong>. Immediate improvement is expected to avoid further disciplinary action.</p>
+                        <div style="margin-top:30px;"><strong>Management</strong></div>
+                    </div>`
+            },
+
+            // SEPARATION LETTERS
+            {
+                id: "resignation-letter",
                 category: "separation",
-                title: "Standard Resignation Letter",
-                desc: "Formal resignation notice with handover commitment.",
+                title: "Resignation Acceptance Letter",
+                desc: "Formal reply accepting employee resignation and stating final clearance date.",
                 fields: [
-                    { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-                    { id: "designation", label: "Designation", val: "Senior Accountant" },
-                    { id: "company", label: "Company Name", val: "Taj Al Huda" },
+                    { id: "emp", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+                    { id: "comp", label: "Company Name", val: "Taj Al Huda" },
                     { id: "lastDay", label: "Last Working Day", val: "2026-10-31" }
                 ],
                 render: (f) => `
-                    <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
-                        <p>To Management, <strong>${f.company}</strong></p>
-                        <p>Please accept this letter as formal notification that I am resigning from my position as <strong>${f.designation}</strong>. My last working day will be <strong>${f.lastDay}</strong>.</p>
-                        <p>I am committed to ensuring a smooth handover of all accounts before my departure.</p>
-                        <div style="margin-top: 40px;"><strong>${f.empName}</strong><br><small>${f.designation}</small></div>
+                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
+                        <h3>${f.comp}</h3>
+                        <h4>Acceptance of Resignation</h4>
+                        <p>Dear <strong>${f.emp}</strong>,</p>
+                        <p>We accept your resignation from your position. Your last working day will be <strong>${f.lastDay}</strong>, subject to completion of your departmental clearance.</p>
+                        <div style="margin-top:30px;"><strong>HR Director</strong></div>
                     </div>`
             },
             {
-                id: "letter-payment-reminder",
-                category: "accounting",
-                title: "Soft Payment Reminder Letter",
-                desc: "Polite initial reminder letter for overdue invoice recovery.",
-                fields: [
-                    { id: "client", label: "Client Name", val: "Valued Client" },
-                    { id: "invNo", label: "Invoice No", val: "INV-2026-88" },
-                    { id: "amount", label: "Overdue Amount", val: "45,000 PKR" }
-                ],
-                render: (f) => `
-                    <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
-                        <h3>Payment Reminder Notice</h3>
-                        <p>To: <strong>${f.client}</strong></p>
-                        <p>This is a friendly reminder that invoice <strong>${f.invNo}</strong> amounting to <strong>${f.amount}</strong> is currently overdue. Kindly remit payment at your earliest convenience.</p>
-                        <div style="margin-top: 40px;"><strong>Accounts Manager</strong></div>
-                    </div>`
-            },
-            {
-                id: "letter-relieving",
+                id: "experience-letter",
                 category: "separation",
-                title: "Official Relieving Order & Experience Letter",
-                desc: "Formal discharge and service certificate issued on final working day.",
+                title: "Experience & Relieving Certificate",
+                desc: "Service certificate verifying employment tenure and duties.",
                 fields: [
-                    { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-                    { id: "designation", label: "Designation", val: "Senior Accountant" },
-                    { id: "company", label: "Company Name", val: "Taj Al Huda" },
-                    { id: "tenure", label: "Tenure Period", val: "2024 to 2026" }
+                    { id: "emp", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+                    { id: "desig", label: "Designation", val: "Senior Accountant" },
+                    { id: "comp", label: "Company Name", val: "Taj Al Huda" },
+                    { id: "period", label: "Tenure Period", val: "2024 to 2026" }
                 ],
                 render: (f) => `
-                    <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
-                        <h3>${f.company}</h3>
-                        <h4 style="margin: 10px 0;">Service & Relieving Certificate</h4>
-                        <p>This is to certify that <strong>${f.empName}</strong> served as <strong>${f.designation}</strong> at <strong>${f.company}</strong> during <strong>${f.tenure}</strong>. All duties and handovers have been successfully cleared.</p>
-                        <div style="margin-top: 40px;"><strong>HR Director</strong><br><small>${f.company}</small></div>
+                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
+                        <h3>${f.comp}</h3>
+                        <h4 style="text-align:center;">EXPERIENCE CERTIFICATE</h4>
+                        <p>This is to certify that <strong>${f.emp}</strong> worked with <strong>${f.comp}</strong> as <strong>${f.desig}</strong> from <strong>${f.period}</strong>. We wish them success in future endeavors.</p>
+                        <div style="margin-top:40px;"><strong>Authorized Signatory</strong></div>
                     </div>`
+            },
+
+            // COMMERCIAL & B2B
+            {
+                id: "tax-invoice",
+                category: "commercial",
+                title: "Standard Commercial Tax Invoice",
+                desc: "Professional sales invoice template with itemized calculation.",
+                fields: [
+                    { id: "client", label: "Client Name", val: "Bait al Ezz Curtains" },
+                    { id: "invNo", label: "Invoice No", val: "INV-2026-001" },
+                    { id: "item", label: "Item Description", val: "Premium Sofa Fabric Roll" },
+                    { id: "amount", label: "Total Amount (PKR)", val: "85,000" }
+                ],
+                render: (f) => `
+                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
+                        <div style="display:flex; justify-content:space-between;">
+                            <h3>TAX INVOICE</h3>
+                            <div><strong>${f.invNo}</strong></div>
+                        </div>
+                        <p>Billed To: <strong>${f.client}</strong></p>
+                        <hr style="margin:10px 0;">
+                        <p>Item: <strong>${f.item}</strong></p>
+                        <p>Grand Total: <strong>PKR ${f.amount}</strong></p>
+                        <div style="margin-top:40px;"><strong>Accounts Department</strong></div>
+                    </div>`
+            },
+            {
+                id: "ledger-statement",
+                category: "commercial",
+                title: "Customer Account Ledger Statement",
+                desc: "Account summary statement showing debits, credits, and closing balance.",
+                fields: [
+                    { id: "client", label: "Account Name", val: "Sofasticated Fabrics" },
+                    { id: "debit", label: "Total Debits", val: "150,000" },
+                    { id: "credit", label: "Total Credits", val: "120,000" }
+                ],
+                render: (f) => `
+                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
+                        <h3>Account Statement</h3>
+                        <p>Client: <strong>${f.client}</strong></p>
+                        <p>Total Debits: PKR ${f.debit}</p>
+                        <p>Total Credits: PKR ${f.credit}</p>
+                        <p><strong>Net Balance Due: PKR ${f.debit - f.credit}</strong></p>
+                        <div style="margin-top:30px;"><strong>Senior Accountant</strong></div>
+                    </div>`
+            },
+
+            // CALCULATORS & TOOLS
+            {
+                id: "calc-payroll",
+                category: "calculators",
+                title: "Net Payroll & Salary Calculator",
+                desc: "Calculate net take-home salary after allowances and deductions.",
+                fields: [
+                    { id: "basic", label: "Basic Salary", val: "100000" },
+                    { id: "allowance", label: "Allowances", val: "25000" },
+                    { id: "deduction", label: "Tax / Deductions", val: "5000" }
+                ],
+                render: (f) => {
+                    const net = Number(f.basic) + Number(f.allowance) - Number(f.deduction);
+                    return `
+                        <div style="font-family:sans-serif; color:#333; line-height:1.6;">
+                            <h3>Payroll Computation Summary</h3>
+                            <p>Basic Salary: PKR ${f.basic}</p>
+                            <p>Allowances: PKR ${f.allowance}</p>
+                            <p>Deductions: PKR ${f.deduction}</p>
+                            <hr style="margin:10px 0;">
+                            <h4 style="color:#0078d4;">Net Payable Salary: PKR ${net.toLocaleString()}</h4>
+                        </div>`;
+                }
+            },
+            {
+                id: "calc-percentage",
+                category: "calculators",
+                title: "Percentage & Markup Calculator",
+                desc: "Calculate commercial profit markup, discounts, or sales percentages.",
+                fields: [
+                    { id: "val1", label: "Base Amount", val: "50000" },
+                    { id: "val2", label: "Percentage (%)", val: "16" }
+                ],
+                render: (f) => {
+                    const res = (Number(f.val1) * Number(f.val2)) / 100;
+                    const total = Number(f.val1) + res;
+                    return `
+                        <div style="font-family:sans-serif; color:#333; line-height:1.6;">
+                            <h3>Percentage & Tax Calculation</h3>
+                            <p>Base Amount: PKR ${f.val1}</p>
+                            <p>Percentage: ${f.val2}%</p>
+                            <p>Calculated Value: PKR ${res.toLocaleString()}</p>
+                            <hr style="margin:10px 0;">
+                            <h4 style="color:#0078d4;">Total with Markup/Tax: PKR ${total.toLocaleString()}</h4>
+                        </div>`;
+                }
             }
         ];
 
@@ -525,7 +595,7 @@
                 if (!grid) return;
                 grid.innerHTML = '';
                 if(data.length === 0) {
-                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:#666;">No templates found matching your search.</p>';
+                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:#666;">No items found matching your search.</p>';
                     return;
                 }
                 data.forEach(item => {
@@ -536,7 +606,7 @@
                             <h3>${item.title}</h3>
                             <p>${item.desc}</p>
                         </div>
-                        <button onclick="app.openModal('${item.id}')">Use Template &rarr;</button>
+                        <button onclick="app.openModal('${item.id}')">Open Tool / Letter &rarr;</button>
                     `;
                     grid.appendChild(card);
                 });
