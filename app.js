@@ -1,15 +1,91 @@
-{
+// ==========================================
+// DOCUHUB GLOBAL - MASTER APP.JS (32+ TEMPLATES)
+// ==========================================
+
+const hubDatabase = [
+    // ----------------------------------------------------
+    // 1. HR & RECRUITMENT LETTERS (7 Formats)
+    // ----------------------------------------------------
+    {
+        id: "letter-offer",
+        category: "hr",
+        title: "Official Employment Offer Letter",
+        desc: "Standard formal job offer letter with salary and position details",
+        fields: [
+            { id: "candName", label: "Candidate Name", val: "Shah Rukh Siddiqui" },
+            { id: "designation", label: "Designation", val: "Senior Accountant" },
+            { id: "company", label: "Company Name", val: "Taj Al Huda" },
+            { id: "salary", label: "Monthly Salary (PKR)", val: "120,000" },
+            { id: "joinDate", label: "Joining Date", val: "2026-10-01", type: "date" }
+        ],
+        render: (f) => `
+            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800 leading-relaxed shadow-sm">
+                <div class="border-b pb-4 mb-6 flex justify-between items-center">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900">${f.company}</h2>
+                        <p class="text-xs text-slate-500">Human Resources Division</p>
+                    </div>
+                    <div class="text-right text-xs text-slate-500">
+                        <p>Date: ${new Date().toISOString().split('T')[0]}</p>
+                    </div>
+                </div>
+                <div class="text-sm space-y-4">
+                    <p>Dear <strong>${f.candName}</strong>,</p>
+                    <p>We are thrilled to offer you the position of <strong>${f.designation}</strong> at <strong>${f.company}</strong> starting from <strong>${f.joinDate}</strong>.</p>
+                    <p>Your starting monthly remuneration will be <strong>PKR ${f.salary}</strong>, subject to standard company tax policies and performance reviews.</p>
+                    <p>Please sign and return a copy of this letter as token of your acceptance.</p>
+                    <div class="pt-12 flex justify-between">
+                        <div>
+                            <p class="font-bold">Authorized Signatory</p>
+                            <p class="text-xs text-slate-500">${f.company}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-bold">Accepted By</p>
+                            <p class="text-xs text-slate-500">${f.candName}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+    },
+    {
+        id: "letter-appointment",
+        category: "hr",
+        title: "Formal Appointment Letter",
+        desc: "Comprehensive job appointment order with terms and probation clauses",
+        fields: [
+            { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+            { id: "designation", label: "Designation", val: "Senior Accountant" },
+            { id: "company", label: "Company Name", val: "Taj Al Huda" },
+            { id: "probation", label: "Probation Period", val: "3 Months" }
+        ],
+        render: (f) => `
+            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800 leading-relaxed">
+                <div class="border-b pb-4 mb-6">
+                    <h2 class="text-xl font-bold text-slate-900">${f.company}</h2>
+                    <p class="text-xs text-slate-500">Appointment & Employment Terms</p>
+                </div>
+                <div class="text-sm space-y-4">
+                    <p>Dear <strong>${f.empName}</strong>,</p>
+                    <p>With reference to your application and subsequent interview, we are pleased to appoint you as <strong>${f.designation}</strong> at <strong>${f.company}</strong>.</p>
+                    <p>Your employment will be governed by a probation period of <strong>${f.probation}</strong>, during which your performance will be evaluated.</p>
+                    <div class="pt-10">
+                        <p class="font-bold">Director HR</p>
+                        <p class="text-xs text-slate-500">${f.company}</p>
+                    </div>
+                </div>
+            </div>`
+    },
+    {
         id: "letter-probation-confirm",
         category: "hr",
         title: "Probation Confirmation Letter",
         desc: "Official confirmation letter upon successfully completing the probation period",
         fields: [
-            { id: "empName", label: "Employee Name", val: "Ali Hassan" },
-            { id: "designation", label: "Designation", val: "Assistant Accountant" },
+            { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+            { id: "designation", label: "Designation", val: "Senior Accountant" },
             { id: "company", label: "Company Name", val: "Taj Al Huda" },
-            { id: "joinDate", label: "Joining Date", val: "2026-06-01", type: "date" },
             { id: "confDate", label: "Confirmation Date", val: "2026-09-01", type: "date" },
-            { id: "newSalary", label: "Revised Monthly Salary", val: "85000" }
+            { id: "newSalary", label: "Revised Monthly Salary", val: "135,000" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800 leading-relaxed">
@@ -18,11 +94,9 @@
                     <p class="text-xs text-slate-500">Human Resources Department</p>
                 </div>
                 <div class="text-sm space-y-4">
-                    <p class="text-right text-xs">Date: ${f.confDate}</p>
                     <p>Dear <strong>${f.empName}</strong>,</p>
-                    <p>Consequent to your performance review during the probation period starting <strong>${f.joinDate}</strong>, we are pleased to confirm your appointment as <strong>${f.designation}</strong> effective <strong>${f.confDate}</strong>.</p>
-                    <p>Your revised monthly salary will be <strong>PKR/USD ${f.newSalary}</strong>. All other terms and conditions of your employment remain unchanged.</p>
-                    <p>We look forward to your continued contribution to the growth of ${f.company}.</p>
+                    <p>We are pleased to confirm your appointment as <strong>${f.designation}</strong> effective <strong>${f.confDate}</strong> following successful completion of your probation.</p>
+                    <p>Your revised monthly salary is fixed at <strong>PKR ${f.newSalary}</strong>.</p>
                     <div class="pt-10">
                         <p class="font-bold">HR Manager</p>
                         <p class="text-xs text-slate-500">${f.company}</p>
@@ -39,9 +113,7 @@
             { id: "internName", label: "Intern Name", val: "Usman Raza" },
             { id: "dept", label: "Department", val: "Finance & Accounts" },
             { id: "company", label: "Company Name", val: "Burqur Corporation" },
-            { id: "stipend", label: "Monthly Stipend", val: "25000" },
-            { id: "duration", label: "Duration", val: "3 Months" },
-            { id: "startDate", label: "Start Date", val: "2026-10-01", type: "date" }
+            { id: "stipend", label: "Monthly Stipend", val: "25,000 PKR" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
@@ -51,11 +123,10 @@
                 </div>
                 <div class="text-sm space-y-4">
                     <p>Dear <strong>${f.internName}</strong>,</p>
-                    <p>We are pleased to offer you an internship position in our <strong>${f.dept}</strong> department at <strong>${f.company}</strong> for a duration of <strong>${f.duration}</strong> starting from <strong>${f.startDate}</strong>.</p>
-                    <p>You will receive a monthly stipend of <strong>${f.stipend}</strong>. During this program, you will gain hands-on operational experience under professional guidance.</p>
-                    <div class="pt-12 flex justify-between text-xs">
-                        <div><p class="font-bold">For ${f.company}</p><p class="mt-6 border-t pt-1">Authorized Official</p></div>
-                        <div><p class="font-bold">Accepted By</p><p class="mt-6 border-t pt-1">Intern Signature</p></div>
+                    <p>We welcome you to our <strong>${f.dept}</strong> department at <strong>${f.company}</strong> with a monthly stipend of <strong>${f.stipend}</strong>.</p>
+                    <div class="pt-10">
+                        <p class="font-bold">HR Coordinator</p>
+                        <p class="text-xs text-slate-500">${f.company}</p>
                     </div>
                 </div>
             </div>`
@@ -68,9 +139,7 @@
         fields: [
             { id: "internName", label: "Intern Name", val: "Usman Raza" },
             { id: "dept", label: "Department", val: "Accounts" },
-            { id: "company", label: "Company Name", val: "Burqur Corporation" },
-            { id: "startDate", label: "Start Date", val: "2026-06-01", type: "date" },
-            { id: "endDate", label: "End Date", val: "2026-08-31", type: "date" }
+            { id: "company", label: "Company Name", val: "Burqur Corporation" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-serif text-slate-800">
@@ -78,11 +147,10 @@
                     <h2 class="text-xl font-bold uppercase tracking-widest">${f.company}</h2>
                     <p class="text-xs font-sans text-slate-500">INTERNSHIP COMPLETION CERTIFICATE</p>
                 </div>
-                <div class="text-sm font-sans space-y-4 my-8 text-justify leading-7">
-                    <p>This is to certify that <strong>${f.internName}</strong> has successfully completed an internship program in the <strong>${f.dept}</strong> department at <strong>${f.company}</strong> from <strong>${f.startDate}</strong> to <strong>${f.endDate}</strong>.</p>
-                    <p>During their tenure, they demonstrated good technical learning aptitude and professional dedication. We wish them all success in their future career.</p>
+                <div class="text-sm font-sans space-y-4 my-8 text-justify">
+                    <p>This is to certify that <strong>${f.internName}</strong> has successfully completed their internship in the <strong>${f.dept}</strong> department at <strong>${f.company}</strong>.</p>
                 </div>
-                <div class="mt-16 pt-6 border-t text-xs font-sans">
+                <div class="mt-12 pt-6 border-t text-xs font-sans">
                     <p class="font-bold">Head of Human Resources</p>
                     <p class="text-slate-500">${f.company}</p>
                 </div>
@@ -94,22 +162,20 @@
         title: "Internal Department Transfer Letter",
         desc: "Official order transferring an employee to another branch or department",
         fields: [
-            { id: "empName", label: "Employee Name", val: "Tariq Mahmood" },
-            { id: "oldDept", label: "Current Department/Branch", val: "Karachi Workshop" },
-            { id: "newDept", label: "New Department/Branch", val: "Head Office Accounts" },
-            { id: "company", label: "Company Name", val: "Taj Al Huda" },
-            { id: "effDate", label: "Effective Date", val: "2026-10-01", type: "date" }
+            { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+            { id: "oldDept", label: "Current Location", val: "Workshop Branch" },
+            { id: "newDept", label: "New Location", val: "Head Office Accounts" },
+            { id: "company", label: "Company Name", val: "Taj Al Huda" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
                 <div class="border-b pb-4 mb-6">
                     <h2 class="text-xl font-bold text-slate-900">${f.company}</h2>
-                    <p class="text-xs text-slate-500">Internal Office Order — Departmental Transfer</p>
+                    <p class="text-xs text-slate-500">Internal Office Order — Transfer</p>
                 </div>
                 <div class="text-sm space-y-4">
                     <p>Dear <strong>${f.empName}</strong>,</p>
-                    <p>This is to formally notify you that you are being transferred from <strong>${f.oldDept}</strong> to <strong>${f.newDept}</strong> effective <strong>${f.effDate}</strong>.</p>
-                    <p>Your designation and employment terms will remain unchanged unless specified otherwise in a separate amendment. Please report to the manager of your new location on the effective date.</p>
+                    <p>You are hereby transferred from <strong>${f.oldDept}</strong> to <strong>${f.newDept}</strong> effective immediately.</p>
                     <div class="pt-10">
                         <p class="font-bold">Operations Director</p>
                         <p class="text-xs text-slate-500">${f.company}</p>
@@ -117,29 +183,110 @@
                 </div>
             </div>`
     },
-{
-        id: "letter-relieving",
+    {
+        id: "letter-salary-cert",
         category: "hr",
-        title: "Official Relieving Order Letter",
-        desc: "Formal discharge and relieving letter issued on the employee's final working day",
+        title: "Salary Certificate for Bank / Visa",
+        desc: "Employment and income verification letter for financial institutions",
         fields: [
             { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
             { id: "designation", label: "Designation", val: "Senior Accountant" },
-            { id: "company", label: "Company Name", val: "Bahria Town" },
-            { id: "lastDate", label: "Last Working Day", val: "2026-09-30", type: "date" }
+            { id: "company", label: "Company Name", val: "Taj Al Huda" },
+            { id: "salary", label: "Monthly Salary", val: "120,000 PKR" },
+            { id: "purpose", label: "Purpose", val: "bank credit card and loan verification" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
                 <div class="border-b pb-4 mb-6">
                     <h2 class="text-xl font-bold text-slate-900">${f.company}</h2>
-                    <p class="text-xs text-slate-500">HR Clearance & Separation Order</p>
+                    <p class="text-xs text-slate-500">TO WHOM IT MAY CONCERN</p>
                 </div>
                 <div class="text-sm space-y-4">
-                    <p>Dear <strong>${f.empName}</strong>,</p>
-                    <p>With reference to your resignation letter, we hereby relieve you from your responsibilities as <strong>${f.designation}</strong> at <strong>${f.company}</strong> at the close of business hours on <strong>${f.lastDate}</strong>.</p>
-                    <p>We confirm that all company assets and ledger handovers assigned to you have been completed satisfactorily.</p>
+                    <p>This is to certify that <strong>${f.empName}</strong> is a permanent employee of <strong>${f.company}</strong> working as <strong>${f.designation}</strong>.</p>
+                    <p>Their gross monthly salary is <strong>${f.salary}</strong>. This certificate is issued upon their request for <strong>${f.purpose}</strong>.</p>
+                    <div class="pt-12">
+                        <p class="font-bold">Accounts & Payroll Manager</p>
+                        <p class="text-xs text-slate-500">${f.company}</p>
+                    </div>
+                </div>
+            </div>`
+    },
+
+    // ----------------------------------------------------
+    // 2. SEPARATION & LEAVING LETTERS (5 Formats)
+    // ----------------------------------------------------
+    {
+        id: "letter-resignation",
+        category: "hr",
+        title: "Standard Resignation Letter",
+        desc: "Formal resignation notice with notice period handover",
+        fields: [
+            { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+            { id: "designation", label: "Designation", val: "Senior Accountant" },
+            { id: "company", label: "Company Name", val: "Taj Al Huda" },
+            { id: "lastDay", label: "Last Working Day", val: "2026-10-31", type: "date" }
+        ],
+        render: (f) => `
+            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
+                <div class="border-b pb-4 mb-6">
+                    <h2 class="text-xl font-bold text-slate-900">Resignation Notice</h2>
+                </div>
+                <div class="text-sm space-y-4">
+                    <p>To Management, <strong>${f.company}</strong></p>
+                    <p>Please accept this letter as formal notification that I am resigning from my position as <strong>${f.designation}</strong>. My last working day will be <strong>${f.lastDay}</strong>.</p>
+                    <p>I am committed to ensuring a smooth handover of all accounting ledgers before my departure.</p>
                     <div class="pt-10">
-                        <p class="font-bold">Human Resources Manager</p>
+                        <p class="font-bold">${f.empName}</p>
+                        <p class="text-xs text-slate-500">${f.designation}</p>
+                    </div>
+                </div>
+            </div>`
+    },
+    {
+        id: "letter-resignation-immediate",
+        category: "hr",
+        title: "Immediate Resignation Letter (Emergency)",
+        desc: "Resignation notice requesting waiver of standard notice period",
+        fields: [
+            { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+            { id: "company", label: "Company Name", val: "Burqur Corporation" },
+            { id: "reason", label: "Emergency Reason", val: "unforeseen family medical emergency" }
+        ],
+        render: (f) => `
+            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
+                <div class="border-b pb-4 mb-6">
+                    <h2 class="text-xl font-bold text-slate-900">Immediate Resignation</h2>
+                </div>
+                <div class="text-sm space-y-4">
+                    <p>To Management, <strong>${f.company}</strong></p>
+                    <p>Due to <strong>${f.reason}</strong>, I am forced to submit my immediate resignation effective today. I request management to kindly waive my notice period.</p>
+                    <div class="pt-10">
+                        <p class="font-bold">${f.empName}</p>
+                    </div>
+                </div>
+            </div>`
+    },
+    {
+        id: "letter-relieving",
+        category: "hr",
+        title: "Official Relieving Order & Experience Letter",
+        desc: "Formal discharge and service certificate issued on final working day",
+        fields: [
+            { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+            { id: "designation", label: "Designation", val: "Senior Accountant" },
+            { id: "company", label: "Company Name", val: "Bahria Town" },
+            { id: "tenure", label: "Tenure Period", val: "2024 to 2026" }
+        ],
+        render: (f) => `
+            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
+                <div class="border-b pb-4 mb-6">
+                    <h2 class="text-xl font-bold text-slate-900">${f.company}</h2>
+                    <p class="text-xs text-slate-500">Service & Relieving Certificate</p>
+                </div>
+                <div class="text-sm space-y-4">
+                    <p>This is to certify that <strong>${f.empName}</strong> served as <strong>${f.designation}</strong> at <strong>${f.company}</strong> during <strong>${f.tenure}</strong>. All duties and handovers have been successfully cleared.</p>
+                    <div class="pt-10">
+                        <p class="font-bold">HR Director</p>
                         <p class="text-xs text-slate-500">${f.company}</p>
                     </div>
                 </div>
@@ -149,13 +296,11 @@
         id: "letter-termination",
         category: "hr",
         title: "Official Employment Termination Letter",
-        desc: "Formal letter ending employment due to contract end, redundancy, or policy breach",
+        desc: "Formal letter ending employment due to restructuring or policy breach",
         fields: [
             { id: "empName", label: "Employee Name", val: "Kashif Bilal" },
-            { id: "designation", label: "Designation", val: "Sales Executive" },
             { id: "company", label: "Company Name", val: "Arshe Autos" },
-            { id: "termDate", label: "Termination Date", val: "2026-09-30", type: "date" },
-            { id: "reason", label: "Reason/Policy Ref", val: "business restructuring and department downsizing" }
+            { id: "reason", label: "Reason", val: "department restructuring and downsizing" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
@@ -165,8 +310,7 @@
                 </div>
                 <div class="text-sm space-y-4">
                     <p>Dear <strong>${f.empName}</strong>,</p>
-                    <p>This letter serves as formal notice that your employment as <strong>${f.designation}</strong> with <strong>${f.company}</strong> will terminate effective <strong>${f.termDate}</strong> due to <strong>${f.reason}</strong>.</p>
-                    <p>Your final dues and encashments will be settled after completing the official clearance process.</p>
+                    <p>This letter serves as formal notice that your employment with <strong>${f.company}</strong> is terminated due to <strong>${f.reason}</strong>.</p>
                     <div class="pt-10">
                         <p class="font-bold">Director Human Resources</p>
                         <p class="text-xs text-slate-500">${f.company}</p>
@@ -175,55 +319,23 @@
             </div>`
     },
     {
-        id: "letter-resignation-immediate",
-        category: "hr",
-        title: "Immediate Resignation Letter (Health / Emergency)",
-        desc: "Resignation notice requesting waiver of standard notice period due to emergencies",
-        fields: [
-            { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-            { id: "designation", label: "Designation", val: "Accountant" },
-            { id: "company", label: "Company Name", val: "Burqur Corp" },
-            { id: "resDate", label: "Resignation Date", val: "2026-09-24", type: "date" },
-            { id: "reason", label: "Emergency Reason", val: "unforeseen family medical condition requiring immediate relocation" }
-        ],
-        render: (f) => `
-            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">Urgent Communication</h2>
-                    <p class="text-xs text-slate-500">Immediate Resignation Request</p>
-                </div>
-                <div class="text-sm space-y-4">
-                    <p>Date: ${f.resDate}</p>
-                    <p>To Management, <strong>${f.company}</strong></p>
-                    <p>Please accept this letter as my immediate resignation from the post of <strong>${f.designation}</strong> effective <strong>${f.resDate}</strong> due to <strong>${f.reason}</strong>.</p>
-                    <p>I request management to kindly waive my standard notice period under these exceptional circumstances.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">${f.empName}</p>
-                        <p class="text-xs text-slate-500">${f.designation}</p>
-                    </div>
-                </div>
-            </div>`
-    },
-    {
         id: "letter-character-cert",
         category: "hr",
         title: "Character & Conduct Certificate Letter",
-        desc: "Certificate confirming employee good standing, conduct, and behavior",
+        desc: "Certificate confirming employee good standing and moral character",
         fields: [
             { id: "empName", label: "Employee Name", val: "Muhammad Bilal" },
             { id: "designation", label: "Designation", val: "Store Officer" },
-            { id: "company", label: "Company Name", val: "Bait Al Ezz" },
-            { id: "issueDate", label: "Issue Date", val: "2026-09-24", type: "date" }
+            { id: "company", label: "Company Name", val: "Bait Al Ezz" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-serif text-slate-800">
                 <div class="text-center border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold uppercase tracking-wider">${f.company}</h2>
+                    <h2 class="text-xl font-bold uppercase">${f.company}</h2>
                     <p class="text-xs font-sans text-slate-500">CHARACTER CERTIFICATE</p>
                 </div>
-                <div class="text-sm font-sans space-y-4 my-6 text-justify leading-7">
-                    <p>This is to certify that Mr./Ms. <strong>${f.empName}</strong> was employed with us as <strong>${f.designation}</strong>. During their tenure, we found them to be honest, punctual, and of high moral character.</p>
-                    <p>To the best of our knowledge, they bear a commendable conduct record and hold no disciplinary liabilities.</p>
+                <div class="text-sm font-sans space-y-4 my-6 text-justify">
+                    <p>This is to certify that <strong>${f.empName}</strong> was employed with us as <strong>${f.designation}</strong>. During their tenure, we found them honest, dedicated, and of exemplary character.</p>
                 </div>
                 <div class="mt-12 pt-6 border-t font-sans text-xs">
                     <p class="font-bold">General Manager</p>
@@ -231,33 +343,30 @@
                 </div>
             </div>`
     },
-{
+
+    // ----------------------------------------------------
+    // 3. DISCIPLINARY & COMPLIANCE LETTERS (3 Formats)
+    // ----------------------------------------------------
+    {
         id: "letter-warning-performance",
         category: "hr",
         title: "Performance Warning Letter",
-        desc: "Official written warning notice regarding sub-standard performance or output",
+        desc: "Official written warning notice regarding sub-standard output",
         fields: [
             { id: "empName", label: "Employee Name", val: "Hamza Sheikh" },
-            { id: "designation", label: "Designation", val: "Accounts Assistant" },
             { id: "company", label: "Company Name", val: "Taj Al Huda" },
-            { id: "issueDate", label: "Issue Date", val: "2026-09-24", type: "date" },
-            { id: "issueDetails", label: "Performance Deficit", val: "repeated delays in daily ledger entries and reconciliation errors" }
+            { id: "issue", label: "Issue Details", val: "repeated delays in accounting reconciliation" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
                 <div class="border-b pb-4 mb-6">
                     <h2 class="text-xl font-bold text-amber-600">${f.company}</h2>
-                    <p class="text-xs text-slate-500">HR Disciplinary Notice — First Performance Warning</p>
+                    <p class="text-xs text-slate-500">Performance Warning Notice</p>
                 </div>
                 <div class="text-sm space-y-4">
-                    <p>Date: ${f.issueDate}</p>
-                    <p>To: <strong>${f.empName}</strong> (${f.designation})</p>
-                    <p>This letter serves as a formal written warning regarding your recent performance regarding <strong>${f.issueDetails}</strong>.</p>
-                    <p>You are requested to show immediate improvement in your daily output within the next 30 days. Failure to meet standard expectations may lead to further administrative action.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">HR Compliance Officer</p>
-                        <p class="text-xs text-slate-500">${f.company}</p>
-                    </div>
+                    <p>To: <strong>${f.empName}</strong></p>
+                    <p>This letter serves as a formal warning regarding <strong>${f.issue}</strong>. You are required to improve your output within 30 days.</p>
+                    <div class="pt-8"><p class="font-bold">HR Compliance Officer</p></div>
                 </div>
             </div>`
     },
@@ -265,12 +374,11 @@
         id: "letter-show-cause",
         category: "hr",
         title: "Show Cause Notice / Explanation Letter",
-        desc: "Formal notice seeking written explanation for unauthorized absence or policy breach",
+        desc: "Formal notice seeking written explanation for unauthorized absence",
         fields: [
             { id: "empName", label: "Employee Name", val: "Faisal Naeem" },
             { id: "company", label: "Company Name", val: "Bahria Town" },
-            { id: "issueDate", label: "Issue Date", val: "2026-09-24", type: "date" },
-            { id: "incident", label: "Incident / Policy Violation", val: "unauthorized absence from duty for 5 consecutive days without prior leave approval" }
+            { id: "incident", label: "Incident", val: "unauthorized absence from duty for 3 consecutive days" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
@@ -279,42 +387,9 @@
                     <p class="text-xs text-slate-500">SHOW CAUSE NOTICE</p>
                 </div>
                 <div class="text-sm space-y-4">
-                    <p>Date: ${f.issueDate}</p>
                     <p>To: <strong>${f.empName}</strong></p>
-                    <p>It has been brought to the attention of management that you have committed a policy breach: <strong>${f.incident}</strong>.</p>
-                    <p>You are hereby directed to submit a written explanation within 48 hours of receiving this notice to explain why disciplinary action should not be initiated against you.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">Head of Disciplinary Committee</p>
-                        <p class="text-xs text-slate-500">${f.company}</p>
-                    </div>
-                </div>
-            </div>`
-    },
-    {
-        id: "letter-warning-attendance",
-        category: "hr",
-        title: "Attendance & Tardiness Warning Letter",
-        desc: "Formal notice issued for chronic late arrival or unannounced leaves",
-        fields: [
-            { id: "empName", label: "Employee Name", val: "Zubair Ahmed" },
-            { id: "company", label: "Company Name", val: "Sofasticated Fabrics" },
-            { id: "lateDays", label: "Late Arrivals Count", val: "8 Days in Current Month" },
-            { id: "issueDate", label: "Issue Date", val: "2026-09-24", type: "date" }
-        ],
-        render: (f) => `
-            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-amber-700">${f.company}</h2>
-                    <p class="text-xs text-slate-500">Attendance Policy Violation Notice</p>
-                </div>
-                <div class="text-sm space-y-4">
-                    <p>To: <strong>${f.empName}</strong></p>
-                    <p>Our attendance records indicate that you have logged unexcused late arrivals for <strong>${f.lateDays}</strong>.</p>
-                    <p>Punctuality is essential to maintain smooth workplace operations. Continued violation of shift timings will result in salary deductions as per company policy.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">Human Resources Department</p>
-                        <p class="text-xs text-slate-500">${f.company}</p>
-                    </div>
+                    <p>You are directed to submit a written explanation within 48 hours for <strong>${f.incident}</strong>, failing which disciplinary action will follow.</p>
+                    <div class="pt-8"><p class="font-bold">Disciplinary Committee</p></div>
                 </div>
             </div>`
     },
@@ -326,345 +401,204 @@
         fields: [
             { id: "empName", label: "Employee Name", val: "Imran Khan" },
             { id: "company", label: "Company Name", val: "Burqur Corporation" },
-            { id: "duration", label: "Suspension Duration", val: "7 Days" },
-            { id: "effDate", label: "Effective Date", val: "2026-09-25", type: "date" }
+            { id: "days", label: "Duration", val: "7 Days" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
                 <div class="border-b pb-4 mb-6">
                     <h2 class="text-xl font-bold text-red-800">${f.company}</h2>
-                    <p class="text-xs text-slate-500">Official Order — Administrative Suspension</p>
+                    <p class="text-xs text-slate-500">Administrative Suspension Order</p>
                 </div>
                 <div class="text-sm space-y-4">
                     <p>To: <strong>${f.empName}</strong></p>
-                    <p>You are hereby placed under administrative suspension for a period of <strong>${f.duration}</strong> starting <strong>${f.effDate}</strong> pending the outcome of an internal investigation.</p>
-                    <p>During this period, you are required to remain available to answer inquiries from the investigation committee.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">Managing Director</p>
-                        <p class="text-xs text-slate-500">${f.company}</p>
-                    </div>
+                    <p>You are placed under administrative suspension for <strong>${f.days}</strong> pending internal inquiry.</p>
+                    <div class="pt-8"><p class="font-bold">Managing Director</p></div>
                 </div>
             </div>`
     },
+
+    // ----------------------------------------------------
+    // 4. COMMERCIAL & B2B CORRESPONDENCE (5 Formats)
+    // ----------------------------------------------------
     {
-        id: "letter-promotion",
-        category: "hr",
-        title: "Promotion & Designation Revision Letter",
-        desc: "Official announcement of employee designation elevation and salary revision",
-        fields: [
-            { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-            { id: "oldTitle", label: "Former Designation", val: "Accountant" },
-            { id: "newTitle", label: "New Designation", val: "Senior Accountant" },
-            { id: "company", label: "Company Name", val: "Taj Al Huda" },
-            { id: "effDate", label: "Effective Date", val: "2026-09-01", type: "date" }
-        ],
-        render: (f) => `
-            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">${f.company}</h2>
-                    <p class="text-xs text-slate-500">Letter of Promotion</p>
-                </div>
-                <div class="text-sm space-y-4">
-                    <p>Dear <strong>${f.empName}</strong>,</p>
-                    <p>In recognition of your outstanding dedication and performance, management is pleased to promote you from <strong>${f.oldTitle}</strong> to <strong>${f.newTitle}</strong> effective <strong>${f.effDate}</strong>.</p>
-                    <p>We appreciate your valuable contributions and wish you continued leadership success in your elevated role.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">Chief Executive Officer</p>
-                        <p class="text-xs text-slate-500">${f.company}</p>
-                    </div>
-                </div>
-            </div>`
-    },
-{
         id: "letter-b2b-proposal",
         category: "accounting",
         title: "Commercial Business Proposal Cover Letter",
-        desc: "Professional proposal cover page for presenting client quotes and deals",
+        desc: "Professional proposal cover page for presenting client quotes",
         fields: [
-            { id: "clientName", label: "Client/Company Name", val: "Sofasticated Fabrics" },
-            { id: "senderComp", label: "Your Company Name", val: "Taj Al Huda Trading" },
-            { id: "project", label: "Proposal Subject", val: "Supply of Premium Curtain Fabrics & Accessories" },
-            { id: "date", label: "Date", val: "2026-09-24", type: "date" }
+            { id: "client", label: "Client Name", val: "Sofasticated Fabrics" },
+            { id: "sender", label: "Your Company", val: "Taj Al Huda Trading" },
+            { id: "subject", label: "Proposal Subject", val: "Supply of Premium Curtain Fabrics & Accessories" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
                 <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">${f.senderComp}</h2>
+                    <h2 class="text-xl font-bold text-slate-900">${f.sender}</h2>
                     <p class="text-xs text-slate-500">Commercial Proposal Submission</p>
                 </div>
                 <div class="text-sm space-y-4">
-                    <p>Date: ${f.date}</p>
-                    <p>To: Procurement Department, <strong>${f.clientName}</strong></p>
-                    <p><strong>Subject: Business Proposal — ${f.project}</strong></p>
-                    <p>We are pleased to present our official commercial proposal for <strong>${f.project}</strong>. Our team is committed to delivering top-tier quality and competitive wholesale rates.</p>
-                    <p>Please review the enclosed technical and commercial specifications. We look forward to establishing a mutually beneficial partnership.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">Sales & Business Head</p>
-                        <p class="text-xs text-slate-500">${f.senderComp}</p>
-                    </div>
+                    <p>To: Procurement, <strong>${f.client}</strong></p>
+                    <p><strong>Subject: ${f.subject}</strong></p>
+                    <p>We are pleased to present our official commercial proposal. We assure top-tier wholesale rates and high quality standards.</p>
+                    <div class="pt-8"><p class="font-bold">Sales & Business Head</p></div>
                 </div>
             </div>`
     },
     {
-        id: "letter-payment-reminder-1",
+        id: "letter-payment-reminder",
         category: "accounting",
         title: "Soft Payment Reminder Letter",
         desc: "Polite initial reminder letter for overdue invoice recovery",
         fields: [
-            { id: "clientName", label: "Client Name", val: "Bait Al Ezz Curtains" },
-            { id: "invNo", label: "Invoice Reference", val: "INV-2026-88" },
-            { id: "amount", label: "Overdue Amount", val: "45,000 PKR" },
-            { id: "dueDate", label: "Original Due Date", val: "2026-09-10", type: "date" },
-            { id: "myComp", label: "Your Company Name", val: "Taj Al Huda" }
+            { id: "client", label: "Client Name", val: "Bait Al Ezz" },
+            { id: "invNo", label: "Invoice No", val: "INV-2026-88" },
+            { id: "amount", label: "Overdue Amount", val: "45,000 PKR" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">${f.myComp}</h2>
-                    <p class="text-xs text-slate-500">Accounts Receivable Department</p>
-                </div>
-                <div class="text-sm space-y-4">
-                    <p>To: Accounts Payable, <strong>${f.clientName}</strong></p>
-                    <p><strong>Subject: Payment Friendly Reminder — Invoice ${f.invNo}</strong></p>
-                    <p>This is a polite reminder that invoice <strong>${f.invNo}</strong> for the amount of <strong>${f.amount}</strong> was due on <strong>${f.dueDate}</strong>.</p>
-                    <p>If payment has already been remitted, please accept our thanks. Otherwise, kindly expedite the transfer at your earliest convenience.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">Accounts Manager</p>
-                        <p class="text-xs text-slate-500">${f.myComp}</p>
-                    </div>
-                </div>
-            </div>`
-    },
-    {
-        id: "letter-payment-reminder-2",
-        category: "accounting",
-        title: "Urgent Payment Demand Letter",
-        desc: "Final warning letter for overdue balance collection prior to legal recovery",
-        fields: [
-            { id: "clientName", label: "Client Name", val: "Nexus Corp" },
-            { id: "invNo", label: "Invoice No", val: "INV-2026-102" },
-            { id: "amount", label: "Unpaid Balance", val: "120,000 PKR" },
-            { id: "myComp", label: "Your Company Name", val: "Taj Al Huda" }
-        ],
-        render: (f) => `
-            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-red-700">${f.myComp}</h2>
-                    <p class="text-xs text-slate-500">FINAL DEMAND NOTICE</p>
-                </div>
-                <div class="text-sm space-y-4">
-                    <p>To: Management, <strong>${f.clientName}</strong></p>
-                    <p>Despite previous reminders, invoice <strong>${f.invNo}</strong> totaling <strong>${f.amount}</strong> remains unpaid.</p>
-                    <p>Please note that unless full settlement is made within 5 business days, we will be compelled to suspend further deliveries and initiate official recovery protocols.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">Head of Finance & Recovery</p>
-                        <p class="text-xs text-slate-500">${f.myComp}</p>
-                    </div>
-                </div>
-            </div>`
-    },
-    {
-        id: "letter-quotation-cover",
-        category: "accounting",
-        title: "Quotation Transmittal Cover Letter",
-        desc: "Cover letter sent along with formal price quotes to prospective buyers",
-        fields: [
-            { id: "client", label: "Client Name", val: "Arshe Autos" },
-            { id: "quoteNo", label: "Quote Number", val: "QT-2026-44" },
-            { id: "myComp", label: "Your Company Name", val: "Burqur Corporation" }
-        ],
-        render: (f) => `
-            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">${f.myComp}</h2>
-                    <p class="text-xs text-slate-500">Commercial Sales Division</p>
-                </div>
+                <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold">Payment Reminder</h2></div>
                 <div class="text-sm space-y-4">
                     <p>To: <strong>${f.client}</strong></p>
-                    <p>Thank you for your interest in our products. Enclosed please find our formal Quotation Reference <strong>${f.quoteNo}</strong> as per your request.</p>
-                    <p>This quotation remains valid for 15 days. Please feel free to reach out for any technical adjustments.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">Sales Executive</p>
-                        <p class="text-xs text-slate-500">${f.myComp}</p>
-                    </div>
+                    <p>This is a friendly reminder that invoice <strong>${f.invNo}</strong> amounting to <strong>${f.amount}</strong> is currently overdue. Kindly remit payment at your earliest.</p>
+                    <div class="pt-8"><p class="font-bold">Accounts Manager</p></div>
+                </div>
+            </div>`
+    },
+    {
+        id: "letter-demand-notice",
+        category: "accounting",
+        title: "Urgent Payment Demand Letter",
+        desc: "Final warning letter for overdue balance collection",
+        fields: [
+            { id: "client", label: "Client Name", val: "Nexus Corp" },
+            { id: "amount", label: "Total Balance", val: "120,000 PKR" }
+        ],
+        render: (f) => `
+            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
+                <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold text-red-700">FINAL DEMAND NOTICE</h2></div>
+                <div class="text-sm space-y-4">
+                    <p>To: <strong>${f.client}</strong></p>
+                    <p>Your balance of <strong>${f.amount}</strong> remains unpaid despite prior reminders. Legal recovery protocols will initiate in 5 days if unsettled.</p>
+                    <div class="pt-8"><p class="font-bold">Head of Finance</p></div>
                 </div>
             </div>`
     },
     {
         id: "letter-vendor-approval",
         category: "accounting",
-        title: "Official Vendor Registration & Approval Letter",
+        title: "Vendor Registration & Approval Letter",
         desc: "Letter confirming supplier onboarding into official vendor list",
         fields: [
-            { id: "vendorName", label: "Vendor/Supplier Name", val: "Union Star Spare Parts" },
-            { id: "vCode", label: "Assigned Vendor Code", val: "VND-2026-09" },
-            { id: "myComp", label: "Your Company Name", val: "Taj Al Huda" }
+            { id: "vendor", label: "Vendor Name", val: "Union Star Spare Parts" },
+            { id: "code", label: "Vendor Code", val: "VND-2026-09" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">${f.myComp}</h2>
-                    <p class="text-xs text-slate-500">Procurement & Supply Chain Management</p>
-                </div>
+                <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold">Vendor Onboarding Approval</h2></div>
                 <div class="text-sm space-y-4">
-                    <p>Dear <strong>${f.vendorName}</strong>,</p>
-                    <p>We are pleased to inform you that your registration as an approved vendor has been finalized under Vendor Code <strong>${f.vCode}</strong>.</p>
-                    <p>You are now eligible to receive official Purchase Orders (POs) from our accounting department.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">Procurement Manager</p>
-                        <p class="text-xs text-slate-500">${f.myComp}</p>
-                    </div>
+                    <p>Dear <strong>${f.vendor}</strong>,</p>
+                    <p>Your registration as an approved vendor has been finalized under code <strong>${f.code}</strong>.</p>
+                    <div class="pt-8"><p class="font-bold">Procurement Manager</p></div>
                 </div>
             </div>`
     },
     {
         id: "letter-legal-notice",
-        category: "hr",
-        title: "Contract Breach Legal Warning Notice",
-        desc: "Formal notice alleging contract violation prior to filing litigation",
-        fields: [
-            { id: "partyName", label: "Defaulting Party Name", val: "Apex Traders" },
-            { id: "clause", label: "Violated Agreement Clause", val: "Clause 12 (Non-payment & Delivery Delay)" },
-            { id: "myComp", label: "Your Company Name", val: "Taj Al Huda" }
-        ],
-        render: (f) => `
-            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-red-800">${f.myComp}</h2>
-                    <p class="text-xs text-slate-500">LEGAL COMPLIANCE NOTICE</p>
-                </div>
-                <div class="text-sm space-y-4">
-                    <p>To: <strong>${f.partyName}</strong></p>
-                    <p>Take notice that you are in breach of our mutual agreement under <strong>${f.clause}</strong>.</p>
-                    <p>You are hereby called upon to rectify this breach within 7 days, failing which legal proceedings will be initiated at your sole risk and cost.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">Legal Counsel</p>
-                        <p class="text-xs text-slate-500">${f.myComp}</p>
-                    </div>
-                </div>
-            </div>`
-    },
-    {
-        id: "letter-po-transmittal",
         category: "accounting",
-        title: "Purchase Order (PO) Transmittal Letter",
-        desc: "Formal cover letter accompanying official Purchase Orders to suppliers",
+        title: "Contract Breach Legal Warning Notice",
+        desc: "Formal notice alleging contract violation prior to litigation",
         fields: [
-            { id: "vendor", label: "Vendor Name", val: "KMC Chain Suppliers" },
-            { id: "poNo", label: "PO Number", val: "PO-2026-901" },
-            { id: "myComp", label: "Your Company Name", val: "Arshe Autos" }
+            { id: "party", label: "Defaulting Party", val: "Apex Traders" },
+            { id: "clause", label: "Violated Clause", val: "Clause 12 (Delivery Delay)" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">${f.myComp}</h2>
-                    <p class="text-xs text-slate-500">Official Purchase Order Dispatch</p>
-                </div>
+                <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold text-red-800">LEGAL COMPLIANCE NOTICE</h2></div>
                 <div class="text-sm space-y-4">
-                    <p>To: <strong>${f.vendor}</strong></p>
-                    <p>Please find attached our official Purchase Order <strong>${f.poNo}</strong>. Kindly confirm receipt and provide an estimated delivery timeline.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">Purchase Officer</p>
-                        <p class="text-xs text-slate-500">${f.myComp}</p>
-                    </div>
+                    <p>To: <strong>${f.party}</strong></p>
+                    <p>You are in breach of our agreement under <strong>${f.clause}</strong>. Rectify within 7 days to avoid litigation.</p>
+                    <div class="pt-8"><p class="font-bold">Legal Counsel</p></div>
                 </div>
             </div>`
     },
-{
+
+    // ----------------------------------------------------
+    // 5. WORKPLACE REQUESTS & ENDORSEMENTS (8 Formats)
+    // ----------------------------------------------------
+    {
         id: "letter-leave-app",
         category: "hr",
-        title: "Casual / Sick Leave Application Letter",
-        desc: "Formal application letter requesting leave approval from management",
+        title: "Leave Application Letter",
+        desc: "Formal application requesting leave approval from management",
         fields: [
             { id: "empName", label: "Your Name", val: "Shah Rukh Siddiqui" },
-            { id: "designation", label: "Designation", val: "Senior Accountant" },
-            { id: "leaveType", label: "Type of Leave", val: "Casual Leave" },
-            { id: "days", label: "Number of Days", val: "2 Days" },
-            { id: "fromDate", label: "Start Date", val: "2026-09-28", type: "date" },
-            { id: "reason", label: "Reason for Leave", val: "urgent domestic personal work" }
+            { id: "leaveType", label: "Leave Type", val: "Casual Leave" },
+            { id: "days", label: "Number of Days", val: "2 Days" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">Application for Leave</h2>
-                    <p class="text-xs text-slate-500">Employee Formal Leave Request</p>
-                </div>
+                <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold">Leave Application</h2></div>
                 <div class="text-sm space-y-4">
-                    <p>To: The Management / HR</p>
-                    <p>Respected Sir/Madam,</p>
-                    <p>I am writing to request <strong>${f.days}</strong> of <strong>${f.leaveType}</strong> starting from <strong>${f.fromDate}</strong> due to <strong>${f.reason}</strong>.</p>
-                    <p>I will ensure all urgent accounting ledgers are up to date prior to proceeding on leave.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">${f.empName}</p>
-                        <p class="text-xs text-slate-500">${f.designation}</p>
-                    </div>
+                    <p>To Management / HR,</p>
+                    <p>I am writing to request <strong>${f.days}</strong> of <strong>${f.leaveType}</strong> for urgent personal work.</p>
+                    <div class="pt-8"><p class="font-bold">${f.empName}</p></div>
                 </div>
             </div>`
     },
     {
         id: "letter-advance-salary",
         category: "hr",
-        title: "Advance Salary / Loan Application Letter",
+        title: "Advance Salary / Loan Application",
         desc: "Formal request for advance pay deduction from upcoming month salary",
         fields: [
             { id: "empName", label: "Your Name", val: "Shah Rukh Siddiqui" },
-            { id: "amount", label: "Requested Advance Amount", val: "30,000 PKR" },
-            { id: "reason", label: "Reason", val: "urgent motorcycle maintenance and family expenses" }
+            { id: "amount", label: "Amount", val: "30,000 PKR" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-900">Advance Salary Request</h2>
-                </div>
+                <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold">Advance Salary Request</h2></div>
                 <div class="text-sm space-y-4">
-                    <p>To: Finance Department</p>
-                    <p>I request an advance salary of <strong>${f.amount}</strong> to cover <strong>${f.reason}</strong>. I authorize the company to deduct this amount from my upcoming salary.</p>
-                    <div class="pt-8">
-                        <p class="font-bold">${f.empName}</p>
-                    </div>
+                    <p>To Finance Department,</p>
+                    <p>I request an advance salary of <strong>${f.amount}</strong> to cover emergency expenses, deductible from next month's payroll.</p>
+                    <div class="pt-8"><p class="font-bold">${f.empName}</p></div>
                 </div>
             </div>`
     },
     {
         id: "letter-noc",
         category: "hr",
-        title: "No Objection Certificate (NOC) Letter",
-        desc: "Official NOC for visa, higher studies, or bank account processing",
+        title: "No Objection Certificate (NOC)",
+        desc: "Official NOC for visa, higher studies, or banking procedures",
         fields: [
             { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-            { id: "company", label: "Company Name", val: "Taj Al Huda" },
-            { id: "purpose", label: "NOC Purpose", val: "higher education and personal banking procedures" }
+            { id: "purpose", label: "NOC Purpose", val: "higher education and personal banking" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-serif text-slate-800">
                 <div class="text-center border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold tracking-wider">${f.company}</h2>
-                    <p class="text-xs font-sans text-slate-500">NO OBJECTION CERTIFICATE</p>
+                    <h2 class="text-xl font-bold">NO OBJECTION CERTIFICATE</h2>
                 </div>
-                <div class="text-sm font-sans space-y-4 my-6 text-justify">
-                    <p>This is to certify that <strong>${f.company}</strong> has no objection to Mr. <strong>${f.empName}</strong> pursuing <strong>${f.purpose}</strong>.</p>
+                <div class="text-sm font-sans space-y-4 my-6">
+                    <p>This is to certify that management has no objection to Mr. <strong>${f.empName}</strong> pursuing <strong>${f.purpose}</strong>.</p>
                 </div>
-                <div class="mt-12 pt-6 border-t font-sans text-xs">
-                    <p class="font-bold">Authorized HR Signatory</p>
-                    <p class="text-slate-500">${f.company}</p>
-                </div>
+                <div class="mt-12 pt-6 border-t font-sans text-xs"><p class="font-bold">Authorized HR Signatory</p></div>
             </div>`
     },
     {
         id: "letter-grievance",
         category: "hr",
-        title: "Workplace Grievance & Complaint Letter",
+        title: "Workplace Grievance Letter",
         desc: "Formal letter addressing internal workplace issues to management",
         fields: [
             { id: "empName", label: "Your Name", val: "Shah Rukh Siddiqui" },
-            { id: "issue", label: "Grievance Subject", val: "workstation lighting and ventilation maintenance in accounting office" }
+            { id: "issue", label: "Grievance", val: "office workstation lighting and ventilation" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold">Formal Grievance Communication</h2></div>
+                <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold">Workplace Grievance</h2></div>
                 <div class="text-sm space-y-4">
-                    <p>To: HR / Admin Department</p>
-                    <p>I am bringing to your attention an operational concern regarding <strong>${f.issue}</strong>. Kindly look into resolving this matter to ensure a productive environment.</p>
+                    <p>To HR / Admin,</p>
+                    <p>I am reporting an operational concern regarding <strong>${f.issue}</strong> for prompt resolution.</p>
                     <div class="pt-8"><p class="font-bold">${f.empName}</p></div>
                 </div>
             </div>`
@@ -673,69 +607,54 @@
         id: "letter-recommendation",
         category: "hr",
         title: "Letter of Recommendation (LOR)",
-        desc: "Endorsement letter written by manager for employee higher education or job",
+        desc: "Endorsement letter written by manager for employee",
         fields: [
-            { id: "empName", label: "Candidate Name", val: "Shah Rukh Siddiqui" },
-            { id: "manager", label: "Manager Name", val: "Finance Director" },
-            { id: "company", label: "Company Name", val: "Burqur Corporation" }
+            { id: "cand", label: "Candidate Name", val: "Shah Rukh Siddiqui" },
+            { id: "role", label: "Role / Pursuit", val: "Advanced Accounting Professional" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-serif text-slate-800">
-                <div class="text-center border-b pb-4 mb-6">
-                    <h2 class="text-xl font-bold uppercase">${f.company}</h2>
-                    <p class="text-xs font-sans text-slate-500">LETTER OF RECOMMENDATION</p>
+                <div class="text-center border-b pb-4 mb-6"><h2 class="text-xl font-bold">LETTER OF RECOMMENDATION</h2></div>
+                <div class="text-sm font-sans space-y-4 my-6">
+                    <p>I strongly recommend <strong>${f.cand}</strong> for <strong>${f.role}</strong>. They exhibit exceptional financial acumen and dedication.</p>
                 </div>
-                <div class="text-sm font-sans space-y-4 my-6 text-justify leading-7">
-                    <p>I am writing this recommendation for <strong>${f.empName}</strong>, who worked closely under my supervision. They exhibited exemplary financial acumen, dedication, and problem-solving capabilities.</p>
-                    <p>I recommend them without reservation for any advanced role or academic pursuit.</p>
-                </div>
-                <div class="mt-12 pt-6 border-t font-sans text-xs">
-                    <p class="font-bold">${f.manager}</p>
-                    <p class="text-slate-500">${f.company}</p>
-                </div>
+                <div class="mt-12 pt-6 border-t font-sans text-xs"><p class="font-bold">Finance Director</p></div>
             </div>`
     },
     {
         id: "letter-authorization",
         category: "hr",
         title: "Official Authorization Letter",
-        desc: "Letter delegating authority to a representative to collect official documents",
+        desc: "Letter delegating authority to a representative",
         fields: [
-            { id: "authorizer", label: "Your Name", val: "Shah Rukh Siddiqui" },
-            { id: "delegate", label: "Authorized Person Name", val: "Ali Hassan" },
-            { id: "task", label: "Authorized Action / Document", val: "collecting tax certificates and ledger books" }
+            { id: "me", label: "Your Name", val: "Shah Rukh Siddiqui" },
+            { id: "rep", label: "Representative Name", val: "Ali Hassan" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
                 <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold">AUTHORIZATION LETTER</h2></div>
                 <div class="text-sm space-y-4">
                     <p>To Whom It May Concern,</p>
-                    <p>I, <strong>${f.authorizer}</strong>, hereby authorize Mr. <strong>${f.delegate}</strong> to act on my behalf for <strong>${f.task}</strong>.</p>
-                    <p>Any action taken by them in this regard shall be deemed fully authorized by me.</p>
-                    <div class="pt-8 flex justify-between text-xs">
-                        <div><p class="font-bold">Authorizer Signature</p><p>${f.authorizer}</p></div>
-                        <div><p class="font-bold">Delegate Specimen Signature</p><p>${f.delegate}</p></div>
-                    </div>
+                    <p>I, <strong>${f.me}</strong>, authorize Mr. <strong>${f.rep}</strong> to collect official documents and tax ledgers on my behalf.</p>
+                    <div class="pt-8"><p class="font-bold">${f.me}</p></div>
                 </div>
             </div>`
     },
     {
         id: "letter-explanation-reply",
         category: "hr",
-        title: "Reply to Show Cause / Warning Notice",
-        desc: "Employee formal written reply explaining an incident to management",
+        title: "Reply to Show Cause / Warning",
+        desc: "Employee formal written reply explaining an incident",
         fields: [
             { id: "empName", label: "Your Name", val: "Shah Rukh Siddiqui" },
-            { id: "refNotice", label: "Notice Reference", val: "SCN-2026-04" },
-            { id: "replyText", label: "Your Clarification", val: "unavoidable road traffic delay due to heavy rainfall in Karachi" }
+            { id: "explanation", label: "Explanation", val: "unavoidable traffic breakdown due to heavy rain in Karachi" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
-                <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold">Written Clarification / Reply</h2></div>
+                <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold">Written Clarification</h2></div>
                 <div class="text-sm space-y-4">
-                    <p>To: HR Disciplinary Committee</p>
-                    <p>With reference to notice <strong>${f.refNotice}</strong>, I respectfully submit that the situation occurred due to <strong>${f.replyText}</strong>.</p>
-                    <p>I assure management of my full compliance with workplace protocols in the future.</p>
+                    <p>To HR Committee,</p>
+                    <p>In response to the inquiry, I clarify that the incident occurred due to <strong>${f.explanation}</strong>.</p>
                     <div class="pt-8"><p class="font-bold">${f.empName}</p></div>
                 </div>
             </div>`
@@ -744,20 +663,246 @@
         id: "letter-job-app-cover",
         category: "hr",
         title: "Job Application Cover Letter",
-        desc: "Professional cover letter sent along with CV for job applications",
+        desc: "Professional cover letter sent along with CV",
         fields: [
             { id: "applicant", label: "Your Name", val: "Shah Rukh Siddiqui" },
-            { id: "targetRole", label: "Target Position", val: "Senior Accountant" },
-            { id: "targetComp", label: "Target Company", val: "Global Logistics Ltd" }
+            { id: "target", label: "Target Role", val: "Senior Accountant" }
         ],
         render: (f) => `
             <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
                 <div class="border-b pb-4 mb-6"><h2 class="text-xl font-bold">Job Application Cover Letter</h2></div>
                 <div class="text-sm space-y-4">
-                    <p>To: Hiring Manager, <strong>${f.targetComp}</strong></p>
-                    <p>I am writing to express my strong interest in the <strong>${f.targetRole}</strong> position at <strong>${f.targetComp}</strong>. With extensive experience in accounting ledgers, tax filings, and payroll, I am confident in my ability to contribute value to your team.</p>
-                    <p>My resume is attached for your review. I look forward to the opportunity for an interview.</p>
+                    <p>To Hiring Manager,</p>
+                    <p>I am applying for the <strong>${f.target}</strong> position. With extensive experience in ledgers, tax filings, and payroll, I am confident in adding immediate value.</p>
                     <div class="pt-8"><p class="font-bold">${f.applicant}</p></div>
                 </div>
             </div>`
+    },
+
+    // ----------------------------------------------------
+    // 6. COMMERCIAL INVOICES & TAX ENGINE
+    // ----------------------------------------------------
+    {
+        id: "invoice-commercial",
+        category: "accounting",
+        title: "Commercial Tax Invoice (Dynamic Engine)",
+        desc: "Professional sales invoice with preset & manual tax rates (5%, 15%, 18%)",
+        fields: [
+            { id: "clientName", label: "Client Name", val: "Bait Al Ezz Curtains" },
+            { id: "itemDesc", label: "Item / Service Description", val: "Sofa Fabric & Curtains Supply" },
+            { id: "rate", label: "Unit Rate (PKR)", val: "50000" },
+            { id: "qty", label: "Quantity", val: "3" },
+            { id: "taxRate", label: "Sales Tax Rate (%)", val: "18" }
+        ],
+        render: (f) => {
+            const sub = parseFloat(f.rate || 0) * parseFloat(f.qty || 0);
+            const tax = sub * (parseFloat(f.taxRate || 0) / 100);
+            const total = sub + tax;
+            return `
+            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
+                <div class="flex justify-between border-b pb-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-black text-slate-900">TAX INVOICE</h2>
+                        <p class="text-xs text-slate-500">Taj Al Huda Trading & Accounts</p>
+                    </div>
+                    <div class="text-right text-xs">
+                        <p><strong>Invoice #:</strong> INV-2026-991</p>
+                        <p><strong>Date:</strong> ${new Date().toISOString().split('T')[0]}</p>
+                    </div>
+                </div>
+                <div class="mb-6 text-sm">
+                    <p class="text-xs text-slate-500 uppercase font-bold">Billed To:</p>
+                    <p class="font-bold text-slate-900">${f.clientName}</p>
+                </div>
+                <table class="w-full text-sm mb-6 border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-left border-b">
+                            <th class="p-2">Description</th>
+                            <th class="p-2 text-center">Qty</th>
+                            <th class="p-2 text-right">Rate</th>
+                            <th class="p-2 text-right">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="p-2">${f.itemDesc}</td>
+                            <td class="p-2 text-center">${f.qty}</td>
+                            <td class="p-2 text-right">${f.rate}</td>
+                            <td class="p-2 text-right">${sub.toLocaleString()}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="flex justify-end text-sm space-y-1">
+                    <div class="w-48 space-y-1">
+                        <div class="flex justify-between"><span>Subtotal:</span> <span>${sub.toLocaleString()}</span></div>
+                        <div class="flex justify-between"><span>Tax (${f.taxRate}%):</span> <span>${tax.toLocaleString()}</span></div>
+                        <div class="flex justify-between font-bold border-t pt-1 text-base"><span>Total:</span> <span>PKR ${total.toLocaleString()}</span></div>
+                    </div>
+                </div>
+            </div>`;
+        }
+    },
+
+    // ----------------------------------------------------
+    // 7. PAYROLL & SALARY SLIP
+    // ----------------------------------------------------
+    {
+        id: "payroll-slip",
+        category: "accounting",
+        title: "Employee Salary Slip & Payroll Breakdown",
+        desc: "Monthly payslip calculating allowances (House Rent, Utility, Fuel, Medical)",
+        fields: [
+            { id: "empName", label: "Employee Name", val: "Shah Rukh Siddiqui" },
+            { id: "designation", label: "Designation", val: "Senior Accountant" },
+            { id: "basic", label: "Basic Salary (PKR)", val: "80000" },
+            { id: "houseRent", label: "House Rent Allowance", val: "20000" },
+            { id: "utility", label: "Utility Allowance", val: "10000" },
+            { id: "fuel", label: "Fuel Allowance (Motorcycle)", val: "10000" }
+        ],
+        render: (f) => {
+            const basic = parseFloat(f.basic || 0);
+            const hr = parseFloat(f.houseRent || 0);
+            const ut = parseFloat(f.utility || 0);
+            const fu = parseFloat(f.fuel || 0);
+            const gross = basic + hr + ut + fu;
+            return `
+            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
+                <div class="border-b pb-4 mb-6 text-center">
+                    <h2 class="text-xl font-bold">TAJ AL HUDA TRADING</h2>
+                    <p class="text-xs text-slate-500">Official Monthly Salary Slip</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 text-sm mb-6 bg-slate-50 p-4 rounded">
+                    <div><p><strong>Employee:</strong> ${f.empName}</p><p><strong>Designation:</strong> ${f.designation}</p></div>
+                    <div class="text-right"><p><strong>Pay Period:</strong> September 2026</p></div>
+                </div>
+                <table class="w-full text-sm mb-6 border">
+                    <tr class="bg-slate-100 border-b"><th class="p-2 text-left">Earnings / Allowances</th><th class="p-2 text-right">Amount (PKR)</th></tr>
+                    <tr class="border-b"><td class="p-2">Basic Salary</td><td class="p-2 text-right">${basic.toLocaleString()}</td></tr>
+                    <tr class="border-b"><td class="p-2">House Rent Allowance</td><td class="p-2 text-right">${hr.toLocaleString()}</td></tr>
+                    <tr class="border-b"><td class="p-2">Utility Allowance</td><td class="p-2 text-right">${ut.toLocaleString()}</td></tr>
+                    <tr class="border-b"><td class="p-2">Fuel Allowance (70cc)</td><td class="p-2 text-right">${fu.toLocaleString()}</td></tr>
+                    <tr class="font-bold bg-slate-50"><td class="p-2">Gross Salary</td><td class="p-2 text-right">${gross.toLocaleString()}</td></tr>
+                </table>
+            </div>`;
+        }
+    },
+
+    // ----------------------------------------------------
+    // 8. VEHICLE MAINTENANCE & FUEL LOG
+    // ----------------------------------------------------
+    {
+        id: "vehicle-log",
+        category: "accounting",
+        title: "Vehicle Fuel & Maintenance Log (Union Star 70cc)",
+        desc: "Odometer, Hyundai 10W-40 oil change intervals (850-900 km), and fuel tracking",
+        fields: [
+            { id: "vehicleNo", label: "Vehicle Reg No", val: "KHI-70CC-2026" },
+            { id: "currentOdo", label: "Current Odometer (km)", val: "4500" },
+            { id: "lastOilChange", label: "Last Oil Change Odo", val: "3600" },
+            { id: "fuelFilled", label: "Fuel Refill Liters", val: "3.5" }
+        ],
+        render: (f) => {
+            const current = parseFloat(f.currentOdo || 0);
+            const lastOil = parseFloat(f.lastOilChange || 0);
+            const diff = current - lastOil;
+            const needsOil = diff >= 850;
+            return `
+            <div class="max-w-2xl mx-auto border border-slate-300 p-10 bg-white font-sans text-slate-800">
+                <div class="border-b pb-4 mb-6">
+                    <h2 class="text-xl font-bold">Vehicle Maintenance & Fuel Log</h2>
+                    <p class="text-xs text-slate-500">Union Star 70cc Fleet Tracking</p>
+                </div>
+                <div class="space-y-4 text-sm mb-6">
+                    <p><strong>Vehicle:</strong> ${f.vehicleNo}</p>
+                    <p><strong>Current Odometer:</strong> ${current} km</p>
+                    <p><strong>Kilometers since last Hyundai 10W-40 oil change:</strong> ${diff} km</p>
+                    <div class="p-4 rounded ${needsOil ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-emerald-50 text-emerald-700 border border-emerald-200'}">
+                        <strong>Status:</strong> ${needsOil ? '⚠️ Oil change due! (Reached 850+ km interval)' : '✅ Engine oil condition optimal.'}
+                    </div>
+                </div>
+            </div>`;
+        }
     }
+];
+
+// UI Initialization and Reactive Engine
+document.addEventListener('DOMContentLoaded', () => {
+    const listContainer = document.getElementById('templates-list');
+    const previewContainer = document.getElementById('preview-container');
+    const searchInput = document.getElementById('search-input');
+
+    function renderHub(filter = '') {
+        if (!listContainer) return;
+        listContainer.innerHTML = '';
+        const filtered = hubDatabase.filter(t => 
+            t.title.toLowerCase().includes(filter.toLowerCase()) || 
+            t.desc.toLowerCase().includes(filter.toLowerCase())
+        );
+
+        filtered.forEach(template => {
+            const card = document.createElement('div');
+            card.className = "bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition";
+            card.innerHTML = `
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-slate-100 text-slate-600">${template.category}</span>
+                <h3 class="font-bold text-slate-900 mt-2 text-sm">${template.title}</h3>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2">${template.desc}</p>
+            `;
+            card.onclick = () => loadTemplateEditor(template);
+            listContainer.appendChild(card);
+        });
+    }
+
+    function loadTemplateEditor(template) {
+        if (!previewContainer) return;
+        let fieldsHtml = template.fields.map(field => `
+            <div class="mb-3">
+                <label class="block text-xs font-semibold text-slate-600 mb-1">${field.label}</label>
+                <input type="${field.type || 'text'}" id="field-${field.id}" value="${field.val}" class="w-full text-xs p-2 border border-slate-300 rounded focus:ring-2 focus:ring-slate-900 outline-none">
+            </div>
+        `).join('');
+
+        previewContainer.innerHTML = `
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="font-bold text-base text-slate-900">${template.title}</h2>
+                    <div class="space-x-2">
+                        <button onclick="window.print()" class="px-3 py-1.5 bg-slate-900 text-white rounded text-xs font-medium hover:bg-slate-800">Print / PDF</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 max-h-[550px] overflow-y-auto">
+                        <h4 class="text-xs font-bold uppercase text-slate-500 mb-3 tracking-wider">Customize Fields</h4>
+                        ${fieldsHtml}
+                    </div>
+                    <div class="md:col-span-2 bg-slate-100 p-4 rounded-lg border border-slate-200 overflow-y-auto max-h-[600px]" id="live-preview-pane">
+                        <!-- Live Output Rendered Here -->
+                    </div>
+                </div>
+            </div>
+        `;
+
+        const updateLivePreview = () => {
+            const currentValues = {};
+            template.fields.forEach(f => {
+                const el = document.getElementById(`field-${f.id}`);
+                if (el) currentValues[f.id] = el.value;
+            });
+            const pane = document.getElementById('live-preview-pane');
+            if (pane) pane.innerHTML = template.render(currentValues);
+        };
+
+        template.fields.forEach(f => {
+            const el = document.getElementById(`field-${f.id}`);
+            if (el) el.oninput = updateLivePreview;
+        });
+
+        updateLivePreview();
+    }
+
+    if (searchInput) {
+        searchInput.oninput = (e) => renderHub(e.target.value);
+    }
+
+    renderHub();
+    if (hubDatabase.length > 0) loadTemplateEditor(hubDatabase[0]);
+});
