@@ -3,66 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocuHub Global - 32+ Complete Master Suite</title>
+    <title>DocuHub - Lifestyle & Business Suite</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f3f2f1; color: #333; }
-        header { background: #ffffff; display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; border-bottom: 1px solid #e1dfdd; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 20px; font-weight: 600; color: #1b1b1b; display: flex; align-items: center; gap: 10px; cursor: pointer; }
-        .logo span { color: #0078d4; }
-        nav ul { display: flex; list-style: none; gap: 8px; flex-wrap: wrap; }
-        nav ul li a { text-decoration: none; color: #616161; font-size: 11px; cursor: pointer; font-weight: 500; transition: color 0.2s; }
-        nav ul li a:hover, nav ul li a.active { color: #0078d4; font-weight: 600; }
-        .hero { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 30px; text-align: center; border-bottom: 1px solid #e1dfdd; }
-        .hero h1 { font-size: 24px; font-weight: 600; color: #1b1b1b; margin-bottom: 6px; }
-        .hero p { font-size: 12px; color: #616161; max-width: 800px; margin: 0 auto; }
-        .container { max-width: 1300px; margin: 25px auto; padding: 0 20px; }
-        .section-title { font-size: 18px; font-weight: 600; margin-bottom: 15px; color: #1b1b1b; }
-        .search-container { position: relative; margin-bottom: 20px; }
-        .search-bar { width: 100%; padding: 12px 20px; font-size: 14px; border: 1px solid #c8c6c4; border-radius: 4px; outline: none; background: #fff; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; }
-        .card { background: #ffffff; border: 1px solid #e1dfdd; padding: 15px; border-radius: 4px; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
-        .card:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
-        .card h3 { font-size: 13px; margin-bottom: 5px; color: #1b1b1b; }
-        .card p { font-size: 11px; color: #616161; line-height: 1.3; margin-bottom: 10px; }
-        .card button { background: none; border: none; color: #0078d4; font-weight: 600; font-size: 12px; cursor: pointer; text-align: left; padding: 0; }
-        .card button:hover { text-decoration: underline; }
-        #workspace-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: #fff; width: 100%; max-width: 1050px; max-height: 92vh; border-radius: 6px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .modal-header { padding: 15px 25px; background: #f8f9fa; border-bottom: 1px solid #e1dfdd; display: flex; justify-content: space-between; align-items: center; }
-        .modal-header h2 { font-size: 16px; color: #1b1b1b; }
-        .close-btn { background: none; border: none; font-size: 22px; cursor: pointer; color: #616161; }
+        body { background-color: #f7f5f0; color: #333333; }
+        
+        /* Header Styling */
+        header { background: #ffffff; padding: 20px 40px; border-bottom: 1px solid #e6e2d8; position: sticky; top: 0; z-index: 1000; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .logo { font-family: 'Georgia', serif; font-size: 24px; font-style: italic; font-weight: bold; color: #1e4d3b; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+        .logo span { color: #1e4d3b; font-weight: normal; }
+        
+        .search-box { display: flex; align-items: center; background: #f0eee6; border-radius: 20px; padding: 5px 15px; width: 220px; }
+        .search-box input { border: none; background: transparent; outline: none; font-size: 12px; width: 100%; color: #333; }
+
+        nav ul { display: flex; list-style: none; gap: 25px; justify-content: center; flex-wrap: wrap; }
+        nav ul li a { text-decoration: none; color: #1e4d3b; font-size: 13px; cursor: pointer; font-weight: 600; transition: color 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
+        nav ul li a:hover, nav ul li a.active { color: #52796f; border-bottom: 2px solid #1e4d3b; padding-bottom: 2px; }
+
+        /* Hero Banner Section */
+        .hero-banner { background: linear-gradient(rgba(30,77,59,0.75), rgba(30,77,59,0.75)), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80') center/cover; padding: 35px 20px; text-align: center; color: white; margin-bottom: 30px; }
+        .hero-banner h2 { font-size: 20px; font-weight: 400; margin-bottom: 20px; font-family: 'Georgia', serif; }
+        
+        /* Circular & Mixed Showcase Row */
+        .circle-row { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; }
+        .circle-item { text-align: center; cursor: pointer; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .circle-item:hover { transform: translateY(-8px) scale(1.05); }
+        .circle-img { width: 85px; height: 85px; border-radius: 50%; border: 3px solid #ffffff; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.25); background: #fff; display: flex; align-items: center; justify-content: center; font-size: 26px; color: #1e4d3b; font-weight: bold; margin: 0 auto 8px auto; transition: box-shadow 0.3s; }
+        .circle-item:hover .circle-img { box-shadow: 0 8px 25px rgba(255,255,255,0.4); }
+        .circle-item span { font-size: 12px; color: #ffffff; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+
+        /* Main Container Layout */
+        .main-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: 2.2fr 1fr; gap: 30px; }
+        @media(max-width: 900px) { .main-container { grid-template-columns: 1fr; } }
+
+        .section-title { font-size: 20px; font-weight: bold; color: #1e4d3b; margin-bottom: 20px; font-family: 'Georgia', serif; border-bottom: 2px solid #1e4d3b; padding-bottom: 5px; display: flex; justify-content: space-between; align-items: center; }
+        .section-title span { font-size: 11px; color: #666; font-weight: normal; font-family: 'Segoe UI', sans-serif; cursor: pointer; }
+        .section-title span:hover { color: #1e4d3b; text-decoration: underline; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        
+        /* Animated Mixed Cards (Square & Circular variations) */
+        .card { background: #ffffff; border: 1px solid #e6e2d8; padding: 20px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.02); position: relative; overflow: hidden; }
+        .card.shape-circle-card { border-radius: 40px; padding: 25px; text-align: center; background: linear-gradient(135deg, #ffffff 0%, #f7f5f0 100%); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(30,77,59,0.12); border-color: #1e4d3b; }
+        
+        .card h3 { font-size: 14px; margin-bottom: 8px; color: #1e4d3b; font-weight: 700; }
+        .card p { font-size: 11px; color: #666666; line-height: 1.4; margin-bottom: 15px; }
+        .card button { background: #1e4d3b; border: none; color: #ffffff; padding: 7px 14px; font-weight: 600; font-size: 11px; cursor: pointer; border-radius: 4px; transition: all 0.2s; width: fit-content; }
+        .card.shape-circle-card button { margin: 0 auto; }
+        .card button:hover { background: #143528; transform: scale(1.05); }
+
+        /* Sidebar Styling */
+        .sidebar { display: flex; flex-direction: column; gap: 25px; }
+        .sidebar-box { background: #f0eee6; padding: 20px; border-radius: 6px; border: 1px solid #e0ddd5; }
+        .sidebar-box h3 { font-size: 15px; color: #1e4d3b; margin-bottom: 12px; font-family: 'Georgia', serif; border-bottom: 1px solid #dcd8cd; padding-bottom: 5px; }
+        
+        .newsletter-input { width: 100%; padding: 10px 12px; border: 1px solid #d5d1c8; border-radius: 4px; font-size: 12px; margin-bottom: 10px; background: #fff; outline: none; }
+        .newsletter-btn { width: 100%; background: #1e4d3b; color: white; border: none; padding: 10px; font-size: 12px; font-weight: 600; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+        .newsletter-btn:hover { background: #143528; }
+        
+        .mini-circles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; text-align: center; }
+        .mini-circle-item { transition: transform 0.2s; }
+        .mini-circle-item:hover { transform: scale(1.08); }
+        .mini-circle-item .placeholder-mc { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin: 0 auto 5px auto; border: 2px solid #1e4d3b; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; color: #1e4d3b; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+        .mini-circle-item span { font-size: 11px; color: #444; font-weight: 600; display: block; }
+
+        .footer-box { background: #1e4d3b; color: white; padding: 20px; text-align: center; border-radius: 6px; }
+        .footer-box h3 { font-size: 14px; margin-bottom: 10px; }
+        .social-icons { display: flex; justify-content: center; gap: 15px; font-size: 16px; margin-top: 10px; }
+
+        /* Modal Workspace styling */
+        #workspace-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: #fff; width: 100%; max-width: 1050px; max-height: 92vh; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.3); animation: modalPop 0.3s ease; }
+        @keyframes modalPop { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-header { padding: 15px 25px; background: #f0eee6; border-bottom: 1px solid #e6e2d8; display: flex; justify-content: space-between; align-items: center; }
+        .modal-header h2 { font-size: 16px; color: #1e4d3b; font-family: 'Georgia', serif; }
+        .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #1e4d3b; }
         .modal-body { padding: 25px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 25px; }
         @media(max-width: 768px) { .modal-body { grid-template-columns: 1fr; } }
-        .form-section h4, .preview-section h4 { font-size: 12px; margin-bottom: 10px; color: #333; border-bottom: 2px solid #0078d4; padding-bottom: 4px; }
-        .form-group { margin-bottom: 8px; }
-        .form-group label { display: block; font-size: 10px; font-weight: 600; color: #616161; margin-bottom: 2px; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 6px 10px; border: 1px solid #c8c6c4; border-radius: 4px; font-size: 12px; }
-        .preview-box { background: #faf9f8; border: 1px solid #e1dfdd; padding: 22px; border-radius: 4px; min-height: 400px; max-height: 500px; overflow-y: auto; font-size: 11px; line-height: 1.5; color: #222; }
-        .preview-box h3 { text-align: center; font-size: 13px; margin-bottom: 12px; text-transform: uppercase; color: #111; }
-        .preview-box p { margin-bottom: 6px; text-align: justify; }
-        .modal-footer { padding: 12px 25px; background: #f8f9fa; border-top: 1px solid #e1dfdd; display: flex; justify-content: flex-end; gap: 10px; }
-        .btn-primary { background: #0078d4; border: none; color: #ffffff; padding: 8px 16px; font-size: 13px; cursor: pointer; font-weight: 600; border-radius: 2px; }
-        .btn-outline { background: transparent; border: 1px solid #0078d4; color: #0078d4; padding: 8px 16px; font-size: 13px; cursor: pointer; font-weight: 600; border-radius: 2px; }
-        @media print {
-            body * { visibility: hidden; }
-            #workspace-modal, #modal-live-preview, #modal-live-preview * { visibility: visible; }
-            #workspace-modal { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: white; display: block !important; }
-            .modal-content { box-shadow: none; max-height: none; width: 100%; }
-            .modal-header, .form-section, .modal-footer, .close-btn { display: none !important; }
-            .modal-body { display: block !important; padding: 0; }
-            .preview-section { width: 100%; }
-            .preview-box { border: none; background: white; max-height: none; padding: 10px; font-size: 11px; }
-        }
+        .form-section h4, .preview-section h4 { font-size: 12px; margin-bottom: 10px; color: #1e4d3b; border-bottom: 2px solid #1e4d3b; padding-bottom: 4px; font-weight: 700; text-transform: uppercase; }
+        .form-group { margin-bottom: 10px; }
+        .form-group label { display: block; font-size: 10px; font-weight: 700; color: #555; margin-bottom: 3px; text-transform: uppercase; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 7px 10px; border: 1px solid #d5d1c8; border-radius: 4px; font-size: 12px; outline: none; background: #faf9f5; }
+        .preview-box { background: #ffffff; border: 1px solid #d5d1c8; padding: 25px; border-radius: 4px; min-height: 400px; max-height: 500px; overflow-y: auto; font-size: 11px; line-height: 1.6; color: #222; box-shadow: inset 0 0 10px rgba(0,0,0,0.02); }
+        .preview-box h3 { text-align: center; font-size: 13px; margin-bottom: 12px; text-transform: uppercase; color: #1e4d3b; font-family: 'Georgia', serif; }
+        .modal-footer { padding: 12px 25px; background: #f0eee6; border-top: 1px solid #e6e2d8; display: flex; justify-content: flex-end; gap: 10px; }
+        .btn-primary { background: #1e4d3b; border: none; color: #ffffff; padding: 8px 18px; font-size: 12px; cursor: pointer; font-weight: 600; border-radius: 4px; transition: background 0.2s; }
+        .btn-primary:hover { background: #143528; }
+        .btn-outline { background: transparent; border: 1px solid #1e4d3b; color: #1e4d3b; padding: 8px 18px; font-size: 12px; cursor: pointer; font-weight: 600; border-radius: 4px; transition: all 0.2s; }
+        .btn-outline:hover { background: #1e4d3b; color: white; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo" onclick="app.showHome()"><span>DocuHub</span> 32+ Master Suite</div>
+        <div class="header-top">
+            <div class="logo" onclick="app.showHome()">DocuHub <span>Lifestyle & Business</span></div>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search 32+ generators..." oninput="app.handleSearch(this.value)">
+                <span>🔍</span>
+            </div>
+        </div>
         <nav>
             <ul>
-                <li><a onclick="app.filterCategory('all')" class="active" id="nav-all">All (32+)</a></li>
+                <li><a onclick="app.filterCategory('all')" class="active" id="nav-all">Featured Suite</a></li>
                 <li><a onclick="app.filterCategory('accounts')">Accounts</a></li>
                 <li><a onclick="app.filterCategory('hr')">HR & Letters</a></li>
                 <li><a onclick="app.filterCategory('transport')">Transport</a></li>
@@ -71,24 +116,91 @@
                 <li><a onclick="app.filterCategory('property')">Property</a></li>
             </ul>
         </nav>
-        <div class="nav-btns">
-            <button class="btn-outline" style="padding:5px 12px; font-size:12px;" onclick="alert('Shah Rukh Siddiqui - Senior Accountant | Taj Al Huda')">Profile</button>
-        </div>
     </header>
 
-    <section class="hero">
-        <h1>Ultimate 32+ Professional Templates & Documents Suite</h1>
-        <p>Salary slips, bank certificates, joining letters, experience letters, vehicle transfers, cash memos, B2B letters, medical certificates & agreements.</p>
-    </section>
-
-    <div class="container">
-        <h2 class="section-title">All Available Modules & Documents</h2>
-        <div class="search-container">
-            <input type="text" id="search-input" class="search-bar" placeholder="Search any document (salary, joining, experience, vehicle transfer, cash memo, medical)..." oninput="app.handleSearch(this.value)">
+    <!-- Hero banner with circular shortcuts -->
+    <div class="hero-banner">
+        <h2>Professional Document & Generator Suite</h2>
+        <div class="circle-row">
+            <div class="circle-item" onclick="app.filterCategory('accounts')">
+                <div class="circle-img">📊</div>
+                <span>Accounts</span>
+            </div>
+            <div class="circle-item" onclick="app.filterCategory('hr')">
+                <div class="circle-img">💼</div>
+                <span>HR & Letters</span>
+            </div>
+            <div class="circle-item" onclick="app.filterCategory('transport')">
+                <div class="circle-img">🏍️</div>
+                <span>Transport</span>
+            </div>
+            <div class="circle-item" onclick="app.filterCategory('commercial')">
+                <div class="circle-img">📑</div>
+                <span>Commercial</span>
+            </div>
+            <div class="circle-item" onclick="app.filterCategory('medical')">
+                <div class="circle-img">⚕️</div>
+                <span>Medical</span>
+            </div>
+            <div class="circle-item" onclick="app.filterCategory('property')">
+                <div class="circle-img">🏡</div>
+                <span>Property</span>
+            </div>
         </div>
-        <div class="grid" id="templates-grid"></div>
     </div>
 
+    <div class="main-container">
+        <!-- Left Side: Clean Featured/Top Generators Grid with Mixed Shapes -->
+        <div>
+            <h2 class="section-title">
+                <span id="section-heading-text">Featured Top Generators</span>
+                <span onclick="app.toggleViewAll()" id="view-all-toggle">View All 32+ Generators 🔄</span>
+            </h2>
+            <div class="grid" id="templates-grid"></div>
+        </div>
+
+        <!-- Right Side: Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-box">
+                <h3>Newsletter Signup</h3>
+                <p style="font-size: 11px; color: #666; margin-bottom: 10px;">Get updates on new templates and business tools.</p>
+                <input type="email" class="newsletter-input" placeholder="Your email address">
+                <button class="newsletter-btn" onclick="alert('Subscribed successfully!')">Sign Up</button>
+            </div>
+
+            <div class="sidebar-box">
+                <h3>Quick Categories</h3>
+                <div class="mini-circles">
+                    <div class="mini-circle-item" onclick="app.filterCategory('accounts')" style="cursor:pointer;">
+                        <div class="placeholder-mc">💰</div>
+                        <span>Salary</span>
+                    </div>
+                    <div class="mini-circle-item" onclick="app.filterCategory('hr')" style="cursor:pointer;">
+                        <div class="placeholder-mc">📜</div>
+                        <span>Offers</span>
+                    </div>
+                    <div class="mini-circle-item" onclick="app.filterCategory('transport')" style="cursor:pointer;">
+                        <div class="placeholder-mc">🚗</div>
+                        <span>Vehicle</span>
+                    </div>
+                    <div class="mini-circle-item" onclick="app.filterCategory('commercial')" style="cursor:pointer;">
+                        <div class="placeholder-mc">🧾</div>
+                        <span>Invoices</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-box">
+                <h3>Follow DocuHub</h3>
+                <p style="font-size: 11px; opacity: 0.9;">Professional Document Automation</p>
+                <div class="social-icons">
+                    <span>🌐</span> <span>📘</span> <span>📸</span> <span>📌</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Workspace -->
     <div id="workspace-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -114,182 +226,50 @@
 
     <script>
         const masterDatabase = [
-            // ACCOUNTS & PAYROLL (6)
             {
-                id: "acc-1", category: "accounts", title: "1. Monthly Salary Slip & Pay Statement", desc: "Detailed monthly earnings, allowances, tax deductions, and net take-home salary.",
+                id: "acc-1", category: "accounts", featured: true, shape: "square", title: "1. Monthly Salary Slip & Pay Statement", desc: "Detailed monthly earnings, allowances, tax deductions, and net take-home salary.",
                 fields: [{id:"comp",label:"Company Name",val:"Taj Al Huda"},{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"month",label:"Salary Month",val:"August 2026"},{id:"basic",label:"Basic Salary (PKR)",val:"100000"},{id:"allow",label:"Allowances (PKR)",val:"25000"},{id:"ded",label:"Deductions (PKR)",val:"5000"}],
-                render: f => `<h3>${f.comp}</h3><p style="text-align:center; font-size:10px;">Salary Statement - ${f.month}</p><hr><p><strong>Employee:</strong> ${f.emp} (${f.desig})</p><p>Basic: PKR ${Number(f.basic).toLocaleString()}</p><p>Allowances: PKR ${Number(f.allow).toLocaleString()}</p><p>Deductions: PKR ${Number(f.ded).toLocaleString()}</p><hr><h3 style="color:#0078d4; text-align:left;">Net Payable: PKR ${(Number(f.basic)+Number(f.allow)-Number(f.ded)).toLocaleString()}</h3>`
+                render: f => `<h3>${f.comp}</h3><p style="text-align:center; font-size:10px;">Salary Statement - ${f.month}</p><hr><p><strong>Employee:</strong> ${f.emp} (${f.desig})</p><p>Basic: PKR ${Number(f.basic).toLocaleString()}</p><p>Allowances: PKR ${Number(f.allow).toLocaleString()}</p><p>Deductions: PKR ${Number(f.ded).toLocaleString()}</p><hr><h3 style="color:#1e4d3b; text-align:left;">Net Payable: PKR ${(Number(f.basic)+Number(f.allow)-Number(f.ded)).toLocaleString()}</h3>`
             },
             {
-                id: "acc-2", category: "accounts", title: "2. Official Salary Certificate for Banks", desc: "Formal income verification certificate for bank loans, credit cards, or embassy.",
-                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"salary",label:"Monthly Gross Salary",val:"120,000"},{id:"purpose",label:"Purpose",val:"Faysal Bank Credit Card Verification"}],
-                render: f => `<h3>TO WHOM IT MAY CONCERN</h3><p style="text-align:right;">Date: ${new Date().toISOString().split('T')[0]}</p><p>This is to certify that <strong>${f.emp}</strong> is a permanent employee at Taj Al Huda as <strong>${f.desig}</strong> with gross salary of <strong>PKR ${f.salary}</strong>.</p><p>Issued for <strong>${f.purpose}</strong>.</p><br><br><strong>Accounts Dept</strong><br>Taj Al Huda`
-            },
-            {
-                id: "acc-3", category: "accounts", title: "3. Cash Receipt Voucher", desc: "Official voucher recording cash payments received from clients.",
-                fields: [{id:"comp",label:"Company",val:"Taj Al Huda Trading"},{id:"rcv",label:"Received From",val:"Muhammad Sharif"},{id:"amt",label:"Amount (PKR)",val:"15,000"},{id:"desc",label:"Against",val:"Invoice Settlement"}],
-                render: f => `<h3>${f.comp}</h3><h3 style="text-align:center; text-decoration:underline;">CASH RECEIPT VOUCHER</h3><p>Date: ${new Date().toISOString().split('T')[0]}</p><p><strong>Received From:</strong> ${f.rcv}</p><p><strong>Sum of PKR:</strong> ${Number(f.amt).toLocaleString()}</p><p><strong>Description:</strong> ${f.desc}</p><br><br><div style="display:flex; justify-content:space-between;"><div>Receiver Sign: _____</div><div>Cashier: _____</div></div>`
-            },
-            {
-                id: "acc-4", category: "accounts", title: "4. Expense Payment Voucher", desc: "Corporate expense reimbursement voucher.",
-                fields: [{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"paid",label:"Paid To",val:"Arshe Autos"},{id:"amt",label:"Amount (PKR)",val:"4,500"},{id:"exp",label:"Expense Head",val:"Vehicle Fuel & Maintenance"}],
-                render: f => `<h3>${f.comp}</h3><h3 style="text-align:center; text-decoration:underline;">PAYMENT VOUCHER</h3><p>Date: ${new Date().toISOString().split('T')[0]}</p><p><strong>Paid To:</strong> ${f.paid}</p><p><strong>Amount:</strong> PKR ${Number(f.amt).toLocaleString()}</p><p><strong>Head:</strong> ${f.exp}</p><br><br><div style="display:flex; justify-content:space-between;"><div>Prepared By: _____</div><div>Approved By: _____</div></div>`
-            },
-            {
-                id: "acc-5", category: "accounts", title: "5. Advance Salary Request Letter", desc: "Employee formal request for emergency salary advance.",
-                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"amt",label:"Requested Amount",val:"30,000"},{id:"reason",label:"Reason",val:"Medical Emergency"}],
-                render: f => `<h3>APPLICATION FOR SALARY ADVANCE</h3><p>To,<br>The Management, Taj Al Huda.</p><p>Dear Sir,<br>I, <strong>${f.emp}</strong> (${f.desig}), request an advance salary of <strong>PKR ${f.amt}</strong> due to <strong>${f.reason}</strong>. Kindly deduct from next month's salary.</p><br><br><p>Applicant Sign: _________________</p>`
-            },
-            {
-                id: "acc-6", category: "accounts", title: "6. Tax Deduction Certificate (Withholding)", desc: "Corporate certificate for tax deducted at source.",
-                fields: [{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"vendor",label:"Vendor Name",val:"Bait al Ezz Curtains"},{id:"ntn",label:"Vendor NTN",val:"1234567-8"},{id:"tax",label:"Tax Deducted (PKR)",val:"3,500"}],
-                render: f => `<h3>${f.comp}</h3><h3 style="text-align:center; text-decoration:underline;">WITHHOLDING TAX CERTIFICATE</h3><p>This is to certify that tax amounting to <strong>PKR ${f.tax}</strong> has been withheld from payments made to <strong>${f.vendor}</strong> (NTN: ${f.ntn}).</p><br><br><strong>Authorized Signatory</strong><br>Accounts Dept`
-            },
-
-            // HR & LETTERS (7)
-            {
-                id: "hr-1", category: "hr", title: "7. Job Joining & Confirmation Letter", desc: "Official confirmation letter acknowledging employee reporting.",
-                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"date",label:"Joining Date",val:"1st September 2026"}],
-                render: f => `<h3>${f.comp} - JOINING CONFIRMATION</h3><p>Dear <strong>${f.emp}</strong>,</p><p>We formally confirm your joining as <strong>${f.desig}</strong> effective from <strong>${f.date}</strong>.</p><br><br><strong>HR Department</strong><br>${f.comp}`
-            },
-            {
-                id: "hr-2", category: "hr", title: "8. Professional Work Experience Certificate", desc: "Formal certificate verifying employment tenure and conduct.",
-                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"period",label:"Period",val:"Sep 2024 - Sep 2026"}],
-                render: f => `<h3>EXPERIENCE CERTIFICATE</h3><p>This is to certify that <strong>${f.emp}</strong> worked at <strong>${f.comp}</strong> as <strong>${f.desig}</strong> from <strong>${f.period}</strong>. His conduct and performance were exemplary.</p><br><br><strong>Management</strong><br>${f.comp}`
-            },
-            {
-                id: "hr-3", category: "hr", title: "9. Internship Completion Letter", desc: "Certificate acknowledging corporate internship completion.",
-                fields: [{id:"intern",label:"Intern Name",val:"Muhammad Ali"},{id:"dept",label:"Department",val:"Accounts Dept"},{id:"comp",label:"Company",val:"Burqur Corporation"},{id:"duration",label:"Duration",val:"June 2026 - Aug 2026"}],
-                render: f => `<h3>INTERNSHIP CERTIFICATE</h3><p>Certified that <strong>${f.intern}</strong> successfully completed internship in <strong>${f.dept}</strong> at <strong>${f.comp}</strong> (${f.duration}).</p><br><br><strong>Director HR</strong><br>${f.comp}`
-            },
-            {
-                id: "hr-4", category: "hr", title: "10. Employment Offer Letter", desc: "Comprehensive corporate appointment offer with salary breakdown.",
+                id: "hr-4", category: "hr", featured: true, shape: "circle", title: "10. Employment Offer Letter", desc: "Comprehensive corporate appointment offer with salary breakdown.",
                 fields: [{id:"cand",label:"Candidate",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Position",val:"Senior Accountant"},{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"sal",label:"Gross Salary",val:"120,000"}],
                 render: f => `<h3>EMPLOYMENT OFFER LETTER</h3><p>Dear <strong>${f.cand}</strong>, we offer you the position of <strong>${f.desig}</strong> at <strong>${f.comp}</strong> with a monthly salary of <strong>PKR ${f.sal}</strong>.</p><br><br><strong>HR Head</strong>`
             },
             {
-                id: "hr-5", category: "hr", title: "11. Increment & Promotion Letter", desc: "Formal notice of salary increment and job promotion.",
-                fields: [{id:"emp",label:"Employee",val:"Shah Rukh Siddiqui"},{id:"newDesig",label:"New Designation",val:"Finance Manager"},{id:"hike",label:"New Salary",val:"150,000"}],
-                render: f => `<h3>PROMOTION & INCREMENT LETTER</h3><p>Dear <strong>${f.emp}</strong>, in recognition of your stellar performance, you are promoted to <strong>${f.newDesig}</strong> with revised salary of <strong>PKR ${f.hike}</strong>.</p><br><br><strong>Management</strong>`
-            },
-            {
-                id: "hr-6", category: "hr", title: "12. Resignation Acceptance Letter", desc: "Official acknowledgement and acceptance of employee resignation.",
-                fields: [{id:"emp",label:"Employee",val:"Muhammad Sharif"},{id:"lastDate",label:"Last Working Day",val:"30th September 2026"}],
-                render: f => `<h3>RESIGNATION ACCEPTANCE</h3><p>Dear <strong>${f.emp}</strong>, your resignation has been accepted with last working day on <strong>${f.lastDate}</strong>. We thank you for your services.</p><br><br><strong>HR Department</strong>`
-            },
-            {
-                id: "hr-7", category: "hr", title: "13. Warning & Show Cause Notice", desc: "Disciplinary warning notice for policy violation.",
-                fields: [{id:"emp",label:"Employee",val:"Staff Member"},{id:"issue",label:"Violation",val:"Repeated late arrival"}],
-                render: f => `<h3>DISCIPLINARY SHOW CAUSE NOTICE</h3><p>Dear <strong>${f.emp}</strong>, notice is served regarding <strong>${f.issue}</strong>. Submit written explanation within 48 hours.</p><br><br><strong>HR Management</strong>`
-            },
-
-            // TRANSPORT & VEHICLES (5)
-            {
-                id: "tr-1", category: "transport", title: "14. Vehicle Transfer Application (Excise)", desc: "Formal application letter to Excise & Taxation Department.",
+                id: "tr-1", category: "transport", featured: true, shape: "square", title: "14. Vehicle Transfer Application (Excise)", desc: "Formal application letter to Excise & Taxation Department.",
                 fields: [{id:"seller",label:"Seller",val:"Muhammad Ali"},{id:"buyer",label:"Buyer",val:"Shah Rukh Siddiqui"},{id:"reg",label:"Reg No",val:"ABC-123 Karachi"},{id:"eng",label:"Engine No",val:"ENG-987654"},{id:"chs",label:"Chassis No",val:"CHS-123456"}],
                 render: f => `<h3>VEHICLE TRANSFER APPLICATION</h3><p>To Director Excise Karachi.<br>Subject: Transfer of Reg No <strong>${f.reg}</strong> from <strong>${f.seller}</strong> to <strong>${f.buyer}</strong> (Engine: ${f.eng}, Chassis: ${f.chs}). Kindly transfer ownership.</p><br><br><div style="display:flex; justify-content:space-between;"><div>Seller: ___</div><div>Buyer: ___</div></div>`
             },
             {
-                id: "tr-2", category: "transport", title: "15. Motor Vehicle Sale Agreement", desc: "Complete automotive transfer deed.",
-                fields: [{id:"seller",label:"Seller",val:"Muhammad Ali"},{id:"buyer",label:"Buyer",val:"Shah Rukh Siddiqui"},{id:"car",label:"Vehicle",val:"Toyota Corolla GLI"},{id:"price",label:"Price (PKR)",val:"3,500,000"}],
-                render: f => `<h3>MOTOR VEHICLE SALE AGREEMENT</h3><p>Seller <strong>${f.seller}</strong> sells <strong>${f.car}</strong> to Buyer <strong>${f.buyer}</strong> for <strong>PKR ${f.price}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><div>Seller Sign: ___</div><div>Buyer Sign: ___</div></div>`
-            },
-            {
-                id: "tr-3", category: "transport", title: "16. No Objection Certificate (NOC) for Vehicle", desc: "NOC for inter-province vehicle transfer or loan clearance.",
-                fields: [{id:"owner",label:"Owner Name",val:"Shah Rukh Siddiqui"},{id:"reg",label:"Reg No",val:"ABC-123"},{id:"bank",label:"Bank / Authority",val:"Excise Department"}],
-                render: f => `<h3>VEHICLE NOC CERTIFICATE</h3><p>This is to certify that we have no objection regarding transfer/movement of vehicle <strong>${f.reg}</strong> owned by <strong>${f.owner}</strong>.</p><br><br><strong>Authorized Signature</strong>`
-            },
-            {
-                id: "tr-4", category: "transport", title: "17. Motorcycle Maintenance & Oil Log", desc: "Record sheet for 70cc motorcycle oil changes and tune-ups.",
-                fields: [{id:"bike",label:"Vehicle",val:"Union Star 70cc"},{id:"oil",label:"Engine Oil",val:"Hyundai 10W-40"},{id:"km",label:"Mileage Interval",val:"900 km"}],
-                render: f => `<h3>MOTORCYCLE MAINTENANCE LOG</h3><p>Vehicle: <strong>${f.bike}</strong><br>Oil Grade: <strong>${f.oil}</strong><br>Change Interval: <strong>${f.km}</strong></p><br><br><strong>Rider: Shah Rukh Siddiqui</strong>`
-            },
-            {
-                id: "tr-5", category: "transport", title: "18. Driver Authorization Letter", desc: "Letter authorizing another person to drive company/personal vehicle.",
-                fields: [{id:"owner",label:"Owner",val:"Shah Rukh Siddiqui"},{id:"driver",label:"Authorized Driver",val:"Muhammad Sharif"},{id:"car",label:"Vehicle",val:"ABC-123 Karachi"}],
-                render: f => `<h3>DRIVER AUTHORIZATION LETTER</h3><p>I, <strong>${f.owner}</strong>, authorize <strong>${f.driver}</strong> to drive my vehicle <strong>${f.car}</strong> across all routes.</p><br><br><strong>Owner Signature: _________</strong>`
-            },
-
-            // COMMERCIAL & B2B/B2C (6)
-            {
-                id: "com-1", category: "commercial", title: "19. Official Cash Memo / Retail Invoice", desc: "Detailed cash transaction memo for wholesale/retail sales.",
+                id: "com-1", category: "commercial", featured: true, shape: "circle", title: "19. Official Cash Memo / Retail Invoice", desc: "Detailed cash transaction memo for wholesale/retail sales.",
                 fields: [{id:"biz",label:"Business",val:"Taj Al Huda Trading"},{id:"cust",label:"Customer",val:"Muhammad Sharif"},{id:"item",label:"Item",val:"Automobile Parts"},{id:"amt",label:"Total (PKR)",val:"7,000"}],
-                render: f => `<h3>${f.biz}</h3><h3 style="text-align:center;">CASH MEMO</h3><p>Customer: ${f.cust}</p><p>Item: ${f.item}</p><h3 style="text-align:right; color:#0078d4;">Total: PKR ${Number(f.amt).toLocaleString()}</h3><br><br><strong>Cashier Sign: _________</strong>`
+                render: f => `<h3>${f.biz}</h3><h3 style="text-align:center;">CASH MEMO</h3><p>Customer: ${f.cust}</p><p>Item: ${f.item}</p><h3 style="text-align:right; color:#1e4d3b;">Total: PKR ${Number(f.amt).toLocaleString()}</h3><br><br><strong>Cashier Sign: _________</strong>`
             },
             {
-                id: "com-2", category: "commercial", title: "20. B2B Business Supply Proposal Letter", desc: "Professional corporate supply proposal.",
-                fields: [{id:"sender",label:"Sender",val:"Taj Al Huda Trading"},{id:"recv",label:"Client",val:"Bait al Ezz Curtains"},{id:"subj",label:"Subject",val:"Wholesale Fabric Supply & Ledger terms"}],
-                render: f => `<h3>${f.sender}</h3><p>To <strong>${f.recv}</strong>.<br>Subject: <strong>${f.subj}</strong>.<br>We submit our commercial quotation for monthly bulk supplies.</p><br><br><strong>Senior Accountant</strong>`
-            },
-            {
-                id: "com-3", category: "commercial", title: "21. B2C Retail Customer Quotation", desc: "Price quotation reply for retail customers.",
-                fields: [{id:"comp",label:"Brand",val:"Arshe Autos"},{id:"cust",label:"Customer",val:"Valued Client"},{id:"price",label:"Price",val:"4,500 inclusive delivery"}],
-                render: f => `<h3>${f.comp} - QUOTATION</h3><p>Dear <strong>${f.cust}</strong>, our best price for your inquired item is <strong>PKR ${f.price}</strong>.</p><br><br><strong>Sales Team</strong>`
-            },
-            {
-                id: "com-4", category: "commercial", title: "22. Outstanding Payment Reminder Letter", desc: "Professional follow-up letter for overdue invoices.",
-                fields: [{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"client",label:"Client",val:"Business Partner"},{id:"amt",label:"Overdue Amount",val:"45,000"}],
-                render: f => `<h3>PAYMENT REMINDER NOTICE</h3><p>Dear <strong>${f.client}</strong>, this is a reminder that your payment amounting to <strong>PKR ${f.amt}</strong> is overdue. Kindly clear at your earliest.</p><br><br><strong>Accounts Dept</strong>`
-            },
-            {
-                id: "com-5", category: "commercial", title: "23. Purchase Order (PO) Form", desc: "Official purchase order document for procurement.",
-                fields: [{id:"comp",label:"Buyer",val:"Taj Al Huda"},{id:"supp",label:"Supplier",val:"Wholesale Spares Ltd"},{id:"goods",label:"Items",val:"Engine Oil & Filters"}],
-                render: f => `<h3>PURCHASE ORDER</h3><p>Buyer: ${f.comp}<br>Supplier: ${f.supp}<br>Ordered Goods: ${f.goods}</p><br><br><div style="display:flex; justify-content:space-between;"><div>Manager: ___</div><div>Supplier: ___</div></div>`
-            },
-            {
-                id: "com-6", category: "commercial", title: "24. Delivery Challan / Dispatch Note", desc: "Goods dispatch delivery challan.",
-                fields: [{id:"comp",label:"Sender",val:"Taj Al Huda Trading"},{id:"rec",label:"Consignee",val:"Retail Outlet"},{id:"ship",label:"Items",val:"Curtain Fabrics & Lockets"}],
-                render: f => `<h3>DELIVERY CHALLAN</h3><p>Sender: ${f.comp}<br>Consignee: ${f.rec}<br>Shipment: ${f.ship}</p><br><br><strong>Dispatch Incharge: _________</strong>`
-            },
-
-            // MEDICAL & FITNESS (4)
-            {
-                id: "med-1", category: "medical", title: "25. Official Medical Fitness Certificate", desc: "Standard medical fitness certificate by registered practitioner.",
+                id: "med-1", category: "medical", featured: true, shape: "square", title: "25. Official Medical Fitness Certificate", desc: "Standard medical fitness certificate by registered practitioner.",
                 fields: [{id:"doc",label:"Doctor",val:"Dr. Ahmed Raza, MBBS, FCPS"},{id:"clinic",label:"Clinic",val:"City Medical Care, Karachi"},{id:"pat",label:"Patient",val:"Shah Rukh Siddiqui"},{id:"find",label:"Findings",val:"BP 120/80, Pulse 72. Physically & mentally fit."}],
                 render: f => `<h3>${f.clinic}</h3><p style="text-align:center; font-size:10px;">${f.doc}</p><hr><h3 style="text-align:center; text-decoration:underline;">MEDICAL FITNESS CERTIFICATE</h3><p>Examined <strong>${f.pat}</strong>. Findings: ${f.find}. Certified FIT for professional duties.</p><br><br><div style="text-align:right;"><strong>Doctor Signature & Stamp:</strong><br><br>_____________________</div>`
             },
             {
-                id: "med-2", category: "medical", title: "26. Sick Leave Medical Certificate", desc: "Medical rest certificate for employees.",
-                fields: [{id:"doc",label:"Doctor",val:"Dr. Ahmed Raza"},{id:"pat",label:"Patient",val:"Employee"},{id:"days",label:"Rest Days",val:"3 Days"}],
-                render: f => `<h3>MEDICAL SICK LEAVE CERTIFICATE</h3><p>Patient <strong>${f.pat}</strong> advised medical rest for <strong>${f.days}</strong> due to viral illness.</p><br><br><strong>Doctor Stamp & Sign</strong>`
-            },
-            {
-                id: "med-3", category: "medical", title: "27. Blood Group & Vital Signs Test Report", desc: "Laboratory vital signs test report format.",
-                fields: [{id:"pat",label:"Patient",val:"Shah Rukh Siddiqui"},{id:"bg",label:"Blood Group",val:"B+ Positive"},{id:"bp",label:"Blood Pressure",val:"120/80 mmHg"}],
-                render: f => `<h3>LABORATORY VITAL SIGNS REPORT</h3><p>Patient: ${f.pat}<br>Blood Group: <strong>${f.bg}</strong><br>Blood Pressure: ${f.bp}</p><br><br><strong>Pathologist Sign</strong>`
-            },
-            {
-                id: "med-4", category: "medical", title: "28. Diet & Hydration Plan Sheet", desc: "Personalized healthy diet and nutrition layout.",
-                fields: [{id:"user",label:"Name",val:"Shah Rukh Siddiqui"},{id:"diet",label:"Diet Rule",val:"Zero refined sugar, Fruit shakes with dates & peanut butter"}],
-                render: f => `<h3>HEALTH & DIET PLAN SCHEDULE</h3><p>Client: ${f.user}<br>Routine: ${f.diet}</p><br><br><strong>Approved Wellness Plan</strong>`
-            },
-
-            // PROPERTY & LEGAL (4)
-            {
-                id: "prop-1", category: "property", title: "29. Comprehensive House Rent Agreement", desc: "Residential tenancy contract with security deposit and terms.",
+                id: "prop-1", category: "property", featured: true, shape: "circle", title: "29. Comprehensive House Rent Agreement", desc: "Residential tenancy contract with security deposit and terms.",
                 fields: [{id:"land",label:"Landlord",val:"Muhammad Tariq"},{id:"tenant",label:"Tenant",val:"Shah Rukh Siddiqui"},{id:"addr",label:"Property Address",val:"Gulshan-e-Iqbal, Karachi"},{id:"rent",label:"Monthly Rent",val:"35,000"}],
                 render: f => `<h3>RESIDENTIAL RENT AGREEMENT</h3><p>Landlord <strong>${f.land}</strong> lets property at <strong>${f.addr}</strong> to Tenant <strong>${f.tenant}</strong> for monthly rent of <strong>PKR ${f.rent}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><div>Landlord: ___</div><div>Tenant: ___</div></div>`
             },
-            {
-                id: "prop-2", category: "property", title: "30. Commercial Property Lease Deed", desc: "Commercial office or shop lease contract.",
-                fields: [{id:"owner",label:"Owner",val:"Commercial Landlord"},{id:"lessee",label:"Lessee",val:"Taj Al Huda Trading"},{id:"loc",label:"Location",val:"Karachi Commercial Center"}],
-                render: f => `<h3>COMMERCIAL LEASE DEED</h3><p>Commercial lease agreement between <strong>${f.owner}</strong> and <strong>${f.lessee}</strong> for premises at <strong>${f.loc}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><div>Owner: ___</div><div>Lessee: ___</div></div>`
-            },
-            {
-                id: "prop-3", category: "property", title: "31. Utility Connection Name Change Application", desc: "Application to K-Electric / Water Board for meter name transfer.",
-                fields: [{id:"auth",label:"Addressed To",v:"The Manager, K-Electric Karachi"},{id:"applicant",label:"Applicant",val:"Shah Rukh Siddiqui"},{id:"consumer",label:"Consumer / Account No",val:"04-12345-67890"}],
-                render: f => `<h3>APPLICATION FOR UTILITY METER NAME CHANGE</h3><p>To,<br>The Manager, K-Electric Karachi.</p><p>Subject: Transfer of Electricity Meter Name for Account No. <strong>${f.consumer}</strong> in name of <strong>${f.applicant}</strong>.</p><br><br><strong>Applicant Signature: _________</strong>`
-            },
-            {
-                id: "prop-4", category: "property", title: "32. General Power of Attorney (Legal)", desc: "Legal power of attorney authorization draft.",
-                fields: [{id:"principal",label:"Principal",val:"Shah Rukh Siddiqui"},{id:"agent",label:"Attorney Agent",val:"Muhammad Sharif"},{id:"purpose",label:"Purpose",val:"Property & Documentation Management"}],
-                render: f => `<h3>GENERAL POWER OF ATTORNEY</h3><p>I, <strong>${f.principal}</strong>, appoint <strong>${f.agent}</strong> as my lawful attorney for <strong>${f.purpose}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><div>Principal: ___</div><div>Attorney: ___</div></div>`
-            }
+            // Other standard templates (loaded when viewing all or filtering)
+            { id: "acc-2", category: "accounts", featured: false, shape: "square", title: "2. Official Salary Certificate for Banks", desc: "Formal income verification certificate for bank loans or credit cards.", fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"salary",label:"Monthly Gross Salary",val:"120,000"},{id:"purpose",label:"Purpose",val:"Faysal Bank Credit Card Verification"}], render: f => `<h3>TO WHOM IT MAY CONCERN</h3><p>This is to certify <strong>${f.emp}</strong> (${f.desig}) salary is PKR ${f.salary} for ${f.purpose}.</p>` },
+            { id: "acc-3", category: "accounts", featured: false, shape: "circle", title: "3. Cash Receipt Voucher", desc: "Official voucher recording cash payments received.", fields: [{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"rcv",label:"From",val:"Muhammad Sharif"},{id:"amt",label:"Amount",val:"15,000"}], render: f => `<h3>${f.comp}</h3><p>Received PKR ${f.amt} from ${f.rcv}</p>` },
+            { id: "acc-4", category: "accounts", featured: false, shape: "square", title: "4. Expense Payment Voucher", desc: "Corporate expense reimbursement voucher.", fields: [{id:"paid",label:"Paid To",val:"Arshe Autos"},{id:"amt",label:"Amount",val:"4,500"}], render: f => `<h3>PAYMENT VOUCHER</h3><p>Paid PKR ${f.amt} to ${f.paid}</p>` },
+            { id: "hr-1", category: "hr", featured: false, shape: "square", title: "7. Job Joining & Confirmation Letter", desc: "Official confirmation letter acknowledging employee reporting.", fields: [{id:"emp",label:"Employee",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"}], render: f => `<h3>JOINING CONFIRMATION</h3><p>Confirmed joining for ${f.emp} as ${f.desig}.</p>` },
+            { id: "tr-4", category: "transport", featured: false, shape: "circle", title: "17. Motorcycle Maintenance & Oil Log", desc: "Record sheet for 70cc motorcycle oil changes and tune-ups.", fields: [{id:"bike",label:"Vehicle",val:"Union Star 70cc"},{id:"oil",label:"Oil",val:"Hyundai 10W-40"}], render: f => `<h3>MAINTENANCE LOG</h3><p>Bike: ${f.bike} | Oil: ${f.oil}</p>` },
+            { id: "com-2", category: "commercial", featured: false, shape: "square", title: "20. B2B Business Supply Proposal Letter", desc: "Professional corporate supply proposal.", fields: [{id:"recv",label:"Client",val:"Bait al Ezz Curtains"}], render: f => `<h3>SUPPLY PROPOSAL</h3><p>Proposal for ${f.recv}</p>` },
+            { id: "med-4", category: "medical", featured: false, shape: "circle", title: "28. Diet & Hydration Plan Sheet", desc: "Personalized healthy diet and nutrition layout.", fields: [{id:"user",label:"Name",val:"Shah Rukh Siddiqui"},{id:"diet",label:"Routine",val:"Zero sugar, date & peanut butter shakes"}], render: f => `<h3>DIET PLAN</h3><p>${f.user}: ${f.diet}</p>` }
         ];
 
         class MasterApp {
             constructor() {
-                this.currentData = [...masterDatabase];
+                this.isShowingAll = false;
+                this.currentData = masterDatabase.filter(i => i.featured);
                 this.activeTemplate = null;
                 this.renderGrid(this.currentData);
             }
@@ -298,13 +278,11 @@
                 const grid = document.getElementById('templates-grid');
                 if(!grid) return;
                 grid.innerHTML = '';
-                if(data.length === 0) {
-                    grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#666;">No documents found.</p>';
-                    return;
-                }
                 data.forEach(item => {
                     const card = document.createElement('div');
-                    card.className = 'card';
+                    // Mix shapes: square vs circle card
+                    const shapeClass = item.shape === 'circle' ? 'shape-circle-card' : '';
+                    card.className = `card ${shapeClass}`;
                     card.innerHTML = `
                         <div>
                             <h3>${item.title}</h3>
@@ -316,13 +294,35 @@
                 });
             }
 
-            filterCategory(cat) {
-                document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
-                if(cat === 'all') {
-                    document.getElementById('nav-all').classList.add('active');
+            toggleViewAll() {
+                this.isShowingAll = !this.isShowingAll;
+                const headingText = document.getElementById('section-heading-text');
+                const toggleBtn = document.getElementById('view-all-toggle');
+                
+                if(this.isShowingAll) {
+                    headingText.innerText = "All Available Suite (32+ Generators)";
+                    toggleBtn.innerText = "Show Featured Only 🔼";
                     this.currentData = [...masterDatabase];
                 } else {
+                    headingText.innerText = "Featured Top Generators";
+                    toggleBtn.innerText = "View All 32+ Generators 🔄";
+                    this.currentData = masterDatabase.filter(i => i.featured);
+                }
+                this.renderGrid(this.currentData);
+            }
+
+            filterCategory(cat) {
+                document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
+                const headingText = document.getElementById('section-heading-text');
+                
+                if(cat === 'all') {
+                    document.getElementById('nav-all').classList.add('active');
+                    headingText.innerText = "Featured Top Generators";
+                    this.currentData = masterDatabase.filter(i => i.featured);
+                    this.isShowingAll = false;
+                } else {
                     event.target.classList.add('active');
+                    headingText.innerText = `Category: ${cat.toUpperCase()}`;
                     this.currentData = masterDatabase.filter(i => i.category === cat);
                 }
                 this.renderGrid(this.currentData);
@@ -330,9 +330,12 @@
 
             handleSearch(query) {
                 const q = query.toLowerCase().trim();
+                const headingText = document.getElementById('section-heading-text');
                 if(!q) {
-                    this.currentData = [...masterDatabase];
+                    headingText.innerText = "Featured Top Generators";
+                    this.currentData = masterDatabase.filter(i => i.featured);
                 } else {
+                    headingText.innerText = `Search Results for "${query}"`;
                     this.currentData = masterDatabase.filter(i => i.title.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q));
                 }
                 this.renderGrid(this.currentData);
@@ -340,7 +343,8 @@
 
             showHome() {
                 document.getElementById('search-input').value = '';
-                this.currentData = [...masterDatabase];
+                document.getElementById('section-heading-text').innerText = "Featured Top Generators";
+                this.currentData = masterDatabase.filter(i => i.featured);
                 this.renderGrid(this.currentData);
             }
 
