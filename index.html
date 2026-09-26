@@ -3,316 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocuHub Global - Complete Master Suite</title>
+    <title>DocuHub Global - 32+ Complete Master Suite</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f3f2f1;
-            color: #333;
-        }
-
-        header {
-            background: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 40px;
-            border-bottom: 1px solid #e1dfdd;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 600;
-            color: #1b1b1b;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
-
-        .logo span {
-            color: #0078d4;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #616161;
-            font-size: 11px;
-            cursor: pointer;
-            transition: color 0.2s;
-            font-weight: 500;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            color: #0078d4;
-            font-weight: 600;
-        }
-
-        .nav-btns {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #0078d4;
-            color: #0078d4;
-            padding: 8px 16px;
-            font-size: 14px;
-            cursor: pointer;
-            font-weight: 600;
-            border-radius: 2px;
-            transition: background 0.2s;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 30px;
-            text-align: center;
-            border-bottom: 1px solid #e1dfdd;
-        }
-
-        .hero h1 {
-            font-size: 26px;
-            font-weight: 600;
-            color: #1b1b1b;
-            margin-bottom: 8px;
-        }
-
-        .hero p {
-            font-size: 13px;
-            color: #616161;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .container {
-            max-width: 1250px;
-            margin: 25px auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #1b1b1b;
-        }
-
-        .search-container {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .search-bar {
-            width: 100%;
-            padding: 12px 20px;
-            font-size: 14px;
-            border: 1px solid #c8c6c4;
-            border-radius: 4px;
-            outline: none;
-            background: #fff;
-        }
-
-        .search-bar:focus {
-            border-color: #0078d4;
-            box-shadow: 0 0 0 2px rgba(0,120,212,0.1);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 18px;
-        }
-
-        .card {
-            background: #ffffff;
-            border: 1px solid #e1dfdd;
-            padding: 18px;
-            border-radius: 4px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-        }
-
-        .card h3 {
-            font-size: 14px;
-            margin-bottom: 6px;
-            color: #1b1b1b;
-        }
-
-        .card p {
-            font-size: 11px;
-            color: #616161;
-            line-height: 1.4;
-            margin-bottom: 12px;
-        }
-
-        .card button {
-            background: none;
-            border: none;
-            color: #0078d4;
-            font-weight: 600;
-            font-size: 12px;
-            cursor: pointer;
-            text-align: left;
-            padding: 0;
-        }
-
-        .card button:hover {
-            text-decoration: underline;
-        }
-
-        #workspace-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: #fff;
-            width: 100%;
-            max-width: 1050px;
-            max-height: 92vh;
-            border-radius: 6px;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .modal-header {
-            padding: 16px 25px;
-            background: #f8f9fa;
-            border-bottom: 1px solid #e1dfdd;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-header h2 {
-            font-size: 17px;
-            color: #1b1b1b;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 22px;
-            cursor: pointer;
-            color: #616161;
-        }
-
-        .modal-body {
-            padding: 25px;
-            overflow-y: auto;
-            display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 25px;
-        }
-
-        @media(max-width: 768px) {
-            .modal-body { grid-template-columns: 1fr; }
-        }
-
-        .form-section h4, .preview-section h4 {
-            font-size: 12px;
-            margin-bottom: 10px;
-            color: #333;
-            border-bottom: 2px solid #0078d4;
-            padding-bottom: 4px;
-        }
-
-        .form-group {
-            margin-bottom: 8px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 10px;
-            font-weight: 600;
-            color: #616161;
-            margin-bottom: 2px;
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 6px 10px;
-            border: 1px solid #c8c6c4;
-            border-radius: 4px;
-            font-size: 12px;
-        }
-
-        .preview-box {
-            background: #faf9f8;
-            border: 1px solid #e1dfdd;
-            padding: 22px;
-            border-radius: 4px;
-            min-height: 400px;
-            max-height: 500px;
-            overflow-y: auto;
-            font-size: 11px;
-            line-height: 1.5;
-            color: #222;
-        }
-
-        .preview-box h3 {
-            text-align: center;
-            font-size: 14px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #111;
-        }
-
-        .preview-box p {
-            margin-bottom: 6px;
-            text-align: justify;
-        }
-
-        .modal-footer {
-            padding: 12px 25px;
-            background: #f8f9fa;
-            border-top: 1px solid #e1dfdd;
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f3f2f1; color: #333; }
+        header { background: #ffffff; display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; border-bottom: 1px solid #e1dfdd; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 20px; font-weight: 600; color: #1b1b1b; display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        .logo span { color: #0078d4; }
+        nav ul { display: flex; list-style: none; gap: 8px; flex-wrap: wrap; }
+        nav ul li a { text-decoration: none; color: #616161; font-size: 11px; cursor: pointer; font-weight: 500; transition: color 0.2s; }
+        nav ul li a:hover, nav ul li a.active { color: #0078d4; font-weight: 600; }
+        .hero { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 30px; text-align: center; border-bottom: 1px solid #e1dfdd; }
+        .hero h1 { font-size: 24px; font-weight: 600; color: #1b1b1b; margin-bottom: 6px; }
+        .hero p { font-size: 12px; color: #616161; max-width: 800px; margin: 0 auto; }
+        .container { max-width: 1300px; margin: 25px auto; padding: 0 20px; }
+        .section-title { font-size: 18px; font-weight: 600; margin-bottom: 15px; color: #1b1b1b; }
+        .search-container { position: relative; margin-bottom: 20px; }
+        .search-bar { width: 100%; padding: 12px 20px; font-size: 14px; border: 1px solid #c8c6c4; border-radius: 4px; outline: none; background: #fff; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; }
+        .card { background: #ffffff; border: 1px solid #e1dfdd; padding: 15px; border-radius: 4px; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+        .card h3 { font-size: 13px; margin-bottom: 5px; color: #1b1b1b; }
+        .card p { font-size: 11px; color: #616161; line-height: 1.3; margin-bottom: 10px; }
+        .card button { background: none; border: none; color: #0078d4; font-weight: 600; font-size: 12px; cursor: pointer; text-align: left; padding: 0; }
+        .card button:hover { text-decoration: underline; }
+        #workspace-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: #fff; width: 100%; max-width: 1050px; max-height: 92vh; border-radius: 6px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .modal-header { padding: 15px 25px; background: #f8f9fa; border-bottom: 1px solid #e1dfdd; display: flex; justify-content: space-between; align-items: center; }
+        .modal-header h2 { font-size: 16px; color: #1b1b1b; }
+        .close-btn { background: none; border: none; font-size: 22px; cursor: pointer; color: #616161; }
+        .modal-body { padding: 25px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 25px; }
+        @media(max-width: 768px) { .modal-body { grid-template-columns: 1fr; } }
+        .form-section h4, .preview-section h4 { font-size: 12px; margin-bottom: 10px; color: #333; border-bottom: 2px solid #0078d4; padding-bottom: 4px; }
+        .form-group { margin-bottom: 8px; }
+        .form-group label { display: block; font-size: 10px; font-weight: 600; color: #616161; margin-bottom: 2px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 6px 10px; border: 1px solid #c8c6c4; border-radius: 4px; font-size: 12px; }
+        .preview-box { background: #faf9f8; border: 1px solid #e1dfdd; padding: 22px; border-radius: 4px; min-height: 400px; max-height: 500px; overflow-y: auto; font-size: 11px; line-height: 1.5; color: #222; }
+        .preview-box h3 { text-align: center; font-size: 13px; margin-bottom: 12px; text-transform: uppercase; color: #111; }
+        .preview-box p { margin-bottom: 6px; text-align: justify; }
+        .modal-footer { padding: 12px 25px; background: #f8f9fa; border-top: 1px solid #e1dfdd; display: flex; justify-content: flex-end; gap: 10px; }
+        .btn-primary { background: #0078d4; border: none; color: #ffffff; padding: 8px 16px; font-size: 13px; cursor: pointer; font-weight: 600; border-radius: 2px; }
+        .btn-outline { background: transparent; border: 1px solid #0078d4; color: #0078d4; padding: 8px 16px; font-size: 13px; cursor: pointer; font-weight: 600; border-radius: 2px; }
         @media print {
             body * { visibility: hidden; }
             #workspace-modal, #modal-live-preview, #modal-live-preview * { visibility: visible; }
-            #workspace-modal {
-                position: absolute; left: 0; top: 0; width: 100%; height: 100%;
-                background: white; display: block !important;
-            }
+            #workspace-modal { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: white; display: block !important; }
             .modal-content { box-shadow: none; max-height: none; width: 100%; }
             .modal-header, .form-section, .modal-footer, .close-btn { display: none !important; }
             .modal-body { display: block !important; padding: 0; }
@@ -324,32 +59,32 @@
 <body>
 
     <header>
-        <div class="logo" onclick="app.showHome()"><span>DocuHub</span> Master Suite</div>
+        <div class="logo" onclick="app.showHome()"><span>DocuHub</span> 32+ Master Suite</div>
         <nav>
             <ul>
-                <li><a onclick="app.filterCategory('all')" class="active" id="nav-all">All Hub</a></li>
-                <li><a onclick="app.filterCategory('accounts')">Accounts & Payroll</a></li>
-                <li><a onclick="app.filterCategory('hr')">HR & Experience</a></li>
+                <li><a onclick="app.filterCategory('all')" class="active" id="nav-all">All (32+)</a></li>
+                <li><a onclick="app.filterCategory('accounts')">Accounts</a></li>
+                <li><a onclick="app.filterCategory('hr')">HR & Letters</a></li>
                 <li><a onclick="app.filterCategory('transport')">Transport</a></li>
-                <li><a onclick="app.filterCategory('commercial')">B2B/B2C & Memos</a></li>
+                <li><a onclick="app.filterCategory('commercial')">Commercial</a></li>
                 <li><a onclick="app.filterCategory('medical')">Medical</a></li>
                 <li><a onclick="app.filterCategory('property')">Property</a></li>
             </ul>
         </nav>
         <div class="nav-btns">
-            <button class="btn-outline" onclick="alert('Shah Rukh Siddiqui - Senior Accountant | Taj Al Huda')">Profile</button>
+            <button class="btn-outline" style="padding:5px 12px; font-size:12px;" onclick="alert('Shah Rukh Siddiqui - Senior Accountant | Taj Al Huda')">Profile</button>
         </div>
     </header>
 
     <section class="hero">
-        <h1>Complete Master Suite: Accounts, HR, Transport, Commercial & Medical</h1>
-        <p>All-in-one professional generator featuring salary calculation, experience certificates, vehicle transfers, cash memos, and B2B letters.</p>
+        <h1>Ultimate 32+ Professional Templates & Documents Suite</h1>
+        <p>Salary slips, bank certificates, joining letters, experience letters, vehicle transfers, cash memos, B2B letters, medical certificates & agreements.</p>
     </section>
 
     <div class="container">
-        <h2 class="section-title">All Templates & Documents</h2>
+        <h2 class="section-title">All Available Modules & Documents</h2>
         <div class="search-container">
-            <input type="text" id="search-input" class="search-bar" placeholder="Search salary, joining letter, experience, vehicle transfer, cash memo, medical..." oninput="app.handleSearch(this.value)">
+            <input type="text" id="search-input" class="search-bar" placeholder="Search any document (salary, joining, experience, vehicle transfer, cash memo, medical)..." oninput="app.handleSearch(this.value)">
         </div>
         <div class="grid" id="templates-grid"></div>
     </div>
@@ -357,7 +92,7 @@
     <div id="workspace-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modal-title">Workspace Generator</h2>
+                <h2 id="modal-title">Generator</h2>
                 <button class="close-btn" onclick="app.closeModal()">&times;</button>
             </div>
             <div class="modal-body">
@@ -366,236 +101,189 @@
                     <div id="modal-form-fields"></div>
                 </div>
                 <div class="preview-section">
-                    <h4>Realistic Live Preview / Document</h4>
+                    <h4>Live Preview</h4>
                     <div class="preview-box" id="modal-live-preview"></div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button class="btn-outline" onclick="app.closeModal()">Close</button>
-                <button class="btn-outline" onclick="window.print()" style="background:#0078d4; color:#fff;">Print / Export PDF</button>
+                <button class="btn-primary" onclick="window.print()">Print / Export PDF</button>
             </div>
         </div>
     </div>
 
     <script>
         const masterDatabase = [
-            // 1. ACCOUNTS & PAYROLL
+            // ACCOUNTS & PAYROLL (6)
             {
-                id: "salary-slip", category: "accounts", title: "Monthly Salary Slip & Pay Statement", desc: "Detailed monthly earnings, allowances, tax deductions, and net take-home salary.",
-                fields: [
-                    {id:"comp",label:"Company Name",val:"Taj Al Huda"},
-                    {id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},
-                    {id:"desig",label:"Designation",val:"Senior Accountant"},
-                    {id:"month",label:"Salary Month",val:"August 2026"},
-                    {id:"basic",label:"Basic Salary (PKR)",val:"100000"},
-                    {id:"allow",label:"Allowances (PKR)",val:"25000"},
-                    {id:"ded",label:"Deductions / Tax (PKR)",val:"5000"}
-                ],
-                render: f => `
-                    <div style="text-align:center;">
-                        <h3>${f.comp}</h3>
-                        <p style="font-size:10px; color:#555;">Official Salary Statement for ${f.month}</p>
-                    </div>
-                    <hr style="margin:10px 0;">
-                    <p><strong>Employee Name:</strong> ${f.emp} &nbsp;&nbsp;&nbsp;&nbsp; <strong>Designation:</strong> ${f.desig}</p>
-                    <p><strong>Basic Salary:</strong> PKR ${Number(f.basic).toLocaleString()}</p>
-                    <p><strong>Allowances:</strong> PKR ${Number(f.allow).toLocaleString()}</p>
-                    <p><strong>Total Deductions:</strong> PKR ${Number(f.ded).toLocaleString()}</p>
-                    <hr style="margin:10px 0;">
-                    <h3 style="color:#0078d4; text-align:left;">Net Payable Salary: PKR ${(Number(f.basic) + Number(f.allow) - Number(f.ded)).toLocaleString()}</h3>
-                    <br><br>
-                    <div style="display:flex; justify-content:space-between;">
-                        <div><strong>Prepared By:</strong> Accounts Dept</div>
-                        <div><strong>Authorized Signatory:</strong> ____________</div>
-                    </div>
-                `
+                id: "acc-1", category: "accounts", title: "1. Monthly Salary Slip & Pay Statement", desc: "Detailed monthly earnings, allowances, tax deductions, and net take-home salary.",
+                fields: [{id:"comp",label:"Company Name",val:"Taj Al Huda"},{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"month",label:"Salary Month",val:"August 2026"},{id:"basic",label:"Basic Salary (PKR)",val:"100000"},{id:"allow",label:"Allowances (PKR)",val:"25000"},{id:"ded",label:"Deductions (PKR)",val:"5000"}],
+                render: f => `<h3>${f.comp}</h3><p style="text-align:center; font-size:10px;">Salary Statement - ${f.month}</p><hr><p><strong>Employee:</strong> ${f.emp} (${f.desig})</p><p>Basic: PKR ${Number(f.basic).toLocaleString()}</p><p>Allowances: PKR ${Number(f.allow).toLocaleString()}</p><p>Deductions: PKR ${Number(f.ded).toLocaleString()}</p><hr><h3 style="color:#0078d4; text-align:left;">Net Payable: PKR ${(Number(f.basic)+Number(f.allow)-Number(f.ded)).toLocaleString()}</h3>`
             },
             {
-                id: "salary-certificate", category: "accounts", title: "Official Salary Certificate for Banks", desc: "Formal income verification certificate for bank loans, credit cards, or embassy.",
-                fields: [
-                    {id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},
-                    {id:"desig",label:"Designation",val:"Senior Accountant"},
-                    {id:"salary",label:"Monthly Gross Salary (PKR)",val:"120,000"},
-                    {id:"purpose",label:"Certificate Purpose",val:"Faysal Bank Credit Card Verification"}
-                ],
-                render: f => `
-                    <h3>TO WHOM IT MAY CONCERN</h3>
-                    <p style="text-align:right;">Date: ${new Date().toISOString().split('T')[0]}</p>
-                    <p>This is to certify that <strong>${f.emp}</strong> is a permanent full-time employee at Taj Al Huda working as <strong>${f.desig}</strong>.</p>
-                    <p>His current gross monthly salary is <strong>PKR ${f.salary}</strong>.</p>
-                    <p>This certificate is issued upon request for <strong>${f.purpose}</strong>.</p>
-                    <br><br>
-                    <strong>Accounts & HR Department</strong><br>Taj Al Huda
-                `
+                id: "acc-2", category: "accounts", title: "2. Official Salary Certificate for Banks", desc: "Formal income verification certificate for bank loans, credit cards, or embassy.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"salary",label:"Monthly Gross Salary",val:"120,000"},{id:"purpose",label:"Purpose",val:"Faysal Bank Credit Card Verification"}],
+                render: f => `<h3>TO WHOM IT MAY CONCERN</h3><p style="text-align:right;">Date: ${new Date().toISOString().split('T')[0]}</p><p>This is to certify that <strong>${f.emp}</strong> is a permanent employee at Taj Al Huda as <strong>${f.desig}</strong> with gross salary of <strong>PKR ${f.salary}</strong>.</p><p>Issued for <strong>${f.purpose}</strong>.</p><br><br><strong>Accounts Dept</strong><br>Taj Al Huda`
+            },
+            {
+                id: "acc-3", category: "accounts", title: "3. Cash Receipt Voucher", desc: "Official voucher recording cash payments received from clients.",
+                fields: [{id:"comp",label:"Company",val:"Taj Al Huda Trading"},{id:"rcv",label:"Received From",val:"Muhammad Sharif"},{id:"amt",label:"Amount (PKR)",val:"15,000"},{id:"desc",label:"Against",val:"Invoice Settlement"}],
+                render: f => `<h3>${f.comp}</h3><h3 style="text-align:center; text-decoration:underline;">CASH RECEIPT VOUCHER</h3><p>Date: ${new Date().toISOString().split('T')[0]}</p><p><strong>Received From:</strong> ${f.rcv}</p><p><strong>Sum of PKR:</strong> ${Number(f.amt).toLocaleString()}</p><p><strong>Description:</strong> ${f.desc}</p><br><br><div style="display:flex; justify-content:space-between;"><div>Receiver Sign: _____</div><div>Cashier: _____</div></div>`
+            },
+            {
+                id: "acc-4", category: "accounts", title: "4. Expense Payment Voucher", desc: "Corporate expense reimbursement voucher.",
+                fields: [{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"paid",label:"Paid To",val:"Arshe Autos"},{id:"amt",label:"Amount (PKR)",val:"4,500"},{id:"exp",label:"Expense Head",val:"Vehicle Fuel & Maintenance"}],
+                render: f => `<h3>${f.comp}</h3><h3 style="text-align:center; text-decoration:underline;">PAYMENT VOUCHER</h3><p>Date: ${new Date().toISOString().split('T')[0]}</p><p><strong>Paid To:</strong> ${f.paid}</p><p><strong>Amount:</strong> PKR ${Number(f.amt).toLocaleString()}</p><p><strong>Head:</strong> ${f.exp}</p><br><br><div style="display:flex; justify-content:space-between;"><div>Prepared By: _____</div><div>Approved By: _____</div></div>`
+            },
+            {
+                id: "acc-5", category: "accounts", title: "5. Advance Salary Request Letter", desc: "Employee formal request for emergency salary advance.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"amt",label:"Requested Amount",val:"30,000"},{id:"reason",label:"Reason",val:"Medical Emergency"}],
+                render: f => `<h3>APPLICATION FOR SALARY ADVANCE</h3><p>To,<br>The Management, Taj Al Huda.</p><p>Dear Sir,<br>I, <strong>${f.emp}</strong> (${f.desig}), request an advance salary of <strong>PKR ${f.amt}</strong> due to <strong>${f.reason}</strong>. Kindly deduct from next month's salary.</p><br><br><p>Applicant Sign: _________________</p>`
+            },
+            {
+                id: "acc-6", category: "accounts", title: "6. Tax Deduction Certificate (Withholding)", desc: "Corporate certificate for tax deducted at source.",
+                fields: [{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"vendor",label:"Vendor Name",val:"Bait al Ezz Curtains"},{id:"ntn",label:"Vendor NTN",val:"1234567-8"},{id:"tax",label:"Tax Deducted (PKR)",val:"3,500"}],
+                render: f => `<h3>${f.comp}</h3><h3 style="text-align:center; text-decoration:underline;">WITHHOLDING TAX CERTIFICATE</h3><p>This is to certify that tax amounting to <strong>PKR ${f.tax}</strong> has been withheld from payments made to <strong>${f.vendor}</strong> (NTN: ${f.ntn}).</p><br><br><strong>Authorized Signatory</strong><br>Accounts Dept`
             },
 
-            // 2. HR & EXPERIENCE / JOINING
+            // HR & LETTERS (7)
             {
-                id: "joining-letter", category: "hr", title: "Job Joining & Confirmation Letter", desc: "Official confirmation letter acknowledging employee reporting and joining date.",
-                fields: [
-                    {id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},
-                    {id:"desig",label:"Designation",val:"Senior Accountant"},
-                    {id:"comp",label:"Company Name",val:"Taj Al Huda"},
-                    {id:"joinDate",label:"Joining Date",val:"1st September 2026"}
-                ],
-                render: f => `
-                    <h3>${f.comp} - JOB JOINING & REPORTING CONFIRMATION</h3>
-                    <p style="text-align:right;">Date: ${new Date().toISOString().split('T')[0]}</p>
-                    <p>Dear <strong>${f.emp}</strong>,</p>
-                    <p>We are pleased to formally confirm your joining as <strong>${f.desig}</strong> at <strong>${f.comp}</strong> effective from <strong>${f.joinDate}</strong>.</p>
-                    <p>We trust your association with us will be mutually rewarding and successful. Your probationary period commences as per your employment agreement.</p>
-                    <br><br>
-                    <strong>Human Resources Department</strong><br>${f.comp}
-                `
+                id: "hr-1", category: "hr", title: "7. Job Joining & Confirmation Letter", desc: "Official confirmation letter acknowledging employee reporting.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"date",label:"Joining Date",val:"1st September 2026"}],
+                render: f => `<h3>${f.comp} - JOINING CONFIRMATION</h3><p>Dear <strong>${f.emp}</strong>,</p><p>We formally confirm your joining as <strong>${f.desig}</strong> effective from <strong>${f.date}</strong>.</p><br><br><strong>HR Department</strong><br>${f.comp}`
             },
             {
-                id: "experience-certificate", category: "hr", title: "Professional Work Experience Certificate", desc: "Formal certificate verifying employment tenure, job role, and professional conduct.",
-                fields: [
-                    {id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},
-                    {id:"desig",label:"Designation Held",val:"Senior Accountant"},
-                    {id:"comp",label:"Company Name",val:"Taj Al Huda"},
-                    {id:"period",label:"Employment Period",val:"September 2024 to September 2026"}
-                ],
-                render: f => `
-                    <h3>EXPERIENCE CERTIFICATE</h3>
-                    <p style="text-align:right;">Date: ${new Date().toISOString().split('T')[0]}</p>
-                    <p>This is to certify that <strong>${f.emp}</strong> worked with <strong>${f.comp}</strong> as <strong>${f.desig}</strong> from <strong>${f.period}</strong>.</p>
-                    <p>During his tenure with us, we found him hardworking, sincere, professional, and dedicated to his accounting and financial responsibilities.</p>
-                    <p>We wish him all the best in his future professional endeavors.</p>
-                    <br><br>
-                    <strong>Management & HR Head</strong><br>${f.comp}
-                `
+                id: "hr-2", category: "hr", title: "8. Professional Work Experience Certificate", desc: "Formal certificate verifying employment tenure and conduct.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"period",label:"Period",val:"Sep 2024 - Sep 2026"}],
+                render: f => `<h3>EXPERIENCE CERTIFICATE</h3><p>This is to certify that <strong>${f.emp}</strong> worked at <strong>${f.comp}</strong> as <strong>${f.desig}</strong> from <strong>${f.period}</strong>. His conduct and performance were exemplary.</p><br><br><strong>Management</strong><br>${f.comp}`
             },
             {
-                id: "internship-letter", category: "hr", title: "Internship Completion Letter", desc: "Certificate acknowledging successful completion of corporate internship.",
-                fields: [
-                    {id:"intern",label:"Intern Name",val:"Muhammad Ali"},
-                    {id:"dept",label:"Department",val:"Accounts & Audit Department"},
-                    {id:"comp",label:"Company Name",val:"Burqur Corporation"},
-                    {id:"duration",label:"Duration",val:"June 2026 - August 2026"}
-                ],
-                render: f => `
-                    <h3>INTERNSHIP COMPLETION CERTIFICATE</h3>
-                    <p style="text-align:right;">Date: ${new Date().toISOString().split('T')[0]}</p>
-                    <p>This is to certify that <strong>${f.intern}</strong> has successfully completed their internship program in the <strong>${f.dept}</strong> at <strong>${f.comp}</strong> for the period of <strong>${f.duration}</strong>.</p>
-                    <p>During this period, their performance, dedication, and grasping power were commendable.</p>
-                    <br><br>
-                    <strong>Director HR</strong><br>${f.comp}
-                `
+                id: "hr-3", category: "hr", title: "9. Internship Completion Letter", desc: "Certificate acknowledging corporate internship completion.",
+                fields: [{id:"intern",label:"Intern Name",val:"Muhammad Ali"},{id:"dept",label:"Department",val:"Accounts Dept"},{id:"comp",label:"Company",val:"Burqur Corporation"},{id:"duration",label:"Duration",val:"June 2026 - Aug 2026"}],
+                render: f => `<h3>INTERNSHIP CERTIFICATE</h3><p>Certified that <strong>${f.intern}</strong> successfully completed internship in <strong>${f.dept}</strong> at <strong>${f.comp}</strong> (${f.duration}).</p><br><br><strong>Director HR</strong><br>${f.comp}`
+            },
+            {
+                id: "hr-4", category: "hr", title: "10. Employment Offer Letter", desc: "Comprehensive corporate appointment offer with salary breakdown.",
+                fields: [{id:"cand",label:"Candidate",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Position",val:"Senior Accountant"},{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"sal",label:"Gross Salary",val:"120,000"}],
+                render: f => `<h3>EMPLOYMENT OFFER LETTER</h3><p>Dear <strong>${f.cand}</strong>, we offer you the position of <strong>${f.desig}</strong> at <strong>${f.comp}</strong> with a monthly salary of <strong>PKR ${f.sal}</strong>.</p><br><br><strong>HR Head</strong>`
+            },
+            {
+                id: "hr-5", category: "hr", title: "11. Increment & Promotion Letter", desc: "Formal notice of salary increment and job promotion.",
+                fields: [{id:"emp",label:"Employee",val:"Shah Rukh Siddiqui"},{id:"newDesig",label:"New Designation",val:"Finance Manager"},{id:"hike",label:"New Salary",val:"150,000"}],
+                render: f => `<h3>PROMOTION & INCREMENT LETTER</h3><p>Dear <strong>${f.emp}</strong>, in recognition of your stellar performance, you are promoted to <strong>${f.newDesig}</strong> with revised salary of <strong>PKR ${f.hike}</strong>.</p><br><br><strong>Management</strong>`
+            },
+            {
+                id: "hr-6", category: "hr", title: "12. Resignation Acceptance Letter", desc: "Official acknowledgement and acceptance of employee resignation.",
+                fields: [{id:"emp",label:"Employee",val:"Muhammad Sharif"},{id:"lastDate",label:"Last Working Day",val:"30th September 2026"}],
+                render: f => `<h3>RESIGNATION ACCEPTANCE</h3><p>Dear <strong>${f.emp}</strong>, your resignation has been accepted with last working day on <strong>${f.lastDate}</strong>. We thank you for your services.</p><br><br><strong>HR Department</strong>`
+            },
+            {
+                id: "hr-7", category: "hr", title: "13. Warning & Show Cause Notice", desc: "Disciplinary warning notice for policy violation.",
+                fields: [{id:"emp",label:"Employee",val:"Staff Member"},{id:"issue",label:"Violation",val:"Repeated late arrival"}],
+                render: f => `<h3>DISCIPLINARY SHOW CAUSE NOTICE</h3><p>Dear <strong>${f.emp}</strong>, notice is served regarding <strong>${f.issue}</strong>. Submit written explanation within 48 hours.</p><br><br><strong>HR Management</strong>`
             },
 
-            // 3. TRANSPORT & VEHICLES
+            // TRANSPORT & VEHICLES (5)
             {
-                id: "vehicle-transfer-letter", category: "transport", title: "Vehicle Transfer Application (Excise)", desc: "Formal application letter to Excise & Taxation Department for vehicle ownership transfer.",
-                fields: [
-                    {id: "seller", label: "Seller Name", val: "Muhammad Ali"},
-                    {id: "buyer", label: "Buyer Name", val: "Shah Rukh Siddiqui"},
-                    {id: "regNo", label: "Registration No", val: "ABC-123 Karachi"},
-                    {id: "engine", label: "Engine No", val: "ENG-987654"},
-                    {id: "chassis", label: "Chassis No", val: "CHS-123456"}
-                ],
-                render: f => `
-                    <h3>APPLICATION FOR MOTOR VEHICLE TRANSFER</h3>
-                    <p>To,<br>The Director Excise & Taxation Department, Karachi.</p>
-                    <p><strong>Subject: Transfer of Motor Vehicle Registration No. ${f.regNo}</strong></p>
-                    <p>Respected Sir,<br>I, <strong>${f.buyer}</strong>, have purchased vehicle Reg No. <strong>${f.regNo}</strong> (Engine: ${f.engine}, Chassis: ${f.chassis}) from <strong>${f.seller}</strong>.</p>
-                    <p>All transfer documents, CNIC copies, and token tax slips are attached. Kindly transfer ownership.</p>
-                    <br><br>
-                    <div style="display:flex; justify-content:space-between;">
-                        <div><strong>Seller Sign:</strong> _________</div>
-                        <div><strong>Buyer Sign:</strong> _________</div>
-                    </div>
-                `
+                id: "tr-1", category: "transport", title: "14. Vehicle Transfer Application (Excise)", desc: "Formal application letter to Excise & Taxation Department.",
+                fields: [{id:"seller",label:"Seller",val:"Muhammad Ali"},{id:"buyer",label:"Buyer",val:"Shah Rukh Siddiqui"},{id:"reg",label:"Reg No",val:"ABC-123 Karachi"},{id:"eng",label:"Engine No",val:"ENG-987654"},{id:"chs",label:"Chassis No",val:"CHS-123456"}],
+                render: f => `<h3>VEHICLE TRANSFER APPLICATION</h3><p>To Director Excise Karachi.<br>Subject: Transfer of Reg No <strong>${f.reg}</strong> from <strong>${f.seller}</strong> to <strong>${f.buyer}</strong> (Engine: ${f.eng}, Chassis: ${f.chs}). Kindly transfer ownership.</p><br><br><div style="display:flex; justify-content:space-between;"><div>Seller: ___</div><div>Buyer: ___</div></div>`
+            },
+            {
+                id: "tr-2", category: "transport", title: "15. Motor Vehicle Sale Agreement", desc: "Complete automotive transfer deed.",
+                fields: [{id:"seller",label:"Seller",val:"Muhammad Ali"},{id:"buyer",label:"Buyer",val:"Shah Rukh Siddiqui"},{id:"car",label:"Vehicle",val:"Toyota Corolla GLI"},{id:"price",label:"Price (PKR)",val:"3,500,000"}],
+                render: f => `<h3>MOTOR VEHICLE SALE AGREEMENT</h3><p>Seller <strong>${f.seller}</strong> sells <strong>${f.car}</strong> to Buyer <strong>${f.buyer}</strong> for <strong>PKR ${f.price}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><div>Seller Sign: ___</div><div>Buyer Sign: ___</div></div>`
+            },
+            {
+                id: "tr-3", category: "transport", title: "16. No Objection Certificate (NOC) for Vehicle", desc: "NOC for inter-province vehicle transfer or loan clearance.",
+                fields: [{id:"owner",label:"Owner Name",val:"Shah Rukh Siddiqui"},{id:"reg",label:"Reg No",val:"ABC-123"},{id:"bank",label:"Bank / Authority",val:"Excise Department"}],
+                render: f => `<h3>VEHICLE NOC CERTIFICATE</h3><p>This is to certify that we have no objection regarding transfer/movement of vehicle <strong>${f.reg}</strong> owned by <strong>${f.owner}</strong>.</p><br><br><strong>Authorized Signature</strong>`
+            },
+            {
+                id: "tr-4", category: "transport", title: "17. Motorcycle Maintenance & Oil Log", desc: "Record sheet for 70cc motorcycle oil changes and tune-ups.",
+                fields: [{id:"bike",label:"Vehicle",val:"Union Star 70cc"},{id:"oil",label:"Engine Oil",val:"Hyundai 10W-40"},{id:"km",label:"Mileage Interval",val:"900 km"}],
+                render: f => `<h3>MOTORCYCLE MAINTENANCE LOG</h3><p>Vehicle: <strong>${f.bike}</strong><br>Oil Grade: <strong>${f.oil}</strong><br>Change Interval: <strong>${f.km}</strong></p><br><br><strong>Rider: Shah Rukh Siddiqui</strong>`
+            },
+            {
+                id: "tr-5", category: "transport", title: "18. Driver Authorization Letter", desc: "Letter authorizing another person to drive company/personal vehicle.",
+                fields: [{id:"owner",label:"Owner",val:"Shah Rukh Siddiqui"},{id:"driver",label:"Authorized Driver",val:"Muhammad Sharif"},{id:"car",label:"Vehicle",val:"ABC-123 Karachi"}],
+                render: f => `<h3>DRIVER AUTHORIZATION LETTER</h3><p>I, <strong>${f.owner}</strong>, authorize <strong>${f.driver}</strong> to drive my vehicle <strong>${f.car}</strong> across all routes.</p><br><br><strong>Owner Signature: _________</strong>`
             },
 
-            // 4. COMMERCIAL, B2B, B2C & CASH MEMOS
+            // COMMERCIAL & B2B/B2C (6)
             {
-                id: "cash-memo", category: "commercial", title: "Official Cash Memo / Receipt Voucher", desc: "Detailed cash transaction memo for business retail or wholesale sales.",
-                fields: [
-                    {id:"biz",label:"Business Name",val:"Taj Al Huda Trading"},
-                    {id:"memoNo",label:"Memo No",val:"CM-2026-104"},
-                    {id:"customer",label:"Customer Name",val:"Muhammad Sharif"},
-                    {id:"item",label:"Item Description",val:"Hyundai 10W-40 Engine Oil & Spares"},
-                    {id:"amount",label:"Total Amount (PKR)",val:"7,000"}
-                ],
-                render: f => `
-                    <div style="text-align:center;">
-                        <h3>${f.biz}</h3>
-                        <p style="font-size:10px;">Official Cash Memo</p>
-                    </div>
-                    <hr style="margin:10px 0;">
-                    <p><strong>Memo No:</strong> ${f.memoNo} &nbsp;&nbsp;&nbsp;&nbsp; <strong>Date:</strong> ${new Date().toISOString().split('T')[0]}</p>
-                    <p><strong>Customer:</strong> ${f.customer}</p>
-                    <p><strong>Description:</strong> ${f.item}</p>
-                    <h3 style="text-align:right; color:#0078d4; margin-top:15px;">Total: PKR ${Number(f.amount).toLocaleString()}</h3>
-                    <br><br>
-                    <div style="display:flex; justify-content:space-between;">
-                        <div><strong>Customer Sign:</strong> _________</div>
-                        <div><strong>Cashier:</strong> _________</div>
-                    </div>
-                `
+                id: "com-1", category: "commercial", title: "19. Official Cash Memo / Retail Invoice", desc: "Detailed cash transaction memo for wholesale/retail sales.",
+                fields: [{id:"biz",label:"Business",val:"Taj Al Huda Trading"},{id:"cust",label:"Customer",val:"Muhammad Sharif"},{id:"item",label:"Item",val:"Automobile Parts"},{id:"amt",label:"Total (PKR)",val:"7,000"}],
+                render: f => `<h3>${f.biz}</h3><h3 style="text-align:center;">CASH MEMO</h3><p>Customer: ${f.cust}</p><p>Item: ${f.item}</p><h3 style="text-align:right; color:#0078d4;">Total: PKR ${Number(f.amt).toLocaleString()}</h3><br><br><strong>Cashier Sign: _________</strong>`
             },
             {
-                id: "b2b-proposal-letter", category: "commercial", title: "B2B Business Supply Proposal Letter", desc: "Professional corporate supply and partnership proposal letter.",
-                fields: [
-                    {id:"sender",label:"Sender Company",val:"Taj Al Huda Trading"},
-                    {id:"receiver",label:"Client Business",val:"Bait al Ezz Curtains & Fabrics"},
-                    {id:"subject",label:"Subject",val:"Monthly Ledger Supply & Wholesale Quotation"}
-                ],
-                render: f => `
-                    <h3>${f.sender}</h3>
-                    <p style="text-align:right;">Date: ${new Date().toISOString().split('T')[0]}</p>
-                    <p>To,<br>Management, <strong>${f.receiver}</strong>.</p>
-                    <p><strong>Subject: ${f.subject}</strong></p>
-                    <p>Dear Sir/Madam,<br>We are pleased to submit our commercial quotation for regular monthly wholesale supply and transparent accounting ledgers.</p>
-                    <br><br>
-                    <strong>Senior Accountant</strong><br>${f.sender}
-                `
+                id: "com-2", category: "commercial", title: "20. B2B Business Supply Proposal Letter", desc: "Professional corporate supply proposal.",
+                fields: [{id:"sender",label:"Sender",val:"Taj Al Huda Trading"},{id:"recv",label:"Client",val:"Bait al Ezz Curtains"},{id:"subj",label:"Subject",val:"Wholesale Fabric Supply & Ledger terms"}],
+                render: f => `<h3>${f.sender}</h3><p>To <strong>${f.recv}</strong>.<br>Subject: <strong>${f.subj}</strong>.<br>We submit our commercial quotation for monthly bulk supplies.</p><br><br><strong>Senior Accountant</strong>`
+            },
+            {
+                id: "com-3", category: "commercial", title: "21. B2C Retail Customer Quotation", desc: "Price quotation reply for retail customers.",
+                fields: [{id:"comp",label:"Brand",val:"Arshe Autos"},{id:"cust",label:"Customer",val:"Valued Client"},{id:"price",label:"Price",val:"4,500 inclusive delivery"}],
+                render: f => `<h3>${f.comp} - QUOTATION</h3><p>Dear <strong>${f.cust}</strong>, our best price for your inquired item is <strong>PKR ${f.price}</strong>.</p><br><br><strong>Sales Team</strong>`
+            },
+            {
+                id: "com-4", category: "commercial", title: "22. Outstanding Payment Reminder Letter", desc: "Professional follow-up letter for overdue invoices.",
+                fields: [{id:"comp",label:"Company",val:"Taj Al Huda"},{id:"client",label:"Client",val:"Business Partner"},{id:"amt",label:"Overdue Amount",val:"45,000"}],
+                render: f => `<h3>PAYMENT REMINDER NOTICE</h3><p>Dear <strong>${f.client}</strong>, this is a reminder that your payment amounting to <strong>PKR ${f.amt}</strong> is overdue. Kindly clear at your earliest.</p><br><br><strong>Accounts Dept</strong>`
+            },
+            {
+                id: "com-5", category: "commercial", title: "23. Purchase Order (PO) Form", desc: "Official purchase order document for procurement.",
+                fields: [{id:"comp",label:"Buyer",val:"Taj Al Huda"},{id:"supp",label:"Supplier",val:"Wholesale Spares Ltd"},{id:"goods",label:"Items",val:"Engine Oil & Filters"}],
+                render: f => `<h3>PURCHASE ORDER</h3><p>Buyer: ${f.comp}<br>Supplier: ${f.supp}<br>Ordered Goods: ${f.goods}</p><br><br><div style="display:flex; justify-content:space-between;"><div>Manager: ___</div><div>Supplier: ___</div></div>`
+            },
+            {
+                id: "com-6", category: "commercial", title: "24. Delivery Challan / Dispatch Note", desc: "Goods dispatch delivery challan.",
+                fields: [{id:"comp",label:"Sender",val:"Taj Al Huda Trading"},{id:"rec",label:"Consignee",val:"Retail Outlet"},{id:"ship",label:"Items",val:"Curtain Fabrics & Lockets"}],
+                render: f => `<h3>DELIVERY CHALLAN</h3><p>Sender: ${f.comp}<br>Consignee: ${f.rec}<br>Shipment: ${f.ship}</p><br><br><strong>Dispatch Incharge: _________</strong>`
             },
 
-            // 5. MEDICAL & FITNESS
+            // MEDICAL & FITNESS (4)
             {
-                id: "medical-certificate", category: "medical", title: "Official Medical Fitness Certificate", desc: "Standard medical certificate issued by a registered medical practitioner.",
-                fields: [
-                    {id:"doctor",label:"Doctor Name",val:"Dr. Ahmed Raza, MBBS, FCPS"},
-                    {id:"clinic",label:"Clinic Name",val:"City Medical Care, Karachi"},
-                    {id:"patient",label:"Patient Name",val:"Shah Rukh Siddiqui"},
-                    {id:"findings",label:"Findings",val:"BP 120/80, Pulse 72. Physically and mentally fit."}
-                ],
-                render: f => `
-                    <div style="text-align:center;">
-                        <h3>${f.clinic}</h3>
-                        <p style="font-size:10px;">${f.doctor}</p>
-                    </div>
-                    <hr style="margin:10px 0;">
-                    <h3 style="text-align:center; text-decoration:underline;">MEDICAL FITNESS CERTIFICATE</h3>
-                    <p style="text-align:right;">Date: ${new Date().toISOString().split('T')[0]}</p>
-                    <p>This is to certify that <strong>${f.patient}</strong> has been examined by me. Clinical findings: ${f.findings}.</p>
-                    <p>He is <strong>physically and mentally FIT</strong> for professional duties.</p>
-                    <br><br>
-                    <div style="text-align:right;"><strong>Doctor Signature & Stamp:</strong><br><br>_____________________</div>
-                `
+                id: "med-1", category: "medical", title: "25. Official Medical Fitness Certificate", desc: "Standard medical fitness certificate by registered practitioner.",
+                fields: [{id:"doc",label:"Doctor",val:"Dr. Ahmed Raza, MBBS, FCPS"},{id:"clinic",label:"Clinic",val:"City Medical Care, Karachi"},{id:"pat",label:"Patient",val:"Shah Rukh Siddiqui"},{id:"find",label:"Findings",val:"BP 120/80, Pulse 72. Physically & mentally fit."}],
+                render: f => `<h3>${f.clinic}</h3><p style="text-align:center; font-size:10px;">${f.doc}</p><hr><h3 style="text-align:center; text-decoration:underline;">MEDICAL FITNESS CERTIFICATE</h3><p>Examined <strong>${f.pat}</strong>. Findings: ${f.find}. Certified FIT for professional duties.</p><br><br><div style="text-align:right;"><strong>Doctor Signature & Stamp:</strong><br><br>_____________________</div>`
+            },
+            {
+                id: "med-2", category: "medical", title: "26. Sick Leave Medical Certificate", desc: "Medical rest certificate for employees.",
+                fields: [{id:"doc",label:"Doctor",val:"Dr. Ahmed Raza"},{id:"pat",label:"Patient",val:"Employee"},{id:"days",label:"Rest Days",val:"3 Days"}],
+                render: f => `<h3>MEDICAL SICK LEAVE CERTIFICATE</h3><p>Patient <strong>${f.pat}</strong> advised medical rest for <strong>${f.days}</strong> due to viral illness.</p><br><br><strong>Doctor Stamp & Sign</strong>`
+            },
+            {
+                id: "med-3", category: "medical", title: "27. Blood Group & Vital Signs Test Report", desc: "Laboratory vital signs test report format.",
+                fields: [{id:"pat",label:"Patient",val:"Shah Rukh Siddiqui"},{id:"bg",label:"Blood Group",val:"B+ Positive"},{id:"bp",label:"Blood Pressure",val:"120/80 mmHg"}],
+                render: f => `<h3>LABORATORY VITAL SIGNS REPORT</h3><p>Patient: ${f.pat}<br>Blood Group: <strong>${f.bg}</strong><br>Blood Pressure: ${f.bp}</p><br><br><strong>Pathologist Sign</strong>`
+            },
+            {
+                id: "med-4", category: "medical", title: "28. Diet & Hydration Plan Sheet", desc: "Personalized healthy diet and nutrition layout.",
+                fields: [{id:"user",label:"Name",val:"Shah Rukh Siddiqui"},{id:"diet",label:"Diet Rule",val:"Zero refined sugar, Fruit shakes with dates & peanut butter"}],
+                render: f => `<h3>HEALTH & DIET PLAN SCHEDULE</h3><p>Client: ${f.user}<br>Routine: ${f.diet}</p><br><br><strong>Approved Wellness Plan</strong>`
             },
 
-            // 6. PROPERTY
+            // PROPERTY & LEGAL (4)
             {
-                id: "house-rent-agreement", category: "property", title: "House Rent Agreement", desc: "Residential tenancy contract with security deposit and terms.",
-                fields: [
-                    {id:"landlord",label:"Landlord Name",val:"Muhammad Tariq"},
-                    {id:"tenant",label:"Tenant Name",val:"Shah Rukh Siddiqui"},
-                    {id:"address",label:"Property Address",val:"Gulshan-e-Iqbal, Karachi"},
-                    {id:"rent",label:"Monthly Rent (PKR)",val:"35,000"}
-                ],
-                render: f => `
-                    <h3>RESIDENTIAL RENT AGREEMENT</h3>
-                    <p>Agreement between <strong>${f.landlord}</strong> (Landlord) and <strong>${f.tenant}</strong> (Tenant) for property located at <strong>${f.address}</strong>.</p>
-                    <p>Monthly rent is fixed at <strong>PKR ${f.rent}</strong> payable in advance.</p>
-                    <br><br>
-                    <div style="display:flex; justify-content:space-between;">
-                        <div><strong>Landlord Sign:</strong> _________</div>
-                        <div><strong>Tenant Sign:</strong> _________</div>
-                    </div>
-                `
+                id: "prop-1", category: "property", title: "29. Comprehensive House Rent Agreement", desc: "Residential tenancy contract with security deposit and terms.",
+                fields: [{id:"land",label:"Landlord",val:"Muhammad Tariq"},{id:"tenant",label:"Tenant",val:"Shah Rukh Siddiqui"},{id:"addr",label:"Property Address",val:"Gulshan-e-Iqbal, Karachi"},{id:"rent",label:"Monthly Rent",val:"35,000"}],
+                render: f => `<h3>RESIDENTIAL RENT AGREEMENT</h3><p>Landlord <strong>${f.land}</strong> lets property at <strong>${f.addr}</strong> to Tenant <strong>${f.tenant}</strong> for monthly rent of <strong>PKR ${f.rent}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><div>Landlord: ___</div><div>Tenant: ___</div></div>`
+            },
+            {
+                id: "prop-2", category: "property", title: "30. Commercial Property Lease Deed", desc: "Commercial office or shop lease contract.",
+                fields: [{id:"owner",label:"Owner",val:"Commercial Landlord"},{id:"lessee",label:"Lessee",val:"Taj Al Huda Trading"},{id:"loc",label:"Location",val:"Karachi Commercial Center"}],
+                render: f => `<h3>COMMERCIAL LEASE DEED</h3><p>Commercial lease agreement between <strong>${f.owner}</strong> and <strong>${f.lessee}</strong> for premises at <strong>${f.loc}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><div>Owner: ___</div><div>Lessee: ___</div></div>`
+            },
+            {
+                id: "prop-3", category: "property", title: "31. Utility Connection Name Change Application", desc: "Application to K-Electric / Water Board for meter name transfer.",
+                fields: [{id:"auth",label:"Addressed To",v:"The Manager, K-Electric Karachi"},{id:"applicant",label:"Applicant",val:"Shah Rukh Siddiqui"},{id:"consumer",label:"Consumer / Account No",val:"04-12345-67890"}],
+                render: f => `<h3>APPLICATION FOR UTILITY METER NAME CHANGE</h3><p>To,<br>The Manager, K-Electric Karachi.</p><p>Subject: Transfer of Electricity Meter Name for Account No. <strong>${f.consumer}</strong> in name of <strong>${f.applicant}</strong>.</p><br><br><strong>Applicant Signature: _________</strong>`
+            },
+            {
+                id: "prop-4", category: "property", title: "32. General Power of Attorney (Legal)", desc: "Legal power of attorney authorization draft.",
+                fields: [{id:"principal",label:"Principal",val:"Shah Rukh Siddiqui"},{id:"agent",label:"Attorney Agent",val:"Muhammad Sharif"},{id:"purpose",label:"Purpose",val:"Property & Documentation Management"}],
+                render: f => `<h3>GENERAL POWER OF ATTORNEY</h3><p>I, <strong>${f.principal}</strong>, appoint <strong>${f.agent}</strong> as my lawful attorney for <strong>${f.purpose}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><div>Principal: ___</div><div>Attorney: ___</div></div>`
             }
         ];
 
