@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocuHub Global - Professional Suite</title>
+    <title>DocuHub Global - Complete Professional Suite</title>
     <style>
         * {
             margin: 0;
@@ -46,13 +46,14 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         nav ul li a {
             text-decoration: none;
             color: #616161;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             transition: color 0.2s;
         }
@@ -101,63 +102,93 @@
 
         .hero {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 60px 40px;
+            padding: 50px 40px;
             text-align: center;
             border-bottom: 1px solid #e1dfdd;
         }
 
         .hero h1 {
-            font-size: 38px;
+            font-size: 34px;
             font-weight: 600;
             color: #1b1b1b;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .hero p {
-            font-size: 16px;
+            font-size: 15px;
             color: #616161;
-            max-width: 700px;
-            margin: 0 auto 25px auto;
+            max-width: 750px;
+            margin: 0 auto;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 40px auto;
+            max-width: 1250px;
+            margin: 30px auto;
             padding: 0 20px;
         }
 
         .section-title {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #1b1b1b;
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 30px;
         }
 
         .search-bar {
             width: 100%;
-            padding: 12px 20px;
+            padding: 14px 20px;
             font-size: 16px;
             border: 1px solid #c8c6c4;
             border-radius: 4px;
-            margin-bottom: 30px;
             outline: none;
             transition: border 0.2s;
+            background: #fff;
         }
 
         .search-bar:focus {
             border-color: #0078d4;
+            box-shadow: 0 0 0 2px rgba(0,120,212,0.1);
+        }
+
+        #oneshot-box {
+            display: none;
+            background: #fff;
+            border-left: 5px solid #0078d4;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        #oneshot-box h3 {
+            font-size: 15px;
+            color: #0078d4;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #oneshot-box p {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1b1b1b;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            gap: 20px;
         }
 
         .card {
             background: #ffffff;
             border: 1px solid #e1dfdd;
-            padding: 25px;
+            padding: 22px;
             border-radius: 4px;
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
@@ -166,21 +197,21 @@
         }
 
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
         }
 
         .card h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
+            font-size: 16px;
+            margin-bottom: 8px;
             color: #1b1b1b;
         }
 
         .card p {
-            font-size: 13px;
+            font-size: 12px;
             color: #616161;
-            line-height: 1.5;
-            margin-bottom: 20px;
+            line-height: 1.4;
+            margin-bottom: 15px;
         }
 
         .card button {
@@ -188,7 +219,7 @@
             border: none;
             color: #0078d4;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             text-align: left;
             padding: 0;
@@ -198,7 +229,6 @@
             text-decoration: underline;
         }
 
-        /* Modal Workspace */
         #workspace-modal {
             display: none;
             position: fixed;
@@ -223,7 +253,7 @@
         }
 
         .modal-header {
-            padding: 20px 30px;
+            padding: 18px 25px;
             background: #f8f9fa;
             border-bottom: 1px solid #e1dfdd;
             display: flex;
@@ -245,11 +275,11 @@
         }
 
         .modal-body {
-            padding: 30px;
+            padding: 25px;
             overflow-y: auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
         }
 
         @media(max-width: 768px) {
@@ -257,28 +287,28 @@
         }
 
         .form-section h4, .preview-section h4 {
-            font-size: 15px;
-            margin-bottom: 15px;
+            font-size: 14px;
+            margin-bottom: 12px;
             color: #333;
             border-bottom: 2px solid #0078d4;
-            padding-bottom: 5px;
+            padding-bottom: 4px;
         }
 
         .form-group {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .form-group label {
             display: block;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             color: #616161;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
         .form-group input, .form-group select {
             width: 100%;
-            padding: 8px 10px;
+            padding: 7px 10px;
             border: 1px solid #c8c6c4;
             border-radius: 4px;
             font-size: 13px;
@@ -287,55 +317,63 @@
         .preview-box {
             background: #faf9f8;
             border: 1px solid #e1dfdd;
-            padding: 20px;
+            padding: 15px;
             border-radius: 4px;
-            min-height: 380px;
-            max-height: 480px;
+            min-height: 350px;
+            max-height: 450px;
             overflow-y: auto;
         }
 
         .modal-footer {
-            padding: 15px 30px;
+            padding: 12px 25px;
             background: #f8f9fa;
             border-top: 1px solid #e1dfdd;
             display: flex;
             justify-content: flex-end;
-            gap: 15px;
+            gap: 12px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo" onclick="app.showHome()"><span>DocuHub</span> Global</div>
+        <div class="logo" onclick="app.showHome()"><span>DocuHub</span> Global Suite</div>
         <nav>
             <ul>
                 <li><a onclick="app.filterCategory('all')" class="active" id="nav-all">All Hub</a></li>
-                <li><a onclick="app.filterCategory('hr')">HR Letters</a></li>
-                <li><a onclick="app.filterCategory('separation')">Separation</a></li>
-                <li><a onclick="app.filterCategory('commercial')">Commercial & B2B</a></li>
-                <li><a onclick="app.filterCategory('calculators')">Calculators & Tools</a></li>
+                <li><a onclick="app.filterCategory('property')">House & Property</a></li>
+                <li><a onclick="app.filterCategory('transport')">Cars & Vehicles</a></li>
+                <li><a onclick="app.filterCategory('hr')">HR & Employment</a></li>
+                <li><a onclick="app.filterCategory('legal')">Legal & Financial</a></li>
+                <li><a onclick="app.filterCategory('commercial')">Commercial</a></li>
+                <li><a onclick="app.filterCategory('calculators')">Calculators</a></li>
             </ul>
         </nav>
         <div class="nav-btns">
-            <button class="btn-outline" onclick="alert('Logged in as Shah Rukh Siddiqui (Senior Accountant)')">User Profile</button>
-            <button class="btn-primary" onclick="app.scrollToTemplates()">Explore</button>
+            <button class="btn-outline" onclick="alert('Shah Rukh Siddiqui - Senior Accountant | Taj Al Huda')">Profile</button>
         </div>
     </header>
 
     <section class="hero">
-        <h1>Smart Documentation & Accounting Suite</h1>
-        <p>Manage all HR letters, commercial invoices, salary slips, and payroll calculations instantly in one unified platform.</p>
+        <h1>Ultimate Professional Suite & Knowledge Hub</h1>
+        <p>Access complete house rent/sale agreements, utility connection applications, vehicle transfer letters, HR corporate letters, and smart tools.</p>
     </section>
 
     <div class="container" id="templates-section">
-        <h2 class="section-title">All Documents & Calculators</h2>
-        <input type="text" id="search-input" class="search-bar" placeholder="Search any letter, invoice or calculator (e.g. Offer Letter, Increment, Payroll, Tax Calculator)..." oninput="app.handleSearch(this.value)">
+        <h2 class="section-title">All Documents, Agreements, Letters & Smart Search</h2>
+        
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-bar" placeholder="Type anything for One-Shot Answer (e.g. pakistan kab bana) OR search documents..." oninput="app.handleSearch(this.value)">
+        </div>
+
+        <div id="oneshot-box">
+            <h3>Direct Answer / Result</h3>
+            <p id="oneshot-answer-text"></p>
+        </div>
         
         <div class="grid" id="templates-grid"></div>
     </div>
 
-    <!-- Modal Workspace -->
     <div id="workspace-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -360,221 +398,171 @@
     </div>
 
     <script>
+        const oneShotKnowledge = [
+            { query: "pakistan kab bana", answer: "14 August 1947" },
+            { query: "ainstie kon hai", answer: "Albert Einstein aik mashhoor theoretical physicist thay jinhain Theory of Relativity ke liye jana jata hai." },
+            { query: "taj al huda", answer: "Taj Al Huda Trading / Company jahan Shah Rukh Siddiqui Senior Accountant ke tor par kaam kar rahay hain." },
+            { query: "karachi kya hai", answer: "Karachi Pakistan ka sab se bara shahar aur economic hub hai." },
+            { query: "current year", answer: "2026" },
+            { query: "70cc motorcycle oil", answer: "Hyundai 10W-40 (850-900 km interval par change ki jati hai)." }
+        ];
+
         const hubDatabase = [
-            // HR LETTERS
+            // 1. HOUSE & PROPERTY & UTILITIES
             {
-                id: "offer-letter",
-                category: "hr",
-                title: "Employment Offer Letter",
-                desc: "Standard formal job offer letter with salary breakdown and designation.",
-                fields: [
-                    { id: "cand", label: "Candidate Name", val: "Shah Rukh Siddiqui" },
-                    { id: "desig", label: "Designation", val: "Senior Accountant" },
-                    { id: "comp", label: "Company Name", val: "Taj Al Huda" },
-                    { id: "salary", label: "Monthly Salary (PKR)", val: "120,000" },
-                    { id: "date", label: "Joining Date", val: "2026-10-01" }
-                ],
-                render: (f) => `
-                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
-                        <h3>${f.comp}</h3>
-                        <p><small>Date: ${new Date().toISOString().split('T')[0]}</small></p>
-                        <p>Dear <strong>${f.cand}</strong>,</p>
-                        <p>We are excited to offer you the position of <strong>${f.desig}</strong> at <strong>${f.comp}</strong> starting <strong>${f.date}</strong> with a monthly remuneration of <strong>PKR ${f.salary}</strong>.</p>
-                        <div style="margin-top:30px;"><strong>Authorized Signatory</strong><br><small>${f.comp}</small></div>
-                    </div>`
+                id: "house-rent-agreement", category: "property", title: "House Rent Agreement (Tenancy)", desc: "Formal residential rental agreement between landlord and tenant.",
+                fields: [{id:"landlord",label:"Landlord Name",val:"Muhammad Tariq"},{id:"tenant",label:"Tenant Name",val:"Shah Rukh Siddiqui"},{id:"address",label:"House Address",val:"Flat No 402, Block 14, Gulshan-e-Iqbal, Karachi"},{id:"rent",label:"Monthly Rent (PKR)",val:"35,000"},{id:"advance",label:"Advance / Security Deposit",val:"100,000"}],
+                render: f => `<h3>RESIDENTIAL HOUSE RENT AGREEMENT</h3><p>Date: ${new Date().toISOString().split('T')[0]}</p><p>This agreement is made between <strong>${f.landlord}</strong> (Landlord) and <strong>${f.tenant}</strong> (Tenant) for renting property located at <strong>${f.address}</strong> at a monthly rent of <strong>PKR ${f.rent}</strong> with an advance security of <strong>PKR ${f.advance}</strong>.</p><br><div style="display:flex; justify-content:space-between;"><div><strong>Landlord Sign:</strong> ____________</div><div><strong>Tenant Sign:</strong> ____________</div></div>`
             },
             {
-                id: "increment-letter",
-                category: "hr",
-                title: "Salary Increment & Promotion Letter",
-                desc: "Official notice announcing annual appraisal, pay revision, and promotion.",
-                fields: [
-                    { id: "emp", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-                    { id: "desig", label: "New Designation", val: "Senior Accountant" },
-                    { id: "comp", label: "Company Name", val: "Taj Al Huda" },
-                    { id: "oldSal", label: "Previous Salary (PKR)", val: "100,000" },
-                    { id: "newSal", label: "Revised Salary (PKR)", val: "120,000" }
-                ],
-                render: (f) => `
-                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
-                        <h3>${f.comp} - HR Department</h3>
-                        <h4>Subject: Salary Revision & Promotion</h4>
-                        <p>Dear <strong>${f.emp}</strong>,</p>
-                        <p>In recognition of your dedicated performance, management is pleased to promote you to <strong>${f.desig}</strong>. Your monthly salary has been revised from PKR ${f.oldSal} to <strong>PKR ${f.newSal}</strong>.</p>
-                        <div style="margin-top:30px;"><strong>Director HR</strong></div>
-                    </div>`
+                id: "house-sale-agreement", category: "property", title: "House / Plot Sale Agreement", desc: "Agreement to sell residential property with token and installment details.",
+                fields: [{id:"seller",label:"Seller Name",val:"Ahmed Khan"},{id:"buyer",label:"Buyer Name",val:"Shah Rukh Siddiqui"},{id:"property",label:"Property Description",val:"House No B-12, Sector 11-A, North Karachi"},{id:"totalPrice",label:"Total Price (PKR)",val:"12,500,000"},{id:"token",label:"Token / Advance Paid",val:"1,500,000"}],
+                render: f => `<h3>PROPERTY / HOUSE SALE AGREEMENT</h3><p>This sale agreement is executed between <strong>${f.seller}</strong> (Seller) and <strong>${f.buyer}</strong> (Buyer) for property <strong>${f.property}</strong> for a total agreed consideration of <strong>PKR ${f.totalPrice}</strong>. Token amount received: <strong>PKR ${f.token}</strong>.</p><br><div style="display:flex; justify-content:space-between;"><div><strong>Seller Sign:</strong> ____________</div><div><strong>Buyer Sign:</strong> ____________</div></div>`
             },
             {
-                id: "probation-letter",
-                category: "hr",
-                title: "Probation Confirmation Letter",
-                desc: "Letter confirming permanent employment status after successful probation.",
-                fields: [
-                    { id: "emp", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-                    { id: "desig", label: "Designation", val: "Senior Accountant" },
-                    { id: "comp", label: "Company Name", val: "Taj Al Huda" },
-                    { id: "confDate", label: "Confirmation Date", val: "2026-10-01" }
-                ],
-                render: (f) => `
-                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
-                        <h3>${f.comp}</h3>
-                        <h4>Confirmation of Employment</h4>
-                        <p>Dear <strong>${f.emp}</strong>,</p>
-                        <p>We are pleased to inform you that following the successful completion of your probation period, your employment as <strong>${f.desig}</strong> is confirmed permanent effective <strong>${f.confDate}</strong>.</p>
-                        <div style="margin-top:30px;"><strong>HR Manager</strong></div>
-                    </div>`
+                id: "utility-electric-connection", category: "property", title: "Electricity New Connection Request", desc: "Application letter to K-Electric or WAPDA for new meter installation.",
+                fields: [{id:"applicant",label:"Applicant Name",val:"Shah Rukh Siddiqui"},{id:"cnic",label:"CNIC No",val:"42101-1234567-1"},{id:"address",label:"Premises Address",val:"House 12, Street 3, Karachi"},{id:"load",label:"Requested Load",val:"5 KW"}],
+                render: f => `<h3>APPLICATION FOR NEW ELECTRICITY CONNECTION</h3><p>To,<br>The Manager / Customer Services,<br>K-Electric / WAPDA, Karachi.</p><p>Respected Sir,<br>I, <strong>${f.applicant}</strong> (CNIC: ${f.cnic}), request you to kindly install a new electricity meter (Load: ${f.load}) at my residential premises located at <strong>${f.address}</strong>. Required documents are attached.</p><br><br><strong>Applicant Signature:</strong> ____________`
             },
             {
-                id: "warning-letter",
-                category: "hr",
-                title: "Official Warning / Disciplinary Letter",
-                desc: "Formal notice addressing attendance or policy infractions.",
-                fields: [
-                    { id: "emp", label: "Employee Name", val: "Employee Name" },
-                    { id: "comp", label: "Company Name", val: "Taj Al Huda" },
-                    { id: "reason", label: "Infraction Reason", val: "Repeated unauthorized lateness" }
-                ],
-                render: (f) => `
-                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
-                        <h3>${f.comp}</h3>
-                        <h4 style="color:#d9534f;">DISCIPLINARY WARNING NOTICE</h4>
-                        <p>To: <strong>${f.emp}</strong></p>
-                        <p>This letter serves as a formal warning regarding <strong>${f.reason}</strong>. Immediate improvement is expected to avoid further disciplinary action.</p>
-                        <div style="margin-top:30px;"><strong>Management</strong></div>
-                    </div>`
+                id: "utility-gas-connection", category: "property", title: "SNGPL / SSGC Gas New Connection", desc: "Application letter for new natural gas connection.",
+                fields: [{id:"applicant",label:"Applicant Name",val:"Shah Rukh Siddiqui"},{id:"cnic",label:"CNIC No",val:"42101-1234567-1"},{id:"address",label:"House Address",val:"House 12, Street 3, Karachi"}],
+                render: f => `<h3>APPLICATION FOR NEW GAS CONNECTION</h3><p>To,<br>The General Manager,<br>SSGC / SNGPL, Karachi.</p><p>Respected Sir,<br>I, <strong>${f.applicant}</strong> (CNIC: ${f.cnic}), request the installation of a new domestic gas connection at my address: <strong>${f.address}</strong>.</p><br><br><strong>Applicant Signature:</strong> ____________`
+            },
+            {
+                id: "utility-water-connection", category: "property", title: "Water & Sewerage New Connection", desc: "Application for new water supply connection.",
+                fields: [{id:"applicant",label:"Applicant Name",val:"Shah Rukh Siddiqui"},{id:"address",label:"House Address",val:"House 12, Street 3, Karachi"}],
+                render: f => `<h3>APPLICATION FOR WATER CONNECTION</h3><p>To,<br>The Executive Engineer,<br>Water Board, Karachi.</p><p>Respected Sir,<br>I request a new water supply and sewerage connection for my property at <strong>${f.address}</strong>.</p><br><br><strong>Applicant Signature:</strong> ____________`
             },
 
-            // SEPARATION LETTERS
+            // 2. CARS & VEHICLES
             {
-                id: "resignation-letter",
-                category: "separation",
-                title: "Resignation Acceptance Letter",
-                desc: "Formal reply accepting employee resignation and stating final clearance date.",
-                fields: [
-                    { id: "emp", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-                    { id: "comp", label: "Company Name", val: "Taj Al Huda" },
-                    { id: "lastDay", label: "Last Working Day", val: "2026-10-31" }
-                ],
-                render: (f) => `
-                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
-                        <h3>${f.comp}</h3>
-                        <h4>Acceptance of Resignation</h4>
-                        <p>Dear <strong>${f.emp}</strong>,</p>
-                        <p>We accept your resignation from your position. Your last working day will be <strong>${f.lastDay}</strong>, subject to completion of your departmental clearance.</p>
-                        <div style="margin-top:30px;"><strong>HR Director</strong></div>
-                    </div>`
+                id: "car-sale-agreement", category: "transport", title: "Car / Vehicle Sale Agreement", desc: "Official agreement for selling a motor car with payment details.",
+                fields: [{id:"seller",label:"Seller Name",val:"Muhammad Ali"},{id:"buyer",label:"Buyer Name",val:"Shah Rukh Siddiqui"},{id:"car",label:"Car Make & Model",val:"Toyota Corolla GLI 2022"},{id:"reg",label:"Registration No",val:"ABC-123 (Karachi)"},{id:"price",label:"Sale Price (PKR)",val:"3,500,000"}],
+                render: f => `<h3>VEHICLE SALE AGREEMENT</h3><p>Date: ${new Date().toISOString().split('T')[0]}</p><p>This agreement is made between <strong>${f.seller}</strong> (Seller) and <strong>${f.buyer}</strong> (Buyer) for the sale of motor vehicle <strong>${f.car}</strong> bearing registration number <strong>${f.reg}</strong> against the agreed total sum of <strong>PKR ${f.price}</strong>.</p><br><div style="display:flex; justify-content:space-between;"><div><strong>Seller Signature:</strong> ____________</div><div><strong>Buyer Signature:</strong> ____________</div></div>`
             },
             {
-                id: "experience-letter",
-                category: "separation",
-                title: "Experience & Relieving Certificate",
-                desc: "Service certificate verifying employment tenure and duties.",
-                fields: [
-                    { id: "emp", label: "Employee Name", val: "Shah Rukh Siddiqui" },
-                    { id: "desig", label: "Designation", val: "Senior Accountant" },
-                    { id: "comp", label: "Company Name", val: "Taj Al Huda" },
-                    { id: "period", label: "Tenure Period", val: "2024 to 2026" }
-                ],
-                render: (f) => `
-                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
-                        <h3>${f.comp}</h3>
-                        <h4 style="text-align:center;">EXPERIENCE CERTIFICATE</h4>
-                        <p>This is to certify that <strong>${f.emp}</strong> worked with <strong>${f.comp}</strong> as <strong>${f.desig}</strong> from <strong>${f.period}</strong>. We wish them success in future endeavors.</p>
-                        <div style="margin-top:40px;"><strong>Authorized Signatory</strong></div>
-                    </div>`
+                id: "car-purchase-receipt", category: "transport", title: "Car Purchase & Payment Receipt", desc: "Payment receipt issued upon purchasing a motor vehicle.",
+                fields: [{id:"buyer",label:"Buyer Name",val:"Shah Rukh Siddiqui"},{id:"seller",label:"Seller Name",val:"Muhammad Ali"},{id:"amount",label:"Amount Paid (PKR)",val:"1,000,000"},{id:"car",label:"Vehicle Details",val:"Toyota Corolla 2022"}],
+                render: f => `<h3>VEHICLE PURCHASE RECEIPT</h3><p>Received with thanks the sum of <strong>PKR ${f.amount}</strong> from <strong>${f.buyer}</strong> towards the purchase of <strong>${f.car}</strong> from <strong>${f.seller}</strong>.</p><br><br><strong>Receiver Signature:</strong> ____________`
+            },
+            {
+                id: "car-transfer-letter", category: "transport", title: "Vehicle Ownership Transfer Application", desc: "Application letter addressed to Excise department.",
+                fields: [{id:"applicant",label:"Applicant Name",val:"Shah Rukh Siddiqui"},{id:"cnic",label:"CNIC No",val:"42101-1234567-1"},{id:"car",label:"Vehicle Model & No",val:"Toyota Corolla - ABC-123"},{id:"prevOwner",label:"Previous Owner Name",val:"Muhammad Ali"}],
+                render: f => `<h3>APPLICATION FOR VEHICLE TRANSFER</h3><p>To,<br>The Motor Registration Authority,<br>Excise & Taxation Department, Karachi.</p><p>Respected Sir,<br>I, <strong>${f.applicant}</strong> (CNIC: ${f.cnic}), have purchased vehicle <strong>${f.car}</strong> from <strong>${f.prevOwner}</strong>. Kindly transfer the ownership registration in my name.</p><br><br><strong>Applicant Signature:</strong> ____________`
+            },
+            {
+                id: "car-authority-letter", category: "transport", title: "Vehicle Authority Letter", desc: "Authorizes another person to drive or manage token tax.",
+                fields: [{id:"owner",label:"Vehicle Owner Name",val:"Shah Rukh Siddiqui"},{id:"authPerson",label:"Authorized Person",val:"Usman Raza"},{id:"car",label:"Vehicle No",val:"ABC-123"}],
+                render: f => `<h3>AUTHORITY LETTER FOR VEHICLE</h3><p>I, <strong>${f.owner}</strong>, owner of vehicle <strong>${f.car}</strong>, authorize <strong>${f.authPerson}</strong> to drive and submit token tax/documents at Excise office.</p><br><br><strong>Owner Signature:</strong> ____________`
             },
 
-            // COMMERCIAL & B2B
+            // 3. HR & EMPLOYMENT
             {
-                id: "tax-invoice",
-                category: "commercial",
-                title: "Standard Commercial Tax Invoice",
-                desc: "Professional sales invoice template with itemized calculation.",
-                fields: [
-                    { id: "client", label: "Client Name", val: "Bait al Ezz Curtains" },
-                    { id: "invNo", label: "Invoice No", val: "INV-2026-001" },
-                    { id: "item", label: "Item Description", val: "Premium Sofa Fabric Roll" },
-                    { id: "amount", label: "Total Amount (PKR)", val: "85,000" }
-                ],
-                render: (f) => `
-                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
-                        <div style="display:flex; justify-content:space-between;">
-                            <h3>TAX INVOICE</h3>
-                            <div><strong>${f.invNo}</strong></div>
-                        </div>
-                        <p>Billed To: <strong>${f.client}</strong></p>
-                        <hr style="margin:10px 0;">
-                        <p>Item: <strong>${f.item}</strong></p>
-                        <p>Grand Total: <strong>PKR ${f.amount}</strong></p>
-                        <div style="margin-top:40px;"><strong>Accounts Department</strong></div>
-                    </div>`
+                id: "offer-letter", category: "hr", title: "Employment Offer Letter", desc: "Formal job offer letter with salary breakdown.",
+                fields: [{id:"cand",label:"Candidate Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"comp",label:"Company Name",val:"Taj Al Huda"},{id:"salary",label:"Monthly Salary (PKR)",val:"120,000"}],
+                render: f => `<h3>${f.comp}</h3><p>Dear <strong>${f.cand}</strong>, we are pleased to offer you the position of <strong>${f.desig}</strong> at <strong>${f.comp}</strong> with a monthly salary of PKR ${f.salary}.</p><br><br><strong>Authorized Signatory</strong>`
             },
             {
-                id: "ledger-statement",
-                category: "commercial",
-                title: "Customer Account Ledger Statement",
-                desc: "Account summary statement showing debits, credits, and closing balance.",
-                fields: [
-                    { id: "client", label: "Account Name", val: "Sofasticated Fabrics" },
-                    { id: "debit", label: "Total Debits", val: "150,000" },
-                    { id: "credit", label: "Total Credits", val: "120,000" }
-                ],
-                render: (f) => `
-                    <div style="font-family:sans-serif; color:#333; line-height:1.6;">
-                        <h3>Account Statement</h3>
-                        <p>Client: <strong>${f.client}</strong></p>
-                        <p>Total Debits: PKR ${f.debit}</p>
-                        <p>Total Credits: PKR ${f.credit}</p>
-                        <p><strong>Net Balance Due: PKR ${f.debit - f.credit}</strong></p>
-                        <div style="margin-top:30px;"><strong>Senior Accountant</strong></div>
-                    </div>`
+                id: "appointment-letter", category: "hr", title: "Formal Appointment Letter", desc: "Definitive employment contract agreement.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"comp",label:"Company Name",val:"Taj Al Huda"}],
+                render: f => `<h3>${f.comp}</h3><h4>Appointment Letter</h4><p>Dear <strong>${f.emp}</strong>, this confirms your official appointment as <strong>${f.desig}</strong> effective immediately.</p><br><br><strong>HR Director</strong>`
+            },
+            {
+                id: "probation-letter", category: "hr", title: "Probation Confirmation Letter", desc: "Confirms permanent status after probation.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"comp",label:"Company Name",val:"Taj Al Huda"}],
+                render: f => `<h3>${f.comp}</h3><h4>Probation Confirmation</h4><p>Dear <strong>${f.emp}</strong>, your probation period as <strong>${f.desig}</strong> has been successfully completed.</p><br><br><strong>Management</strong>`
+            },
+            {
+                id: "increment-letter", category: "hr", title: "Salary Increment & Promotion Letter", desc: "Annual pay revision and promotion notice.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"comp",label:"Company Name",val:"Taj Al Huda"},{id:"newSal",label:"New Salary",val:"135,000"}],
+                render: f => `<h3>${f.comp}</h3><h4>Salary Revision</h4><p>Dear <strong>${f.emp}</strong>, your salary has been revised to <strong>PKR ${f.newSal}</strong>.</p><br><br><strong>Director HR</strong>`
+            },
+            {
+                id: "transfer-letter", category: "hr", title: "Department Transfer Letter", desc: "Notice for transfer to another branch or department.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"dept",label:"New Department",val:"Corporate Accounts"}],
+                render: f => `<h3>Internal Transfer Notice</h3><p>Dear <strong>${f.emp}</strong>, you are hereby transferred to the <strong>${f.dept}</strong> department.</p><br><br><strong>Operations Manager</strong>`
             },
 
-            // CALCULATORS & TOOLS
+            // 4. SEPARATION & CLEARANCE
             {
-                id: "calc-payroll",
-                category: "calculators",
-                title: "Net Payroll & Salary Calculator",
-                desc: "Calculate net take-home salary after allowances and deductions.",
-                fields: [
-                    { id: "basic", label: "Basic Salary", val: "100000" },
-                    { id: "allowance", label: "Allowances", val: "25000" },
-                    { id: "deduction", label: "Tax / Deductions", val: "5000" }
-                ],
-                render: (f) => {
+                id: "resignation-acceptance", category: "hr", title: "Resignation Acceptance Letter", desc: "Formal acceptance of employee resignation.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"lastDay",label:"Last Working Day",val:"2026-10-31"}],
+                render: f => `<h3>Resignation Acceptance</h3><p>Dear <strong>${f.emp}</strong>, we accept your resignation. Last working day: <strong>${f.lastDay}</strong>.</p><br><br><strong>HR Director</strong>`
+            },
+            {
+                id: "experience-letter", category: "hr", title: "Experience Certificate", desc: "Official service certificate for former employee.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"desig",label:"Designation",val:"Senior Accountant"},{id:"tenure",label:"Tenure",val:"2024 - 2026"}],
+                render: f => `<h3 style="text-align:center;">EXPERIENCE CERTIFICATE</h3><p>This is to certify that <strong>${f.emp}</strong> served as <strong>${f.desig}</strong> from <strong>${f.tenure}</strong>.</p><br><br><strong>Authorized Signatory</strong>`
+            },
+            {
+                id: "relieving-letter", category: "hr", title: "Relieving & Clearance Letter", desc: "Confirms clearance of dues and formal exit.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"}],
+                render: f => `<h3>Relieving Letter</h3><p>Dear <strong>${f.emp}</strong>, you have been officially relieved from your duties.</p><br><br><strong>HR Head</strong>`
+            },
+            {
+                id: "fnf-settlement", category: "hr", title: "Full & Final Settlement Letter", desc: "Summary of F&F dues and final payout.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"amount",label:"Final Payout (PKR)",val:"145,000"}],
+                render: f => `<h3>Full & Final Settlement</h3><p>Dear <strong>${f.emp}</strong>, your F&F settlement amount of <strong>PKR ${f.amount}</strong> has been cleared.</p><br><br><strong>Accounts Dept</strong>`
+            },
+
+            // 5. LEGAL & FINANCIAL
+            {
+                id: "salary-certificate", category: "legal", title: "Official Salary Certificate", desc: "Certificate for loan, visa, or embassy verification.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"salary",label:"Monthly Salary",val:"120,000"},{id:"comp",label:"Company Name",val:"Taj Al Huda"}],
+                render: f => `<h3>Salary Certificate</h3><p>This certifies that <strong>${f.emp}</strong> earns <strong>PKR ${f.salary}</strong> at <strong>${f.comp}</strong>.</p><br><br><strong>Finance Manager</strong>`
+            },
+            {
+                id: "noc-letter", category: "legal", title: "No Objection Certificate (NOC)", desc: "NOC for passport, travel, or external courses.",
+                fields: [{id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},{id:"purpose",label:"Purpose",val:"Passport & Travel"}],
+                render: f => `<h3>No Objection Certificate</h3><p>No objection for <strong>${f.emp}</strong> regarding <strong>${f.purpose}</strong>.</p><br><br><strong>Authorized Signatory</strong>`
+            },
+            {
+                id: "legal-notice", category: "legal", title: "Commercial Legal Notice", desc: "Formal legal demand letter for payment default.",
+                fields: [{id:"party",label:"Recipient Party",val:"Defaulting Client"},{id:"amount",label:"Due Amount",val:"250,000"}],
+                render: f => `<h3 style="color:red">LEGAL NOTICE</h3><p>To <strong>${f.party}</strong>, clear outstanding dues of <strong>PKR ${f.amount}</strong> within 7 days.</p><br><br><strong>Legal Counsel</strong>`
+            },
+
+            // 6. COMMERCIAL & B2B
+            {
+                id: "tax-invoice", category: "commercial", title: "Commercial Tax Invoice", desc: "Itemized sales tax invoice template.",
+                fields: [{id:"client",label:"Client Name",val:"Bait al Ezz Curtains"},{id:"invNo",label:"Invoice No",val:"INV-2026-001"},{id:"amount",label:"Total Amount",val:"85,000"}],
+                render: f => `<h3>TAX INVOICE (${f.invNo})</h3><p>Billed To: <strong>${f.client}</strong></p><hr><p>Grand Total: <strong>PKR ${f.amount}</strong></p><br><br><strong>Accounts Dept</strong>`
+            },
+            {
+                id: "ledger-statement", category: "commercial", title: "Customer Ledger Statement", desc: "Account debit/credit ledger summary.",
+                fields: [{id:"client",label:"Account Name",val:"Sofasticated Fabrics"},{id:"debit",label:"Total Debits",val:"150000"},{id:"credit",label:"Total Credits",val:"120000"}],
+                render: f => `<h3>Ledger Statement</h3><p>Client: <strong>${f.client}</strong></p><p><strong>Net Balance: PKR ${f.debit - f.credit}</strong></p><br><br><strong>Senior Accountant</strong>`
+            },
+            {
+                id: "purchase-order", category: "commercial", title: "Purchase Order (PO)", desc: "Official purchase order for vendor supplies.",
+                fields: [{id:"vendor",label:"Vendor Name",val:"Arshe Autos"},{id:"total",label:"PO Total",val:"45,000"}],
+                render: f => `<h3>PURCHASE ORDER</h3><p>Vendor: <strong>${f.vendor}</strong></p><p><strong>Total Value: PKR ${f.total}</strong></p><br><br><strong>Procurement Manager</strong>`
+            },
+
+            // 7. CALCULATORS & TOOLS
+            {
+                id: "calc-payroll", category: "calculators", title: "Net Payroll Calculator", desc: "Calculate take-home salary after deductions.",
+                fields: [{id:"basic",label:"Basic Salary",val:"100000"},{id:"allowance",label:"Allowances",val:"25000"},{id:"deduction",label:"Deductions",val:"5000"}],
+                render: f => {
                     const net = Number(f.basic) + Number(f.allowance) - Number(f.deduction);
-                    return `
-                        <div style="font-family:sans-serif; color:#333; line-height:1.6;">
-                            <h3>Payroll Computation Summary</h3>
-                            <p>Basic Salary: PKR ${f.basic}</p>
-                            <p>Allowances: PKR ${f.allowance}</p>
-                            <p>Deductions: PKR ${f.deduction}</p>
-                            <hr style="margin:10px 0;">
-                            <h4 style="color:#0078d4;">Net Payable Salary: PKR ${net.toLocaleString()}</h4>
-                        </div>`;
+                    return `<h3>Payroll Computation</h3><p>Basic: ${f.basic} | Allowances: ${f.allowance}</p><hr><h4 style="color:#0078d4;">Net Payable: PKR ${net.toLocaleString()}</h4>`;
                 }
             },
             {
-                id: "calc-percentage",
-                category: "calculators",
-                title: "Percentage & Markup Calculator",
-                desc: "Calculate commercial profit markup, discounts, or sales percentages.",
-                fields: [
-                    { id: "val1", label: "Base Amount", val: "50000" },
-                    { id: "val2", label: "Percentage (%)", val: "16" }
-                ],
-                render: (f) => {
+                id: "calc-percentage", category: "calculators", title: "Percentage & Markup Calculator", desc: "Calculate commercial markup or discounts.",
+                fields: [{id:"val1",label:"Base Amount",val:"50000"},{id:"val2",label:"Percentage (%)",val:"16"}],
+                render: f => {
                     const res = (Number(f.val1) * Number(f.val2)) / 100;
-                    const total = Number(f.val1) + res;
-                    return `
-                        <div style="font-family:sans-serif; color:#333; line-height:1.6;">
-                            <h3>Percentage & Tax Calculation</h3>
-                            <p>Base Amount: PKR ${f.val1}</p>
-                            <p>Percentage: ${f.val2}%</p>
-                            <p>Calculated Value: PKR ${res.toLocaleString()}</p>
-                            <hr style="margin:10px 0;">
-                            <h4 style="color:#0078d4;">Total with Markup/Tax: PKR ${total.toLocaleString()}</h4>
-                        </div>`;
+                    return `<h3>Percentage Calculation</h3><p>Base: ${f.val1} | Rate: ${f.val2}%</p><hr><h4 style="color:#0078d4;">Calculated Value: PKR ${res.toLocaleString()}</h4>`;
+                }
+            },
+            {
+                id: "calc-loan", category: "calculators", title: "Advance Salary / Loan Calculator", desc: "Compute monthly installment deductions for loans.",
+                fields: [{id:"loan",label:"Loan Amount",val:"60000"},{id:"months",label:"Months",val:"6"}],
+                render: f => {
+                    const monthly = Number(f.loan) / Number(f.months);
+                    return `<h3>Loan Installment Calculator</h3><p>Principal: PKR ${f.loan} over ${f.months} months</p><hr><h4 style="color:#0078d4;">Monthly Deduction: PKR ${monthly.toFixed(2)}</h4>`;
                 }
             }
         ];
@@ -595,7 +583,7 @@
                 if (!grid) return;
                 grid.innerHTML = '';
                 if(data.length === 0) {
-                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:#666;">No items found matching your search.</p>';
+                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:#666;">No matching documents found.</p>';
                     return;
                 }
                 data.forEach(item => {
@@ -621,20 +609,37 @@
                     event.target.classList.add('active');
                     this.currentData = hubDatabase.filter(i => i.category === cat);
                 }
+                document.getElementById('oneshot-box').style.display = 'none';
                 this.renderGrid(this.currentData);
             }
 
             handleSearch(query) {
-                const q = query.toLowerCase();
+                const q = query.toLowerCase().trim();
+                const oneshotBox = document.getElementById('oneshot-box');
+                const oneshotText = document.getElementById('oneshot-answer-text');
+
+                if (!q) {
+                    oneshotBox.style.display = 'none';
+                    this.currentData = [...hubDatabase];
+                    this.renderGrid(this.currentData);
+                    return;
+                }
+
+                const matchedOneShot = oneShotKnowledge.find(item => item.query.toLowerCase().includes(q) || q.includes(item.query.toLowerCase()));
+                if (matchedOneShot) {
+                    oneshotText.innerText = matchedOneShot.answer;
+                    oneshotBox.style.display = 'block';
+                } else {
+                    oneshotBox.style.display = 'none';
+                }
+
                 const filtered = hubDatabase.filter(i => i.title.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q));
                 this.renderGrid(filtered);
             }
 
-            scrollToTemplates() {
-                document.getElementById('templates-section').scrollIntoView({ behavior: 'smooth' });
-            }
-
             showHome() {
+                document.getElementById('search-input').value = '';
+                document.getElementById('oneshot-box').style.display = 'none';
                 this.currentData = [...hubDatabase];
                 this.renderGrid(this.currentData);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
