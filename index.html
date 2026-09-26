@@ -81,7 +81,7 @@
         .modal-header h2 { font-size: 16px; color: #1e4d3b; font-family: 'Georgia', serif; }
         .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #1e4d3b; }
         
-        /* Font Toolbar inside Modal Header or Top Bar */
+        /* Font Toolbar inside Modal */
         .word-toolbar { display: flex; align-items: center; gap: 10px; background: #faf9f5; padding: 8px 25px; border-bottom: 1px solid #e6e2d8; font-size: 11px; }
         .word-toolbar select { padding: 4px 8px; border: 1px solid #d5d1c8; border-radius: 4px; background: #fff; font-size: 11px; outline: none; cursor: pointer; }
 
@@ -92,14 +92,44 @@
         .form-group label { display: block; font-size: 10px; font-weight: 700; color: #555; margin-bottom: 3px; text-transform: uppercase; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 7px 10px; border: 1px solid #d5d1c8; border-radius: 4px; font-size: 12px; outline: none; background: #faf9f5; }
         
-        .preview-box { background: #ffffff; border: 1px solid #d5d1c8; padding: 25px; border-radius: 4px; min-height: 400px; max-height: 500px; overflow-y: auto; font-size: 11px; line-height: 1.6; color: #222; box-shadow: inset 0 0 10px rgba(0,0,0,0.02); font-family: 'Calibri', sans-serif; }
-        .preview-box h3 { text-align: center; font-size: 13px; margin-bottom: 12px; text-transform: uppercase; color: #1e4d3b; }
+        .preview-box { background: #ffffff; border: 1px solid #d5d1c8; padding: 25px; border-radius: 4px; min-height: 400px; max-height: 500px; overflow-y: auto; font-size: 12px; line-height: 1.6; color: #222; box-shadow: inset 0 0 10px rgba(0,0,0,0.02); font-family: 'Calibri', sans-serif; }
+        .preview-box h3 { text-align: center; font-size: 14px; margin-bottom: 12px; text-transform: uppercase; color: #1e4d3b; }
         
         .modal-footer { padding: 12px 25px; background: #f0eee6; border-top: 1px solid #e6e2d8; display: flex; justify-content: flex-end; gap: 10px; }
         .btn-primary { background: #1e4d3b; border: none; color: #ffffff; padding: 8px 18px; font-size: 12px; cursor: pointer; font-weight: 600; border-radius: 4px; transition: background 0.2s; }
         .btn-primary:hover { background: #143528; }
         .btn-outline { background: transparent; border: 1px solid #1e4d3b; color: #1e4d3b; padding: 8px 18px; font-size: 12px; cursor: pointer; font-weight: 600; border-radius: 4px; transition: all 0.2s; }
         .btn-outline:hover { background: #1e4d3b; color: white; }
+
+        /* PRINT CONFIGURATION: ONLY PRINT PREVIEW BOX */
+        @media print {
+            body * {
+                visibility: hidden !important;
+            }
+            #modal-live-preview, #modal-live-preview * {
+                visibility: visible !important;
+            }
+            #workspace-modal, .modal-content, .preview-section {
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                width: 100% !important;
+                background: white !important;
+                box-shadow: none !important;
+                border: none !important;
+            }
+            #modal-live-preview {
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                width: 100% !important;
+                max-height: none !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 20px !important;
+                margin: 0 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -304,7 +334,6 @@
                     const shapeClass = item.shape === 'circle' ? 'shape-circle-card' : '';
                     card.className = `card ${shapeClass}`;
                     
-                    // Dynamic Sequential Numbering (1, 2, 3...)
                     const serialNumber = index + 1;
 
                     card.innerHTML = `
