@@ -414,14 +414,14 @@
 
     <section class="hero">
         <h1>Ultimate Professional Suite & Knowledge Hub</h1>
-        <p>Access highly detailed, professional legal agreements, tenancy contracts, utility applications, corporate HR letters, and smart tools.</p>
+        <p>Access complete house rent/sale agreements, utility connection applications, vehicle transfer letters, HR corporate letters, and smart tools.</p>
     </section>
 
     <div class="container" id="templates-section">
         <h2 class="section-title">All Documents, Agreements, Letters & Smart Search</h2>
         
         <div class="search-container">
-            <input type="text" id="search-input" class="search-bar" placeholder="Type anything for Instant Answer (e.g. uae match, pakistan kab bana, tax rate) OR search documents..." oninput="app.handleSearch(this.value)">
+            <input type="text" id="search-input" class="search-bar" placeholder="Type anything for Instant Answer OR search documents..." oninput="app.handleSearch(this.value)">
         </div>
 
         <div id="oneshot-box">
@@ -458,8 +458,7 @@
     <script>
         const oneShotKnowledge = [
             { query: "pakistan kab bana", answer: "Pakistan 14 August 1947 ko azeem islami riyasat ke taur par qaim hua tha." },
-            { query: "uae", answer: "United Arab Emirates (UAE) ka cricket ya international fixtures ka schedule ICC aur Emirates Cricket Board ke calendar ke mutabiq update hota rehta hai." },
-            { query: "match", answer: "Aap jis match ya tournament ke baray mein maloom karna chahte hain, us ki specific teams ka naam likhein." },
+            { query: "uae", answer: "United Arab Emirates (UAE) ka schedule ICC aur Emirates Cricket Board ke calendar ke mutabiq update hota rehta hai." },
             { query: "taj al huda", answer: "Taj Al Huda Trading / Company jahan Shah Rukh Siddiqui Senior Accountant ke tor par financial ledgers aur tax invoices manage kar rahay hain." },
             { query: "current year", answer: "Current year 2026 hai." },
             { query: "70cc motorcycle oil", answer: "Union Star 70cc motorcycle mein Hyundai 10W-40 engine oil behtareen rehta hai jo 850-900 km par change kiya jata hai." }
@@ -485,7 +484,7 @@
                     <p>1. <strong>Duration:</strong> That this agreement shall remain valid for a period of <strong>${f.duration}</strong> starting from the date of execution, renewable with mutual consent.</p>
                     <p>2. <strong>Monthly Rent:</strong> That the monthly rent shall be <strong>PKR ${f.rent}</strong>, payable in advance on or before the 5th day of each calendar month.</p>
                     <p>3. <strong>Security Deposit:</strong> That the Tenant has paid an advance security deposit of <strong>PKR ${f.advance}</strong>, which shall be refundable at the time of vacating the premises, subject to clearance of utility bills and damages if any.</p>
-                    <p>4. <strong>Utilities:</strong> Electricity, gas, and water bills shall be paid regularly by the Tenant during the tenancy period.</p>
+                    <p>4. <strong>Utilities:</strong> Electricity, gas, and water bills shall be paid regularly bycision the Tenant during the tenancy period.</p>
                     <br>
                     <div style="display:flex; justify-content:space-between; margin-top:30px;">
                         <div><strong>Landlord Signature:</strong><br>_______________________<br>Name: ${f.landlord}</div>
@@ -521,6 +520,37 @@
                 `
             },
             {
+                id: "utility-electric-connection", category: "property", title: "Electricity New Connection Request", desc: "Application letter to K-Electric or WAPDA for new meter installation.",
+                fields: [
+                    {id:"applicant",label:"Applicant Name",val:"Shah Rukh Siddiqui"},
+                    {id:"cnic",label:"CNIC No",val:"42101-1234567-1"},
+                    {id:"address",label:"Premises Address",val:"House 12, Street 3, Karachi"},
+                    {id:"load",label:"Requested Load",val:"5 KW"}
+                ],
+                render: f => `
+                    <h3>APPLICATION FOR NEW ELECTRICITY CONNECTION</h3>
+                    <p>To,<br>The Manager / Customer Services,<br>K-Electric / WAPDA, Karachi.</p>
+                    <p>Respected Sir,<br>I, <strong>${f.applicant}</strong> (CNIC: ${f.cnic}), request you to kindly install a new electricity meter (Load: ${f.load}) at my residential premises located at <strong>${f.address}</strong>. Required ownership documents and CNIC copy are attached herewith for verification.</p>
+                    <br><br>
+                    <strong>Applicant Signature:</strong><br>_______________________<br>Name: ${f.applicant}
+                `
+            },
+            {
+                id: "utility-gas-connection", category: "property", title: "SNGPL / SSGC Gas New Connection", desc: "Application letter for new natural gas connection.",
+                fields: [
+                    {id:"applicant",label:"Applicant Name",val:"Shah Rukh Siddiqui"},
+                    {id:"cnic",label:"CNIC No",val:"42101-1234567-1"},
+                    {id:"address",label:"House Address",val:"House 12, Street 3, Karachi"}
+                ],
+                render: f => `
+                    <h3>APPLICATION FOR NEW DOMESTIC GAS CONNECTION</h3>
+                    <p>To,<br>The General Manager,<br>SSGC / SNGPL, Karachi.</p>
+                    <p>Respected Sir,<br>I, <strong>${f.applicant}</strong> (CNIC: ${f.cnic}), hereby submit my application for the installation of a new domestic natural gas connection at my residential address: <strong>${f.address}</strong>.</p>
+                    <br><br>
+                    <strong>Applicant Signature:</strong><br>_______________________<br>Name: ${f.applicant}
+                `
+            },
+            {
                 id: "car-sale-agreement", category: "transport", title: "Motor Vehicle Sale Agreement", desc: "Complete automotive transfer deed with chassis/engine number and token tax clearance.",
                 fields: [
                     {id:"seller",label:"Seller Name",val:"Muhammad Ali"},
@@ -548,6 +578,21 @@
                 `
             },
             {
+                id: "car-purchase-receipt", category: "transport", title: "Car Purchase & Payment Receipt", desc: "Payment receipt issued upon purchasing a motor vehicle.",
+                fields: [
+                    {id:"buyer",label:"Buyer Name",val:"Shah Rukh Siddiqui"},
+                    {id:"seller",label:"Seller Name",val:"Muhammad Ali"},
+                    {id:"amount",label:"Amount Paid (PKR)",val:"1,000,000"},
+                    {id:"car",label:"Vehicle Details",val:"Toyota Corolla 2022"}
+                ],
+                render: f => `
+                    <h3>VEHICLE PURCHASE RECEIPT</h3>
+                    <p>Received with thanks the sum of <strong>PKR ${f.amount}</strong> from <strong>${f.buyer}</strong> towards the purchase part/full payment of <strong>${f.car}</strong> from <strong>${f.seller}</strong>.</p>
+                    <br><br>
+                    <strong>Receiver / Seller Signature:</strong><br>_______________________
+                `
+            },
+            {
                 id: "offer-letter", category: "hr", title: "Professional Employment Offer Letter", desc: "Comprehensive corporate appointment offer with salary breakdown and reporting line.",
                 fields: [
                     {id:"cand",label:"Candidate Name",val:"Shah Rukh Siddiqui"},
@@ -569,6 +614,23 @@
                         <div><strong>Authorized Signatory</strong><br>HR Department, ${f.comp}</div>
                         <div><strong>Accepted By:</strong><br>_______________________</div>
                     </div>
+                `
+            },
+            {
+                id: "appointment-letter", category: "hr", title: "Formal Appointment Letter", desc: "Definitive employment contract agreement.",
+                fields: [
+                    {id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},
+                    {id:"desig",label:"Designation",val:"Senior Accountant"},
+                    {id:"comp",label:"Company Name",val:"Taj Al Huda"}
+                ],
+                render: f => `
+                    <h3>${f.comp}</h3>
+                    <h4>APPOINTMENT LETTER</h4>
+                    <p>Dear <strong>${f.emp}</strong>,</p>
+                    <p>With reference to your application and subsequent interviews, we are pleased to issue this formal appointment letter for the position of <strong>${f.desig}</strong> at <strong>${f.comp}</strong> effective immediately under company terms and conditions.</p>
+                    <br><br>
+                    <strong>Director Human Resources</strong><br>
+                    ${f.comp}
                 `
             },
             {
@@ -709,7 +771,7 @@
                     oneshotText.innerText = matchedOneShot.answer;
                     oneshotBox.style.display = 'block';
                 } else {
-                    oneshotText.innerText = `Searching for "${query}"... No direct facts matched, but you can explore our professional templates below or adjust your search keywords.`;
+                    oneshotText.innerText = `Searching for "${query}"... Explore professional templates below or filter by category.`;
                     oneshotBox.style.display = 'block';
                 }
 
