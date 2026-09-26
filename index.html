@@ -46,16 +46,17 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         nav ul li a {
             text-decoration: none;
             color: #616161;
-            font-size: 13px;
+            font-size: 12px;
             cursor: pointer;
             transition: color 0.2s;
+            font-weight: 500;
         }
 
         nav ul li a:hover, nav ul li a.active {
@@ -102,22 +103,22 @@
 
         .hero {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 50px 40px;
+            padding: 40px;
             text-align: center;
             border-bottom: 1px solid #e1dfdd;
         }
 
         .hero h1 {
-            font-size: 34px;
+            font-size: 30px;
             font-weight: 600;
             color: #1b1b1b;
             margin-bottom: 10px;
         }
 
         .hero p {
-            font-size: 15px;
+            font-size: 14px;
             color: #616161;
-            max-width: 750px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -128,7 +129,7 @@
         }
 
         .section-title {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 600;
             margin-bottom: 15px;
             color: #1b1b1b;
@@ -136,13 +137,13 @@
 
         .search-container {
             position: relative;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .search-bar {
             width: 100%;
             padding: 14px 20px;
-            font-size: 16px;
+            font-size: 15px;
             border: 1px solid #c8c6c4;
             border-radius: 4px;
             outline: none;
@@ -166,15 +167,14 @@
         }
 
         #oneshot-box h3 {
-            font-size: 15px;
+            font-size: 14px;
             color: #0078d4;
             margin-bottom: 5px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         #oneshot-box p {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
             color: #1b1b1b;
         }
@@ -188,7 +188,7 @@
         .card {
             background: #ffffff;
             border: 1px solid #e1dfdd;
-            padding: 22px;
+            padding: 20px;
             border-radius: 4px;
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
@@ -202,7 +202,7 @@
         }
 
         .card h3 {
-            font-size: 16px;
+            font-size: 15px;
             margin-bottom: 8px;
             color: #1b1b1b;
         }
@@ -243,7 +243,7 @@
         .modal-content {
             background: #fff;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1050px;
             max-height: 92vh;
             border-radius: 6px;
             display: flex;
@@ -278,7 +278,7 @@
             padding: 25px;
             overflow-y: auto;
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
+            grid-template-columns: 1fr 1.3fr;
             gap: 25px;
         }
 
@@ -287,7 +287,7 @@
         }
 
         .form-section h4, .preview-section h4 {
-            font-size: 14px;
+            font-size: 13px;
             margin-bottom: 12px;
             color: #333;
             border-bottom: 2px solid #0078d4;
@@ -306,7 +306,7 @@
             margin-bottom: 3px;
         }
 
-        .form-group input, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 7px 10px;
             border: 1px solid #c8c6c4;
@@ -319,17 +319,17 @@
             border: 1px solid #e1dfdd;
             padding: 25px;
             border-radius: 4px;
-            min-height: 400px;
-            max-height: 500px;
+            min-height: 420px;
+            max-height: 520px;
             overflow-y: auto;
-            font-size: 13px;
+            font-size: 12px;
             line-height: 1.6;
             color: #222;
         }
 
         .preview-box h3 {
             text-align: center;
-            font-size: 16px;
+            font-size: 15px;
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -337,7 +337,7 @@
         }
 
         .preview-box p {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-align: justify;
         }
 
@@ -352,43 +352,17 @@
 
         /* PRINT STYLING */
         @media print {
-            body * {
-                visibility: hidden;
-            }
-            #workspace-modal, #modal-live-preview, #modal-live-preview * {
-                visibility: visible;
-            }
+            body * { visibility: hidden; }
+            #workspace-modal, #modal-live-preview, #modal-live-preview * { visibility: visible; }
             #workspace-modal {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                background: white;
-                display: block !important;
+                position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+                background: white; display: block !important;
             }
-            .modal-content {
-                box-shadow: none;
-                max-height: none;
-                width: 100%;
-            }
-            .modal-header, .form-section, .modal-footer, .close-btn {
-                display: none !important;
-            }
-            .modal-body {
-                display: block !important;
-                padding: 0;
-            }
-            .preview-section {
-                width: 100%;
-            }
-            .preview-box {
-                border: none;
-                background: white;
-                max-height: none;
-                padding: 10px;
-                font-size: 12px;
-            }
+            .modal-content { box-shadow: none; max-height: none; width: 100%; }
+            .modal-header, .form-section, .modal-footer, .close-btn { display: none !important; }
+            .modal-body { display: block !important; padding: 0; }
+            .preview-section { width: 100%; }
+            .preview-box { border: none; background: white; max-height: none; padding: 10px; font-size: 12px; }
         }
     </style>
 </head>
@@ -399,11 +373,11 @@
         <nav>
             <ul>
                 <li><a onclick="app.filterCategory('all')" class="active" id="nav-all">All Hub</a></li>
-                <li><a onclick="app.filterCategory('property')">House & Property</a></li>
-                <li><a onclick="app.filterCategory('transport')">Cars & Vehicles</a></li>
-                <li><a onclick="app.filterCategory('hr')">HR & Employment</a></li>
-                <li><a onclick="app.filterCategory('legal')">Legal & Financial</a></li>
-                <li><a onclick="app.filterCategory('commercial')">Commercial</a></li>
+                <li><a onclick="app.filterCategory('transport')">Transport & Cars</a></li>
+                <li><a onclick="app.filterCategory('commercial')">B2B/B2C & Memos</a></li>
+                <li><a onclick="app.filterCategory('medical')">Medical & Fitness</a></li>
+                <li><a onclick="app.filterCategory('hr')">HR & Letters</a></li>
+                <li><a onclick="app.filterCategory('property')">Property</a></li>
                 <li><a onclick="app.filterCategory('calculators')">Calculators</a></li>
             </ul>
         </nav>
@@ -413,15 +387,15 @@
     </header>
 
     <section class="hero">
-        <h1>Ultimate Professional Suite & Knowledge Hub</h1>
-        <p>Access complete house rent/sale agreements, utility connection applications, vehicle transfer letters, HR corporate letters, and smart tools.</p>
+        <h1>Ultimate Professional Suite & Realistic Documents</h1>
+        <p>Generate vehicle transfer applications, cash memos, medical certificates, B2B business proposals, salary slips, and agreements instantly.</p>
     </section>
 
     <div class="container" id="templates-section">
-        <h2 class="section-title">All Documents, Agreements, Letters & Smart Search</h2>
+        <h2 class="section-title">All Professional Templates, Letters, Memos & Calculators</h2>
         
         <div class="search-container">
-            <input type="text" id="search-input" class="search-bar" placeholder="Type anything for Instant Answer OR search documents..." oninput="app.handleSearch(this.value)">
+            <input type="text" id="search-input" class="search-bar" placeholder="Search vehicle transfer, cash memo, medical certificate, salary, agreement..." oninput="app.handleSearch(this.value)">
         </div>
 
         <div id="oneshot-box">
@@ -457,97 +431,41 @@
 
     <script>
         const oneShotKnowledge = [
-            { query: "pakistan kab bana", answer: "Pakistan 14 August 1947 ko azeem islami riyasat ke taur par qaim hua tha." },
-            { query: "uae", answer: "United Arab Emirates (UAE) ka schedule ICC aur Emirates Cricket Board ke calendar ke mutabiq update hota rehta hai." },
-            { query: "taj al huda", answer: "Taj Al Huda Trading / Company jahan Shah Rukh Siddiqui Senior Accountant ke tor par financial ledgers aur tax invoices manage kar rahay hain." },
-            { query: "current year", answer: "Current year 2026 hai." },
-            { query: "70cc motorcycle oil", answer: "Union Star 70cc motorcycle mein Hyundai 10W-40 engine oil behtareen rehta hai jo 850-900 km par change kiya jata hai." }
+            { query: "vehicle transfer", answer: "Vehicle transfer application excise & taxation department mein jama hoti hai sath CNIC, registration book aur transfer deed lazmi hoti hai." },
+            { query: "cash memo", answer: "Cash memo business transactions ke liye cash sale / payment record karne ka standard commercial document hota hai." },
+            { query: "medical certificate", answer: "Medical fitness certificate kisi registered medical practitioner ya doctor ki taraf se health verification ke liye jari kiya jata hai." },
+            { query: "current year", answer: "Current year 2026 hai." }
         ];
 
         const hubDatabase = [
+            // TRANSPORT & VEHICLES
             {
-                id: "house-rent-agreement", category: "property", title: "Comprehensive House Rent Agreement", desc: "Detailed residential tenancy contract with security deposit, notice period, and terms.",
+                id: "vehicle-transfer-letter", category: "transport", title: "Vehicle Transfer Application (Excise)", desc: "Formal application letter to the Director Excise & Taxation for motor vehicle ownership transfer.",
                 fields: [
-                    {id:"landlord",label:"Landlord Name",val:"Muhammad Tariq"},
-                    {id:"landlordCnic",label:"Landlord CNIC",val:"42101-9876543-2"},
-                    {id:"tenant",label:"Tenant Name",val:"Shah Rukh Siddiqui"},
-                    {id:"tenantCnic",label:"Tenant CNIC",val:"42101-1234567-1"},
-                    {id:"address",label:"Complete Property Address",val:"Flat No 402, Block 14, Gulshan-e-Iqbal, Karachi"},
-                    {id:"rent",label:"Monthly Rent (PKR)",val:"35,000"},
-                    {id:"advance",label:"Advance Security Deposit (PKR)",val:"100,000"},
-                    {id:"duration",label:"Agreement Duration (Months)",val:"11 Months"}
-                ],
-                render: f => `
-                    <h3>RESIDENTIAL TENANCY / RENT AGREEMENT</h3>
-                    <p>This Residential Rent Agreement is made and executed on this day, between <strong>${f.landlord}</strong> (hereinafter referred to as the <strong>"Landlord"</strong>, CNIC No. ${f.landlordCnic}), and <strong>${f.tenant}</strong> (hereinafter referred to as the <strong>"Tenant"</strong>, CNIC No. ${f.tenantCnic}).</p>
-                    <p><strong>WHEREAS</strong> the Landlord is the lawful owner of the residential premises situated at <strong>${f.address}</strong> and has agreed to let out the said premises to the Tenant on the following terms and conditions:</p>
-                    <p>1. <strong>Duration:</strong> That this agreement shall remain valid for a period of <strong>${f.duration}</strong> starting from the date of execution, renewable with mutual consent.</p>
-                    <p>2. <strong>Monthly Rent:</strong> That the monthly rent shall be <strong>PKR ${f.rent}</strong>, payable in advance on or before the 5th day of each calendar month.</p>
-                    <p>3. <strong>Security Deposit:</strong> That the Tenant has paid an advance security deposit of <strong>PKR ${f.advance}</strong>, which shall be refundable at the time of vacating the premises, subject to clearance of utility bills and damages if any.</p>
-                    <p>4. <strong>Utilities:</strong> Electricity, gas, and water bills shall be paid regularly bycision the Tenant during the tenancy period.</p>
-                    <br>
-                    <div style="display:flex; justify-content:space-between; margin-top:30px;">
-                        <div><strong>Landlord Signature:</strong><br>_______________________<br>Name: ${f.landlord}</div>
-                        <div><strong>Tenant Signature:</strong><br>_______________________<br>Name: ${f.tenant}</div>
-                    </div>
-                `
-            },
-            {
-                id: "house-sale-agreement", category: "property", title: "House / Plot Sale Agreement (Detailed)", desc: "Formal property sale deed with token money, payment schedule, and default clauses.",
-                fields: [
-                    {id:"seller",label:"Seller Name",val:"Ahmed Khan"},
+                    {id:"director",label:"Addressed Authority",val:"Director Excise & Taxation Department, Karachi"},
+                    {id:"seller",label:"Previous Owner (Seller) Name",val:"Muhammad Ali"},
                     {id:"sellerCnic",label:"Seller CNIC",val:"42201-1122334-5"},
-                    {id:"buyer",label:"Buyer Name",val:"Shah Rukh Siddiqui"},
+                    {id:"buyer",label:"New Owner (Buyer) Name",val:"Shah Rukh Siddiqui"},
                     {id:"buyerCnic",label:"Buyer CNIC",val:"42101-1234567-1"},
-                    {id:"property",label:"Property Description",val:"House No B-12, Sector 11-A, North Karachi"},
-                    {id:"totalPrice",label:"Total Agreed Price (PKR)",val:"12,500,000"},
-                    {id:"token",label:"Token / Advance Paid (PKR)",val:"1,500,000"},
-                    {id:"balanceDate",label:"Balance Payment Due Date",val:"Within 60 Days"}
+                    {id:"regNo",label:"Vehicle Registration No",val:"ABC-123 Karachi"},
+                    {id:"engineNo",label:"Engine No",val:"ENG-987654"},
+                    {id:"chassisNo",label:"Chassis No",val:"CHS-123456"}
                 ],
                 render: f => `
-                    <h3>AGREEMENT TO SELL (HOUSE / PROPERTY)</h3>
-                    <p>This agreement to sell is executed on this date between <strong>${f.seller}</strong> (Seller, CNIC: ${f.sellerCnic}) and <strong>${f.buyer}</strong> (Buyer, CNIC: ${f.buyerCnic}).</p>
-                    <p><strong>PROPERTY DETAILS:</strong> ${f.property}</p>
-                    <p><strong>1. Total Consideration:</strong> The total agreed sale price of the said property is fixed at <strong>PKR ${f.totalPrice}</strong>.</p>
-                    <p><strong>2. Earnest Money / Token:</strong> The Buyer has paid a token/advance amount of <strong>PKR ${f.token}</strong> to the Seller, receipt of which is hereby acknowledged.</p>
-                    <p><strong>3. Balance Payment:</strong> The remaining balance amount shall be paid by the Buyer to the Seller <strong>${f.balanceDate}</strong>, at the time of execution of official registry/transfer documents in the relevant authority office.</p>
-                    <p>4. In case of default by the Buyer, the token money may be forfeited as per mutual understanding. If the Seller backs out, double the token amount shall be refunded.</p>
+                    <h3>APPLICATION FOR MOTOR VEHICLE OWNERSHIP TRANSFER</h3>
+                    <p>To,<br>The ${f.director}.</p>
+                    <p><strong>Subject: Transfer of Ownership of Motor Vehicle Registration No. ${f.regNo}</strong></p>
+                    <p>Respected Sir,<br>I, <strong>${f.buyer}</strong> (CNIC No. ${f.buyerCnic}), state that I have purchased the motor vehicle detailed below from the previous owner, <strong>${f.seller}</strong> (CNIC No. ${f.sellerCnic}).</p>
+                    <p><strong>Vehicle Particulars:</strong><br>
+                    - Registration No: ${f.regNo}<br>
+                    - Engine No: ${f.engineNo}<br>
+                    - Chassis No: ${f.chassisNo}</p>
+                    <p>All required documents including original registration book, sale deed, token tax clearance receipts, and CNIC copies of both parties are attached herewith. You are requested to kindly transfer the ownership in my name.</p>
                     <br>
                     <div style="display:flex; justify-content:space-between; margin-top:30px;">
-                        <div><strong>Seller Signature:</strong><br>_______________________</div>
-                        <div><strong>Buyer Signature:</strong><br>_______________________</div>
+                        <div><strong>Previous Owner (Seller):</strong><br>Sign: ___________________<br>CNIC: ${f.sellerCnic}</div>
+                        <div><strong>New Owner (Buyer):</strong><br>Sign: ___________________<br>CNIC: ${f.buyerCnic}</div>
                     </div>
-                `
-            },
-            {
-                id: "utility-electric-connection", category: "property", title: "Electricity New Connection Request", desc: "Application letter to K-Electric or WAPDA for new meter installation.",
-                fields: [
-                    {id:"applicant",label:"Applicant Name",val:"Shah Rukh Siddiqui"},
-                    {id:"cnic",label:"CNIC No",val:"42101-1234567-1"},
-                    {id:"address",label:"Premises Address",val:"House 12, Street 3, Karachi"},
-                    {id:"load",label:"Requested Load",val:"5 KW"}
-                ],
-                render: f => `
-                    <h3>APPLICATION FOR NEW ELECTRICITY CONNECTION</h3>
-                    <p>To,<br>The Manager / Customer Services,<br>K-Electric / WAPDA, Karachi.</p>
-                    <p>Respected Sir,<br>I, <strong>${f.applicant}</strong> (CNIC: ${f.cnic}), request you to kindly install a new electricity meter (Load: ${f.load}) at my residential premises located at <strong>${f.address}</strong>. Required ownership documents and CNIC copy are attached herewith for verification.</p>
-                    <br><br>
-                    <strong>Applicant Signature:</strong><br>_______________________<br>Name: ${f.applicant}
-                `
-            },
-            {
-                id: "utility-gas-connection", category: "property", title: "SNGPL / SSGC Gas New Connection", desc: "Application letter for new natural gas connection.",
-                fields: [
-                    {id:"applicant",label:"Applicant Name",val:"Shah Rukh Siddiqui"},
-                    {id:"cnic",label:"CNIC No",val:"42101-1234567-1"},
-                    {id:"address",label:"House Address",val:"House 12, Street 3, Karachi"}
-                ],
-                render: f => `
-                    <h3>APPLICATION FOR NEW DOMESTIC GAS CONNECTION</h3>
-                    <p>To,<br>The General Manager,<br>SSGC / SNGPL, Karachi.</p>
-                    <p>Respected Sir,<br>I, <strong>${f.applicant}</strong> (CNIC: ${f.cnic}), hereby submit my application for the installation of a new domestic natural gas connection at my residential address: <strong>${f.address}</strong>.</p>
-                    <br><br>
-                    <strong>Applicant Signature:</strong><br>_______________________<br>Name: ${f.applicant}
                 `
             },
             {
@@ -577,21 +495,125 @@
                     </div>
                 `
             },
+
+            // COMMERCIAL, B2B, B2C & CASH MEMOS
             {
-                id: "car-purchase-receipt", category: "transport", title: "Car Purchase & Payment Receipt", desc: "Payment receipt issued upon purchasing a motor vehicle.",
+                id: "cash-memo", category: "commercial", title: "Official Cash Memo / Receipt Voucher", desc: "Detailed cash transaction memo for retail or wholesale business sales.",
                 fields: [
-                    {id:"buyer",label:"Buyer Name",val:"Shah Rukh Siddiqui"},
-                    {id:"seller",label:"Seller Name",val:"Muhammad Ali"},
-                    {id:"amount",label:"Amount Paid (PKR)",val:"1,000,000"},
-                    {id:"car",label:"Vehicle Details",val:"Toyota Corolla 2022"}
+                    {id:"biz",label:"Business Name",val:"Taj Al Huda Trading / Arshe Autos"},
+                    {id:"memoNo",label:"Cash Memo No",val:"CM-2026-104"},
+                    {id:"customer",label:"Customer Name",val:"Muhammad Sharif"},
+                    {id:"item",label:"Item Description / Goods",val:"Automobile Spare Parts & Engine Oil (Hyundai 10W-40)"},
+                    {id:"qty",label:"Quantity",val:"2 Liters / Pcs"},
+                    {id:"rate",label:"Unit Rate (PKR)",val:"3,500"},
+                    {id:"total",label:"Total Amount (PKR)",val:"7,000"}
                 ],
                 render: f => `
-                    <h3>VEHICLE PURCHASE RECEIPT</h3>
-                    <p>Received with thanks the sum of <strong>PKR ${f.amount}</strong> from <strong>${f.buyer}</strong> towards the purchase part/full payment of <strong>${f.car}</strong> from <strong>${f.seller}</strong>.</p>
+                    <div style="text-align:center;">
+                        <h3>${f.biz}</h3>
+                        <p style="font-size:11px; color:#666;">Official Cash Sale Memo / Receipt</p>
+                    </div>
+                    <hr style="margin:10px 0;">
+                    <p><strong>Memo No:</strong> ${f.memoNo} &nbsp;&nbsp;&nbsp;&nbsp; <strong>Date:</strong> ${new Date().toISOString().split('T')[0]}</p>
+                    <p><strong>Customer Name:</strong> ${f.customer}</p>
+                    <br>
+                    <table style="width:100%; border-collapse: collapse; margin-bottom:15px; font-size:12px;">
+                        <tr style="background:#eee; border-bottom:1px solid #ccc;">
+                            <th style="padding:6px; text-align:left;">Description</th>
+                            <th style="padding:6px; text-align:center;">Qty</th>
+                            <th style="padding:6px; text-align:right;">Rate</th>
+                            <th style="padding:6px; text-align:right;">Amount</th>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px; border-bottom:1px solid #eee;">${f.item}</td>
+                            <td style="padding:6px; text-align:center; border-bottom:1px solid #eee;">${f.qty}</td>
+                            <td style="padding:6px; text-align:right; border-bottom:1px solid #eee;">${Number(f.rate).toLocaleString()}</td>
+                            <td style="padding:6px; text-align:right; border-bottom:1px solid #eee;">${Number(f.total).toLocaleString()}</td>
+                        </tr>
+                    </table>
+                    <h4 style="text-align:right; color:#0078d4;">Grand Total: PKR ${Number(f.total).toLocaleString()}</h4>
+                    <p style="font-size:11px; margin-top:20px;">* Goods once sold will not be returned without original cash memo.</p>
                     <br><br>
-                    <strong>Receiver / Seller Signature:</strong><br>_______________________
+                    <div style="display:flex; justify-content:space-between;">
+                        <div><strong>Customer Sign:</strong> ____________</div>
+                        <div><strong>Authorized Cashier:</strong> ____________</div>
+                    </div>
                 `
             },
+            {
+                id: "b2b-proposal-letter", category: "commercial", title: "B2B Business Proposal & Supply Letter", desc: "Professional business-to-business corporate supply and partnership proposal letter.",
+                fields: [
+                    {id:"sender",label:"Sender Company",val:"Taj Al Huda Trading"},
+                    {id:"receiver",label:"Client Business Name",val:"Bait al Ezz Curtains & Sofasticated Fabrics"},
+                    {id:"subject",label:"Subject / Proposal Topic",val:"Commercial Ledger Accounts & Bulk Fabric Supply Proposal"},
+                    {id:"bodyText",label:"Proposal Details",val:"We are pleased to submit our commercial quotation for regular monthly ledger supply of premium quality fabrics and promotional assets tailored for your e-commerce operations."}
+                ],
+                render: f => `
+                    <h3>${f.sender}</h3>
+                    <p style="text-align:right; font-size:11px;">Date: ${new Date().toISOString().split('T')[0]}</p>
+                    <p>To,<br>The Management / Procurement Head,<br><strong>${f.receiver}</strong>.</p>
+                    <p><strong>Subject: ${f.subject}</strong></p>
+                    <p>Dear Sir/Madam,</p>
+                    <p>${f.bodyText}</p>
+                    <p>We assure you of our best competitive pricing, timely delivery schedules, and transparent accounting ledgers. Looking forward to a mutually beneficial business association.</p>
+                    <br><br>
+                    <p>Sincerely,</p>
+                    <strong>Senior Accountant / Management</strong><br>
+                    ${f.sender}
+                `
+            },
+            {
+                id: "b2c-inquiry-response", category: "commercial", title: "B2C Customer Inquiry & Quotation Reply", desc: "Professional response letter to retail customer inquiries regarding product pricing.",
+                fields: [
+                    {id:"company",label:"Company / Brand Name",val:"Arshe Autos & E-Commerce Hub"},
+                    {id:"customer",label:"Customer Name",val:"Valued Retail Customer"},
+                    {id:"product",label:"Product / Item",val:"Motorcycle Spare Parts & Accessories"},
+                    {id:"price",label:"Quoted Price (PKR)",val:"4,500 inclusive of delivery"}
+                ],
+                render: f => `
+                    <h3>${f.company} - CUSTOMER QUOTATION</h3>
+                    <p style="text-align:right; font-size:11px;">Date: ${new Date().toISOString().split('T')[0]}</p>
+                    <p>Dear <strong>${f.customer}</strong>,</p>
+                    <p>Thank you for reaching out to us regarding your inquiry for <strong>${f.product}</strong>.</p>
+                    <p>We are pleased to offer you our best retail price of <strong>PKR ${f.price}</strong>.</p>
+                    <p>You can confirm your order via our digital payment channels (Easypaisa / Bank Transfer / Raast). Your order will be dispatched promptly.</p>
+                    <br><br>
+                    <strong>Customer Support Team</strong><br>
+                    ${f.company}
+                `
+            },
+
+            // MEDICAL & FITNESS
+            {
+                id: "medical-fitness-certificate", category: "medical", title: "Official Medical Fitness Certificate", desc: "Standard medical certificate issued by a registered medical practitioner for job or travel.",
+                fields: [
+                    {id:"doctor",label:"Doctor Name & Qualification",val:"Dr. Ahmed Raza, MBBS (AMC), FCPS"},
+                    {id:"clinic",label:"Clinic / Hospital Name",val:"City Medical Care & Diagnostic Center, Karachi"},
+                    {id:"patient",label:"Patient Name",val:"Shah Rukh Siddiqui"},
+                    {id:"age",label:"Age / Gender",val:"30 Years / Male"},
+                    {id:"cnic",label:"CNIC No",val:"42101-1234567-1"},
+                    {id:"findings",label:"Medical Findings / Checkup",val:"General physical examination conducted. Blood pressure 120/80 mmHg, pulse 72 bpm, chest clear, vision normal. Physically and mentally fit."}
+                ],
+                render: f => `
+                    <div style="text-align:center;">
+                        <h3>${f.clinic}</h3>
+                        <p style="font-size:11px; color:#555;">${f.doctor}</p>
+                    </div>
+                    <hr style="margin:10px 0;">
+                    <h3 style="text-align:center; margin:15px 0; font-size:14px; text-decoration:underline;">MEDICAL FITNESS CERTIFICATE</h3>
+                    <p style="text-align:right; font-size:11px;">Date: ${new Date().toISOString().split('T')[0]}</p>
+                    <p>This is to certify that I have examined <strong>${f.patient}</strong> (Age/Gender: ${f.age}, CNIC: ${f.cnic}) on this date.</p>
+                    <p><strong>Clinical Examination & Findings:</strong><br>${f.findings}</p>
+                    <p>In my opinion, he is <strong>physically and mentally FIT</strong> to undertake employment / daily professional duties.</p>
+                    <br><br>
+                    <div style="display:flex; justify-content:space-between; margin-top:40px;">
+                        <div><strong>Patient Signature:</strong><br>___________________</div>
+                        <div style="text-align:center;"><strong>Medical Officer Stamp & Sign:</strong><br><br>___________________________</div>
+                    </div>
+                `
+            },
+
+            // HR & EMPLOYMENT
             {
                 id: "offer-letter", category: "hr", title: "Professional Employment Offer Letter", desc: "Comprehensive corporate appointment offer with salary breakdown and reporting line.",
                 fields: [
@@ -617,35 +639,18 @@
                 `
             },
             {
-                id: "appointment-letter", category: "hr", title: "Formal Appointment Letter", desc: "Definitive employment contract agreement.",
-                fields: [
-                    {id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},
-                    {id:"desig",label:"Designation",val:"Senior Accountant"},
-                    {id:"comp",label:"Company Name",val:"Taj Al Huda"}
-                ],
-                render: f => `
-                    <h3>${f.comp}</h3>
-                    <h4>APPOINTMENT LETTER</h4>
-                    <p>Dear <strong>${f.emp}</strong>,</p>
-                    <p>With reference to your application and subsequent interviews, we are pleased to issue this formal appointment letter for the position of <strong>${f.desig}</strong> at <strong>${f.comp}</strong> effective immediately under company terms and conditions.</p>
-                    <br><br>
-                    <strong>Director Human Resources</strong><br>
-                    ${f.comp}
-                `
-            },
-            {
-                id: "salary-certificate", category: "legal", title: "Official Salary Certificate & Employment Proof", desc: "Formal corporate certificate for bank loan, visa processing, or embassy verification.",
+                id: "salary-certificate", category: "hr", title: "Official Salary Certificate & Employment Proof", desc: "Formal corporate certificate for bank loan, credit card, or embassy verification.",
                 fields: [
                     {id:"emp",label:"Employee Name",val:"Shah Rukh Siddiqui"},
                     {id:"desig",label:"Designation",val:"Senior Accountant"},
                     {id:"empId",label:"Employee ID / Code",val:"TAH-042"},
                     {id:"salary",label:"Monthly Salary (PKR)",val:"120,000"},
-                    {id:"purpose",label:"Certificate Purpose",val:"Bank Credit Card / Loan Verification"}
+                    {id:"purpose",label:"Certificate Purpose",val:"Bank Credit Card / Faysal Bank Verification"}
                 ],
                 render: f => `
                     <h3>TO WHOM IT MAY CONCERN</h3>
                     <p style="text-align:right;">Date: ${new Date().toISOString().split('T')[0]}</p>
-                    <p>This is to certify that <strong>${f.emp}</strong> (Employee ID: ${f.empId}) is a permanent full-time employee of our organization, working as <strong>${f.desig}</strong> since inception.</p>
+                    <p>This is to certify that <strong>${f.emp}</strong> (Employee ID: ${f.empId}) is a permanent full-time employee of our organization, working as <strong>${f.desig}</strong>.</p>
                     <p>His current gross monthly salary is <strong>PKR ${f.salary}</strong>.</p>
                     <p>This certificate is being issued upon the employee's request for <strong>${f.purpose}</strong> without any liability on the company.</p>
                     <br><br>
@@ -654,35 +659,34 @@
                     Taj Al Huda
                 `
             },
+
+            // PROPERTY
             {
-                id: "tax-invoice", category: "commercial", title: "Commercial Tax Invoice", desc: "Detailed business invoice template with itemization, NTN, and tax calculations.",
+                id: "house-rent-agreement", category: "property", title: "Comprehensive House Rent Agreement", desc: "Detailed residential tenancy contract with security deposit, notice period, and terms.",
                 fields: [
-                    {id:"client",label:"Client / Buyer Name",val:"Bait al Ezz Curtains"},
-                    {id:"invNo",label:"Invoice Number",val:"INV-2026-001"},
-                    {id:"desc",label:"Item Description",val:"Wholesale Fabric Supply & Promotional Assets"},
-                    {id:"amount",label:"Subtotal Amount (PKR)",val:"85,000"},
-                    {id:"tax",label:"Sales Tax / GST (17%)",val:"14,450"}
+                    {id:"landlord",label:"Landlord Name",val:"Muhammad Tariq"},
+                    {id:"landlordCnic",label:"Landlord CNIC",val:"42101-9876543-2"},
+                    {id:"tenant",label:"Tenant Name",val:"Shah Rukh Siddiqui"},
+                    {id:"tenantCnic",label:"Tenant CNIC",val:"42101-1234567-1"},
+                    {id:"address",label:"Complete Property Address",val:"Flat No 402, Block 14, Gulshan-e-Iqbal, Karachi"},
+                    {id:"rent",label:"Monthly Rent (PKR)",val:"35,000"},
+                    {id:"advance",label:"Advance Security Deposit (PKR)",val:"100,000"}
                 ],
-                render: f => {
-                    const total = Number(f.amount) + Number(f.tax);
-                    return `
-                        <h3>COMMERCIAL TAX INVOICE</h3>
-                        <p><strong>Invoice No:</strong> ${f.invNo} | <strong>Date:</strong> ${new Date().toISOString().split('T')[0]}</p>
-                        <p><strong>Billed To:</strong> ${f.client}</p>
-                        <hr style="margin:10px 0;">
-                        <p><strong>Description:</strong> ${f.desc}</p>
-                        <p>Subtotal: PKR ${Number(f.amount).toLocaleString()}</p>
-                        <p>Sales Tax: PKR ${Number(f.tax).toLocaleString()}</p>
-                        <hr style="margin:10px 0;">
-                        <h4 style="color:#0078d4;">Grand Total: PKR ${total.toLocaleString()}</h4>
-                        <br><br>
-                        <div style="display:flex; justify-content:space-between;">
-                            <div><strong>Prepared By:</strong> Senior Accountant</div>
-                            <div><strong>Authorized Stamp & Sign:</strong> ____________</div>
-                        </div>
-                    `;
-                }
+                render: f => `
+                    <h3>RESIDENTIAL TENANCY / RENT AGREEMENT</h3>
+                    <p>This Residential Rent Agreement is made between <strong>${f.landlord}</strong> (Landlord, CNIC: ${f.landlordCnic}) and <strong>${f.tenant}</strong> (Tenant, CNIC: ${f.tenantCnic}).</p>
+                    <p><strong>PROPERTY:</strong> ${f.address}</p>
+                    <p>1. <strong>Monthly Rent:</strong> The monthly rent shall be <strong>PKR ${f.rent}</strong>, payable in advance by the 5th of each month.</p>
+                    <p>2. <strong>Security Deposit:</strong> Tenant has paid an advance deposit of <strong>PKR ${f.advance}</strong>, refundable upon vacating subject to bill clearances.</p>
+                    <br>
+                    <div style="display:flex; justify-content:space-between; margin-top:30px;">
+                        <div><strong>Landlord Signature:</strong><br>_______________________</div>
+                        <div><strong>Tenant Signature:</strong><br>_______________________</div>
+                    </div>
+                `
             },
+
+            // CALCULATORS
             {
                 id: "calc-payroll", category: "calculators", title: "Advanced Net Payroll Calculator", desc: "Calculate exact take-home salary after allowances, overtime, and deductions.",
                 fields: [
@@ -771,7 +775,7 @@
                     oneshotText.innerText = matchedOneShot.answer;
                     oneshotBox.style.display = 'block';
                 } else {
-                    oneshotText.innerText = `Searching for "${query}"... Explore professional templates below or filter by category.`;
+                    oneshotText.innerText = `Searching for "${query}"... Explore professional documents below or filter by category.`;
                     oneshotBox.style.display = 'block';
                 }
 
