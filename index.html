@@ -414,7 +414,7 @@
             },
             {
                 id: "lh-13", category: "letterheads", featured: false, shape: "circle", title: "Security Services Agency Letterhead", desc: "Guards, surveillance, and security asset protection company layout.",
-                fields: [{id:"sec",label:"Security Agency Name",val:""},{id:" hotline",label:"Emergency Helpline",val:""},{id:"body",label:"Deployment Notice",val:""}],
+                fields: [{id:"sec",label:"Security Agency Name",val:""},{id:"hotline",label:"Emergency Helpline",val:""},{id:"body",label:"Deployment Notice",val:""}],
                 render: f => `<div style="border-top:3px solid #742a2a; border-bottom:3px solid #742a2a; padding:8px 0; margin-bottom:20px; text-align:center;"><h2 style="font-size:15px; color:#742a2a;">🛡️ ${f.sec || '[SecureGuard Services]'}</h2><p style="font-size:10px;">Emergency Hotline: ${f.hotline || '0300-0000000'}</p></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter security deployment or guard instructions here...]'}</p><br><br><strong>Chief Security Officer</strong>`
             },
             {
