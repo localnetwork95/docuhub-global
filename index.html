@@ -30,11 +30,10 @@
         .circle-item { text-align: center; cursor: pointer; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .circle-item:hover { transform: translateY(-8px) scale(1.05); }
         .circle-img { width: 75px; height: 75px; border-radius: 50%; border: 3px solid #ffffff; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.25); background: #fff; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #1e4d3b; font-weight: bold; margin: 0 auto 8px auto; transition: box-shadow 0.3s; }
-        .circle-item:hover .circle-img { box-shadow: 0 8px 25px rgba(255,255,255,0.4); }
         .circle-item span { font-size: 11px; color: #ffffff; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
 
         /* Main Container Layout */
-        .main-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: 2.2fr 1fr; gap: 30px; flex: 1; }
+        .main-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: 2.2fr 1fr; gap: 30px; flex: 1; width: 100%; }
         @media(max-width: 900px) { .main-container { grid-template-columns: 1fr; } }
 
         .section-title { font-size: 20px; font-weight: bold; color: #1e4d3b; margin-bottom: 20px; font-family: 'Georgia', serif; border-bottom: 2px solid #1e4d3b; padding-bottom: 5px; display: flex; justify-content: space-between; align-items: center; }
@@ -43,8 +42,8 @@
         
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
         
-        /* Animated Mixed Cards */
-        .card { background: #ffffff; border: 1px solid #e6e2d8; padding: 20px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.02); position: relative; overflow: hidden; }
+        /* Cards */
+        .card { background: #ffffff; border: 1px solid #e6e2d8; padding: 20px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
         .card.shape-circle-card { border-radius: 40px; padding: 25px; text-align: center; background: linear-gradient(135deg, #ffffff 0%, #f7f5f0 100%); }
         .card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(30,77,59,0.12); border-color: #1e4d3b; }
         
@@ -54,13 +53,13 @@
         .card.shape-circle-card button { margin: 0 auto; }
         .card button:hover { background: #143528; transform: scale(1.05); }
 
-        /* Sidebar Styling */
+        /* Sidebar */
         .sidebar { display: flex; flex-direction: column; gap: 25px; }
         .sidebar-box { background: #f0eee6; padding: 20px; border-radius: 6px; border: 1px solid #e0ddd5; }
         .sidebar-box h3 { font-size: 15px; color: #1e4d3b; margin-bottom: 12px; font-family: 'Georgia', serif; border-bottom: 1px solid #dcd8cd; padding-bottom: 5px; }
         
         .newsletter-input { width: 100%; padding: 10px 12px; border: 1px solid #d5d1c8; border-radius: 4px; font-size: 12px; margin-bottom: 10px; background: #fff; outline: none; }
-        .newsletter-btn { width: 100%; background: #1e4d3b; color: white; border: none; padding: 10px; font-size: 12px; font-weight: 600; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+        .newsletter-btn { width: 100%; background: #1e4d3b; color: white; border: none; padding: 10px; font-size: 12px; font-weight: 600; border-radius: 4px; cursor: pointer; }
         .newsletter-btn:hover { background: #143528; }
         
         .mini-circles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; text-align: center; }
@@ -69,7 +68,7 @@
         .mini-circle-item .placeholder-mc { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin: 0 auto 5px auto; border: 2px solid #1e4d3b; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; color: #1e4d3b; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
         .mini-circle-item span { font-size: 11px; color: #444; font-weight: 600; display: block; }
 
-        /* PROFESSIONAL FOOTER */
+        /* Footer */
         footer { background: #ffffff; border-top: 1px solid #e6e2d8; margin-top: 50px; padding: 40px 40px 30px 40px; color: #333333; }
         .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 30px; }
         @media(max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
@@ -77,11 +76,11 @@
         .footer-col h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; color: #111; margin-bottom: 15px; letter-spacing: 0.5px; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 10px; font-size: 12px; color: #555; }
-        .footer-col ul li a { text-decoration: none; color: #555; cursor: pointer; transition: color 0.2s; }
+        .footer-col ul li a { text-decoration: none; color: #555; cursor: pointer; }
         .footer-col ul li a:hover { color: #1e4d3b; text-decoration: underline; }
         
         .social-links { display: flex; gap: 12px; }
-        .social-icon-btn { width: 34px; height: 34px; border: 1px solid #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #333; text-decoration: none; cursor: pointer; transition: all 0.2s; }
+        .social-icon-btn { width: 34px; height: 34px; border: 1px solid #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #333; text-decoration: none; cursor: pointer; }
         .social-icon-btn:hover { background: #1e4d3b; color: white; border-color: #1e4d3b; }
 
         .footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid #eee; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
@@ -91,106 +90,94 @@
 
         /* Modal Workspace styling */
         #workspace-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: #fff; width: 100%; max-width: 1050px; max-height: 92vh; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.3); animation: modalPop 0.3s ease; }
-        @keyframes modalPop { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-content { background: #fff; width: 100%; max-width: 1050px; max-height: 92vh; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
         .modal-header { padding: 15px 25px; background: #f0eee6; border-bottom: 1px solid #e6e2d8; display: flex; justify-content: space-between; align-items: center; }
         .modal-header h2 { font-size: 16px; color: #1e4d3b; font-family: 'Georgia', serif; }
         .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #1e4d3b; }
         
-        /* Font & Creative Theme Toolbar inside Modal */
         .word-toolbar { display: flex; align-items: center; gap: 15px; background: #faf9f5; padding: 8px 25px; border-bottom: 1px solid #e6e2d8; font-size: 11px; flex-wrap: wrap; }
         .word-toolbar select { padding: 4px 8px; border: 1px solid #d5d1c8; border-radius: 4px; background: #fff; font-size: 11px; outline: none; cursor: pointer; }
 
-        .modal-body { padding: 25px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 25px; }
+        .modal-body { padding: 25px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 25px; flex: 1; }
         @media(max-width: 768px) { .modal-body { grid-template-columns: 1fr; } }
         .form-section h4, .preview-section h4 { font-size: 12px; margin-bottom: 10px; color: #1e4d3b; border-bottom: 2px solid #1e4d3b; padding-bottom: 4px; font-weight: 700; text-transform: uppercase; }
         .form-group { margin-bottom: 10px; }
         .form-group label { display: block; font-size: 10px; font-weight: 700; color: #555; margin-bottom: 3px; text-transform: uppercase; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 7px 10px; border: 1px solid #d5d1c8; border-radius: 4px; font-size: 12px; outline: none; background: #faf9f5; }
         
-        /* Base Preview Box & Creative Theme Variations */
-        .preview-box { background: #ffffff; border: 1px solid #d5d1c8; padding: 30px; border-radius: 4px; min-height: 450px; max-height: 520px; overflow-y: auto; font-size: 12px; line-height: 1.6; color: #222; box-shadow: inset 0 0 10px rgba(0,0,0,0.02); font-family: 'Calibri', sans-serif; transition: all 0.3s ease; }
+        .preview-box { background: #ffffff; border: 1px solid #d5d1c8; padding: 30px; border-radius: 4px; min-height: 450px; max-height: 520px; overflow-y: auto; font-size: 12px; line-height: 1.6; color: #222; font-family: 'Calibri', sans-serif; }
 
-        /* THEME STYLES */
         .theme-editorial { background: #ffffff !important; color: #111111 !important; border: 2px solid #111111 !important; font-family: 'Georgia', serif !important; }
         .theme-geometric { background: linear-gradient(135deg, #f9fafb 0%, #edf2f7) !important; color: #1a202c !important; border-left: 6px solid #3182ce !important; }
         .theme-organic { background: #fdfbf7 !important; color: #4a403b !important; border: 1px solid #d4c5b9 !important; border-radius: 12px !important; }
         .theme-darkmode { background: #121824 !important; color: #e2e8f0 !important; border: 1px solid #2d3748 !important; }
 
         .modal-footer { padding: 12px 25px; background: #f0eee6; border-top: 1px solid #e6e2d8; display: flex; justify-content: flex-end; gap: 10px; }
-        .btn-primary { background: #1e4d3b; border: none; color: #ffffff; padding: 8px 18px; font-size: 12px; cursor: pointer; font-weight: 600; border-radius: 4px; transition: background 0.2s; }
+        .btn-primary { background: #1e4d3b; border: none; color: #ffffff; padding: 8px 18px; font-size: 12px; cursor: pointer; font-weight: 600; border-radius: 4px; }
         .btn-primary:hover { background: #143528; }
-        .btn-outline { background: transparent; border: 1px solid #1e4d3b; color: #1e4d3b; padding: 8px 18px; font-size: 12px; cursor: pointer; font-weight: 600; border-radius: 4px; transition: all 0.2s; }
+        .btn-outline { background: transparent; border: 1px solid #1e4d3b; color: #1e4d3b; padding: 8px 18px; font-size: 12px; cursor: pointer; font-weight: 600; border-radius: 4px; }
         .btn-outline:hover { background: #1e4d3b; color: white; }
 
-        /* Info Popup Modal */
-        #info-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(4px); }
-        .info-modal-content { background: #fff; width: 100%; max-width: 550px; border-radius: 8px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); animation: modalPop 0.2s ease; }
+        /* Info Modal */
+        #info-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; justify-content: center; align-items: center; padding: 20px; }
+        .info-modal-content { background: #fff; width: 100%; max-width: 550px; border-radius: 8px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
         .info-modal-content h3 { font-size: 16px; color: #1e4d3b; margin-bottom: 12px; font-family: 'Georgia', serif; border-bottom: 1px solid #e6e2d8; padding-bottom: 6px; }
         .info-modal-content p { font-size: 12px; color: #444; line-height: 1.6; margin-bottom: 20px; }
         .info-modal-close { background: #1e4d3b; color: white; border: none; padding: 8px 16px; font-size: 11px; font-weight: 600; border-radius: 4px; cursor: pointer; display: block; margin-left: auto; }
-
-        @media print {
-            body * { visibility: hidden !important; }
-            #modal-live-preview, #modal-live-preview * { visibility: visible !important; }
-            #workspace-modal, .modal-content, .preview-section { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; background: white !important; box-shadow: none !important; border: none !important; }
-            #modal-live-preview { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; max-height: none !important; border: none !important; box-shadow: none !important; padding: 20px !important; margin: 0 !important; color: #000 !important; background: #fff !important; }
-        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="header-top">
-            <div class="logo" onclick="app.showHome()">DocuHub <span>Lifestyle & Business</span></div>
+            <div class="logo" onclick="DocuHubApp.showHome()">DocuHub <span>Lifestyle & Business</span></div>
             <div class="search-box">
-                <input type="text" id="search-input" placeholder="Search generators..." oninput="app.handleSearch(this.value)">
+                <input type="text" id="search-input" placeholder="Search generators..." oninput="DocuHubApp.handleSearch(this.value)">
                 <span>🔍</span>
             </div>
         </div>
         <nav>
             <ul>
-                <li><a onclick="app.filterCategory('all')" class="active" id="nav-all">Featured Suite</a></li>
-                <li><a onclick="app.filterCategory('letterheads')">Letterheads 🖋️</a></li>
-                <li><a onclick="app.filterCategory('accounts')">Accounts</a></li>
-                <li><a onclick="app.filterCategory('hr')">HR & Letters</a></li>
-                <li><a onclick="app.filterCategory('transport')">Transport</a></li>
-                <li><a onclick="app.filterCategory('commercial')">Commercial</a></li>
-                <li><a onclick="app.filterCategory('medical')">Medical</a></li>
-                <li><a onclick="app.filterCategory('property')">Property</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('all')" class="active" id="nav-all">Featured Suite</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('letterheads')">Letterheads 🖋️</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('accounts')">Accounts</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('hr')">HR & Letters</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('transport')">Transport</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('commercial')">Commercial</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('medical')">Medical</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('property')">Property</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero banner with circular shortcuts -->
     <div class="hero-banner">
         <h2>Professional Document & Letterhead Suite</h2>
         <div class="circle-row">
-            <div class="circle-item" onclick="app.filterCategory('letterheads')">
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('letterheads')">
                 <div class="circle-img">🖋️</div>
                 <span>Letterheads</span>
             </div>
-            <div class="circle-item" onclick="app.filterCategory('accounts')">
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('accounts')">
                 <div class="circle-img">📊</div>
                 <span>Accounts</span>
             </div>
-            <div class="circle-item" onclick="app.filterCategory('hr')">
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('hr')">
                 <div class="circle-img">💼</div>
                 <span>HR & Letters</span>
             </div>
-            <div class="circle-item" onclick="app.filterCategory('transport')">
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('transport')">
                 <div class="circle-img">🏍️</div>
                 <span>Transport</span>
             </div>
-            <div class="circle-item" onclick="app.filterCategory('commercial')">
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('commercial')">
                 <div class="circle-img">📑</div>
                 <span>Commercial</span>
             </div>
-            <div class="circle-item" onclick="app.filterCategory('medical')">
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('medical')">
                 <div class="circle-img">⚕️</div>
                 <span>Medical</span>
             </div>
-            <div class="circle-item" onclick="app.filterCategory('property')">
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('property')">
                 <div class="circle-img">🏡</div>
                 <span>Property</span>
             </div>
@@ -198,16 +185,14 @@
     </div>
 
     <div class="main-container">
-        <!-- Left Side: Generators Grid -->
         <div>
             <h2 class="section-title">
                 <span id="section-heading-text">Featured Top Generators</span>
-                <span onclick="app.toggleViewAll()" id="view-all-toggle">View All Generators 🔄</span>
+                <span onclick="DocuHubApp.toggleViewAll()" id="view-all-toggle">View All Generators 🔄</span>
             </h2>
             <div class="grid" id="templates-grid"></div>
         </div>
 
-        <!-- Right Side: Sidebar -->
         <div class="sidebar">
             <div class="sidebar-box">
                 <h3>Newsletter Signup</h3>
@@ -219,19 +204,19 @@
             <div class="sidebar-box">
                 <h3>Quick Categories</h3>
                 <div class="mini-circles">
-                    <div class="mini-circle-item" onclick="app.filterCategory('letterheads')">
+                    <div class="mini-circle-item" onclick="DocuHubApp.filterCategory('letterheads')">
                         <div class="placeholder-mc">📄</div>
                         <span>Letterheads</span>
                     </div>
-                    <div class="mini-circle-item" onclick="app.filterCategory('accounts')">
+                    <div class="mini-circle-item" onclick="DocuHubApp.filterCategory('accounts')">
                         <div class="placeholder-mc">💰</div>
                         <span>Salary</span>
                     </div>
-                    <div class="mini-circle-item" onclick="app.filterCategory('hr')">
+                    <div class="mini-circle-item" onclick="DocuHubApp.filterCategory('hr')">
                         <div class="placeholder-mc">📜</div>
                         <span>Offers</span>
                     </div>
-                    <div class="mini-circle-item" onclick="app.filterCategory('commercial')">
+                    <div class="mini-circle-item" onclick="DocuHubApp.filterCategory('commercial')">
                         <div class="placeholder-mc">🧾</div>
                         <span>Invoices</span>
                     </div>
@@ -240,35 +225,34 @@
         </div>
     </div>
 
-    <!-- Professional Footer -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>From DocuHub</h4>
                 <ul>
-                    <li><a onclick="showInfo('partnership', 'In partnership with Business Suite', 'DocuHub offers enterprise-grade stationery and letterhead formats to build clean, professional corporate identity instantly.')">Corporate Letterheads</a></li>
-                    <li><a onclick="showInfo('hub', 'Professional Document Hub', 'A centralized suite housing corporate letterheads, resumes, contracts, and financial statements.')">Professional Document Hub</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Corporate Letterheads', 'DocuHub offers enterprise-grade stationery and letterhead formats to build clean, professional corporate identity instantly.')">Corporate Letterheads</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Professional Document Hub', 'A centralized suite housing corporate letterheads, resumes, contracts, and financial statements.')">Professional Document Hub</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>About</h4>
                 <ul>
-                    <li><a onclick="showInfo('about', 'About DocuHub', 'DocuHub is a next-generation professional document and stationery suite.')">About DocuHub</a></li>
-                    <li><a onclick="showInfo('support', 'Contact Support', 'Email us at support@docuhub.internal.')">Contact Support</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('About DocuHub', 'DocuHub is a next-generation professional document and stationery suite.')">About DocuHub</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Contact Support', 'Email us at support@docuhub.internal.')">Contact Support</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Policies</h4>
                 <ul>
-                    <li><a onclick="showInfo('privacy', 'Privacy Policy', 'All document entries are processed securely in your browser session.')">Privacy Policy</a></li>
-                    <li><a onclick="showInfo('terms', 'Terms of Use', 'Users agree to utilize generated stationery in accordance with professional standards.')">Terms of Use</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Privacy Policy', 'All document entries are processed securely in your browser session.')">Privacy Policy</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Terms of Use', 'Users agree to utilize generated stationery in accordance with professional standards.')">Terms of Use</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Follow Us</h4>
                 <div class="social-links">
-                    <a onclick="showInfo('social-fb', 'Facebook', 'Join our professional community.')" class="social-icon-btn">f</a>
-                    <a onclick="showInfo('social-x', 'Twitter', 'Follow @DocuHubOfficial')" class="social-icon-btn">𝕏</a>
+                    <a onclick="DocuHubApp.showInfoModal('Facebook', 'Join our professional community.')" class="social-icon-btn">f</a>
+                    <a onclick="DocuHubApp.showInfoModal('Twitter', 'Follow @DocuHubOfficial')" class="social-icon-btn">𝕏</a>
                 </div>
             </div>
         </div>
@@ -283,11 +267,11 @@
     </footer>
 
     <!-- Info Modal -->
-    <div id="info-modal" onclick="if(event.target.id === 'info-modal') closeInfoModal();">
+    <div id="info-modal" onclick="if(event.target.id === 'info-modal') DocuHubApp.closeInfoModal();">
         <div class="info-modal-content">
             <h3 id="info-modal-title">Title</h3>
             <p id="info-modal-body">Content goes here...</p>
-            <button class="info-modal-close" onclick="closeInfoModal()">OK</button>
+            <button class="info-modal-close" onclick="DocuHubApp.closeInfoModal()">OK</button>
         </div>
     </div>
 
@@ -296,13 +280,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="modal-title">Generator</h2>
-                <button class="close-btn" onclick="app.closeModal()">&times;</button>
+                <button class="close-btn" onclick="DocuHubApp.closeModal()">&times;</button>
             </div>
             
             <div class="word-toolbar">
                 <div>
                     <span><strong>Font:</strong></span>
-                    <select id="font-family-select" onchange="app.changeFont(this.value)">
+                    <select id="font-family-select" onchange="DocuHubApp.changeFont(this.value)">
                         <option value="Calibri, sans-serif">Calibri</option>
                         <option value="Arial, sans-serif">Arial</option>
                         <option value="'Segoe UI', Tahoma, sans-serif">Segoe UI</option>
@@ -312,7 +296,7 @@
                 </div>
                 <div>
                     <span><strong>Design Theme:</strong></span>
-                    <select id="theme-style-select" onchange="app.changeTheme(this.value)">
+                    <select id="theme-style-select" onchange="DocuHubApp.changeTheme(this.value)">
                         <option value="default">Standard Professional</option>
                         <option value="editorial">1. Editorial Minimalist</option>
                         <option value="geometric">2. Dynamic Geometric</option>
@@ -333,156 +317,144 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-outline" onclick="app.closeModal()">Close</button>
+                <button class="btn-outline" onclick="DocuHubApp.closeModal()">Close</button>
                 <button class="btn-primary" onclick="window.print()">Print / Export PDF</button>
             </div>
         </div>
     </div>
 
     <script>
-        function showInfo(key, title, content) {
-            document.getElementById('info-modal-title').innerText = title;
-            document.getElementById('info-modal-body').innerText = content;
-            document.getElementById('info-modal').style.display = 'flex';
-        }
-
-        function closeInfoModal() {
-            document.getElementById('info-modal').style.display = 'none';
-        }
-
-        const masterDatabase = [
-            // 18 PROFESSIONAL LETTERHEAD VARIATIONS
+        const database = [
             {
                 id: "lh-1", category: "letterheads", featured: true, shape: "square", title: "Editorial Minimalist Letterhead", desc: "Clean top header with high-end corporate typography, border accents, and structured body layout.",
-                fields: [{id:"comp",label:"Company / Brand Name",val:""},{id:"phone",label:"Phone Number",val:""},{id:"email",label:"Email Address",val:""},{id:"addr",label:"Office Address",val:""},{id:"subject",label:"Subject / Memo Title",val:""},{id:"body",label:"Letter Content / Body",val:""}],
-                render: f => `<div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #222; padding-bottom:12px; margin-bottom:20px;"><div><h2 style="font-size:16px; font-family:'Georgia',serif; font-weight:bold; color:#111;">${f.comp || '[Company Name / Logo]'}</h2><p style="font-size:10px; color:#555; margin-top:2px;">${f.addr || '[Office Address]'}</p></div><div style="text-align:right; font-size:10px; color:#555;"><p>Phone: ${f.phone || '+00 000 0000000'}</p><p>Email: ${f.email || 'info@company.com'}</p></div></div><p style="font-size:11px; margin-bottom:15px;">Date: <strong>${new Date().toLocaleDateString()}</strong></p><p style="font-size:12px; margin-bottom:15px;"><strong>Subject: ${f.subject || '[Enter Subject Here]'}</strong></p><p style="font-size:12px; line-height:1.8; white-space: pre-line; min-height:180px;">${f.body || '[Type your official letter text here...]'}</p><br><br><div style="margin-top:30px;"><strong>Authorized Signatory</strong><br><br>____________________</div>`
+                fields: [{id:"comp",label:"Company Name",val:""},{id:"phone",label:"Phone",val:""},{id:"email",label:"Email",val:""},{id:"addr",label:"Address",val:""},{id:"subject",label:"Subject",val:""},{id:"body",label:"Letter Content",val:""}],
+                render: f => `<div style="display:flex; justify-content:space-between; border-bottom:2px solid #222; padding-bottom:10px; margin-bottom:15px;"><div><h2 style="font-size:15px; font-family:'Georgia',serif;">${f.comp || '[Company Name]'}</h2><p style="font-size:10px; color:#555;">${f.addr || '[Address]'}</p></div><div style="text-align:right; font-size:10px; color:#555;"><p>Phone: ${f.phone || '+00 000 0000000'}</p><p>Email: ${f.email || 'info@company.com'}</p></div></div><p style="font-size:11px; margin-bottom:10px;">Date: <strong>${new Date().toLocaleDateString()}</strong></p><p style="font-size:11px; margin-bottom:10px;"><strong>Subject: ${f.subject || '[Subject]'}</strong></p><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Type your letter here...]'}</p><br><br><strong>Authorized Signatory</strong>`
             },
             {
                 id: "lh-2", category: "letterheads", featured: true, shape: "circle", title: "Dynamic Geometric Tech Letterhead", desc: "Modern corporate letterhead featuring bottom/top accent bar, sleek contact info, and agency look.",
-                fields: [{id:"comp",label:"Agency Name",val:""},{id:"tag",label:"Tagline / Specialty",val:""},{id:"phone",label:"Contact Number",val:""},{id:"email",label:"Email",val:""},{id:"body",label:"Letter Content",val:""}],
-                render: f => `<div style="text-align:center; border-bottom:3px solid #3182ce; padding-bottom:10px; margin-bottom:20px;"><h2 style="font-size:18px; color:#2b6cb0; font-weight:800;">${f.comp || '[Agency Name]'}</h2><p style="font-size:10px; color:#718096; text-transform:uppercase; letter-spacing:1px;">${f.tag || '[Digital Solutions & Development]'}</p></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter your professional letter message here...]'}</p><div style="margin-top:40px; border-top:1px solid #cbd5e0; padding-top:10px; display:flex; justify-content:space-between; font-size:10px; color:#4a5568;"><div>📞 ${f.phone || '+92 300 0000000'}</div><div>✉ ${f.email || 'contact@agency.com'}</div><div>🌐 www.agency.com</div></div>`
+                fields: [{id:"comp",label:"Agency Name",val:""},{id:"tag",label:"Tagline",val:""},{id:"phone",label:"Phone",val:""},{id:"email",label:"Email",val:""},{id:"body",label:"Content",val:""}],
+                render: f => `<div style="text-align:center; border-bottom:3px solid #3182ce; padding-bottom:10px; margin-bottom:15px;"><h2 style="font-size:16px; color:#2b6cb0;">${f.comp || '[Agency Name]'}</h2><p style="font-size:10px; color:#718096;">${f.tag || '[Digital Solutions]'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content here...]'}</p><div style="margin-top:30px; border-top:1px solid #cbd5e0; padding-top:8px; display:flex; justify-content:space-between; font-size:10px; color:#4a5568;"><span>📞 ${f.phone || 'Phone'}</span><span>✉ ${f.email || 'Email'}</span></div>`
             },
             {
                 id: "lh-3", category: "letterheads", featured: true, shape: "square", title: "Warm Organic Creative Letterhead", desc: "Soft earth-toned stationery layout suited for wellness studios, boutiques, and creative consultancies.",
-                fields: [{id:"comp",label:"Studio Name",val:""},{id:"addr",label:"Studio Address",val:""},{id:"body",label:"Letter Body",val:""}],
-                render: f => `<div style="background:#fdfbf7; border-left:4px solid #8c6d62; padding-left:15px; margin-bottom:20px;"><h2 style="font-size:16px; color:#8c6d62; font-family:'Georgia',serif;">${f.comp || '[Studio Name]'}</h2><p style="font-size:10px; color:#777;">${f.addr || '[Location / Address]'}</p></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Write your letter content here...]'}</p><br><br><p style="font-size:11px;">Warm regards,<br><br><strong>Management</strong></p>`
+                fields: [{id:"comp",label:"Studio Name",val:""},{id:"addr",label:"Address",val:""},{id:"body",label:"Letter Body",val:""}],
+                render: f => `<div style="background:#fdfbf7; border-left:4px solid #8c6d62; padding-left:12px; margin-bottom:15px;"><h2 style="font-size:15px; color:#8c6d62;">${f.comp || '[Studio Name]'}</h2><p style="font-size:10px; color:#777;">${f.addr || '[Address]'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Body here...]'}</p><br><br><strong>Management</strong>`
             },
             {
                 id: "lh-4", category: "letterheads", featured: false, shape: "square", title: "Chartered Accountants Letterhead", desc: "Formal financial and tax consultant letter format with registration lines.",
-                fields: [{id:"firm",label:"Firm Name",val:""},{id:"num",label:"License / Reg No",val:""},{id:"body",label:"Audit / Tax Advisory Letter",val:""}],
-                render: f => `<div style="border-bottom:1px double #333; padding-bottom:8px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2>${f.firm || '[Accounting Firm Name]'}</h2><span style="font-size:10px;">Reg: ${f.num || 'AC-00000'}</span></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter financial or tax statement notes here...]'}</p><br><br><strong>Managing Partner</strong>`
+                fields: [{id:"firm",label:"Firm Name",val:""},{id:"num",label:"License No",val:""},{id:"body",label:"Letter Content",val:""}],
+                render: f => `<div style="border-bottom:1px double #333; padding-bottom:8px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2>${f.firm || '[Accounting Firm]'}</h2><span style="font-size:10px;">Reg: ${f.num || '000'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Managing Partner</strong>`
             },
             {
                 id: "lh-5", category: "letterheads", featured: false, shape: "circle", title: "Construction & Engineering Letterhead", desc: "Industrial layout built for contractors, builders, and heavy engineering works.",
-                fields: [{id:"comp",label:"Company Name",val:""},{id:"phone",label:"Hotline",val:""},{id:"body",label:"Project Quotation / Notice",val:""}],
-                render: f => `<div style="background:#2d3748; color:#fff; padding:12px 15px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;"><h2 style="font-size:15px;">${f.comp || '[Construction & Builders]'}</h2><span style="font-size:10px;">Helpline: ${f.phone || '0300-0000000'}</span></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter project details or site notice here...]'}</p><br><br><strong>Project Director</strong>`
+                fields: [{id:"comp",label:"Company Name",val:""},{id:"phone",label:"Helpline",val:""},{id:"body",label:"Content",val:""}],
+                render: f => `<div style="background:#2d3748; color:#fff; padding:10px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2 style="font-size:14px;">${f.comp || '[Construction]'}</h2><span style="font-size:10px;">${f.phone || 'Helpline'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Project Director</strong>`
             },
             {
                 id: "lh-6", category: "letterheads", featured: false, shape: "square", title: "Executive Law Firm Letterhead", desc: "Classic formal letter format for legal notices, agreements, and advocates.",
-                fields: [{id:"adv",label:"Law Office / Advocate Name",val:""},{id:"addr",label:"Court Chamber Address",val:""},{id:"body",label:"Legal Notice Content",val:""}],
-                render: f => `<div style="text-align:center; margin-bottom:25px; border-bottom:1px solid #444; padding-bottom:10px;"><h2 style="font-family:'Georgia',serif; font-size:16px;">${f.adv || '[Chambers of Advocate Name]'}</h2><p style="font-size:10px; color:#555;">${f.addr || '[High Court Chamber Address]'}</p></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Type legal notice or representation text here...]'}</p><br><br><div style="text-align:right;"><strong>Advocate High Court</strong></div>`
+                fields: [{id:"adv",label:"Advocate Name",val:""},{id:"addr",label:"Chamber Address",val:""},{id:"body",label:"Notice Content",val:""}],
+                render: f => `<div style="text-align:center; margin-bottom:20px; border-bottom:1px solid #444; padding-bottom:8px;"><h2 style="font-size:15px;">${f.adv || '[Advocate Name]'}</h2><p style="font-size:10px; color:#555;">${f.addr || '[Chamber]'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><div style="text-align:right;"><strong>Advocate High Court</strong></div>`
             },
             {
                 id: "lh-7", category: "letterheads", featured: false, shape: "circle", title: "Medical Clinic & Hospital Letterhead", desc: "Clean professional medical stationery for prescriptions, referrals, and reports.",
-                fields: [{id:"doc",label:"Doctor / Clinic Name",val:""},{id:"spec",label:"Specialization",val:""},{id:"body",label:"Medical Prescription / Notes",val:""}],
-                render: f => `<div style="border-bottom:2px solid #2b6cb0; padding-bottom:8px; margin-bottom:20px; display:flex; justify-content:space-between;"><div><h2 style="color:#2b6cb0; font-size:15px;">${f.doc || '[Dr. Name & Clinic]'}</h2><p style="font-size:10px; color:#555;">${f.spec || '[MBBS, FCPS Specialist]'}</p></div><div style="font-size:10px; text-align:right;">Timings: 5 PM - 9 PM</div></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Rx / Clinical advice notes here...]'}</p><br><br><strong>Doctor Signature: _________</strong>`
+                fields: [{id:"doc",label:"Doctor Name",val:""},{id:"spec",label:"Specialization",val:""},{id:"body",label:"Prescription",val:""}],
+                render: f => `<div style="border-bottom:2px solid #2b6cb0; padding-bottom:8px; margin-bottom:15px; display:flex; justify-content:space-between;"><div><h2 style="color:#2b6cb0; font-size:14px;">${f.doc || '[Doctor Name]'}</h2><p style="font-size:10px; color:#555;">${f.spec || '[Specialization]'}</p></div></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Rx Notes]'}</p><br><br><strong>Signature: _________</strong>`
             },
             {
-                id: "lh-8", category: "letterheads", featured: false, shape: "square", title: "Real Estate & Property Agency Letterhead", desc: "High-end corporate layout for property dealers, housing societies, and realtors.",
-                fields: [{id:"agency",label:"Real Estate Agency",val:""},{id:"phone",label:"Contact / WhatsApp",val:""},{id:"body",label:"Property Deal / Allotment Notice",val:""}],
-                render: f => `<div style="background:#1e4d3b; color:#fff; padding:12px; margin-bottom:20px; display:flex; justify-content:space-between;"><h2 style="font-size:14px;">🏡 ${f.agency || '[Real Estate Consultants]'}</h2><span style="font-size:10px;">Contact: ${f.phone || '0300-0000000'}</span></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter property allotment or agreement details...]'}</p><br><br><strong>Authorized Director</strong>`
+                id: "lh-8", category: "letterheads", featured: false, shape: "square", title: "Real Estate Agency Letterhead", desc: "High-end corporate layout for property dealers and realtors.",
+                fields: [{id:"agency",label:"Agency Name",val:""},{id:"phone",label:"Contact",val:""},{id:"body",label:"Content",val:""}],
+                render: f => `<div style="background:#1e4d3b; color:#fff; padding:10px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2 style="font-size:14px;">${f.agency || '[Real Estate]'}</h2><span style="font-size:10px;">${f.phone || 'Contact'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Director</strong>`
             },
             {
-                id: "lh-9", category: "letterheads", featured: false, shape: "circle", title: "Education & Institute Letterhead", desc: "Academic institution stationery for schools, colleges, and coaching centers.",
-                fields: [{id:"inst",label:"Institution Name",val:""},{id:"loc",label:"City / Campus",val:""},{id:"body",label:"Circular / Fee Notice",val:""}],
-                render: f => `<div style="text-align:center; border-bottom:3px double #1e4d3b; padding-bottom:10px; margin-bottom:20px;"><h2 style="color:#1e4d3b; font-family:'Georgia',serif; font-size:16px;">${f.inst || '[School / Academy Name]'}</h2><p style="font-size:10px; color:#666;">Campus: ${f.loc || '[City Name]'}</p></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Type student circular or examination notice here...]'}</p><br><br><strong>Principal / Registrar</strong>`
+                id: "lh-9", category: "letterheads", featured: false, shape: "circle", title: "Education & Institute Letterhead", desc: "Academic institution stationery for schools and colleges.",
+                fields: [{id:"inst",label:"Institution Name",val:""},{id:"loc",label:"Location",val:""},{id:"body",label:"Circular",val:""}],
+                render: f => `<div style="text-align:center; border-bottom:3px double #1e4d3b; padding-bottom:8px; margin-bottom:15px;"><h2 style="color:#1e4d3b; font-size:15px;">${f.inst || '[Institute Name]'}</h2><p style="font-size:10px; color:#666;">${f.loc || '[Location]'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Circular]'}</p><br><br><strong>Principal</strong>`
             },
             {
-                id: "lh-10", category: "letterheads", featured: false, shape: "square", title: "Logistics & Transport Services Letterhead", desc: "Courier, cargo, and freight forwarding corporate stationery layout.",
-                fields: [{id:"log",label:"Logistics Company Name",val:""},{id:"trk",label:"Dispatch Branch",val:""},{id:"body",label:"Consignment Note / Dispatch Letter",val:""}],
-                render: f => `<div style="border-left:5px solid #d69e2e; padding-left:12px; margin-bottom:20px;"><h2 style="font-size:15px; color:#b7791f;">🚚 ${f.log || '[Express Cargo & Logistics]'}</h2><p style="font-size:10px; color:#666;">Branch: ${f.trk || '[Main Warehouse]'}</p></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter shipment dispatch details here...]'}</p><br><br><strong>Operations Manager</strong>`
+                id: "lh-10", category: "letterheads", featured: false, shape: "square", title: "Logistics & Transport Letterhead", desc: "Courier, cargo, and freight corporate stationery.",
+                fields: [{id:"log",label:"Company Name",val:""},{id:"trk",label:"Branch",val:""},{id:"body",label:"Dispatch Note",val:""}],
+                render: f => `<div style="border-left:5px solid #d69e2e; padding-left:10px; margin-bottom:15px;"><h2 style="font-size:14px; color:#b7791f;">${f.log || '[Logistics]'}</h2><p style="font-size:10px; color:#666;">${f.trk || '[Branch]'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Manager</strong>`
             },
             {
-                id: "lh-11", category: "letterheads", featured: false, shape: "circle", title: "Hotel & Hospitality Letterhead", desc: "Luxury resort, hotel, and restaurant formal guest communication stationery.",
-                fields: [{id:"hotel",label:"Hotel / Resort Name",val:""},{id:"city",label:"Location",val:""},{id:"body",label:"Guest Confirmation / Letter",val:""}],
-                render: f => `<div style="text-align:center; border-bottom:1px solid #d4af37; padding-bottom:10px; margin-bottom:20px;"><h2 style="font-family:'Georgia',serif; color:#b8860b; font-size:16px;">★ ${f.hotel || '[Luxury Hotel & Resort]} ★</h2><p style="font-size:10px; letter-spacing:1px; color:#555;">${f.city || '[City / Beachfront]'}</p></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter guest booking or welcome message here...]'}</p><br><br><strong>Front Desk Manager</strong>`
+                id: "lh-11", category: "letterheads", featured: false, shape: "circle", title: "Hotel & Hospitality Letterhead", desc: "Luxury resort and hotel formal guest communication stationery.",
+                fields: [{id:"hotel",label:"Hotel Name",val:""},{id:"city",label:"City",val:""},{id:"body",label:"Confirmation",val:""}],
+                render: f => `<div style="text-align:center; border-bottom:1px solid #d4af37; padding-bottom:8px; margin-bottom:15px;"><h2 style="color:#b8860b; font-size:15px;">★ ${f.hotel || '[Hotel]'} ★</h2><p style="font-size:10px; color:#555;">${f.city || '[City]'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Front Desk</strong>`
             },
             {
-                id: "lh-12", category: "letterheads", featured: false, shape: "square", title: "IT Software House Letterhead", desc: "Sleek developer and software solutions corporate brand letterhead.",
-                fields: [{id:"soft",label:"Software Company",val:""},{id:"web",label:"Website URL",val:""},{id:"body",label:"Service Agreement / Quotation",val:""}],
-                render: f => `<div style="display:flex; justify-content:space-between; align-items:center; background:#edf2f7; padding:12px; border-radius:4px; margin-bottom:20px;"><h2 style="font-size:14px; color:#2d3748;">💻 ${f.soft || '[Tech Innovators Inc.]'}</h2><span style="font-size:10px; color:#3182ce;">${f.web || 'www.softwarehouse.com'}</span></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter software quotation or project scope here...]'}</p><br><br><strong>CTO / Project Lead</strong>`
+                id: "lh-12", category: "letterheads", featured: false, shape: "square", title: "IT Software House Letterhead", desc: "Sleek developer and software solutions corporate letterhead.",
+                fields: [{id:"soft",label:"Software Company",val:""},{id:"web",label:"Website",val:""},{id:"body",label:"Quotation",val:""}],
+                render: f => `<div style="display:flex; justify-content:space-between; background:#edf2f7; padding:10px; border-radius:4px; margin-bottom:15px;"><h2 style="font-size:14px; color:#2d3748;">${f.soft || '[Software House]'}</h2><span style="font-size:10px; color:#3182ce;">${f.web || 'www.web.com'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>CTO</strong>`
             },
             {
-                id: "lh-13", category: "letterheads", featured: false, shape: "circle", title: "Security Services Agency Letterhead", desc: "Guards, surveillance, and security asset protection company layout.",
-                fields: [{id:"sec",label:"Security Agency Name",val:""},{id:"hotline",label:"Emergency Helpline",val:""},{id:"body",label:"Deployment Notice",val:""}],
-                render: f => `<div style="border-top:3px solid #742a2a; border-bottom:3px solid #742a2a; padding:8px 0; margin-bottom:20px; text-align:center;"><h2 style="font-size:15px; color:#742a2a;">🛡️ ${f.sec || '[SecureGuard Services]'}</h2><p style="font-size:10px;">Emergency Hotline: ${f.hotline || '0300-0000000'}</p></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter security deployment or guard instructions here...]'}</p><br><br><strong>Chief Security Officer</strong>`
+                id: "lh-13", category: "letterheads", featured: false, shape: "circle", title: "Security Services Letterhead", desc: "Guards and security asset protection company layout.",
+                fields: [{id:"sec",label:"Agency Name",val:""},{id:"hotline",label:"Helpline",val:""},{id:"body",label:"Deployment",val:""}],
+                render: f => `<div style="border-top:2px solid #742a2a; border-bottom:2px solid #742a2a; padding:6px 0; margin-bottom:15px; text-align:center;"><h2 style="font-size:14px; color:#742a2a;">${f.sec || '[Security]'}</h2><p style="font-size:10px;">${f.hotline || 'Helpline'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>CSO</strong>`
             },
             {
-                id: "lh-14", category: "letterheads", featured: false, shape: "square", title: "Event Management & Wedding Planner", desc: "Stylish creative layout for decorators, event planners, and caterers.",
-                fields: [{id:"event",label:"Event Planner Name",val:""},{id:"phone",label:"Booking Contact",val:""},{id:"body",label:"Event Quotation & Package",val:""}],
-                render: f => `<div style="text-align:center; margin-bottom:20px;"><h2 style="font-family:'Georgia',serif; font-size:16px; color:#d53f8c;">✨ ${f.event || '[Grand Celebrations & Events]} ✨</h2><p style="font-size:10px; color:#666;">Bookings: ${f.phone || '0300-0000000'}</p><hr style="border:0; border-top:1px solid #f687b3; margin-top:8px;"></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter event decoration and catering package details...]'}</p><br><br><strong>Event Director</strong>`
+                id: "lh-14", category: "letterheads", featured: false, shape: "square", title: "Event Management Letterhead", desc: "Stylish layout for decorators, event planners, and caterers.",
+                fields: [{id:"event",label:"Planner Name",val:""},{id:"phone",label:"Contact",val:""},{id:"body",label:"Package",val:""}],
+                render: f => `<div style="text-align:center; margin-bottom:15px;"><h2 style="font-size:15px; color:#d53f8c;">✨ ${f.event || '[Events]'} ✨</h2><p style="font-size:10px; color:#666;">${f.phone || 'Contact'}</p><hr style="border:0; border-top:1px solid #f687b3; margin-top:6px;"></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Director</strong>`
             },
             {
-                id: "lh-15", category: "letterheads", featured: false, shape: "circle", title: "Pharmacy & Medical Store Letterhead", desc: "Wholesale and retail medicine distributor formal billing and inquiry letterhead.",
-                fields: [{id:"pharm",label:"Pharmacy Name",val:""},{id:"lic",label:"Drug License No",val:""},{id:"body",label:"Order Supply Note",val:""}],
-                render: f => `<div style="border-bottom:2px solid #38a169; padding-bottom:8px; margin-bottom:20px; display:flex; justify-content:space-between;"><h2 style="color:#38a169; font-size:15px;">💊 ${f.pharm || '[Medical Store & Pharmacy]}</h2><span style="font-size:10px;">License: ${f.lic || 'MS-0000'}</span></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter medicine supply order notes here...]'}</p><br><br><strong>Pharmacist Incharge</strong>`
+                id: "lh-15", category: "letterheads", featured: false, shape: "circle", title: "Pharmacy & Medical Store Letterhead", desc: "Wholesale and retail medicine distributor letterhead.",
+                fields: [{id:"pharm",label:"Pharmacy Name",val:""},{id:"lic",label:"License No",val:""},{id:"body",label:"Order Note",val:""}],
+                render: f => `<div style="border-bottom:2px solid #38a169; padding-bottom:8px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2 style="color:#38a169; font-size:14px;">${f.pharm || '[Pharmacy]'}</h2><span style="font-size:10px;">${f.lic || 'License'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Pharmacist</strong>`
             },
             {
-                id: "lh-16", category: "letterheads", featured: false, shape: "square", title: "Advertising & Media Agency Letterhead", desc: "Creative media production, billboard, and digital marketing layout.",
-                fields: [{id:"media",label:"Media Agency Name",val:""},{id:"email",label:"Business Email",val:""},{id:"body",label:"Campaign Proposal",val:""}],
-                render: f => `<div style="background:#2b6cb0; color:#fff; padding:12px; margin-bottom:20px; display:flex; justify-content:space-between;"><h2 style="font-size:14px;">📢 ${f.media || '[Media & Advertising Hub]}</h2><span style="font-size:10px;">${f.email || 'ads@agency.com'}</span></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter marketing campaign proposal here...]'}</p><br><br><strong>Creative Director</strong>`
+                id: "lh-16", category: "letterheads", featured: false, shape: "square", title: "Advertising Agency Letterhead", desc: "Creative media production and digital marketing layout.",
+                fields: [{id:"media",label:"Agency Name",val:""},{id:"email",label:"Email",val:""},{id:"body",label:"Proposal",val:""}],
+                render: f => `<div style="background:#2b6cb0; color:#fff; padding:10px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2 style="font-size:14px;">${f.media || '[Media]'}</h2><span style="font-size:10px;">${f.email || 'Email'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Creative Director</strong>`
             },
             {
-                id: "lh-17", category: "letterheads", featured: false, shape: "circle", title: "General Trading & Export Company", desc: "Import, export, and wholesale general merchandise corporate letterhead.",
-                fields: [{id:"trade",label:"Trading Company Name",val:""},{id:"ntn",label:"NTN / GST No",val:""},{id:"body",label:"Commercial Offer / Inquiry",val:""}],
-                render: f => `<div style="border-bottom:1px solid #333; padding-bottom:10px; margin-bottom:20px;"><h2 style="font-size:16px;">🌐 ${f.trade || '[Global Trading & Exports]}</h2><p style="font-size:10px; color:#555;">NTN: ${f.ntn || '0000000-0'}</p></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter commercial trading terms here...]'}</p><br><br><strong>Import/Export Manager</strong>`
+                id: "lh-17", category: "letterheads", featured: false, shape: "circle", title: "General Trading & Export Letterhead", desc: "Import, export, and wholesale corporate letterhead.",
+                fields: [{id:"trade",label:"Company Name",val:""},{id:"ntn",label:"NTN",val:""},{id:"body",label:"Terms",val:""}],
+                render: f => `<div style="border-bottom:1px solid #333; padding-bottom:8px; margin-bottom:15px;"><h2 style="font-size:15px;">${f.trade || '[Trading]'}</h2><p style="font-size:10px; color:#555;">NTN: ${f.ntn || 'NTN'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Manager</strong>`
             },
             {
-                id: "lh-18", category: "letterheads", featured: false, shape: "square", title: "Automotive Workshop & Spare Parts", desc: "Car service center, mechanics, and auto parts dealer letterhead format.",
-                fields: [{id:"auto",label:"Workshop / Store Name",val:""},{id:"phone",label:"Workshop Phone",val:""},{id:"body",label:"Repair Estimate & Job Card",val:""}],
-                render: f => `<div style="background:#dd6b20; color:#fff; padding:12px; margin-bottom:20px; display:flex; justify-content:space-between;"><h2 style="font-size:14px;">🔧 ${f.auto || '[Auto Repair & Spare Parts]}</h2><span style="font-size:10px;">Phone: ${f.phone || '0300-0000000'}</span></div><p style="font-size:12px; line-height:1.8; min-height:180px; white-space:pre-line;">${f.body || '[Enter auto repair estimate or service notes here...]'}</p><br><br><strong>Workshop Supervisor</strong>`
+                id: "lh-18", category: "letterheads", featured: false, shape: "square", title: "Automotive Workshop Letterhead", desc: "Car service center and auto parts dealer letterhead format.",
+                fields: [{id:"auto",label:"Workshop Name",val:""},{id:"phone",label:"Phone",val:""},{id:"body",label:"Job Card",val:""}],
+                render: f => `<div style="background:#dd6b20; color:#fff; padding:10px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2 style="font-size:14px;">${f.auto || '[Workshop]'}</h2><span style="font-size:10px;">${f.phone || 'Phone'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Supervisor</strong>`
             },
-
-            // EXISTING MASTER DATABASE ITEMS
             {
-                id: "acc-1", category: "accounts", featured: true, shape: "square", title: "Monthly Salary Slip & Pay Statement", desc: "Detailed monthly earnings, allowances, tax deductions, and net take-home salary.",
-                fields: [{id:"comp",label:"Company Name",val:""},{id:"emp",label:"Employee Name",val:""},{id:"desig",label:"Designation",val:""},{id:"month",label:"Salary Month",val:""},{id:"basic",label:"Basic Salary (PKR)",val:""},{id:"allow",label:"Allowances (PKR)",val:""},{id:"ded",label:"Deductions (PKR)",val:""}],
-                render: f => `<h3>${f.comp || '[Company Name]'}</h3><p style="text-align:center; font-size:10px;">Salary Statement - ${f.month || '[Month]'}</p><hr><p><strong>Employee:</strong> ${f.emp || '[Employee Name]'} (${f.desig || '[Designation]'})</p><p>Basic: PKR ${f.basic ? Number(f.basic).toLocaleString() : '0'}</p><p>Allowances: PKR ${f.allow ? Number(f.allow).toLocaleString() : '0'}</p><p>Deductions: PKR ${f.ded ? Number(f.ded).toLocaleString() : '0'}</p><hr><h3 style="text-align:left;">Net Payable: PKR ${((Number(f.basic)||0)+(Number(f.allow)||0)-(Number(f.ded)||0)).toLocaleString()}</h3>`
+                id: "acc-1", category: "accounts", featured: true, shape: "square", title: "Monthly Salary Slip", desc: "Detailed monthly earnings, allowances, tax deductions, and net take-home salary.",
+                fields: [{id:"comp",label:"Company",val:""},{id:"emp",label:"Employee",val:""},{id:"desig",label:"Designation",val:""},{id:"month",label:"Month",val:""},{id:"basic",label:"Basic Salary",val:""},{id:"allow",label:"Allowances",val:""},{id:"ded",label:"Deductions",val:""}],
+                render: f => `<h3>${f.comp || '[Company]'}</h3><p style="text-align:center; font-size:10px;">Salary Statement - ${f.month || '[Month]'}</p><hr><p><strong>Employee:</strong> ${f.emp || '[Name]'} (${f.desig || '[Designation]'})</p><p>Basic: PKR ${f.basic || '0'}</p><p>Allowances: PKR ${f.allow || '0'}</p><p>Deductions: PKR ${f.ded || '0'}</p><hr><h3>Net Payable: PKR ${((Number(f.basic)||0)+(Number(f.allow)||0)-(Number(f.ded)||0))}</h3>`
             },
             {
                 id: "hr-4", category: "hr", featured: true, shape: "circle", title: "Employment Offer Letter", desc: "Comprehensive corporate appointment offer with salary breakdown.",
-                fields: [{id:"cand",label:"Candidate Name",val:""},{id:"desig",label:"Position / Designation",val:""},{id:"comp",label:"Company Name",val:""},{id:"sal",label:"Gross Salary (PKR)",val:""}],
-                render: f => `<h3>EMPLOYMENT OFFER LETTER</h3><p>Dear <strong>${f.cand || '[Candidate Name]'}</strong>, we offer you the position of <strong>${f.desig || '[Position]'}</strong> at <strong>${f.comp || '[Company Name]'}</strong> with a monthly gross salary of <strong>PKR ${f.sal || '0'}</strong>.</p><br><br><strong>Authorized Signature / HR Head</strong>`
+                fields: [{id:"cand",label:"Candidate",val:""},{id:"desig",label:"Position",val:""},{id:"comp",label:"Company",val:""},{id:"sal",label:"Salary",val:""}],
+                render: f => `<h3>EMPLOYMENT OFFER</h3><p>Dear <strong>${f.cand || '[Candidate]'}</strong>, we offer you <strong>${f.desig || '[Position]'}</strong> at <strong>${f.comp || '[Company]'}</strong> with salary <strong>PKR ${f.sal || '0'}</strong>.</p><br><br><strong>HR Head</strong>`
             },
             {
-                id: "tr-1", category: "transport", featured: true, shape: "square", title: "Vehicle Transfer Application (Excise)", desc: "Formal application letter to Excise & Taxation Department.",
-                fields: [{id:"seller",label:"Seller Name",val:""},{id:"buyer",label:"Buyer Name",val:""},{id:"reg",label:"Registration No",val:""},{id:"eng",label:"Engine No",val:""},{id:"chs",label:"Chassis No",val:""}],
-                render: f => `<h3>VEHICLE TRANSFER APPLICATION</h3><p>To Director Excise & Taxation.<br>Subject: Transfer of Registration No <strong>${f.reg || '[Reg No]'}</strong> from <strong>${f.seller || '[Seller Name]'}</strong> to <strong>${f.buyer || '[Buyer Name]'}</strong> (Engine: ${f.eng || '[Engine No]'}, Chassis: ${f.chs || '[Chassis No]'}). Kindly transfer ownership.</p><br><br><div style="display:flex; justify-content:space-between;"><div>Seller Sign: _________</div><div>Buyer Sign: _________</div></div>`
+                id: "tr-1", category: "transport", featured: true, shape: "square", title: "Vehicle Transfer Application", desc: "Formal application letter to Excise & Taxation Department.",
+                fields: [{id:"seller",label:"Seller",val:""},{id:"buyer",label:"Buyer",val:""},{id:"reg",label:"Reg No",val:""},{id:"eng",label:"Engine No",val:""},{id:"chs",label:"Chassis No",val:""}],
+                render: f => `<h3>VEHICLE TRANSFER</h3><p>To Excise. Transfer Reg <strong>${f.reg || '[Reg]'}</strong> from <strong>${f.seller || '[Seller]'}</strong> to <strong>${f.buyer || '[Buyer]'}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><span>Seller Sign</span><span>Buyer Sign</span></div>`
             },
             {
-                id: "com-1", category: "commercial", featured: true, shape: "circle", title: "Official Cash Memo / Retail Invoice", desc: "Detailed cash transaction memo for wholesale/retail sales.",
-                fields: [{id:"biz",label:"Business Name",val:""},{id:"cust",label:"Customer Name",val:""},{id:"item",label:"Item Description",val:""},{id:"amt",label:"Total Amount (PKR)",val:""}],
-                render: f => `<h3>${f.biz || '[Business Name]'}</h3><h3 style="text-align:center;">CASH MEMO</h3><p>Customer: ${f.cust || '[Customer Name]'}</p><p>Item: ${f.item || '[Item Description]'}</p><h3 style="text-align:right;">Total: PKR ${f.amt ? Number(f.amt).toLocaleString() : '0'}</h3><br><br><strong>Cashier Sign: _________</strong>`
+                id: "com-1", category: "commercial", featured: true, shape: "circle", title: "Official Cash Memo", desc: "Detailed cash transaction memo for wholesale/retail sales.",
+                fields: [{id:"biz",label:"Business",val:""},{id:"cust",label:"Customer",val:""},{id:"item",label:"Item",val:""},{id:"amt",label:"Amount",val:""}],
+                render: f => `<h3>${f.biz || '[Business]'}</h3><h3>CASH MEMO</h3><p>Customer: ${f.cust || '[Customer]'}</p><p>Item: ${f.item || '[Item]'}</p><h3>Total: PKR ${f.amt || '0'}</h3><br><br><strong>Cashier</strong>`
             },
             {
-                id: "med-1", category: "medical", featured: true, shape: "square", title: "Official Medical Fitness Certificate", desc: "Standard medical fitness certificate by registered practitioner.",
-                fields: [{id:"doc",label:"Doctor Name & Qualification",val:""},{id:"clinic",label:"Clinic / Hospital Name",val:""},{id:"pat",label:"Patient Name",val:""},{id:"find",label:"Medical Findings",val:""}],
-                render: f => `<h3>${f.clinic || '[Clinic / Hospital Name]'}</h3><p style="text-align:center; font-size:10px;">${f.doc || '[Doctor Name & Qualifications]'}</p><hr><h3 style="text-align:center; text-decoration:underline;">MEDICAL FITNESS CERTIFICATE</h3><p>Examined <strong>${f.pat || '[Patient Name]'}</strong>. Findings: ${f.find || '[Medical examination findings]'}. Certified FIT for professional duties.</p><br><br><div style="text-align:right;"><strong>Doctor Signature & Stamp:</strong><br><br>_____________________</div>`
+                id: "med-1", category: "medical", featured: true, shape: "square", title: "Medical Fitness Certificate", desc: "Standard medical fitness certificate by registered practitioner.",
+                fields: [{id:"doc",label:"Doctor",val:""},{id:"clinic",label:"Clinic",val:""},{id:"pat",label:"Patient",val:""},{id:"find",label:"Findings",val:""}],
+                render: f => `<h3>${f.clinic || '[Clinic]'}</h3><p style="text-align:center; font-size:10px;">${f.doc || '[Doctor]'}</p><hr><h3>FITNESS CERTIFICATE</h3><p>Examined <strong>${f.pat || '[Patient]'}</strong>. Findings: ${f.find || '[Findings]'}. Certified FIT.</p><br><br><strong>Doctor Stamp</strong>`
             },
             {
-                id: "prop-1", category: "property", featured: true, shape: "circle", title: "Comprehensive House Rent Agreement", desc: "Residential tenancy contract with security deposit and terms.",
-                fields: [{id:"land",label:"Landlord Name",val:""},{id:"tenant",label:"Tenant Name",val:""},{id:"addr",label:"Property Address",val:""},{id:"rent",label:"Monthly Rent (PKR)",val:""}],
-                render: f => `<h3>RESIDENTIAL RENT AGREEMENT</h3><p>Landlord <strong>${f.land || '[Landlord Name]'}</strong> lets property located at <strong>${f.addr || '[Property Address]'}</strong> to Tenant <strong>${f.tenant || '[Tenant Name]'}</strong> for a monthly rent of <strong>PKR ${f.rent || '0'}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><div>Landlord Sign: _________</div><div>Tenant Sign: _________</div></div>`
+                id: "prop-1", category: "property", featured: true, shape: "circle", title: "House Rent Agreement", desc: "Residential tenancy contract with security deposit and terms.",
+                fields: [{id:"land",label:"Landlord",val:""},{id:"tenant",label:"Tenant",val:""},{id:"addr",label:"Address",val:""},{id:"rent",label:"Rent",val:""}],
+                render: f => `<h3>RENT AGREEMENT</h3><p>Landlord <strong>${f.land || '[Landlord]'}</strong> lets property at <strong>${f.addr || '[Address]'}</strong> to <strong>${f.tenant || '[Tenant]'}</strong> for PKR <strong>${f.rent || '0'}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><span>Landlord</span><span>Tenant</span></div>`
             }
         ];
 
-        class MasterApp {
-            constructor() {
-                this.isShowingAll = false;
-                this.currentData = masterDatabase.filter(i => i.featured);
-                this.activeTemplate = null;
+        const DocuHubApp = {
+            isShowingAll: false,
+            currentData: database.filter(i => i.featured),
+            activeTemplate: null,
+
+            init() {
                 this.renderGrid(this.currentData);
-            }
+            },
 
             renderGrid(data) {
                 const grid = document.getElementById('templates-grid');
@@ -490,19 +462,17 @@
                 grid.innerHTML = '';
                 data.forEach((item, index) => {
                     const card = document.createElement('div');
-                    const shapeClass = item.shape === 'circle' ? 'shape-circle-card' : '';
-                    card.className = `card ${shapeClass}`;
-                    
+                    card.className = `card ${item.shape === 'circle' ? 'shape-circle-card' : ''}`;
                     card.innerHTML = `
                         <div>
                             <h3>${index + 1}. ${item.title}</h3>
                             <p>${item.desc}</p>
                         </div>
-                        <button onclick="app.openModal('${item.id}')">Open Generator &rarr;</button>
+                        <button onclick="DocuHubApp.openModal('${item.id}')">Open Generator &rarr;</button>
                     `;
                     grid.appendChild(card);
                 });
-            }
+            },
 
             toggleViewAll() {
                 this.isShowingAll = !this.isShowingAll;
@@ -512,14 +482,14 @@
                 if(this.isShowingAll) {
                     headingText.innerText = "All Available Suite Generators";
                     toggleBtn.innerText = "Show Featured Only 🔼";
-                    this.currentData = [...masterDatabase];
+                    this.currentData = [...database];
                 } else {
                     headingText.innerText = "Featured Top Generators";
                     toggleBtn.innerText = "View All Generators 🔄";
-                    this.currentData = masterDatabase.filter(i => i.featured);
+                    this.currentData = database.filter(i => i.featured);
                 }
                 this.renderGrid(this.currentData);
-            }
+            },
 
             filterCategory(cat) {
                 document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
@@ -527,26 +497,26 @@
                 if(cat === 'all' && navAll) navAll.classList.add('active');
 
                 if(cat === 'all') {
-                    this.currentData = this.isShowingAll ? [...masterDatabase] : masterDatabase.filter(i => i.featured);
+                    this.currentData = this.isShowingAll ? [...database] : database.filter(i => i.featured);
                 } else {
-                    this.currentData = masterDatabase.filter(i => i.category === cat);
+                    this.currentData = database.filter(i => i.category === cat);
                 }
                 this.renderGrid(this.currentData);
-            }
+            },
 
             handleSearch(keyword) {
                 const term = keyword.toLowerCase();
-                const source = this.isShowingAll ? masterDatabase : masterDatabase.filter(i => i.featured);
+                const source = this.isShowingAll ? database : database.filter(i => i.featured);
                 if(!term) {
                     this.renderGrid(source);
                     return;
                 }
                 const filtered = source.filter(i => i.title.toLowerCase().includes(term) || i.desc.toLowerCase().includes(term));
                 this.renderGrid(filtered);
-            }
+            },
 
             openModal(id) {
-                this.activeTemplate = masterDatabase.find(i => i.id === id);
+                this.activeTemplate = database.find(i => i.id === id);
                 if(!this.activeTemplate) return;
 
                 document.getElementById('modal-title').innerText = this.activeTemplate.title;
@@ -558,7 +528,7 @@
                     group.className = 'form-group';
                     group.innerHTML = `
                         <label>${field.label}</label>
-                        <input type="text" id="field-${field.id}" value="${field.val}" placeholder="Enter ${field.label}" oninput="app.updatePreview()">
+                        <input type="text" id="field-${field.id}" value="${field.val}" placeholder="Enter ${field.label}" oninput="DocuHubApp.updatePreview()">
                     `;
                     formContainer.appendChild(group);
                 });
@@ -568,7 +538,7 @@
 
                 this.updatePreview();
                 document.getElementById('workspace-modal').style.display = 'flex';
-            }
+            },
 
             updatePreview() {
                 if(!this.activeTemplate) return;
@@ -577,35 +547,46 @@
                     const input = document.getElementById(`field-${field.id}`);
                     values[field.id] = input ? input.value : '';
                 });
-
                 const previewBox = document.getElementById('modal-live-preview');
                 previewBox.innerHTML = this.activeTemplate.render(values);
-            }
+            },
 
             changeFont(fontFamily) {
                 const previewBox = document.getElementById('modal-live-preview');
                 if(previewBox) previewBox.style.fontFamily = fontFamily;
-            }
+            },
 
             changeTheme(themeName) {
                 const previewBox = document.getElementById('modal-live-preview');
                 if(!previewBox) return;
                 previewBox.classList.remove('theme-editorial', 'theme-geometric', 'theme-organic', 'theme-darkmode');
                 if(themeName !== 'default') previewBox.classList.add(`theme-${themeName}`);
-            }
+            },
 
             closeModal() {
                 document.getElementById('workspace-modal').style.display = 'none';
                 this.activeTemplate = null;
-            }
+            },
+
+            showInfoModal(title, content) {
+                document.getElementById('info-modal-title').innerText = title;
+                document.getElementById('info-modal-body').innerText = content;
+                document.getElementById('info-modal').style.display = 'flex';
+            },
+
+            closeInfoModal() {
+                document.getElementById('info-modal').style.display = 'none';
+            },
 
             showHome() {
                 this.filterCategory('all');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-        }
+        };
 
-        const app = new MasterApp();
+        window.onload = () => {
+            DocuHubApp.init();
+        };
     </script>
 </body>
 </html>
