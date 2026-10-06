@@ -49,7 +49,7 @@
         
         .card h3 { font-size: 14px; margin-bottom: 8px; color: #1e4d3b; font-weight: 700; }
         .card p { font-size: 11px; color: #666666; line-height: 1.4; margin-bottom: 15px; }
-        .card button { background: #1e4d3b; border: none; color: #ffffff; padding: 7px 14px; font-weight: 600; font-size: 11px; cursor: pointer; border-radius: 4px; transition: all 0.2s; width: fit-content; }
+        .card button { background: #1e4d3b; border: none; color: #ffffff; padding: 7px 14px; font-weight: 600; font-size: 11px; cursor: pointer; border-radius: 4px; transition: all 0.2s; width: fit-content; text-decoration: none; display: inline-block; text-align: center; }
         .card.shape-circle-card button { margin: 0 auto; }
         .card button:hover { background: #143528; transform: scale(1.05); }
 
@@ -146,6 +146,7 @@
                 <li><a onclick="DocuHubApp.filterCategory('commercial')">Commercial</a></li>
                 <li><a onclick="DocuHubApp.filterCategory('medical')">Medical</a></li>
                 <li><a onclick="DocuHubApp.filterCategory('property')">Property</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('portfolio')">My CV Web 🌐</a></li>
             </ul>
         </nav>
     </header>
@@ -181,6 +182,10 @@
                 <div class="circle-img">🏡</div>
                 <span>Property</span>
             </div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('portfolio')">
+                <div class="circle-img">🌐</div>
+                <span>My CV Web</span>
+            </div>
         </div>
     </div>
 
@@ -212,9 +217,9 @@
                         <div class="placeholder-mc">💰</div>
                         <span>Salary</span>
                     </div>
-                    <div class="mini-circle-item" onclick="DocuHubApp.filterCategory('hr')">
-                        <div class="placeholder-mc">📜</div>
-                        <span>Offers</span>
+                    <div class="mini-circle-item" onclick="DocuHubApp.filterCategory('portfolio')">
+                        <div class="placeholder-mc">🌐</div>
+                        <span>Live CV</span>
                     </div>
                     <div class="mini-circle-item" onclick="DocuHubApp.filterCategory('commercial')">
                         <div class="placeholder-mc">🧾</div>
@@ -325,6 +330,11 @@
 
     <script>
         const database = [
+            {
+                id: "cv-link-card", category: "portfolio", featured: true, shape: "circle", title: "Professional Online CV Portal", desc: "Direct live card link to your personal interactive CV web application hosted on Vercel.",
+                fields: [{id:"msg",label:"Status Note",val:"Live Portfolio Active"}],
+                render: f => `<div style="text-align:center; padding: 30px;"><h2>🌐 Personal Live CV Web Application</h2><p style="margin: 15px 0; color:#555;">Aapki CV website ka direct link neeche diye gaye button par click karke khul sakta hai:</p><a href="https://instant-cv-six.vercel.app/" target="_blank" style="display:inline-block; background:#1e4d3b; color:#fff; padding:12px 25px; border-radius:6px; text-decoration:none; font-weight:bold; margin-top:10px;">Visit My CV Web &rarr;</a></div>`
+            },
             {
                 id: "lh-1", category: "letterheads", featured: true, shape: "square", title: "Editorial Minimalist Letterhead", desc: "Clean top header with high-end corporate typography, border accents, and structured body layout.",
                 fields: [{id:"comp",label:"Company Name",val:""},{id:"phone",label:"Phone",val:""},{id:"email",label:"Email",val:""},{id:"addr",label:"Address",val:""},{id:"subject",label:"Subject",val:""},{id:"body",label:"Letter Content",val:""}],
@@ -463,13 +473,23 @@
                 data.forEach((item, index) => {
                     const card = document.createElement('div');
                     card.className = `card ${item.shape === 'circle' ? 'shape-circle-card' : ''}`;
-                    card.innerHTML = `
-                        <div>
-                            <h3>${index + 1}. ${item.title}</h3>
-                            <p>${item.desc}</p>
-                        </div>
-                        <button onclick="DocuHubApp.openModal('${item.id}')">Open Generator &rarr;</button>
-                    `;
+                    if(item.id === 'cv-link-card') {
+                        card.innerHTML = `
+                            <div>
+                                <h3>${index + 1}. ${item.title}</h3>
+                                <p>${item.desc}</p>
+                            </div>
+                            <a href="https://instant-cv-six.vercel.app/" target="_blank" style="background:#1e4d3b; color:#ffffff; padding:7px 14px; font-weight:600; font-size:11px; border-radius:4px; text-decoration:none; display:inline-block; text-align:center; width:fit-content; margin: 0 auto;">Open Live CV &rarr;</a>
+                        `;
+                    } else {
+                        card.innerHTML = `
+                            <div>
+                                <h3>${index + 1}. ${item.title}</h3>
+                                <p>${item.desc}</p>
+                            </div>
+                            <button onclick="DocuHubApp.openModal('${item.id}')">Open Generator &rarr;</button>
+                        `;
+                    }
                     grid.appendChild(card);
                 });
             },
