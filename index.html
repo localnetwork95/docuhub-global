@@ -62,44 +62,46 @@
         .form-group { margin-bottom: 10px; }
         .form-group label { display: block; font-size: 9.5px; font-weight: 700; color: #1e4d3b; text-transform: uppercase; margin-bottom: 3px; }
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 11px; background: #fff; outline: none; }
-        .form-group textarea { height: 65px; resize: vertical; }
+        .form-group textarea { height: 75px; resize: vertical; }
 
         .preview-section { background: #666; padding: 15px; border-radius: 6px; height: 100%; overflow-y: auto; display: flex; justify-content: center; align-items: flex-start; }
         
-        /* Document Paper Formatting - Strict A4 single page height control */
-        .document-paper { background: #ffffff; width: 100%; max-width: 590px; height: 680px; padding: 22px; border-radius: 2px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-size: 10px; line-height: 1.3; color: #222; font-family: 'Times New Roman', Times, serif; display: flex; flex-direction: column; justify-content: space-between; }
+        /* Document Paper Formatting */
+        .document-paper { background: #ffffff; width: 100%; max-width: 580px; height: 650px; padding: 20px; border-radius: 2px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-size: 9.5px; line-height: 1.3; color: #222; font-family: 'Times New Roman', Times, serif; display: flex; flex-direction: column; justify-content: space-between; }
         
-        .doc-header { border-bottom: 2px solid #1e4d3b; padding-bottom: 4px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: flex-start; }
-        .doc-header .company-title { font-size: 14px; font-weight: bold; color: #1e4d3b; font-family: 'Georgia', serif; }
-        .doc-header .company-info { font-size: 7.5px; color: #555; text-align: right; line-height: 1.1; }
+        .doc-header { border-bottom: 2px solid #1e4d3b; padding-bottom: 3px; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .doc-header .company-title { font-size: 13px; font-weight: bold; color: #1e4d3b; font-family: 'Georgia', serif; }
+        .doc-header .company-info { font-size: 7px; color: #555; text-align: right; line-height: 1.1; }
 
-        .doc-meta { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 8.5px; color: #444; border-bottom: 1px dashed #ccc; padding-bottom: 2px; }
-        .doc-subject { font-size: 10px; font-weight: bold; text-decoration: underline; text-align: center; margin: 6px 0; text-transform: uppercase; color: #111; }
-        .doc-body { text-align: justify; white-space: pre-line; margin-bottom: 6px; flex: 1; overflow: hidden; }
+        .doc-meta { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 8px; color: #444; border-bottom: 1px dashed #ccc; padding-bottom: 2px; }
+        .doc-subject { font-size: 9.5px; font-weight: bold; text-decoration: underline; text-align: center; margin: 5px 0; text-transform: uppercase; color: #111; }
+        .doc-body { text-align: justify; white-space: pre-line; margin-bottom: 4px; flex: 1; overflow: hidden; }
         
-        .doc-table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 8.5px; }
-        .doc-table th, .doc-table td { border: 1px solid #444; padding: 3px 4px; text-align: left; }
+        .doc-table { width: 100%; border-collapse: collapse; margin: 4px 0; font-size: 8px; }
+        .doc-table th, .doc-table td { border: 1px solid #444; padding: 2px 3px; text-align: left; }
         .doc-table th { background: #f0eee6; font-weight: bold; color: #1e4d3b; }
 
-        .doc-footer { margin-top: 8px; border-top: 1px solid #1e4d3b; padding-top: 4px; display: flex; justify-content: space-between; align-items: flex-end; }
-        .sig-box { text-align: center; width: 140px; }
-        .sig-line { border-bottom: 1px solid #333; margin-bottom: 2px; height: 18px; }
-        .sig-title { font-size: 8px; font-weight: bold; color: #333; }
+        .doc-footer { margin-top: 5px; border-top: 1px solid #1e4d3b; padding-top: 3px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .sig-box { text-align: center; width: 130px; }
+        .sig-line { border-bottom: 1px solid #333; margin-bottom: 2px; height: 15px; }
+        .sig-title { font-size: 7.5px; font-weight: bold; color: #333; }
 
         .modal-footer { padding: 8px 20px; background: #fff; border-top: 1px solid #e0ddd5; display: flex; justify-content: flex-end; gap: 10px; }
         .btn-primary { background: #1e4d3b; border: none; color: #fff; padding: 6px 16px; font-size: 11px; cursor: pointer; border-radius: 4px; font-weight: bold; }
         .btn-outline { background: transparent; border: 1px solid #1e4d3b; color: #1e4d3b; padding: 6px 16px; font-size: 11px; cursor: pointer; border-radius: 4px; font-weight: bold; }
 
-        /* STRICT 1-PAGE PRINT MEDIA QUERY */
+        /* STRICT 1-PAGE HARD LOCK PRINT OVERRIDE */
         @media print {
+            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body, html { width: 100% !important; height: 100% !important; background: #fff !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; }
             body * { visibility: hidden !important; }
             #workspace-modal, #workspace-modal * { visibility: visible !important; }
-            #workspace-modal { position: fixed !important; left: 0 !important; top: 0 !important; width: 100vw !important; height: 100vh !important; background: #fff !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 99999 !important; padding: 0 !important; margin: 0 !important; }
+            #workspace-modal { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; height: 100% !important; background: #fff !important; display: block !important; z-index: 999999 !important; padding: 0 !important; margin: 0 !important; }
             .modal-content { box-shadow: none !important; border: none !important; width: 100% !important; height: 100% !important; max-width: 100% !important; background: #fff !important; }
             .modal-header, .modal-footer, .form-section { display: none !important; }
             .modal-body { display: block !important; padding: 0 !important; background: #fff !important; height: 100% !important; overflow: hidden !important; }
             .preview-section { background: #fff !important; padding: 0 !important; width: 100% !important; height: 100% !important; display: flex !important; justify-content: center !important; align-items: center !important; overflow: hidden !important; }
-            .document-paper { box-shadow: none !important; border: none !important; width: 100% !important; max-width: 100% !important; height: 100vh !important; max-height: 100vh !important; padding: 15px !important; margin: 0 !important; page-break-after: avoid !important; page-break-before: avoid !important; page-break-inside: avoid !important; }
+            .document-paper { box-shadow: none !important; border: none !important; width: 100% !important; max-width: 100% !important; height: 100% !important; max-height: 100% !important; padding: 15px !important; margin: 0 !important; page-break-after: avoid !important; page-break-before: avoid !important; page-break-inside: avoid !important; }
             @page { size: A4 portrait; margin: 0; }
         }
     </style>
@@ -176,7 +178,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-section">
-                    <h4 style="font-size:11px; margin-bottom:10px; color:#1e4d3b; border-bottom:1px solid #1e4d3b; padding-bottom:3px;">EDIT DETAILS & FORMULA AMOUNTS</h4>
+                    <h4 style="font-size:11px; margin-bottom:10px; color:#1e4d3b; border-bottom:1px solid #1e4d3b; padding-bottom:3px;">EDIT DETAILS & FIELD SUGGESTIONS</h4>
                     <div id="modal-form-fields"></div>
                 </div>
                 <div class="preview-section">
@@ -193,179 +195,192 @@
     <script>
         const rawList = [
             // 1. LETTERS
-            { cat: "letters", title: "Appointment / Offer Letter", desc: "Letter for new hires", type: "letter", rec: "[Employee Name]", sub: "OFFER OF APPOINTMENT", body: "We are pleased to offer you employment for the designated position. Your salary and benefits will be as mutually agreed upon." },
-            { cat: "letters", title: "Confirmation Letter", desc: "Probation completion notice", type: "letter", rec: "[Employee Name]", sub: "EMPLOYMENT CONFIRMATION", body: "We are pleased to inform you that you have successfully completed your probation period and your employment is confirmed." },
-            { cat: "letters", title: "Increment / Promotion Letter", desc: "Salary hike letter", type: "letter", rec: "[Employee Name]", sub: "REVISION OF COMPENSATION", body: "In recognition of your performance, management has approved a salary revision effective from the current month." },
-            { cat: "letters", title: "Experience / Service Certificate", desc: "Work tenure certificate", type: "letter", rec: "[Employee Name]", sub: "WORK EXPERIENCE CERTIFICATE", body: "This is to certify that [Employee Name] served our organization with dedication and professional conduct." },
-            { cat: "letters", title: "Demand / Dunning Letter", desc: "Payment reminder", type: "letter", rec: "[Client Name]", sub: "OVERDUE PAYMENT REMINDER", body: "This is a reminder regarding your overdue account balance. Please arrange payment at your earliest convenience." },
-            { cat: "letters", title: "Bank Confirmation Letter", desc: "Bank verification letter", type: "letter", rec: "[Bank Name]", sub: "BANK ACCOUNT VERIFICATION", body: "We confirm that our account is active and maintained under standard operating guidelines." },
-            { cat: "letters", title: "Resignation / Termination Letter", desc: "Separation letter", type: "letter", rec: "[Employee Name]", sub: "SERVICE SEPARATION NOTICE", body: "This document serves as formal acknowledgement of employment conclusion effective today." },
+            { cat: "letters", title: "Appointment / Offer Letter", desc: "Letter for new hires", type: "office_letter", rec: "", sub: "OFFER OF APPOINTMENT", body: "We are extremely pleased to offer you professional employment with our organization for the designated position based on your exceptional qualifications and interview assessment. Your starting salary, compensation package, allowances, and workplace benefits will be governed strictly in accordance with company policy and as mutually agreed upon during final discussions. You are expected to maintain utmost confidentiality regarding corporate matters, adhere to office discipline, and deliver your duties with complete dedication.", suggestion: "1. Submit verified educational degrees, CNIC copy, and prior experience letters.\n2. Sign and return the duplicate copy of this agreement upon acceptance.\n3. Report directly to the HR department on your designated joining date." },
+            { cat: "letters", title: "Confirmation Letter", desc: "Probation completion notice", type: "office_letter", rec: "", sub: "EMPLOYMENT CONFIRMATION", body: "We are delighted to formally inform you that following a comprehensive performance evaluation during your mandatory probation period, management has successfully approved your regular employment confirmation. Your dedication, efficiency, and professional conduct displayed throughout these months have been highly commendable. You are now officially recognized as a permanent staff member, entitled to all regular corporate benefits, medical allowances, and annual appraisal increments as per standard company rules.", suggestion: "1. Permanent employment status effective from current month payroll cycle.\n2. Eligible for all corporate medical and insurance benefits." },
+            { cat: "letters", title: "Increment / Promotion Letter", desc: "Salary hike letter", type: "office_letter", rec: "", sub: "REVISION OF COMPENSATION", body: "In formal recognition of your consistent hard work, outstanding professional performance, and valuable contributions toward departmental goals, the executive management has gladly approved a comprehensive salary revision and upward compensation adjustment. This increment reflects our appreciation for your continued commitment and excellence. We remain confident that you will sustain this high standard of productivity and inspire your colleagues in achieving upcoming organizational milestones.", suggestion: "1. Revised compensation structure applicable from current payroll cycle.\n2. Management expresses sincere appreciation for your valuable efforts." },
+            { cat: "letters", title: "Experience / Service Certificate", desc: "Work tenure certificate", type: "office_letter", rec: "", sub: "WORK EXPERIENCE CERTIFICATE", body: "This official document is issued to certify that the named individual served our corporate organization with high integrity, professional dedication, and exemplary conduct during their tenure. Throughout their employment engagement, they successfully handled assigned responsibilities with profound skill and reliability. We found their character, punctuality, and technical competence to be exceptionally satisfactory. We take this opportunity to officially record our appreciation and wish them resounding success in all future professional endeavors.", suggestion: "1. Satisfactory record of professional service tenure maintained.\n2. Eligible for verification checks by prospective employers." },
+            { cat: "letters", title: "Demand / Dunning Letter", desc: "Payment reminder", type: "office_letter", rec: "", sub: "OVERDUE PAYMENT REMINDER", body: "This formal communication serves as an urgent reminder regarding your outstanding overdue account balance, which remains pending despite prior billing statements. Maintaining timely financial settlements is essential for uninterrupted business operations and credit standing. Please arrange to clear the total outstanding dues through direct bank transfer or cross cheque at your earliest possible convenience, preferably within three working days, to avoid potential administrative or legal actions.", suggestion: "1. Clear pending dues within 3 working days to avoid account suspension.\n2. Contact accounts department immediately for reconciliation queries." },
+            { cat: "letters", title: "Bank Confirmation Letter", desc: "Bank verification letter", type: "office_letter", rec: "", sub: "BANK ACCOUNT VERIFICATION", body: "This letter is written to formally confirm that our organization maintains an active corporate commercial account with your esteemed banking institution under standard operating guidelines and financial regulations. All authorized transactions, signatories, and business operations are conducted in full compliance with corporate banking protocols. This certificate is issued upon formal request for official verification purposes only, without any financial liability on the issuing executive.", suggestion: "1. Issued specifically for bank verification and audit requirements.\n2. Account status active under standard operating parameters." },
+            { cat: "letters", title: "Resignation / Termination Letter", desc: "Separation letter", type: "office_letter", rec: "", sub: "SERVICE SEPARATION NOTICE", body: "This formal document serves as an official acknowledgment and record of employment conclusion and service separation effective from today. All administrative formalities, company asset handovers, and final clearance procedures must be completed promptly. We acknowledge the contributions made during the tenure and outline that the full and final settlement of dues will be computed and processed in accordance with company exit policies and statutory guidelines.", suggestion: "1. Complete clearance of departmental assets and ID cards.\n2. Final settlement processed as per organizational exit policy." },
 
-            // 2. INVOICES (AUTO-CALCULATING)
+            // 2. INVOICES (ACCOUNTS)
             { 
-                cat: "invoices", title: "Standard Sales Invoice", desc: "Auto-calculates quantity × rate + tax", type: "invoice", rec: "[Client Name]", sub: "COMMERCIAL SALES INVOICE",
+                cat: "invoices", title: "Standard Sales Invoice", desc: "Auto-calculates quantity × rate + tax", type: "invoice", rec: "", sub: "COMMERCIAL SALES INVOICE",
                 fields: [
-                    {id:"item", label:"Item Description", val:"Product / Goods Description"},
-                    {id:"qty", label:"Quantity (Qty)", val:"5"},
-                    {id:"rate", label:"Unit Rate", val:"10000"},
-                    {id:"tax", label:"Tax / GST (%)", val:"10"}
-                ]
+                    {id:"item", label:"Item Description", val:""},
+                    {id:"qty", label:"Quantity (Qty)", val:""},
+                    {id:"rate", label:"Unit Rate", val:""},
+                    {id:"tax", label:"Tax / GST (%)", val:""}
+                ],
+                suggestion: "1. Payment is strictly due upon receipt of this commercial invoice.\n2. Direct bank wire transfers or cross cheques accepted in favor of company title."
             },
             { 
-                cat: "invoices", title: "Proforma Invoice", desc: "Preliminary auto-calculating estimate", type: "invoice", rec: "[Client Name]", sub: "PROFORMA ESTIMATE",
+                cat: "invoices", title: "Proforma Invoice", desc: "Preliminary auto-calculating estimate", type: "invoice", rec: "", sub: "PROFORMA ESTIMATE",
                 fields: [
-                    {id:"item", label:"Service / Item", val:"Consultancy & Design Services"},
-                    {id:"qty", label:"Hours / Qty", val:"10"},
-                    {id:"rate", label:"Rate per Unit", val:"5000"},
-                    {id:"tax", label:"Tax / GST (%)", val:"5"}
-                ]
+                    {id:"item", label:"Service / Item", val:""},
+                    {id:"qty", label:"Hours / Qty", val:""},
+                    {id:"rate", label:"Rate per Unit", val:""},
+                    {id:"tax", label:"Tax / GST (%)", val:""}
+                ],
+                suggestion: "1. This quotation and proforma estimate remains valid for 15 days.\n2. Advance payment required to initiate procurement and processing."
             },
             { 
-                cat: "invoices", title: "Tax / GST Invoice", desc: "GST compliant invoice", type: "invoice", rec: "[Client Name]", sub: "OFFICIAL TAX INVOICE",
+                cat: "invoices", title: "Tax / GST Invoice", desc: "GST compliant invoice", type: "invoice", rec: "", sub: "OFFICIAL TAX INVOICE",
                 fields: [
-                    {id:"item", label:"Taxable Items", val:"Commercial Goods Supply"},
-                    {id:"qty", label:"Quantity", val:"10"},
-                    {id:"rate", label:"Rate per Unit", val:"8000"},
-                    {id:"tax", label:"GST (%)", val:"18"}
-                ]
+                    {id:"item", label:"Taxable Items", val:""},
+                    {id:"qty", label:"Quantity", val:""},
+                    {id:"rate", label:"Rate per Unit", val:""},
+                    {id:"tax", label:"GST (%)", val:""}
+                ],
+                suggestion: "1. Issued in compliance with federal sales tax regulations.\n2. Input tax adjustment applicable under registered NTN/STRN."
             },
-            { cat: "invoices", title: "Commercial Invoice", desc: "Trade billing invoice", type: "letter", rec: "[Client Name]", sub: "COMMERCIAL TRADE INVOICE", body: "Commercial billing invoice for trade items supplied as per order." },
-            { cat: "invoices", title: "Credit Note / Debit Note", desc: "Adjustment note", type: "letter", rec: "[Client Name]", sub: "CREDIT / DEBIT ADJUSTMENT NOTE", body: "Adjustment amount credited/debited to your ledger account." },
-            { cat: "invoices", title: "Recurring Invoice", desc: "Subscription invoice", type: "letter", rec: "[Client Name]", sub: "RECURRING SUBSCRIPTION INVOICE", body: "Monthly software and service subscription fee bill." },
+            { cat: "invoices", title: "Commercial Invoice", desc: "Trade billing invoice", type: "invoice_letter", rec: "", sub: "COMMERCIAL TRADE INVOICE", body: "This commercial invoice covers the detailed billing of trade merchandise and commercial supplies dispatched as per confirmed purchase orders. All item specifications, unit pricing, and quantity allocations have been thoroughly verified against dispatch notes. Buyers are requested to inspect shipments immediately upon arrival and report any discrepancies within the stipulated timeframe.", suggestion: "1. Trade terms applied as per active purchase contract.\n2. Goods inspected and dispatched in sound condition." },
+            { cat: "invoices", title: "Credit Note / Debit Note", desc: "Adjustment note", type: "invoice_letter", rec: "", sub: "CREDIT / DEBIT ADJUSTMENT NOTE", body: "This document serves as an official accounting adjustment note issued to rectify pricing discrepancies, return merchandise allowances, or ledger balance differences. The respective amount has been formally credited or debited to your commercial ledger account as per verified audit records. Please retain this adjustment advice for your internal financial reconciliation and tax auditing purposes.", suggestion: "1. Ledger updated with corresponding adjustment entry.\n2. Verified by internal accounts audit desk." },
+            { cat: "invoices", title: "Recurring Invoice", desc: "Subscription invoice", type: "invoice_letter", rec: "", sub: "RECURRING SUBSCRIPTION INVOICE", body: "This is a recurring monthly subscription and service invoice covering ongoing enterprise software licensing, cloud hosting, and technical maintenance support. Prompt settlement ensures uninterrupted service continuity and system access. We appreciate your continued partnership and automated subscription enrollment.", suggestion: "1. Automated recurring monthly billing cycle.\n2. Service continuity subject to timely payment clearance." },
 
             // 3. LEDGERS
-            { cat: "ledgers", title: "General Ledger (GL)", desc: "Main accounting ledger", type: "letter", rec: "[Accountant Desk]", sub: "GENERAL LEDGER STATEMENT", body: "Account statement log showing debits, credits, and net closing balance." },
-            { cat: "ledgers", title: "Accounts Receivable Ledger (AR Ledger)", desc: "Customer dues ledger", type: "letter", rec: "[Client Name]", sub: "AR LEDGER STATEMENT", body: "Outstanding dues statement for customer account." },
-            { cat: "ledgers", title: "Accounts Payable Ledger (AP Ledger)", desc: "Vendor dues ledger", type: "letter", rec: "[Vendor Name]", sub: "AP LEDGER STATEMENT", body: "Vendor payables balance summary statement." },
-            { cat: "ledgers", title: "Cash Ledger / Cash Book", desc: "Physical cash book", type: "letter", rec: "[Cashier Desk]", sub: "DAILY CASH BOOK LOG", body: "Daily petty cash disbursements and balance closing log." },
-            { cat: "ledgers", title: "Bank Ledger / Bank Book", desc: "Bank record book", type: "letter", rec: "[Bank Division]", sub: "BANK RECONCILIATION LOG", body: "Bank ledger transactions and balance reconciliation statement." },
-            { cat: "ledgers", title: "Inventory / Stock Ledger", desc: "Stock tracking book", type: "letter", rec: "[Store Manager]", sub: "INVENTORY STOCK LEDGER", body: "Stock tracking sheet showing opening, additions, issues, and closing balance." },
+            { cat: "ledgers", title: "General Ledger (GL)", desc: "Main accounting ledger", type: "office_letter", rec: "", sub: "GENERAL LEDGER STATEMENT", body: "This comprehensive accounting statement log details all financial transactions, operational expenditures, revenue receipts, and net closing balances for the designated fiscal period. Maintained under double-entry bookkeeping standards, it ensures complete financial transparency and audit readiness.", suggestion: "1. Fully audited and verified by accounts manager.\n2. Prepared in accordance with standard accounting principles." },
+            { cat: "ledgers", title: "Accounts Receivable Ledger (AR Ledger)", desc: "Customer dues ledger", type: "office_letter", rec: "", sub: "AR LEDGER STATEMENT", body: "This accounts receivable statement provides a detailed breakdown of outstanding customer balances, invoice aging schedules, and recent payment collections. Regular monitoring of this ledger is critical for maintaining healthy cash flow and executing timely follow-ups on overdue client accounts.", suggestion: "1. Immediate follow-up required for aging receivables over 30 days.\n2. Verified against customer payment remittance slips." },
+            { cat: "ledgers", title: "Accounts Payable Ledger (AP Ledger)", desc: "Vendor dues ledger", type: "office_letter", rec: "", sub: "AP LEDGER STATEMENT", body: "This accounts payable statement summarizes outstanding vendor liabilities, bill disbursements, and scheduled supplier payments. Maintaining accurate records ensures strong vendor relationships and timely settlement of material procurement obligations.", suggestion: "1. Scheduled vendor disbursements pending executive sign-off.\n2. Reconciled with supplier statement of accounts." },
+            { cat: "ledgers", title: "Cash Ledger / Cash Book", desc: "Physical cash book", type: "office_letter", rec: "", sub: "DAILY CASH BOOK LOG", body: "This daily cash book log records all petty cash receipts, operational cash disbursements, and physical drawer balances. Daily physical verification ensures accountability and prevents cash discrepancies across daily business transactions.", suggestion: "1. Physical cash drawer balanced and verified daily by cashier.\n2. Petty cash receipts attached for all disbursements." },
+            { cat: "ledgers", title: "Bank Ledger / Bank Book", desc: "Bank record book", type: "office_letter", rec: "", sub: "BANK RECONCILIATION LOG", body: "This bank ledger document records all corporate banking transactions, electronic wire transfers, deposited cheques, and monthly bank charges. It serves as the primary tool for executing accurate monthly bank reconciliations.", suggestion: "1. Reconciled with official monthly bank statements.\n2. All unpresented cheques accounted for." },
+            { cat: "ledgers", title: "Inventory / Stock Ledger", desc: "Stock tracking book", type: "office_letter", rec: "", sub: "INVENTORY STOCK LEDGER", body: "This inventory stock tracking sheet records opening stock volumes, new material additions, departmental issues, and net closing warehouse balances. Systematic stock logging prevents inventory shrinkage and optimizes supply chain replenishment.", suggestion: "1. Physical warehouse stock count verified.\n2. Reorder level alerts triggered for low-stock items." },
 
             // 4. HR LETTERS & NOTICES
-            { cat: "hr_notices", title: "Offer / Appointment Letter", desc: "HR Offer Letter", type: "letter", rec: "[Employee Name]", sub: "OFFER LETTER", body: "We offer you employment as per the discussed terms and conditions." },
-            { cat: "hr_notices", title: "Probation Confirmation Letter", desc: "HR Probation Letter", type: "letter", rec: "[Employee Name]", sub: "PROBATION CONFIRMATION", body: "Your probation period has been completed successfully. Position confirmed." },
-            { cat: "hr_notices", title: "Increment / Promotion Letter", desc: "HR Hike Letter", type: "letter", rec: "[Employee Name]", sub: "SALARY REVISION", body: "Your compensation package has been revised as per management decision." },
-            { cat: "hr_notices", title: "Transfer / Relocation Letter", desc: "Internal Transfer", type: "letter", rec: "[Employee Name]", sub: "TRANSFER NOTICE", body: "You are hereby transferred to the designated branch office location." },
-            { cat: "hr_notices", title: "Warning / Show Cause Notice", desc: "Disciplinary Notice", type: "letter", rec: "[Employee Name]", sub: "SHOW CAUSE NOTICE", body: "Please submit a written explanation regarding recent conduct issues." },
-            { cat: "hr_notices", title: "Experience / Service Certificate", desc: "Work Certificate", type: "letter", rec: "[Employee Name]", sub: "SERVICE CERTIFICATE", body: "This certifies that [Employee Name] worked with our organization." },
-            { cat: "hr_notices", title: "Relief / Experience Letter", desc: "F&F Letter", type: "letter", rec: "[Employee Name]", sub: "RELIEVING LETTER", body: "Relieving letter issued along with full and final settlement clearance." },
-            { cat: "hr_notices", title: "Resignation Acceptance Letter", desc: "Acceptance Letter", type: "letter", rec: "[Employee Name]", sub: "RESIGNATION ACCEPTANCE", body: "Your resignation has been accepted by management." },
-            { cat: "hr_notices", title: "Termination / Dismissal Letter", desc: "Dismissal Letter", type: "letter", rec: "[Employee Name]", sub: "TERMINATION NOTICE", body: "Your service contract is terminated effective immediately." },
+            { cat: "hr_notices", title: "Offer / Appointment Letter", desc: "HR Offer Letter", type: "office_letter", rec: "", sub: "OFFER LETTER", body: "We are pleased to offer you formal employment with our corporate enterprise following a rigorous selection process. Your designation, compensation package, and working hours have been finalized in accordance with company HR policy. You are expected to exhibit professional dedication, respect organizational bylaws, and contribute actively to departmental objectives.", suggestion: "1. Submit verified educational degrees and CNIC copy.\n2. Sign and return duplicate copy upon acceptance." },
+            { cat: "hr_notices", title: "Probation Confirmation Letter", desc: "HR Probation Letter", type: "office_letter", rec: "", sub: "PROBATION CONFIRMATION", body: "Following the successful completion of your probation period and positive evaluations from your department head, your employment status has been officially confirmed. You are now a permanent employee entitled to all corporate privileges, medical coverage, and increment cycles.", suggestion: "1. Permanent employment status confirmed.\n2. Eligible for all corporate perks." },
+            { cat: "hr_notices", title: "Increment / Promotion Letter", desc: "HR Hike Letter", type: "office_letter", rec: "", sub: "SALARY REVISION", body: "In recognition of your outstanding professional performance and dedication, management has approved a salary increment and title revision. This adjustment highlights our appreciation for your consistent efforts and contributions to organizational growth.", suggestion: "1. Revised pay structure effective from current payroll.\n2. Appreciated for dedicated performance." },
+            { cat: "hr_notices", title: "Transfer / Relocation Letter", desc: "Internal Transfer", type: "office_letter", rec: "", sub: "TRANSFER NOTICE", body: "You are hereby formally notified of your internal transfer from your current station to the designated branch office location. This transition is aimed at utilizing your expertise to strengthen operations at the new facility. Necessary relocation assistance will be provided as per policy.", suggestion: "1. Report to new branch office within stipulated timeline.\n2. Handover current responsibilities before departure." },
+            { cat: "hr_notices", title: "Warning / Show Cause Notice", desc: "Disciplinary Notice", type: "office_letter", rec: "", sub: "SHOW CAUSE NOTICE", body: "This official warning notice is issued regarding recent breaches of workplace discipline, attendance irregularities, or failure to meet performance benchmarks. You are required to submit a formal written explanation addressing these concerns within forty-eight hours to avoid strict disciplinary action.", suggestion: "1. Submit formal written reply within 48 hours.\n2. Failure to reply will lead to disciplinary action." },
+            { cat: "hr_notices", title: "Experience / Service Certificate", desc: "Work Certificate", type: "office_letter", rec: "", sub: "SERVICE CERTIFICATE", body: "This certificate officially verifies that the employee worked with our enterprise, displaying professional competence, reliability, and excellent conduct throughout their tenure. We record our appreciation and wish them success in future career pursuits.", suggestion: "1. Commendable record of service tenure.\n2. Wish success in future endeavors." },
+            { cat: "hr_notices", title: "Relief / Experience Letter", desc: "F&F Letter", type: "office_letter", rec: "", sub: "RELIEVING LETTER", body: "This letter formally relieves the employee from their duties following the acceptance of their resignation and successful completion of the notice period. Their full and final settlement accounts have been cleared as per company exit protocols.", suggestion: "1. Relieved from all official responsibilities.\n2. Full and final dues settled." },
+            { cat: "hr_notices", title: "Resignation Acceptance Letter", desc: "Acceptance Letter", type: "office_letter", rec: "", sub: "RESIGNATION ACCEPTANCE", body: "We acknowledge receipt of your resignation letter and confirm its formal acceptance by management. We appreciate your service during your tenure and wish you the very best in your upcoming professional ventures.", suggestion: "1. Notice period obligations to be fulfilled.\n2. Departmental handover required." },
+            { cat: "hr_notices", title: "Termination / Dismissal Letter", desc: "Dismissal Letter", type: "office_letter", rec: "", sub: "TERMINATION NOTICE", body: "This document serves as formal notice that your employment contract with our organization is terminated due to policy violations and unsatisfactory conduct. Your service concludes effective immediately, and final dues will be settled according to statutory regulations.", suggestion: "1. Contract terminated effective immediately.\n2. Return all company property." },
 
             // 5. HR FORMS & AGREEMENTS
-            { cat: "hr_agreements", title: "Employee Application Form / CV Format", desc: "Application Sheet", type: "letter", rec: "[Applicant Name]", sub: "APPLICATION FORM", body: "Candidate Intake Details and Qualification Data Sheet." },
-            { cat: "hr_agreements", title: "Employment / Service Agreement (Contract)", desc: "Employment Contract", type: "letter", rec: "[Employee Name]", sub: "EMPLOYMENT CONTRACT", body: "Terms of employment binding both the company and the employee." },
-            { cat: "hr_agreements", title: "Non-Disclosure Agreement (NDA)", desc: "Confidentiality NDA", type: "letter", rec: "[Party Name]", sub: "NON-DISCLOSURE AGREEMENT", body: "Agreement regarding strict confidentiality of company information." },
-            { cat: "hr_agreements", title: "Employee Personal Information Sheet", desc: "Data Sheet", type: "letter", rec: "[Employee Name]", sub: "PERSONAL DATA SHEET", body: "Personal details, CNIC, and emergency contact record sheet." },
-            { cat: "hr_agreements", title: "Leave Application Form", desc: "Leave Form", type: "letter", rec: "[Employee Name]", sub: "LEAVE APPLICATION", body: "Application for leave request for the specified duration." },
-            { cat: "hr_agreements", title: "Loan / Advance Request Form", desc: "Loan Request", type: "letter", rec: "[Employee Name]", sub: "LOAN ADVANCE REQUEST", body: "Request for advance salary or personal loan disbursement." },
-            { cat: "hr_agreements", title: "Performance Appraisal Form", desc: "Appraisal Sheet", type: "letter", rec: "[Employee Name]", sub: "PERFORMANCE APPRAISAL", body: "Annual performance evaluation and goal review sheet." },
-            { cat: "hr_agreements", title: "Exit Interview Form", desc: "Exit Questionnaire", type: "letter", rec: "[Employee Name]", sub: "EXIT INTERVIEW RECORD", body: "Employee exit feedback and departure questionnaire." },
+            { cat: "hr_agreements", title: "Employee Application Form / CV Format", desc: "Application Sheet", type: "office_letter", rec: "", sub: "APPLICATION FORM", body: "This candidate intake and application form collects essential personal particulars, educational qualifications, professional experience history, and skill certifications for prospective employment evaluation and database logging.", suggestion: "1. Attach passport-size photographs and copies of academic credentials.\n2. Verify all provided information before submission." },
+            { cat: "hr_agreements", title: "Employment / Service Agreement (Contract)", desc: "Employment Contract", type: "office_letter", rec: "", sub: "EMPLOYMENT CONTRACT", body: "This formal employment contract outlines the binding terms and conditions governing the professional relationship between the company and the employee, including working hours, compensation, confidentiality clauses, and termination protocols.", suggestion: "1. Both employer and employee must sign all contract pages.\n2. One executed copy retained in personnel file." },
+            { cat: "hr_agreements", title: "Non-Disclosure Agreement (NDA)", desc: "Confidentiality NDA", type: "office_letter", rec: "", sub: "NON-DISCLOSURE AGREEMENT", body: "This Non-Disclosure Agreement binds the recipient to strict corporate confidentiality regarding proprietary business information, trade secrets, client databases, and strategic plans, prohibiting any unauthorized disclosure.", suggestion: "1. Strict confidentiality mandatory during and after employment.\n2. Breach subject to legal proceedings." },
+            { cat: "hr_agreements", title: "Employee Personal Information Sheet", desc: "Data Sheet", type: "office_letter", rec: "", sub: "PERSONAL DATA SHEET", body: "This personal information data sheet records critical employee details, residential addresses, CNIC data, blood groups, and emergency contact persons for official HR database management and emergency response.", suggestion: "1. Keep emergency contact information updated.\n2. Notify HR immediately of any residential address changes." },
+            { cat: "hr_agreements", title: "Leave Application Form", desc: "Leave Form", type: "office_letter", rec: "", sub: "LEAVE APPLICATION", body: "This formal leave application form allows staff members to request casual, sick, or annual leave allocations, requiring prior supervisor recommendation and HR department sanction before absence commencement.", suggestion: "1. Submit application at least 2 days prior for planned leave.\n2. Attach medical certificate for sick leave exceeding 3 days." },
+            { cat: "hr_agreements", title: "Loan / Advance Request Form", desc: "Loan Request", type: "office_letter", rec: "", sub: "LOAN ADVANCE REQUEST", body: "This financial advance request form permits eligible permanent employees to apply for emergency salary advances or personal loans, subject to management approval and subsequent payroll deduction structuring.", suggestion: "1. Subject to management approval and salary ceiling limits.\n2. Repayment installments deducted directly from monthly payroll." },
+            { cat: "hr_agreements", title: "Performance Appraisal Form", desc: "Appraisal Sheet", type: "office_letter", rec: "", sub: "PERFORMANCE APPRAISAL", body: "This annual performance evaluation form evaluates employee productivity, target achievement, punctuality, teamwork, and technical competence to determine career progression and incentive increments.", suggestion: "1. Completed jointly by supervisor and employee.\n2. Forms the basis for annual increments and promotions." },
+            { cat: "hr_agreements", title: "Exit Interview Form", desc: "Exit Questionnaire", type: "office_letter", rec: "", sub: "EXIT INTERVIEW RECORD", body: "This exit interview questionnaire captures departing employee feedback regarding workplace culture, management support, compensation satisfaction, and reasons for departure to help improve organizational retention.", suggestion: "1. Conducted confidentially by HR before final clearance.\n2. Feedback utilized for organizational development." },
 
             // 6. HR REGISTERS
-            { cat: "hr_records", title: "Employee Master Register / Directory", desc: "Employee Directory", type: "letter", rec: "[HR Division]", sub: "EMPLOYEE MASTER DIRECTORY", body: "Master directory listing active organization staff members." },
-            { cat: "hr_records", title: "Attendance & Time-In Register", desc: "Attendance Log", type: "letter", rec: "[Admin Desk]", sub: "ATTENDANCE REGISTER LOG", body: "Monthly staff attendance log and arrival record." },
-            { cat: "hr_records", title: "Leave Record Register", desc: "Leave Tracker", type: "letter", rec: "[Employee Name]", sub: "LEAVE BALANCE REGISTER", body: "Annual leave balance and usage log." },
-            { cat: "hr_records", title: "Overtime (OT) Log Register", desc: "OT Tracker", type: "letter", rec: "[Supervisor]", sub: "OVERTIME LOG REGISTER", body: "Extra hours and overtime calculation register." },
+            { cat: "hr_records", title: "Employee Master Register / Directory", desc: "Employee Directory", type: "office_letter", rec: "", sub: "EMPLOYEE MASTER DIRECTORY", body: "This master directory register lists all active organization staff members across various departments, detailing designations, employee IDs, contact numbers, and joining dates for administrative coordination.", suggestion: "1. Maintained and updated regularly by HR department.\n2. Restricted access for internal administrative use." },
+            { cat: "hr_records", title: "Attendance & Time-In Register", desc: "Attendance Log", type: "office_letter", rec: "", sub: "ATTENDANCE REGISTER LOG", body: "This monthly staff attendance log records daily arrival times, departures, late arrivals, and absence records to ensure strict adherence to working hours and calculate payroll wages accurately.", suggestion: "1. Verified daily against biometric logs or manual sign-ins.\n2. Used for monthly payroll wage calculations." },
+            { cat: "hr_records", title: "Leave Record Register", desc: "Leave Tracker", type: "office_letter", rec: "", sub: "LEAVE BALANCE REGISTER", body: "This annual leave balance register tracks total entitled leave quotas, availed days, and remaining balances for each employee, ensuring transparency and compliance with labor laws.", suggestion: "1. Updated automatically upon leave sanction.\n2. Reviewed annually before encashment processing." },
+            { cat: "hr_records", title: "Overtime (OT) Log Register", desc: "OT Tracker", type: "office_letter", rec: "", sub: "OVERTIME LOG REGISTER", body: "This overtime tracking register records extra working hours performed by operational staff beyond regular shift timings, ensuring accurate calculation of overtime compensation wages.", suggestion: "1. Overtime hours must be pre-approved by department head.\n2. Reconciled monthly with payroll disbursements." },
             { 
-                cat: "hr_records", title: "Monthly Payroll & Salary Sheet", desc: "Auto-calculates basic + allowances - deductions", type: "payroll", rec: "[Employee Name]", sub: "MONTHLY SALARY SLIP",
+                cat: "hr_records", title: "Monthly Payroll & Salary Sheet", desc: "Auto-calculates basic + allowances - deductions", type: "payroll", rec: "", sub: "MONTHLY SALARY SLIP",
                 fields: [
-                    {id:"basic", label:"Basic Salary", val:"50000"},
-                    {id:"allow", label:"Allowances", val:"10000"},
-                    {id:"ded", label:"Deductions / Advance (-)", val:"2000"}
-                ]
+                    {id:"basic", label:"Basic Salary", val:""},
+                    {id:"allow", label:"Allowances", val:""},
+                    {id:"ded", label:"Deductions / Advance (-)", val:""}
+                ],
+                suggestion: "1. Credited directly to designated employee bank account.\n2. Issued in accordance with company payroll structure."
             },
-            { cat: "hr_records", title: "Full & Final (F&F) Settlement Sheet", desc: "Settlement Ledger", type: "letter", rec: "[Employee Name]", sub: "FULL & FINAL SETTLEMENT", body: "Final accounts and dues clearance statement for departing staff." },
+            { cat: "hr_records", title: "Full & Final (F&F) Settlement Sheet", desc: "Settlement Ledger", type: "office_letter", rec: "", sub: "FULL & FINAL SETTLEMENT", body: "This final accounts clearance statement computes all remaining dues, unpaid salaries, leave encashments, and deductions for departing staff members to ensure complete financial settlement upon service conclusion.", suggestion: "1. All departmental clearances must be attached.\n2. Disbursed via crossed cheque or bank transfer." },
 
             // 7. TRANSPORT DOCUMENTS
-            { cat: "transport", title: "Vehicle Ownership Transfer Application", desc: "Transfer Form", type: "letter", rec: "[Excise Authority]", sub: "VEHICLE TRANSFER APPLICATION", body: "Application for transfer of vehicle ownership." },
-            { cat: "transport", title: "Vehicle Authority Letter", desc: "Authority Letter", type: "letter", rec: "[Driver / Rider Name]", sub: "VEHICLE AUTHORITY LETTER", body: "Authorization granted to operate vehicle for company official duty." },
-            { cat: "transport", title: "No Objection Certificate (NOC)", desc: "Vehicle NOC", type: "letter", rec: "[Owner / Rider Name]", sub: "NO OBJECTION CERTIFICATE (NOC)", body: "NOC regarding daily commute and official usage of vehicle." },
-            { cat: "transport", title: "Insurance Claim Letter", desc: "Claim Form", type: "letter", rec: "[Insurance Co.]", sub: "INSURANCE CLAIM FORM", body: "Submission of claim for vehicle repairs under active insurance policy." },
-            { cat: "transport", title: "Vehicle Lease Agreement", desc: "Lease Document", type: "letter", rec: "[Lessor / Lessee]", sub: "VEHICLE LEASE AGREEMENT", body: "Terms of lease for commercial or official vehicle." },
-            { cat: "transport", title: "Vehicle Sale & Purchase Agreement", desc: "Bike/Car Deed", type: "letter", rec: "[Buyer & Seller]", sub: "VEHICLE SALE DEED", body: "Sale deed for vehicle at agreed consideration price." },
-            { cat: "transport", title: "Vehicle Purchase Invoice", desc: "Purchase Invoice", type: "letter", rec: "[Auto Dealer]", sub: "VEHICLE PURCHASE INVOICE", body: "Invoice receipt for vehicle purchase transaction." },
-            { cat: "transport", title: "Token Tax Challan", desc: "Tax Challan Sheet", type: "letter", rec: "[Tax Authority]", sub: "TOKEN TAX RECEIPT", body: "Token tax clearance sheet for vehicle." },
-            { cat: "transport", title: "Vehicle Maintenance & Service Log", desc: "Oil & Service Log", type: "letter", rec: "[Maintenance Log]", sub: "MAINTENANCE SERVICE LOG", body: "Oil change and service history tracking log." },
-            { cat: "transport", title: "Fuel Consumption & Mileage Log", desc: "Fuel Tracking", type: "letter", rec: "[Rider Log]", sub: "FUEL CONSUMPTION LOG", body: "Fuel refill tracking and mileage calculation log." },
-            { cat: "transport", title: "Trip Log Sheet", desc: "Daily Trip Log", type: "letter", rec: "[Driver Log]", sub: "DAILY TRIP LOG", body: "Daily route and mileage tracking log sheet." },
-            { cat: "transport", title: "Spare Parts Inventory Register", desc: "Parts Register", type: "letter", rec: "[Store Keeper]", sub: "SPARE PARTS REGISTER", body: "Inventory register for vehicle spare parts." },
+            { cat: "transport", title: "Vehicle Ownership Transfer Application", desc: "Transfer Form", type: "transport_doc", rec: "", sub: "VEHICLE TRANSFER APPLICATION", body: "This official application is submitted to the regional excise and taxation authority to request the formal transfer of motor vehicle ownership from the previous seller to the new verified buyer, enclosing all required transfer deeds and identification documents.", suggestion: "1. Submit with original registration book, CNIC copies, and transfer deed.\n2. Clear all pending token taxes before application submission." },
+            { cat: "transport", title: "Vehicle Authority Letter", desc: "Authority Letter", type: "transport_doc", rec: "", sub: "VEHICLE AUTHORITY LETTER", body: "This official corporate authorization letter grants explicit permission to the designated company driver or staff member to operate and commute using the company-registered vehicle for official business duties, transit, and authorized operational travel.", suggestion: "1. Keep original vehicle registration book and driving license in vehicle.\n2. Authorized strictly for official company travel and tasks." },
+            { cat: "transport", title: "No Objection Certificate (NOC)", desc: "Vehicle NOC", type: "transport_doc", rec: "", sub: "NO OBJECTION CERTIFICATE (NOC)", body: "This No Objection Certificate is issued to confirm that the organization holds no legal or financial objection regarding the daily commute, inter-city travel, or ownership transfer of the specified motor vehicle, verifying that all official dues are cleared.", suggestion: "1. Valid for excise verification and inter-city travel checkpoints.\n2. All vehicle token taxes and liabilities cleared up to date." },
+            { cat: "transport", title: "Insurance Claim Letter", desc: "Claim Form", type: "transport_doc", rec: "", sub: "INSURANCE CLAIM FORM", body: "This formal communication is submitted to the insurance underwriting company to initiate an official repair claim under our active comprehensive motor vehicle insurance policy following an accidental incident or vehicular damage.", suggestion: "1. Attach police report, photographs of damage, and surveyor estimate.\n2. Subject to policy deductible terms and surveyor approval." },
+            { cat: "transport", title: "Vehicle Lease Agreement", desc: "Lease Document", type: "transport_doc", rec: "", sub: "VEHICLE LEASE AGREEMENT", body: "This vehicle lease contract outlines the binding legal and financial terms between the lessor and lessee for commercial or executive vehicle leasing, detailing monthly rental installments, maintenance obligations, and mileage limits.", suggestion: "1. Monthly lease rentals payable on or before due date.\n2. Comprehensive insurance and maintenance managed as per terms." },
+            { cat: "transport", title: "Vehicle Sale & Purchase Agreement", desc: "Bike/Car Deed", type: "transport_doc", rec: "", sub: "VEHICLE SALE DEED", body: "This motor vehicle sale and purchase deed records the commercial transaction between buyer and seller at an agreed consideration price, detailing vehicle chassis number, engine number, model year, and transfer obligations.", suggestion: "1. Transfer documents and delivery executed upon full payment.\n2. Both parties must sign before witnesses." },
+            { cat: "transport", title: "Vehicle Purchase Invoice", desc: "Purchase Invoice", type: "transport_doc", rec: "", sub: "VEHICLE PURCHASE INVOICE", body: "This official auto dealer purchase invoice records the sale transaction of the motor vehicle, itemizing base vehicle price, sales taxes, registration fees, and total paid consideration amount.", suggestion: "1. Retain original invoice for excise registration.\n2. Warranty terms applicable as per manufacturer policy." },
+            { cat: "transport", title: "Token Tax Challan", desc: "Tax Challan Sheet", type: "transport_doc", rec: "", sub: "TOKEN TAX RECEIPT", body: "This official government tax challan receipt confirms the successful payment of annual motor vehicle token taxes deposited into the state treasury, ensuring legal compliance for road travel.", suggestion: "1. Keep token tax receipt in vehicle glove compartment.\n2. Prevents roadside penalties by traffic authorities." },
+            { cat: "transport", title: "Vehicle Maintenance & Service Log", desc: "Oil & Service Log", type: "transport_doc", rec: "", sub: "MAINTENANCE SERVICE LOG", body: "This maintenance service ledger tracks engine oil changes, filter replacements, brake inspections, and mechanical repair history to ensure optimal vehicle performance and longevity.", suggestion: "1. Change engine oil and filter every 850–900 km.\n2. Regular maintenance ensures fuel efficiency and safety." },
+            { cat: "transport", title: "Fuel Consumption & Mileage Log", desc: "Fuel Tracking", type: "transport_doc", rec: "", sub: "FUEL CONSUMPTION LOG", body: "This fuel refill and mileage tracking log records fuel purchase dates, quantities, odometer readings, and fuel economy calculations to monitor daily commute efficiency and prevent fuel misuse.", suggestion: "1. Log odometer reading and fuel quantity at every refill.\n2. Helps calculate accurate vehicle fuel average." },
+            { cat: "transport", title: "Trip Log Sheet", desc: "Daily Trip Log", type: "transport_doc", rec: "", sub: "DAILY TRIP LOG", body: "This daily trip log sheet records travel routes, client visit locations, departure/arrival timings, and total daily mileage for official transport monitoring and logistical auditing.", suggestion: "1. Record starting and ending odometer readings daily.\n2. Countersigned by transport supervisor weekly." },
+            { cat: "transport", title: "Spare Parts Inventory Register", desc: "Parts Register", type: "transport_doc", rec: "", sub: "SPARE PARTS REGISTER", body: "This inventory register tracks stock levels of vehicle spare parts, tyres, lubricants, and repair tools maintained in the workshop store for prompt maintenance execution.", suggestion: "1. Physical count reconciled monthly.\n2. Reorder stock when minimum threshold is reached." },
 
             // 8. COMMERCIAL & TRADE
-            { cat: "commercial", title: "Commercial Invoice", desc: "Trade Invoice", type: "letter", rec: "[Client Name]", sub: "COMMERCIAL INVOICE", body: "Trade invoice for goods supplied." },
-            { cat: "commercial", title: "Proforma Invoice", desc: "Trade Proforma", type: "letter", rec: "[Client Name]", sub: "PROFORMA INVOICE", body: "Proforma trade estimate quote." },
-            { cat: "commercial", title: "Tax / Sales Invoice", desc: "Tax Sales Invoice", type: "letter", rec: "[Client Name]", sub: "TAX SALES INVOICE", body: "Tax sales invoice as per regulation." },
-            { cat: "commercial", title: "Credit Note / Debit Note", desc: "Commercial Note", type: "letter", rec: "[Client Name]", sub: "CREDIT NOTE", body: "Balance credit note adjustment." },
-            { cat: "commercial", title: "Delivery Challan / Dispatch Note", desc: "Delivery Note", type: "letter", rec: "[Consignee]", sub: "DELIVERY CHALLAN", body: "Delivery challan for goods dispatched." },
-            { cat: "commercial", title: "Purchase Order (PO)", desc: "Official PO", type: "letter", rec: "[Vendor Name]", sub: "PURCHASE ORDER", body: "Purchase order for material supply." },
-            { cat: "commercial", title: "Goods Received Note (GRN)", desc: "GRN Receipt", type: "letter", rec: "[Store]", sub: "GOODS RECEIVED NOTE", body: "GRN acknowledging materials received." },
-            { cat: "commercial", title: "Quotation / Estimate Template", desc: "Price Estimate", type: "letter", rec: "[Client Name]", sub: "PRICE QUOTATION", body: "Quotation for requested products/services." },
-            { cat: "commercial", title: "Bill of Lading / Shipping Bill", desc: "Shipping Document", type: "letter", rec: "[Shipping Carrier]", sub: "BILL OF LADING", body: "Freight cargo shipping manifest." },
-            { cat: "commercial", title: "Letter of Credit (LC) Application Form", desc: "LC Form", type: "letter", rec: "[Bank Division]", sub: "LC APPLICATION FORM", body: "Application for issuing Letter of Credit." },
+            { cat: "commercial", title: "Commercial Invoice", desc: "Trade Invoice", type: "invoice_letter", rec: "", sub: "COMMERCIAL INVOICE", body: "This commercial trade invoice itemizes goods supplied under agreed commercial terms, detailing unit pricing, quantity dispatched, freight charges, and total payment due.", suggestion: "1. Payment terms applied as per trade contract.\n2. Remit funds to designated corporate bank account." },
+            { cat: "commercial", title: "Proforma Invoice", desc: "Trade Proforma", type: "invoice_letter", rec: "", sub: "PROFORMA INVOICE", body: "This preliminary proforma estimate outlines projected costs for trade merchandise and commercial supplies prior to order finalization and formal dispatch.", suggestion: "1. Quotation valid for 15 days.\n2. Advance payment required for order confirmation." },
+            { cat: "commercial", title: "Tax / Sales Invoice", desc: "Tax Sales Invoice", type: "invoice_letter", rec: "", sub: "TAX SALES INVOICE", body: "This sales tax invoice is issued in strict adherence to taxation laws, detailing taxable supply values, sales tax percentages, and net payable amounts.", suggestion: "1. Compliant with federal and provincial tax regulations.\n2. Required for tax credit claims." },
+            { cat: "commercial", title: "Credit Note / Debit Note", desc: "Commercial Note", type: "invoice_letter", rec: "", sub: "CREDIT NOTE", body: "This commercial adjustment note adjusts ledger balances due to returned merchandise, pricing corrections, or billing discrepancies.", suggestion: "1. Ledger updated accordingly.\n2. Retain for commercial auditing." },
+            { cat: "commercial", title: "Delivery Challan / Dispatch Note", desc: "Delivery Note", type: "office_letter", rec: "", sub: "DELIVERY CHALLAN", body: "This delivery challan accompanies dispatched merchandise, itemizing box quantities, product descriptions, and transport details for physical verification upon site delivery.", suggestion: "1. Inspect goods thoroughly and sign upon receipt.\n2. Report transit damages immediately." },
+            { cat: "commercial", title: "Purchase Order (PO)", desc: "Official PO", type: "office_letter", rec: "", sub: "PURCHASE ORDER", body: "This official purchase order authorizes the supplier to deliver specified commercial goods and quantities under agreed pricing and delivery timelines.", suggestion: "1. Supply must conform strictly to PO specifications.\n2. Quote PO number on all shipping documents." },
+            { cat: "commercial", title: "Goods Received Note (GRN)", desc: "GRN Receipt", type: "office_letter", rec: "", sub: "GOODS RECEIVED NOTE", body: "This Goods Received Note formally acknowledges the receipt, physical inspection, and acceptance of delivered merchandise into warehouse inventory.", suggestion: "1. Inspected by store keeper for quality and count.\n2. Serves as basis for accounts payable processing." },
+            { cat: "commercial", title: "Quotation / Estimate Template", desc: "Price Estimate", type: "office_letter", rec: "", sub: "PRICE QUOTATION", body: "This price quotation outlines competitive pricing, product specifications, and delivery terms for requested commercial goods or professional services.", suggestion: "1. Quotation valid for 10 days from issue date.\n2. Prices subject to change upon specification alteration." },
+            { cat: "commercial", title: "Bill of Lading / Shipping Bill", desc: "Shipping Document", type: "office_letter", rec: "", sub: "BILL OF LADING", body: "This freight shipping manifest acts as a receipt of cargo and contract of carriage between the shipper and the transportation carrier for cargo dispatch.", suggestion: "1. Essential legal document for cargo transit and customs.\n2. Surrendered upon final destination delivery." },
+            { cat: "commercial", title: "Letter of Credit (LC) Application Form", desc: "LC Form", type: "office_letter", rec: "", sub: "LC APPLICATION FORM", body: "This application form is submitted to the commercial bank requesting the issuance of an irrevocable Letter of Credit to secure international trade payments.", suggestion: "1. Backed by required collateral and commercial contracts.\n2. Processed through trade finance division." },
 
-            // 9. MEDICAL DOCUMENTS (WITH DOCTOR SUGGESTIONS / CHECKUP FIELDS)
-            { cat: "medical", title: "Prescription Slip", desc: "Rx Slip", type: "medical_checkup", rec: "[Patient Name]", sub: "MEDICAL PRESCRIPTION SLIP", body: "Patient examined thoroughly. Vitals stable.", suggestion: "1. Tab Panadol 500mg (Twice daily after meals)\n2. Cap Augmentin 625mg (Every 12 hours for 5 days)\n3. Drink plenty of warm water and take complete rest." },
-            { cat: "medical", title: "Patient Case Sheet", desc: "Case History Sheet", type: "medical_checkup", rec: "[Patient Name]", sub: "PATIENT CASE SHEET", body: "Presented with complaints of mild fever and body fatigue.", suggestion: "1. Complete Blood Count (CBC) test recommended.\n2. Avoid oily and spicy foods.\n3. Follow up after 3 days with lab reports." },
-            { cat: "medical", title: "Medical History Record", desc: "Medical History", type: "medical_checkup", rec: "[Patient Name]", sub: "MEDICAL HISTORY RECORD", body: "No prior chronic illnesses noted during clinical assessment.", suggestion: "1. Maintain regular daily exercise and balanced diet.\n2. Annual health screening advised." },
-            { cat: "medical", title: "Lab Test Requisition Form", desc: "Lab Form", type: "letter", rec: "[Laboratory]", sub: "LAB TEST REQUISITION", body: "Requisition form for diagnostic lab tests as prescribed." },
-            { cat: "medical", title: "Diagnostic Test Report", desc: "Test Report", type: "letter", rec: "[Patient Name]", sub: "DIAGNOSTIC REPORT", body: "Diagnostic test results and clinical findings report." },
-            { cat: "medical", title: "Medical Fitness Certificate", desc: "Fitness Certificate", type: "medical_checkup", rec: "[Candidate Name]", sub: "MEDICAL FITNESS CERTIFICATE", body: "Candidate examined and found medically fit for employment duties.", suggestion: "1. Fit for active physical and office duties.\n2. Periodic health checkup recommended annually." },
-            { cat: "medical", title: "Medical Death Certificate", desc: "Death Certificate Form", type: "letter", rec: "[Hospital Records]", sub: "MEDICAL DEATH CERTIFICATE", body: "Official medical death recording form." },
-            { cat: "medical", title: "Discharge Summary", desc: "Hospital Discharge", type: "medical_checkup", rec: "[Patient Name]", sub: "PATIENT DISCHARGE SUMMARY", body: "Patient admitted for observation and treated successfully.", suggestion: "1. Take prescribed medications on time.\n2. Avoid heavy weight lifting for 2 weeks." },
-            { cat: "medical", title: "Hospital Admission Form", desc: "Admission Form", type: "letter", rec: "[Hospital Desk]", sub: "ADMISSION FORM", body: "Patient hospital admission registration form." },
-            { cat: "medical", title: "Medical Invoice", desc: "Hospital Billing", type: "letter", rec: "[Patient Name]", sub: "MEDICAL BILLING INVOICE", body: "Consultation and procedure charges statement." },
+            // 9. MEDICAL DOCUMENTS
+            { cat: "medical", title: "Prescription Slip", desc: "Rx Slip", type: "medical_checkup", rec: "", sub: "MEDICAL PRESCRIPTION SLIP", body: "Patient examined thoroughly in clinic. Clinical vitals, blood pressure, and physical symptoms evaluated carefully. Diagnosis established and appropriate pharmaceutical medications prescribed for recovery.", suggestion: "1. Tab Panadol 500mg (Twice daily after meals)\n2. Cap Augmentin 625mg (Every 12 hours for 5 days)\n3. Drink warm water and take complete rest." },
+            { cat: "medical", title: "Patient Case Sheet", desc: "Case History Sheet", type: "medical_checkup", rec: "", sub: "PATIENT CASE SHEET", body: "Patient presented with clinical symptoms of acute fatigue, body aches, and persistent fever. Detailed medical history recorded, physical examination conducted, and diagnostic investigations recommended for clinical assessment.", suggestion: "1. Complete Blood Count (CBC) test recommended.\n2. Avoid oily and fast food items.\n3. Follow up after 3 days with lab results." },
+            { cat: "medical", title: "Medical History Record", desc: "Medical History", type: "medical_checkup", rec: "", sub: "MEDICAL HISTORY RECORD", body: "Comprehensive clinical record documenting prior illnesses, surgical history, family medical background, known drug allergies, and current health status for ongoing medical monitoring.", suggestion: "1. Maintain regular daily exercise and balanced diet.\n2. Annual health screening advised." },
+            { cat: "medical", title: "Lab Test Requisition Form", desc: "Lab Form", type: "office_letter", rec: "", sub: "LAB TEST REQUISITION", body: "This diagnostic laboratory requisition form outlines specific pathology tests, blood panels, and clinical investigations ordered by the attending physician for diagnostic evaluation.", suggestion: "1. Fasting required for specific blood panels.\n2. Collect sample at clinical pathology laboratory." },
+            { cat: "medical", title: "Diagnostic Test Report", desc: "Test Report", type: "office_letter", rec: "", sub: "DIAGNOSTIC REPORT", body: "This clinical diagnostic test report details laboratory findings, radiology results, and pathology parameter evaluations conducted on the patient specimen.", suggestion: "1. Review findings with attending physician.\n2. Maintained in confidential medical file." },
+            { cat: "medical", title: "Medical Fitness Certificate", desc: "Fitness Certificate", type: "medical_checkup", rec: "", sub: "MEDICAL FITNESS CERTIFICATE", body: "This medical certificate confirms that the candidate underwent a comprehensive physical examination, vital checks, and clinical screening, and was found medically fit for employment and active duties.", suggestion: "1. Physically and mentally fit for active duty.\n2. Periodic health screening advised annually." },
+            { cat: "medical", title: "Medical Death Certificate", desc: "Death Certificate Form", type: "office_letter", rec: "", sub: "MEDICAL DEATH CERTIFICATE", body: "This official medical death certification document records the date, time, location, and primary clinical cause of death as determined by the attending medical officer.", suggestion: "1. Required for legal registration and burial rites.\n2. Issued under official hospital seal." },
+            { cat: "medical", title: "Discharge Summary", desc: "Hospital Discharge", type: "medical_checkup", rec: "", sub: "PATIENT DISCHARGE SUMMARY", body: "Patient admitted to hospital for observation and clinical treatment, responded well to medical therapy, and is discharged in stable condition with post-care instructions.", suggestion: "1. Take prescribed medications on time.\n2. Avoid heavy weight lifting for 2 weeks." },
+            { cat: "medical", title: "Hospital Admission Form", desc: "Admission Form", type: "office_letter", rec: "", sub: "ADMISSION FORM", body: "This hospital admission registration form records patient personal data, emergency contacts, admitting physician, and ward allocation for inpatient treatment.", suggestion: "1. Complete insurance and billing formalities at desk.\n2. Assigned to inpatient ward." },
+            { cat: "medical", title: "Medical Invoice", desc: "HospitalBilling", type: "invoice_letter", rec: "", sub: "MEDICAL BILLING INVOICE", body: "This medical billing invoice itemizes physician consultation charges, room rent, laboratory tests, and pharmaceutical dispensing costs incurred during hospital care.", suggestion: "1. Hospital charges settled in full.\n2. Insurance claim receipt provided." },
 
             // 10. PROPERTY DOCUMENTS
-            { cat: "property", title: "Sale / Purchase Agreement (Bayana / Sale Deed)", desc: "Property Deed", type: "letter", rec: "[Buyer & Seller]", sub: "PROPERTY BAYANA DEED", body: "Earnest money agreement for property transaction." },
-            { cat: "property", title: "Lease / Tenancy Agreement (Rent Deed)", desc: "Rent Agreement", type: "letter", rec: "[Tenant Name]", sub: "TENANCY AGREEMENT", body: "Monthly tenancy terms for property premises." },
-            { cat: "property", title: "No Objection Certificate (NOC)", desc: "Property NOC", type: "letter", rec: "[Society Authority]", sub: "PROPERTY NOC CERTIFICATE", body: "NOC issued for property transfer/utility connection." },
-            { cat: "property", title: "Property Allotment Letter", desc: "Allotment Deed", type: "letter", rec: "[Allottee Name]", sub: "PROPERTY ALLOTMENT LETTER", body: "Property unit allotment letter under scheme terms." },
-            { cat: "property", title: "Transfer Letter / Mutation Order (Intqal)", desc: "Property Mutation", type: "letter", rec: "[Land Office]", sub: "PROPERTY TRANSFER ORDER", body: "Property title mutation order document." },
-            { cat: "property", title: "General / Special Power of Attorney", desc: "Power of Attorney", type: "letter", rec: "[Attorney Name]", sub: "POWER OF ATTORNEY DEED", body: "Legal power granted for property management." },
-            { cat: "property", title: "Property Valuation Certificate", desc: "Valuation Report", type: "letter", rec: "[Valuer Office]", sub: "PROPERTY VALUATION REPORT", body: "Market valuation report for specified property." },
-            { cat: "property", title: "Maintenance & Utility Bill Ledger", desc: "Maintenance Record", type: "letter", rec: "[Resident Ledger]", sub: "UTILITY BILL LEDGER", body: "Monthly society maintenance and bill clearance log." },
+            { cat: "property", title: "Sale / Purchase Agreement (Bayana / Sale Deed)", desc: "Property Deed", type: "property_doc", rec: "", sub: "PROPERTY BAYANA DEED", body: "This earnest money and property sale agreement legally binds the buyer and seller for the commercial transaction of the specified real estate property at an agreed consideration price, outlining advance token payment and final clearance deadlines.", suggestion: "1. Remaining balance to be paid within agreed timeframe.\n2. All property tax dues cleared by seller prior to registry." },
+            { cat: "property", title: "Lease / Tenancy Agreement (Rent Deed)", desc: "Rent Agreement", type: "property_doc", rec: "", sub: "TENANCY AGREEMENT", body: "This tenancy and rental contract establishes monthly leasing terms between landlord and tenant for the specified property premises, detailing monthly rent amounts, security deposits, utility responsibilities, and notice periods.", suggestion: "1. Monthly rent payable on or before 5th of every month.\n2. Security deposit refunded upon lease conclusion after utility clearance." },
+            { cat: "property", title: "No Objection Certificate (NOC)", desc: "Property NOC", type: "property_doc", rec: "", sub: "PROPERTY NOC CERTIFICATE", body: "This society or authority No Objection Certificate confirms that all development charges, maintenance dues, and transfer fees for the designated property plot or unit have been fully settled, allowing legal title transfer.", suggestion: "1. Valid for sub-registrar property transfer and utility connections.\n2. Verified against society records." },
+            { cat: "property", title: "Property Allotment Letter", desc: "Allotment Deed", type: "property_doc", rec: "", sub: "PROPERTY ALLOTMENT LETTER", body: "This official allotment letter confirms the provisional or permanent allocation of a residential or commercial plot/unit under an approved real estate development scheme.", suggestion: "1. Subject to scheme payment schedule and bylaws.\n2. Possession handed over upon completion of development." },
+            { cat: "property", title: "Transfer Letter / Mutation Order (Intqal)", desc: "Property Mutation", type: "property_doc", rec: "", sub: "PROPERTY TRANSFER ORDER", body: "This official land revenue mutation order records the formal transfer of property ownership title from the previous owner to the new legal buyer in government revenue records.", suggestion: "1. Updated in regional revenue department records.\n2. Essential for establishing legal ownership." },
+            { cat: "property", title: "General / Special Power of Attorney", desc: "Power of Attorney", type: "property_doc", rec: "", sub: "POWER OF ATTORNEY DEED", body: "This registered legal deed grants authorized executive powers to the appointed attorney to manage, sell, or execute legal documents on behalf of the principal property owner.", suggestion: "1. Executed and registered before sub-registrar.\n2. Grants legal authority for property representation." },
+            { cat: "property", title: "Property Valuation Certificate", desc: "Valuation Report", type: "property_doc", rec: "", sub: "PROPERTY VALUATION REPORT", body: "This professional property valuation report assesses current open market value, construction quality, and land rates for the specified real estate asset.", suggestion: "1. Prepared by approved panel valuer.\n2. Utilized for bank financing and taxation assessment." },
+            { cat: "property", title: "Maintenance & Utility Bill Ledger", desc: "Maintenance Record", type: "property_doc", rec: "", sub: "UTILITY BILL LEDGER", body: "This utility and maintenance ledger tracks monthly society maintenance charges, electricity bills, water dues, and security fees associated with the property premises.", suggestion: "1. Monthly dues payable before due date.\n2. Clearance certificate issued upon settlement." },
 
             // 11. TYPES OF AGREEMENTS
-            { cat: "agreements", title: "Employment / Service Agreement", desc: "Service Contract", type: "letter", rec: "[Party Name]", sub: "SERVICE AGREEMENT", body: "Service contract terms binding both parties." },
-            { cat: "agreements", title: "Non-Disclosure Agreement (NDA)", desc: "Confidentiality Deed", type: "letter", rec: "[Party Name]", sub: "NON-DISCLOSURE AGREEMENT", body: "Confidential information clause binding." },
-            { cat: "agreements", title: "Partnership / Joint Venture Agreement", desc: "JV Contract", type: "letter", rec: "[Partners]", sub: "JOINT VENTURE AGREEMENT", body: "Joint venture partnership terms and liability sharing." },
-            { cat: "agreements", title: "Lease / Tenancy Agreement (Rent Deed)", desc: "Tenancy Deed", type: "letter", rec: "[Tenant Name]", sub: "RENT DEED AGREEMENT", body: "Tenancy contract for premises usage." },
-            { cat: "agreements", title: "Sales / Purchase Agreement", desc: "Sale Agreement", type: "letter", rec: "[Buyer & Seller]", sub: "SALE AGREEMENT DEED", body: "Commercial sale deed agreement." },
-            { cat: "agreements", title: "Service Level Agreement (SLA)", desc: "SLA Deed", type: "letter", rec: "[Client Name]", sub: "SERVICE LEVEL AGREEMENT", body: "Uptime and response SLA terms defined." },
-            { cat: "agreements", title: "Loan / Financial Agreement", desc: "Loan Agreement", type: "letter", rec: "[Borrower Name]", sub: "LOAN FINANCIAL AGREEMENT", body: "Financial repayment schedule contract." },
-            { cat: "agreements", title: "Vendor / Supplier Agreement", desc: "Vendor Contract", type: "letter", rec: "[Supplier Name]", sub: "VENDOR SUPPLY AGREEMENT", body: "Material supply contract terms." },
+            { cat: "agreements", title: "Employment / Service Agreement", desc: "Service Contract", type: "office_letter", rec: "", sub: "SERVICE AGREEMENT", body: "This professional service contract outlines mutual obligations, deliverables, remuneration terms, and operational timelines binding both contracting parties.", suggestion: "1. Mutual terms agreed and signed.\n2. Governed under applicable commercial laws." },
+            { cat: "agreements", title: "Non-Disclosure Agreement (NDA)", desc: "Confidentiality Deed", type: "office_letter", rec: "", sub: "NON-DISCLOSURE AGREEMENT", body: "This confidentiality agreement protects proprietary business data and trade secrets from unauthorized disclosure between participating parties.", suggestion: "1. Strict secrecy required.\n2. Legal remedies apply upon breach." },
+            { cat: "agreements", title: "Partnership / Joint Venture Agreement", desc: "JV Contract", type: "office_letter", rec: "", sub: "JOINT VENTURE AGREEMENT", body: "This joint venture partnership contract outlines capital contributions, profit-sharing ratios, operational management, and liability sharing between partners.", suggestion: "1. Profit and loss shared as per agreed ratios.\n2. Dispute resolution clauses included." },
+            { cat: "agreements", title: "Lease / Tenancy Agreement (Rent Deed)", desc: "Tenancy Deed", type: "property_doc", rec: "", sub: "RENT DEED AGREEMENT", body: "This rental deed contract governs premises usage, monthly lease payments, and tenant-landlord obligations for real estate properties.", suggestion: "1. Standard rent terms applied.\n2. Registered as per legal requirements." },
+            { cat: "agreements", title: "Sales / Purchase Agreement", desc: "Sale Agreement", type: "property_doc", rec: "", sub: "SALE AGREEMENT DEED", body: "This commercial sale agreement outlines purchase considerations, delivery milestones, and title transfer obligations for trade assets.", suggestion: "1. Sale consideration finalized.\n2. Binding upon both buyer and seller." },
+            { cat: "agreements", title: "Service Level Agreement (SLA)", desc: "SLA Deed", type: "office_letter", rec: "", sub: "SERVICE LEVEL AGREEMENT", body: "This service level agreement defines guaranteed system uptime, response times, and support standards between service provider and client.", suggestion: "1. SLA performance metrics monitored monthly.\n2. Penalties apply for breach of uptime standards." },
+            { cat: "agreements", title: "Loan / Financial Agreement", desc: "Loan Agreement", type: "office_letter", rec: "", sub: "LOAN FINANCIAL AGREEMENT", body: "This financial loan contract details principal borrowing amounts, interest rates, collateral security, and structured monthly repayment schedules.", suggestion: "1. Repayment executed strictly as per schedule.\n2. Default triggers penalty clauses." },
+            { cat: "agreements", title: "Vendor / Supplier Agreement", desc: "Vendor Contract", type: "office_letter", rec: "", sub: "VENDOR SUPPLY AGREEMENT", body: "This vendor supply contract governs material quality standards, delivery pricing, bulk order discounts, and credit terms between enterprise and supplier.", suggestion: "1. Quality inspection mandatory upon delivery.\n2. Pricing locked for contract duration." },
 
             // 12. SALE & PURCHASE
-            { cat: "sale_purchase", title: "Sale / Purchase Agreement", desc: "Agreement Deed", type: "letter", rec: "[Buyer Name]", sub: "SALE & PURCHASE AGREEMENT", body: "Agreement deed for commercial purchase." },
-            { cat: "sale_purchase", title: "Proforma Invoice", desc: "Preliminary Bill", type: "letter", rec: "[Buyer Name]", sub: "PROFORMA INVOICE", body: "Proforma estimate bill." },
-            { cat: "sale_purchase", title: "Commercial / Sales Invoice", desc: "Sales Bill", type: "letter", rec: "[Buyer Name]", sub: "COMMERCIAL SALES INVOICE", body: "Final sales invoice receipt." },
-            { cat: "sale_purchase", title: "Purchase Order (PO)", desc: "Order Sheet", type: "letter", rec: "[Vendor Name]", sub: "PURCHASE ORDER", body: "Official PO for material procurement." },
-            { cat: "sale_purchase", title: "Delivery Challan / Dispatch Note", desc: "Dispatch Sheet", type: "letter", rec: "[Receiver Name]", sub: "DELIVERY CHALLAN", body: "Goods dispatch receipt." },
-            { cat: "sale_purchase", title: "Goods Received Note (GRN)", desc: "Receipt Sheet", type: "letter", rec: "[Store Keeper]", sub: "GOODS RECEIVED NOTE", body: "Goods received and verified." },
-            { cat: "sale_purchase", title: "Bill of Sale / Receipt", desc: "Payment Receipt", type: "letter", rec: "[Buyer Name]", sub: "BILL OF SALE RECEIPT", body: "Payment received in full." },
-            { cat: "sale_purchase", title: "Credit Note / Debit Note", desc: "Adjustment Deed", type: "letter", rec: "[Client Name]", sub: "CREDIT / DEBIT NOTE", body: "Balance adjustment entry." }
+            { cat: "sale_purchase", title: "Sale / Purchase Agreement", desc: "Agreement Deed", type: "property_doc", rec: "", sub: "SALE & PURCHASE AGREEMENT", body: "This agreement deed finalizes commercial purchase terms, consideration amounts, and delivery schedules between procurement parties.", suggestion: "1. Purchase terms finalized.\n2. Executed before witnesses." },
+            { cat: "sale_purchase", title: "Proforma Invoice", desc: "Preliminary Bill", type: "invoice_letter", rec: "", sub: "PROFORMA INVOICE", body: "This preliminary proforma bill outlines estimated procurement costs and commercial terms prior to final sale execution.", suggestion: "1. Preliminary estimate bill.\n2. Valid for 10 days." },
+            { cat: "sale_purchase", title: "Commercial / Sales Invoice", desc: "Sales Bill", type: "invoice_letter", rec: "", sub: "COMMERCIAL SALES INVOICE", body: "This final sales invoice receipt itemizes purchased merchandise, unit rates, and total settled payment amounts.", suggestion: "1. Final sales receipt.\n2. Paid in full." },
+            { cat: "sale_purchase", title: "Purchase Order (PO)", desc: "Order Sheet", type: "office_letter", rec: "", sub: "PURCHASE ORDER", body: "This official purchase order authorizes material procurement and commercial supply as per agreed specifications.", suggestion: "1. Official PO issued to vendor.\n2. Delivery as per schedule." },
+            { cat: "sale_purchase", title: "Delivery Challan / Dispatch Note", desc: "Dispatch Sheet", type: "office_letter", rec: "", sub: "DELIVERY CHALLAN", body: "This dispatch sheet accompanies sold merchandise, ensuring secure transport and physical verification upon delivery.", suggestion: "1. Goods dispatched safely.\n2. Verify upon arrival." },
+            { cat: "sale_purchase", title: "Goods Received Note (GRN)", desc: "Receipt Sheet", type: "office_letter", rec: "", sub: "GOODS RECEIVED NOTE", body: "This Goods Received Note verifies and acknowledges the physical receipt and quality inspection of purchased merchandise.", suggestion: "1. Inspected and verified into stock.\n2. Approved for payment." },
+            { cat: "sale_purchase", title: "Bill of Sale / Receipt", desc: "Payment Receipt", type: "invoice_letter", rec: "", sub: "BILL OF SALE RECEIPT", body: "This bill of sale payment receipt confirms that full consideration amount has been received and title transferred.", suggestion: "1. Payment received in full.\n2. Final receipt issued." },
+            { cat: "sale_purchase", title: "Credit Note / Debit Note", desc: "Adjustment Deed", type: "invoice_letter", rec: "", sub: "CREDIT / DEBIT NOTE", body: "This balance adjustment entry rectifies commercial ledger accounts for returned merchandise or billing corrections.", suggestion: "1. Ledger account adjusted.\n2. Verified by accounts." }
         ];
 
-        // Compile Database with Generic Headers
+        // Compile Database with Category-Specific Suggestions
         const database = rawList.map((item, index) => {
             let baseFields = [
-                { id: "comp", label: "Company / Clinic Name", val: "YOUR CLINIC / HOSPITAL NAME" },
-                { id: "addr", label: "Address / Location", val: "123 Medical Center, City, Country" },
-                { id: "ref", label: "Reference / Doc No", val: "REF-2026-" + (100 + index) },
-                { id: "date", label: "Date", val: "DD/MM/YYYY" },
-                { id: "rec", label: "Patient / Client Name", val: item.rec },
+                { id: "comp", label: "Company / Organization Name", val: "" },
+                { id: "addr", label: "Office Address / Location", val: "" },
+                { id: "ref", label: "Reference / Doc No", val: "" },
+                { id: "date", label: "Date", val: "" },
+                { id: "rec", label: "Recipient / Client Name", val: item.rec },
                 { id: "sub", label: "Subject / Title", val: item.sub }
             ];
 
             if(item.type === 'invoice') {
                 baseFields = baseFields.concat(item.fields);
-            } else if(item.type === 'payroll') {
-                baseFields = baseFields.concat(item.fields);
+                baseFields.push({ id: "suggestion", label: "Accounts Terms & Notes", val: item.suggestion });
             } else if(item.type === 'medical_checkup') {
-                baseFields.push({ id: "body", label: "Clinical Examination Notes", val: item.body });
-                baseFields.push({ id: "suggestion", label: "Doctor Suggestions & Prescription Advice", val: item.suggestion });
+                baseFields.push({ id: "body", label: "Clinical Findings / Examination", val: item.body });
+                baseFields.push({ id: "suggestion", label: "Doctor Suggestions & Medical Advice", val: item.suggestion });
+            } else if(item.type === 'transport_doc') {
+                baseFields.push({ id: "body", label: "Transport Details / Purpose", val: item.body });
+                baseFields.push({ id: "suggestion", label: "Transport Terms & Instructions", val: item.suggestion });
+            } else if(item.type === 'property_doc') {
+                baseFields.push({ id: "body", label: "Property Terms / Description", val: item.body });
+                baseFields.push({ id: "suggestion", label: "Property Terms & Conditions", val: item.suggestion });
+            } else if(item.type === 'invoice_letter') {
+                baseFields.push({ id: "body", label: "Invoice / Billing Body Text", val: item.body });
+                baseFields.push({ id: "suggestion", label: "Billing Notes & Terms", val: item.suggestion });
             } else {
-                baseFields.push({ id: "body", label: "Document Body Text (Editable)", val: item.body });
+                baseFields.push({ id: "body", label: "Office Letter Body Text", val: item.body });
+                baseFields.push({ id: "suggestion", label: "Office Instructions & Remarks", val: item.suggestion });
             }
 
             return {
@@ -394,7 +409,7 @@
                                     <div><strong>Ref No:</strong> ${f.ref}</div>
                                     <div><strong>Date:</strong> ${f.date}</div>
                                 </div>
-                                <p style="margin-bottom:6px;"><strong>Billed To:</strong> ${f.rec}</p>
+                                <p style="margin-bottom:4px;"><strong>Billed To:</strong> ${f.rec}</p>
                                 <div class="doc-subject">${f.sub}</div>
                                 <table class="doc-table">
                                     <thead><tr><th>Description</th><th>Qty</th><th>Rate</th><th>Total</th></tr></thead>
@@ -402,50 +417,16 @@
                                         <tr><td>${f.item}</td><td>${qty}</td><td>${rate.toLocaleString()}</td><td>${subtotal.toLocaleString()}</td></tr>
                                     </tbody>
                                 </table>
-                                <div style="text-align:right; font-size:9.5px; line-height:1.2; margin-top:6px;">
+                                <div style="text-align:right; font-size:9px; line-height:1.2; margin-top:4px;">
                                     <div>Subtotal: <strong>${subtotal.toLocaleString()}</strong></div>
                                     <div>Tax (${taxRate}%): <strong>${taxAmount.toLocaleString()}</strong></div>
-                                    <div style="font-size:10.5px; color:#1e4d3b; margin-top:2px;"><strong>Grand Total: ${grandTotal.toLocaleString()}</strong></div>
+                                    <div style="font-size:10px; color:#1e4d3b; margin-top:2px;"><strong>Grand Total: ${grandTotal.toLocaleString()}</strong></div>
                                 </div>
+                                <div style="margin-top:6px; font-size:8.5px; color:#555;"><strong>Notes:</strong> ${f.suggestion}</div>
                             </div>
                             <div class="doc-footer">
                                 <div class="sig-box"><div class="sig-line"></div><div class="sig-title">CLIENT SIGNATURE</div></div>
                                 <div class="sig-box"><div class="sig-line"></div><div class="sig-title">AUTHORIZED SIGNATORY</div></div>
-                            </div>
-                        `;
-                    } else if(this.type === 'payroll') {
-                        let basic = parseFloat(f.basic) || 0;
-                        let allow = parseFloat(f.allow) || 0;
-                        let ded = parseFloat(f.ded) || 0;
-                        let netPay = (basic + allow) - ded;
-
-                        return `
-                            <div>
-                                <div class="doc-header">
-                                    <div class="company-title">${f.comp}</div>
-                                    <div class="company-info">${f.addr}<br>HR & Payroll Department</div>
-                                </div>
-                                <div class="doc-meta">
-                                    <div><strong>Ref No:</strong> ${f.ref}</div>
-                                    <div><strong>Date:</strong> ${f.date}</div>
-                                </div>
-                                <p style="margin-bottom:6px;"><strong>Employee:</strong> ${f.rec}</p>
-                                <div class="doc-subject">${f.sub}</div>
-                                <table class="doc-table">
-                                    <thead><tr><th>Particulars</th><th>Amount</th></tr></thead>
-                                    <tbody>
-                                        <tr><td>Basic Salary</td><td>${basic.toLocaleString()}</td></tr>
-                                        <tr><td>Allowances</td><td>${allow.toLocaleString()}</td></tr>
-                                        <tr><td>Deductions (-)</td><td>(${ded.toLocaleString()})</td></tr>
-                                    </tbody>
-                                </table>
-                                <div style="text-align:right; font-size:10.5px; color:#1e4d3b; margin-top:6px;">
-                                    <strong>Net Payable Salary: ${netPay.toLocaleString()}</strong>
-                                </div>
-                            </div>
-                            <div class="doc-footer">
-                                <div class="sig-box"><div class="sig-line"></div><div class="sig-title">EMPLOYEE SIGNATURE</div></div>
-                                <div class="sig-box"><div class="sig-line"></div><div class="sig-title">HR HEAD</div></div>
                             </div>
                         `;
                     } else if(this.type === 'medical_checkup') {
@@ -459,10 +440,10 @@
                                     <div><strong>Ref No:</strong> ${f.ref}</div>
                                     <div><strong>Date:</strong> ${f.date}</div>
                                 </div>
-                                <p style="margin-bottom:4px;"><strong>Patient Name:</strong> ${f.rec}</p>
+                                <p style="margin-bottom:3px;"><strong>Patient Name:</strong> ${f.rec}</p>
                                 <div class="doc-subject">${f.sub}</div>
-                                <div class="doc-body" style="margin-bottom:4px;"><strong>Examination Findings:</strong>\n${f.body}</div>
-                                <div class="doc-body" style="background:#f9f8f5; padding:6px; border-left:3px solid #1e4d3b;"><strong>Doctor Suggestions & Advice:</strong>\n${f.suggestion}</div>
+                                <div class="doc-body" style="margin-bottom:3px;"><strong>Examination Findings:</strong>\n${f.body}</div>
+                                <div class="doc-body" style="background:#f9f8f5; padding:4px; border-left:3px solid #1e4d3b;"><strong>Doctor Suggestions & Advice:</strong>\n${f.suggestion}</div>
                             </div>
                             <div class="doc-footer">
                                 <div class="sig-box"><div class="sig-line"></div><div class="sig-title">PATIENT SIGNATURE</div></div>
@@ -474,15 +455,16 @@
                             <div>
                                 <div class="doc-header">
                                     <div class="company-title">${f.comp}</div>
-                                    <div class="company-info">${f.addr}<br>Corporate Operations</div>
+                                    <div class="company-info">${f.addr}<br>Corporate Office</div>
                                 </div>
                                 <div class="doc-meta">
                                     <div><strong>Ref No:</strong> ${f.ref}</div>
                                     <div><strong>Date:</strong> ${f.date}</div>
                                 </div>
-                                <p style="margin-bottom:4px;"><strong>To:</strong> ${f.rec}</p>
+                                <p style="margin-bottom:3px;"><strong>To:</strong> ${f.rec}</p>
                                 <div class="doc-subject">${f.sub}</div>
-                                <div class="doc-body">${f.body}</div>
+                                <div class="doc-body" style="margin-bottom:3px;">${f.body}</div>
+                                <div class="doc-body" style="background:#f9f8f5; padding:4px; border-left:3px solid #1e4d3b; font-size:8.5px;"><strong>Suggestions & Instructions:</strong>\n${f.suggestion}</div>
                             </div>
                             <div class="doc-footer">
                                 <div class="sig-box"><div class="sig-line"></div><div class="sig-title">RECIPIENT SIGNATURE</div></div>
