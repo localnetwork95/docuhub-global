@@ -246,29 +246,29 @@
             <div class="footer-col">
                 <h4>From DocuHub</h4>
                 <ul>
-                    <li><a onclick="DocuHubApp.showInfoModal('Corporate Letterheads', 'DocuHub offers enterprise-grade stationery and letterhead formats.')">Corporate Letterheads</a></li>
-                    <li><a onclick="DocuHubApp.showInfoModal('Professional Document Hub', 'A centralized suite housing corporate documents.')">Professional Document Hub</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Corporate Letterheads', 'DocuHub offers enterprise-grade stationery formats.')">Corporate Letterheads</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Professional Document Hub', 'A centralized corporate document suite.')">Professional Document Hub</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>About</h4>
                 <ul>
-                    <li><a onclick="DocuHubApp.showInfoModal('About DocuHub', 'DocuHub is a next-generation professional document suite.')">About DocuHub</a></li>
-                    <li><a onclick="DocuHubApp.showInfoModal('Contact Support', 'Email us at support@docuhub.com.')">Contact Support</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('About DocuHub', 'DocuHub is a professional document platform.')">About DocuHub</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Contact Support', 'Email: support@docuhub.com')">Contact Support</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Policies</h4>
                 <ul>
-                    <li><a onclick="DocuHubApp.showInfoModal('Privacy Policy', 'All document entries are secure.')">Privacy Policy</a></li>
-                    <li><a onclick="DocuHubApp.showInfoModal('Terms of Use', 'Standard professional compliance.')">Terms of Use</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Privacy Policy', 'Secure browser session processing.')">Privacy Policy</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Terms of Use', 'Standard compliance rules.')">Terms of Use</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Follow Us</h4>
                 <div class="social-links">
-                    <a onclick="DocuHubApp.showInfoModal('Facebook', 'Join community.')" class="social-icon-btn">f</a>
-                    <a onclick="DocuHubApp.showInfoModal('Twitter', 'Follow us.')" class="social-icon-btn">𝕏</a>
+                    <a onclick="DocuHubApp.showInfoModal('Facebook', 'Community link')" class="social-icon-btn">f</a>
+                    <a onclick="DocuHubApp.showInfoModal('Twitter', 'Twitter handle')" class="social-icon-btn">𝕏</a>
                 </div>
             </div>
         </div>
@@ -613,7 +613,10 @@
                 this.currentCategory = cat;
                 this.showAll = true;
                 document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
-                if(cat === 'all') document.getElementById('nav-all').classList.add('active');
+                
+                // Active nav highlight check
+                event && event.target && event.target.tagName === 'A' && event.target.classList.add('active');
+                
                 document.getElementById('section-heading-text').innerText = cat.toUpperCase() + " GENERATORS";
                 this.renderTemplates();
             },
