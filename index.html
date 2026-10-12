@@ -25,7 +25,7 @@
         .hero-banner { background: linear-gradient(rgba(30,77,59,0.75), rgba(30,77,59,0.75)), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80') center/cover; padding: 35px 20px; text-align: center; color: white; margin-bottom: 30px; }
         .hero-banner h2 { font-size: 20px; font-weight: 400; margin-bottom: 20px; font-family: 'Georgia', serif; }
         
-        /* Circular & Mixed Showcase Row */
+        /* Circular Showcase Row */
         .circle-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
         .circle-item { text-align: center; cursor: pointer; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .circle-item:hover { transform: translateY(-8px) scale(1.05); }
@@ -415,6 +415,184 @@
                             <div style="border-top: 1px solid #2d3748; padding-top: 5px; font-weight: bold;">Candidate Acceptance</div>
                             <p style="font-size:10px; color:#666;">Signature & Date</p>
                         </div>
+                    </div>
+                `
+            },
+            {
+                id: "lh-1", category: "letterheads", featured: true, shape: "square", title: "Editorial Minimalist Letterhead", desc: "Clean top header with high-end corporate typography, border accents, and structured body layout.",
+                fields: [
+                    {id:"logo",label:"Company Logo URL (Optional)",val:""},
+                    {id:"comp",label:"Company Name",val:"BURQUE CORPORATION PVT LTD"},
+                    {id:"phone",label:"Phone",val:"+92 21 00000000"},
+                    {id:"email",label:"Email",val:"info@burque.com"},
+                    {id:"addr",label:"Address",val:"Head Office, Karachi, Pakistan"},
+                    {id:"ref",label:"Reference No.",val:"BCL/HR/2026/001"},
+                    {id:"subject",label:"Subject",val:"OFFICIAL CORPORATE CORRESPONDENCE"},
+                    {id:"body",label:"Letter Content",val:"Dear Team,\n\nThis is to formally communicate the administrative updates regarding our operational workflows and compliance standards for the current financial quarter."}
+                ],
+                render: f => `
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #222; padding-bottom:12px; margin-bottom:15px;">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            ${f.logo ? `<img src="${f.logo}" style="width:45px; height:45px; object-fit:contain;" alt="Logo"/>` : ''}
+                            <div>
+                                <h2 style="font-size:16px; font-family:'Georgia',serif; color:#111;">${f.comp || '[Company Name]'}</h2>
+                                <p style="font-size:10px; color:#555;">${f.addr || '[Address]'}</p>
+                            </div>
+                        </div>
+                        <div style="text-align:right; font-size:10px; color:#555;">
+                            <p><strong>Ref:</strong> ${f.ref || 'BCL/2026/001'}</p>
+                            <p>Phone: ${f.phone || '+00 000 0000000'}</p>
+                            <p>Email: ${f.email || 'info@company.com'}</p>
+                        </div>
+                    </div>
+                    <p style="font-size:11px; margin-bottom:8px;">Date: <strong>${new Date().toLocaleDateString()}</strong></p>
+                    <p style="font-size:11px; margin-bottom:12px; font-weight:bold; text-decoration:underline;">SUBJECT: ${f.subject || '[Subject]'}</p>
+                    <p style="font-size:11px; line-height:1.7; min-height:150px; white-space:pre-line;">${f.body || '[Type your letter here...]'}</p>
+                    <br><br>
+                    <div style="display:flex; justify-content:space-between; margin-top:30px; font-size:11px;">
+                        <div><strong>Prepared By:</strong> Administration</div>
+                        <div><strong>Authorized Signatory:</strong> ___________________</div>
+                    </div>
+                `
+            },
+            {
+                id: "lh-2", category: "letterheads", featured: true, shape: "circle", title: "Dynamic Geometric Tech Letterhead", desc: "Modern corporate letterhead featuring bottom/top accent bar, sleek contact info, and agency look.",
+                fields: [
+                    {id:"logo",label:"Logo URL (Optional)",val:""},
+                    {id:"comp",label:"Agency Name",val:"DOCUHUB TECH SOLUTIONS"},
+                    {id:"tag",label:"Tagline",val:"Enterprise Software & Digital Infrastructure"},
+                    {id:"phone",label:"Phone",val:"+92 300 0000000"},
+                    {id:"email",label:"Email",val:"support@docuhub.com"},
+                    {id:"body",label:"Content",val:"Dear Client,\n\nWe acknowledge receipt of your requirements for system integration and documentation structuring."}
+                ],
+                render: f => `
+                    <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:3px solid #3182ce; padding-bottom:10px; margin-bottom:15px;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            ${f.logo ? `<img src="${f.logo}" style="width:40px; height:40px; object-fit:contain;" alt="Logo"/>` : ''}
+                            <div>
+                                <h2 style="font-size:15px; color:#2b6cb0; font-weight:bold;">${f.comp || '[Agency Name]'}</h2>
+                                <p style="font-size:10px; color:#718096;">${f.tag || '[Digital Solutions]'}</p>
+                            </div>
+                        </div>
+                        <div style="font-size:10px; color:#4a5568; text-align:right;">
+                            <p>Date: ${new Date().toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                    <p style="font-size:11px; line-height:1.7; min-height:150px; white-space:pre-line;">${f.body || '[Content here...]'}</p>
+                    <div style="margin-top:30px; border-top:1px solid #cbd5e0; padding-top:8px; display:flex; justify-content:space-between; font-size:10px; color:#4a5568;">
+                        <span>📞 ${f.phone || 'Phone'}</span><span>✉ ${f.email || 'Email'}</span>
+                    </div>
+                `
+            },
+            {
+                id: "lh-3", category: "letterheads", featured: true, shape: "square", title: "Warm Organic Creative Letterhead", desc: "Soft earth-toned stationery layout suited for wellness studios, boutiques, and creative consultancies.",
+                fields: [
+                    {id:"logo",label:"Logo URL (Optional)",val:""},
+                    {id:"comp",label:"Studio Name",val:"AURA CREATIVE STUDIO"},
+                    {id:"addr",label:"Address",val:"Clifton Block 4, Karachi"},
+                    {id:"body",label:"Letter Body",val:"Dear Partner,\n\nWe are delighted to present our conceptual design drafts and layout architectures for your upcoming product portfolio."}
+                ],
+                render: f => `
+                    <div style="background:#fdfbf7; border-left:4px solid #8c6d62; padding:10px 12px; margin-bottom:15px; display:flex; align-items:center; gap:10px;">
+                        ${f.logo ? `<img src="${f.logo}" style="width:38px; height:38px; object-fit:contain;" alt="Logo"/>` : ''}
+                        <div>
+                            <h2 style="font-size:14px; color:#8c6d62; font-weight:bold;">${f.comp || '[Studio Name]'}</h2>
+                            <p style="font-size:10px; color:#777;">${f.addr || '[Address]'}</p>
+                        </div>
+                    </div>
+                    <p style="font-size:11px; line-height:1.7; min-height:150px; white-space:pre-line;">${f.body || '[Body here...]'}</p>
+                    <br><br>
+                    <div style="text-align:right; font-size:11px;"><strong>Creative Director</strong></div>
+                `
+            },
+            {
+                id: "accounts-1", category: "accounts", featured: true, shape: "square", title: "Salary Slip & Payroll Statement", desc: "Official monthly salary statement with earnings, deductions, and net payable calculations.",
+                fields: [
+                    {id:"emp",label:"Employee Name",val:"Shahrukh Siddiqui"},
+                    {id:"desig",label:"Designation",val:"Senior Accountant"},
+                    {id:"basic",label:"Basic Salary (PKR)",val:"68,000"},
+                    {id:"allow",label:"Allowances (PKR)",val:"12,000"},
+                    {id:"ded",label:"Deductions (PKR)",val:"3,000"}
+                ],
+                render: f => {
+                    let basic = parseFloat(f.basic) || 68000;
+                    let allow = parseFloat(f.allow) || 12000;
+                    let ded = parseFloat(f.ded) || 3000;
+                    let net = basic + allow - ded;
+                    return `
+                        <div style="text-align:center; border-bottom:2px solid #1e4d3b; padding-bottom:8px; margin-bottom:15px;">
+                            <h2 style="font-size:15px; color:#1e4d3b;">TAJ AL HUDA - PAYROLL DIVISION</h2>
+                            <p style="font-size:10px; color:#555;">Monthly Salary Disbursement Slip</p>
+                        </div>
+                        <p style="font-size:11px; margin-bottom:5px;"><strong>Employee:</strong> ${f.emp || 'Shahrukh Siddiqui'}</p>
+                        <p style="font-size:11px; margin-bottom:15px;"><strong>Designation:</strong> ${f.desig || 'Senior Accountant'}</p>
+                        <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:15px;">
+                            <tr style="background:#f0eee6;"><th style="border:1px solid #d5d1c8; padding:6px; text-align:left;">Earnings</th><th style="border:1px solid #d5d1c8; padding:6px; text-align:right;">Amount (PKR)</th></tr>
+                            <tr><td style="border:1px solid #d5d1c8; padding:6px;">Basic Pay</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">${basic.toLocaleString()}</td></tr>
+                            <tr><td style="border:1px solid #d5d1c8; padding:6px;">Allowances / Bonus</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">${allow.toLocaleString()}</td></tr>
+                            <tr><td style="border:1px solid #d5d1c8; padding:6px;">Less: Deductions / Tax</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">-${ded.toLocaleString()}</td></tr>
+                            <tr style="background:#faf9f5; font-weight:bold;"><td style="border:1px solid #d5d1c8; padding:6px;">Net Payable Salary</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">PKR ${net.toLocaleString()} /-</td></tr>
+                        </table>
+                        <br>
+                        <div style="display:flex; justify-content:space-between; margin-top:40px; font-size:11px;">
+                            <div><strong>Employee Signature:</strong> _________</div>
+                            <div><strong>Accounts Head:</strong> _________</div>
+                        </div>
+                    `;
+                }
+            },
+            {
+                id: "tr-1", category: "transport", featured: true, shape: "square", title: "Motorcycle Fuel & Maintenance Log", desc: "Detailed tracking sheet for daily 70cc motorcycle commute, oil changes, and fuel consumption.",
+                fields: [
+                    {id:"bike",label:"Vehicle / Model",val:"Union Star 70cc (Hyundai 10W-40)"},
+                    {id:"km",label:"Monthly Mileage (Km)",val:"950 km"},
+                    {id:"fuel",label:"Fuel Consumed (Litres)",val:"38 Litres"},
+                    {id:"note",label:"Maintenance Note",val:"Oil changed at 900 km interval. Spark plug checked."}
+                ],
+                render: f => `
+                    <div style="border-bottom:2px solid #1e4d3b; padding-bottom:8px; margin-bottom:15px; text-align:center;">
+                        <h2 style="font-size:15px; color:#1e4d3b;">VEHICLE OPERATIONAL & MAINTENANCE LOG</h2>
+                        <p style="font-size:10px; color:#555;">Daily Commute & Engine Maintenance Record</p>
+                    </div>
+                    <p style="font-size:11px; margin-bottom:8px;"><strong>Vehicle:</strong> ${f.bike || 'Union Star 70cc'}</p>
+                    <p style="font-size:11px; margin-bottom:12px;"><strong>Total Mileage Covered:</strong> ${f.km || '950 km'}</p>
+                    <p style="font-size:11px; margin-bottom:15px;"><strong>Fuel Consumption:</strong> ${f.fuel || '38 Litres'}</p>
+                    <div style="background:#f9fafb; border:1px solid #d5d1c8; padding:10px; border-radius:4px; font-size:11px; margin-bottom:15px;">
+                        <strong>Service & Maintenance Remarks:</strong><br>
+                        ${f.note || 'Regular oil dipstick check performed daily prior to starting commute.'}
+                    </div>
+                    <br>
+                    <div style="text-align:right; font-size:11px;"><strong>Verified By Owner / Rider</strong><br><br>___________________</div>
+                `
+            },
+            {
+                id: "com-1", category: "commercial", featured: true, shape: "circle", title: "Commercial Sales & Invoice Slip", desc: "Standard business invoice format for tracking sales items, pricing packages, and client billings.",
+                fields: [
+                    {id:"client",label:"Client / Customer Name",val:"Muhammad Sharif"},
+                    {id:"item",label:"Product / Service Description",val:"Custom Jewelry Locket / Fabric Package"},
+                    {id:"price",label:"Total Amount (PKR)",val:"14,500"}
+                ],
+                render: f => `
+                    <div style="display:flex; justify-content:space-between; border-bottom:2px solid #333; padding-bottom:8px; margin-bottom:15px;">
+                        <div>
+                            <h2 style="font-size:15px;">DOCUHUB COMMERCIAL INVOICE</h2>
+                            <p style="font-size:10px; color:#555;">Sales & Supply Record</p>
+                        </div>
+                        <div style="text-align:right; font-size:10px;">
+                            <p>Date: ${new Date().toLocaleDateString()}</p>
+                            <p>Invoice #: INV-2026-88</p>
+                        </div>
+                    </div>
+                    <p style="font-size:11px; margin-bottom:8px;"><strong>Billed To:</strong> ${f.client || 'Muhammad Sharif'}</p>
+                    <p style="font-size:11px; margin-bottom:15px;"><strong>Description:</strong> ${f.item || 'Custom Product Package'}</p>
+                    <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:15px;">
+                        <tr style="background:#f0eee6;"><th style="border:1px solid #ccc; padding:6px; text-align:left;">Item</th><th style="border:1px solid #ccc; padding:6px; text-align:right;">Total (PKR)</th></tr>
+                        <tr><td style="border:1px solid #ccc; padding:6px;">${f.item || 'Standard Package'}</td><td style="border:1px solid #ccc; padding:6px; text-align:right;">PKR ${f.price || '14,500'}/-</td></tr>
+                    </table>
+                    <br>
+                    <div style="display:flex; justify-content:space-between; font-size:11px;">
+                        <div>Status: <span style="color:green; font-weight:bold;">PAID / VERIFIED</span></div>
+                        <div>Authorized Signature: _________</div>
                     </div>
                 `
             }
