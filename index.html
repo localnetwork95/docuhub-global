@@ -3,137 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocuHub - Lifestyle & Business Suite</title>
+    <title>Professional Document & Letterhead Suite</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f7f5f0; color: #333333; display: flex; flex-direction: column; min-height: 100vh; }
+        body { background-color: #f4f1ea; color: #2b2b2b; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* Header Styling */
-        header { background: #ffffff; padding: 20px 40px; border-bottom: 1px solid #e6e2d8; position: sticky; top: 0; z-index: 1000; }
-        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .logo { font-family: 'Georgia', serif; font-size: 24px; font-style: italic; font-weight: bold; color: #1e4d3b; cursor: pointer; display: flex; align-items: center; gap: 5px; }
-        .logo span { color: #1e4d3b; font-weight: normal; }
+        header { background: #ffffff; padding: 15px 30px; border-bottom: 2px solid #1e4d3b; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .logo { font-family: 'Georgia', serif; font-size: 22px; font-weight: bold; color: #1e4d3b; cursor: pointer; }
         
-        .search-box { display: flex; align-items: center; background: #f0eee6; border-radius: 20px; padding: 5px 15px; width: 220px; }
+        .search-box { display: flex; align-items: center; background: #f0eee6; border-radius: 20px; padding: 6px 15px; width: 280px; border: 1px solid #dcd8cd; }
         .search-box input { border: none; background: transparent; outline: none; font-size: 12px; width: 100%; color: #333; }
 
-        nav ul { display: flex; list-style: none; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        nav ul li a { text-decoration: none; color: #1e4d3b; font-size: 13px; cursor: pointer; font-weight: 600; transition: color 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
-        nav ul li a:hover, nav ul li a.active { color: #52796f; border-bottom: 2px solid #1e4d3b; padding-bottom: 2px; }
+        nav ul { display: flex; list-style: none; gap: 6px; justify-content: center; flex-wrap: wrap; }
+        nav ul li a { text-decoration: none; color: #1e4d3b; font-size: 10.5px; cursor: pointer; font-weight: 600; text-transform: uppercase; padding: 5px 8px; border-radius: 4px; transition: all 0.2s; }
+        nav ul li a:hover, nav ul li a.active { background: #1e4d3b; color: #fff; }
 
-        /* Hero Banner Section */
-        .hero-banner { background: linear-gradient(rgba(30,77,59,0.75), rgba(30,77,59,0.75)), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80') center/cover; padding: 35px 20px; text-align: center; color: white; margin-bottom: 30px; }
-        .hero-banner h2 { font-size: 20px; font-weight: 400; margin-bottom: 20px; font-family: 'Georgia', serif; }
+        .hero-banner { background: #1b4332; padding: 30px 20px; text-align: center; color: white; margin-bottom: 20px; box-shadow: inset 0 -5px 15px rgba(0,0,0,0.2); }
+        .hero-banner h2 { font-size: 22px; font-weight: 400; margin-bottom: 25px; font-family: 'Georgia', serif; letter-spacing: 0.5px; color: #ffffff; }
         
-        /* Circular Showcase Row */
-        .circle-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
-        .circle-item { text-align: center; cursor: pointer; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .circle-item:hover { transform: translateY(-8px) scale(1.05); }
-        .circle-img { width: 75px; height: 75px; border-radius: 50%; border: 3px solid #ffffff; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.25); background: #fff; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #1e4d3b; font-weight: bold; margin: 0 auto 8px auto; transition: box-shadow 0.3s; }
-        .circle-item span { font-size: 11px; color: #ffffff; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+        .circle-row { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
+        .circle-item { text-align: center; cursor: pointer; transition: transform 0.3s; width: 95px; text-decoration: none; display: block; }
+        .circle-item:hover { transform: translateY(-5px); }
+        .circle-img { width: 70px; height: 70px; border-radius: 50%; border: 3px solid #ffffff; background: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #1e4d3b; font-weight: bold; margin: 0 auto 8px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+        .circle-item span { font-size: 11px; color: #ffffff; font-weight: 600; font-family: 'Segoe UI', sans-serif; display: block; line-height: 1.2; }
 
-        /* Main Container Layout */
-        .main-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: 2.2fr 1fr; gap: 30px; flex: 1; width: 100%; }
+        .main-container { max-width: 1350px; margin: 20px auto; padding: 0 20px; display: grid; grid-template-columns: 3.2fr 1fr; gap: 20px; flex: 1; width: 100%; }
         @media(max-width: 900px) { .main-container { grid-template-columns: 1fr; } }
 
-        .section-title { font-size: 20px; font-weight: bold; color: #1e4d3b; margin-bottom: 20px; font-family: 'Georgia', serif; border-bottom: 2px solid #1e4d3b; padding-bottom: 5px; display: flex; justify-content: space-between; align-items: center; }
-        .section-title span { font-size: 11px; color: #666; font-weight: normal; font-family: 'Segoe UI', sans-serif; cursor: pointer; }
-        .section-title span:hover { color: #1e4d3b; text-decoration: underline; }
+        .section-title { font-size: 16px; font-weight: bold; color: #1e4d3b; margin-bottom: 15px; font-family: 'Georgia', serif; border-bottom: 2px solid #1e4d3b; padding-bottom: 5px; display: flex; justify-content: space-between; align-items: center; }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
         
-        /* Cards */
-        .card { background: #ffffff; border: 1px solid #e6e2d8; padding: 20px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .card.shape-circle-card { border-radius: 40px; padding: 25px; text-align: center; background: linear-gradient(135deg, #ffffff 0%, #f7f5f0 100%); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(30,77,59,0.12); border-color: #1e4d3b; }
-        
-        .card h3 { font-size: 14px; margin-bottom: 8px; color: #1e4d3b; font-weight: 700; }
-        .card p { font-size: 11px; color: #666666; line-height: 1.4; margin-bottom: 15px; }
-        .card button { background: #1e4d3b; border: none; color: #ffffff; padding: 7px 14px; font-weight: 600; font-size: 11px; cursor: pointer; border-radius: 4px; transition: all 0.2s; width: fit-content; text-decoration: none; display: inline-block; text-align: center; }
-        .card.shape-circle-card button { margin: 0 auto; }
-        .card button:hover { background: #143528; transform: scale(1.05); }
+        .card { background: #ffffff; border: 1px solid #e0ddd5; padding: 14px; border-radius: 6px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.2s; }
+        .card:hover { border-color: #1e4d3b; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(30,77,59,0.1); }
+        .card h3 { font-size: 12px; margin-bottom: 4px; color: #1e4d3b; font-weight: 700; }
+        .card p { font-size: 10px; color: #666; margin-bottom: 10px; line-height: 1.3; }
+        .card button { background: #1e4d3b; border: none; color: #ffffff; padding: 6px 12px; font-weight: 600; font-size: 10px; cursor: pointer; border-radius: 4px; width: fit-content; }
+        .card button:hover { background: #123326; }
 
-        /* Sidebar */
-        .sidebar { display: flex; flex-direction: column; gap: 25px; }
-        .sidebar-box { background: #f0eee6; padding: 20px; border-radius: 6px; border: 1px solid #e0ddd5; }
-        .sidebar-box h3 { font-size: 15px; color: #1e4d3b; margin-bottom: 12px; font-family: 'Georgia', serif; border-bottom: 1px solid #dcd8cd; padding-bottom: 5px; }
-        
-        .newsletter-input { width: 100%; padding: 10px 12px; border: 1px solid #d5d1c8; border-radius: 4px; font-size: 12px; margin-bottom: 10px; background: #fff; outline: none; }
-        .newsletter-btn { width: 100%; background: #1e4d3b; color: white; border: none; padding: 10px; font-size: 12px; font-weight: 600; border-radius: 4px; cursor: pointer; }
-        .newsletter-btn:hover { background: #143528; }
-        
-        .mini-circles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; text-align: center; }
-        .mini-circle-item { transition: transform 0.2s; cursor: pointer; }
-        .mini-circle-item:hover { transform: scale(1.08); }
-        .mini-circle-item .placeholder-mc { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin: 0 auto 5px auto; border: 2px solid #1e4d3b; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; color: #1e4d3b; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
-        .mini-circle-item span { font-size: 11px; color: #444; font-weight: 600; display: block; }
+        .sidebar-box { background: #fff; padding: 15px; border-radius: 6px; border: 1px solid #e0ddd5; }
+        .sidebar-box h3 { font-size: 13px; color: #1e4d3b; margin-bottom: 10px; font-family: 'Georgia', serif; border-bottom: 2px solid #1e4d3b; padding-bottom: 4px; }
+        .sidebar-box ul { list-style: none; font-size: 11px; }
+        .sidebar-box ul li { padding: 5px 0; border-bottom: 1px dashed #eee; cursor: pointer; color: #444; font-weight: 500; }
+        .sidebar-box ul li:hover { color: #1e4d3b; font-weight: 700; padding-left: 3px; }
 
-        /* Footer */
-        footer { background: #ffffff; border-top: 1px solid #e6e2d8; margin-top: 50px; padding: 40px 40px 30px 40px; color: #333333; }
-        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 30px; }
-        @media(max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-        
-        .footer-col h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; color: #111; margin-bottom: 15px; letter-spacing: 0.5px; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; font-size: 12px; color: #555; }
-        .footer-col ul li a { text-decoration: none; color: #555; cursor: pointer; }
-        .footer-col ul li a:hover { color: #1e4d3b; text-decoration: underline; }
-        
-        .social-links { display: flex; gap: 12px; }
-        .social-icon-btn { width: 34px; height: 34px; border: 1px solid #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #333; text-decoration: none; cursor: pointer; }
-        .social-icon-btn:hover { background: #1e4d3b; color: white; border-color: #1e4d3b; }
+        /* Workspace Modal */
+        #workspace-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); z-index: 2000; justify-content: center; align-items: center; padding: 15px; }
+        .modal-content { background: #fff; width: 100%; max-width: 1100px; height: 90vh; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .modal-header { padding: 12px 20px; background: #1e4d3b; color: #fff; display: flex; justify-content: space-between; align-items: center; }
+        .modal-header h2 { font-size: 14px; font-family: 'Georgia', serif; color: #fff; }
+        .close-btn { background: none; border: none; font-size: 22px; cursor: pointer; color: #fff; }
 
-        .footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid #eee; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        .footer-brand { display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 15px; color: #1e4d3b; }
-        .footer-brand span { background: #1e4d3b; color: white; width: 24px; height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
-        .footer-copy { font-size: 11px; color: #777; }
+        .modal-body { padding: 15px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 15px; flex: 1; background: #f9f8f5; }
+        @media(max-width: 800px) { .modal-body { grid-template-columns: 1fr; } }
 
-        /* Modal Workspace styling */
-        #workspace-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: #fff; width: 100%; max-width: 1100px; max-height: 92vh; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
-        .modal-header { padding: 15px 25px; background: #f0eee6; border-bottom: 1px solid #e6e2d8; display: flex; justify-content: space-between; align-items: center; }
-        .modal-header h2 { font-size: 16px; color: #1e4d3b; font-family: 'Georgia', serif; }
-        .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #1e4d3b; }
-        
-        .word-toolbar { display: flex; align-items: center; gap: 15px; background: #faf9f5; padding: 8px 25px; border-bottom: 1px solid #e6e2d8; font-size: 11px; flex-wrap: wrap; }
-        .word-toolbar select { padding: 4px 8px; border: 1px solid #d5d1c8; border-radius: 4px; background: #fff; font-size: 11px; outline: none; cursor: pointer; }
-
-        .modal-body { padding: 25px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 25px; flex: 1; }
-        @media(max-width: 768px) { .modal-body { grid-template-columns: 1fr; } }
-        .form-section h4, .preview-section h4 { font-size: 12px; margin-bottom: 10px; color: #1e4d3b; border-bottom: 2px solid #1e4d3b; padding-bottom: 4px; font-weight: 700; text-transform: uppercase; }
+        .form-section { background: #fff; padding: 12px; border-radius: 6px; border: 1px solid #e0ddd5; height: 100%; overflow-y: auto; }
         .form-group { margin-bottom: 10px; }
-        .form-group label { display: block; font-size: 10px; font-weight: 700; color: #555; margin-bottom: 3px; text-transform: uppercase; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 7px 10px; border: 1px solid #d5d1c8; border-radius: 4px; font-size: 12px; outline: none; background: #faf9f5; }
+        .form-group label { display: block; font-size: 9.5px; font-weight: 700; color: #1e4d3b; text-transform: uppercase; margin-bottom: 3px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 11px; background: #fff; outline: none; }
+        .form-group textarea { height: 65px; resize: vertical; }
+
+        .preview-section { background: #666; padding: 15px; border-radius: 6px; height: 100%; overflow-y: auto; display: flex; justify-content: center; align-items: flex-start; }
         
-        .preview-box { background: #ffffff; border: 1px solid #d5d1c8; padding: 30px; border-radius: 4px; min-height: 480px; max-height: 560px; overflow-y: auto; font-size: 12px; line-height: 1.6; color: #222; font-family: 'Calibri', sans-serif; }
+        /* Document Paper Formatting - Strict A4 single page height control */
+        .document-paper { background: #ffffff; width: 100%; max-width: 590px; height: 680px; padding: 22px; border-radius: 2px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-size: 10px; line-height: 1.3; color: #222; font-family: 'Times New Roman', Times, serif; display: flex; flex-direction: column; justify-content: space-between; }
+        
+        .doc-header { border-bottom: 2px solid #1e4d3b; padding-bottom: 4px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .doc-header .company-title { font-size: 14px; font-weight: bold; color: #1e4d3b; font-family: 'Georgia', serif; }
+        .doc-header .company-info { font-size: 7.5px; color: #555; text-align: right; line-height: 1.1; }
 
-        .theme-editorial { background: #ffffff !important; color: #111111 !important; border: 2px solid #111111 !important; font-family: 'Georgia', serif !important; }
-        .theme-geometric { background: linear-gradient(135deg, #f9fafb 0%, #edf2f7) !important; color: #1a202c !important; border-left: 6px solid #3182ce !important; }
-        .theme-organic { background: #fdfbf7 !important; color: #4a403b !important; border: 1px solid #d4c5b9 !important; border-radius: 12px !important; }
-        .theme-darkmode { background: #121824 !important; color: #e2e8f0 !important; border: 1px solid #2d3748 !important; }
+        .doc-meta { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 8.5px; color: #444; border-bottom: 1px dashed #ccc; padding-bottom: 2px; }
+        .doc-subject { font-size: 10px; font-weight: bold; text-decoration: underline; text-align: center; margin: 6px 0; text-transform: uppercase; color: #111; }
+        .doc-body { text-align: justify; white-space: pre-line; margin-bottom: 6px; flex: 1; overflow: hidden; }
+        
+        .doc-table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 8.5px; }
+        .doc-table th, .doc-table td { border: 1px solid #444; padding: 3px 4px; text-align: left; }
+        .doc-table th { background: #f0eee6; font-weight: bold; color: #1e4d3b; }
 
-        .modal-footer { padding: 12px 25px; background: #f0eee6; border-top: 1px solid #e6e2d8; display: flex; justify-content: flex-end; gap: 10px; }
-        .btn-primary { background: #1e4d3b; border: none; color: #ffffff; padding: 8px 18px; font-size: 12px; cursor: pointer; font-weight: 600; border-radius: 4px; }
-        .btn-primary:hover { background: #143528; }
-        .btn-outline { background: transparent; border: 1px solid #1e4d3b; color: #1e4d3b; padding: 8px 18px; font-size: 12px; cursor: pointer; font-weight: 600; border-radius: 4px; }
-        .btn-outline:hover { background: #1e4d3b; color: white; }
+        .doc-footer { margin-top: 8px; border-top: 1px solid #1e4d3b; padding-top: 4px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .sig-box { text-align: center; width: 140px; }
+        .sig-line { border-bottom: 1px solid #333; margin-bottom: 2px; height: 18px; }
+        .sig-title { font-size: 8px; font-weight: bold; color: #333; }
 
-        /* Info Modal */
-        #info-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; justify-content: center; align-items: center; padding: 20px; }
-        .info-modal-content { background: #fff; width: 100%; max-width: 550px; border-radius: 8px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .info-modal-content h3 { font-size: 16px; color: #1e4d3b; margin-bottom: 12px; font-family: 'Georgia', serif; border-bottom: 1px solid #e6e2d8; padding-bottom: 6px; }
-        .info-modal-content p { font-size: 12px; color: #444; line-height: 1.6; margin-bottom: 20px; }
-        .info-modal-close { background: #1e4d3b; color: white; border: none; padding: 8px 16px; font-size: 11px; font-weight: 600; border-radius: 4px; cursor: pointer; display: block; margin-left: auto; }
+        .modal-footer { padding: 8px 20px; background: #fff; border-top: 1px solid #e0ddd5; display: flex; justify-content: flex-end; gap: 10px; }
+        .btn-primary { background: #1e4d3b; border: none; color: #fff; padding: 6px 16px; font-size: 11px; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        .btn-outline { background: transparent; border: 1px solid #1e4d3b; color: #1e4d3b; padding: 6px 16px; font-size: 11px; cursor: pointer; border-radius: 4px; font-weight: bold; }
 
-        /* Print / PDF Media Query */
+        /* STRICT 1-PAGE PRINT MEDIA QUERY */
         @media print {
-            body { background: none; padding: 0; }
-            header, .hero-banner, .main-container, footer, #workspace-modal .modal-header, #workspace-modal .word-toolbar, #workspace-modal .modal-footer, .form-section { display: none !important; }
-            #workspace-modal { display: block !important; position: static !important; background: none !important; padding: 0 !important; }
-            .modal-content { box-shadow: none !important; max-width: 100% !important; max-height: none !important; border: none !important; }
-            .modal-body { display: block !important; padding: 0 !important; }
-            .preview-section { width: 100% !important; }
-            .preview-box { border: none !important; padding: 0 !important; max-height: none !important; overflow: visible !important; }
+            body * { visibility: hidden !important; }
+            #workspace-modal, #workspace-modal * { visibility: visible !important; }
+            #workspace-modal { position: fixed !important; left: 0 !important; top: 0 !important; width: 100vw !important; height: 100vh !important; background: #fff !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 99999 !important; padding: 0 !important; margin: 0 !important; }
+            .modal-content { box-shadow: none !important; border: none !important; width: 100% !important; height: 100% !important; max-width: 100% !important; background: #fff !important; }
+            .modal-header, .modal-footer, .form-section { display: none !important; }
+            .modal-body { display: block !important; padding: 0 !important; background: #fff !important; height: 100% !important; overflow: hidden !important; }
+            .preview-section { background: #fff !important; padding: 0 !important; width: 100% !important; height: 100% !important; display: flex !important; justify-content: center !important; align-items: center !important; overflow: hidden !important; }
+            .document-paper { box-shadow: none !important; border: none !important; width: 100% !important; max-width: 100% !important; height: 100vh !important; max-height: 100vh !important; padding: 15px !important; margin: 0 !important; page-break-after: avoid !important; page-break-before: avoid !important; page-break-inside: avoid !important; }
+            @page { size: A4 portrait; margin: 0; }
         }
     </style>
 </head>
@@ -141,23 +108,21 @@
 
     <header>
         <div class="header-top">
-            <div class="logo" onclick="DocuHubApp.showHome()">DocuHub <span>Lifestyle & Business</span></div>
+            <div class="logo" onclick="DocuHubApp.filterCategory('all')">DocuHub Suite</div>
             <div class="search-box">
-                <input type="text" id="search-input" placeholder="Search generators..." oninput="DocuHubApp.handleSearch(this.value)">
-                <span>🔍</span>
+                <input type="text" placeholder="Search templates..." oninput="DocuHubApp.handleSearch(this.value)">
             </div>
         </div>
         <nav>
             <ul>
-                <li><a onclick="DocuHubApp.filterCategory('all')" class="active" id="nav-all">Featured Suite</a></li>
-                <li><a onclick="DocuHubApp.filterCategory('letterheads')">Letterheads 🖋️</a></li>
-                <li><a onclick="DocuHubApp.filterCategory('accounts')">Accounts</a></li>
-                <li><a onclick="DocuHubApp.filterCategory('hr')">HR & Letters</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('all')" class="active">All Master Documents</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('letters')">Letterheads</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('invoices')">Accounts</a></li>
+                <li><a onclick="DocuHubApp.filterCategory('hr_notices')">HR & Letters</a></li>
                 <li><a onclick="DocuHubApp.filterCategory('transport')">Transport</a></li>
                 <li><a onclick="DocuHubApp.filterCategory('commercial')">Commercial</a></li>
                 <li><a onclick="DocuHubApp.filterCategory('medical')">Medical</a></li>
                 <li><a onclick="DocuHubApp.filterCategory('property')">Property</a></li>
-                <li><a onclick="DocuHubApp.filterCategory('portfolio')">My CV Web 🌐</a></li>
             </ul>
         </nav>
     </header>
@@ -165,474 +130,373 @@
     <div class="hero-banner">
         <h2>Professional Document & Letterhead Suite</h2>
         <div class="circle-row">
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('letterheads')">
-                <div class="circle-img">🖋️</div>
-                <span>Letterheads</span>
-            </div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('accounts')">
-                <div class="circle-img">📊</div>
-                <span>Accounts</span>
-            </div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('hr')">
-                <div class="circle-img">💼</div>
-                <span>HR & Letters</span>
-            </div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('transport')">
-                <div class="circle-img">🏍️</div>
-                <span>Transport</span>
-            </div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('commercial')">
-                <div class="circle-img">📑</div>
-                <span>Commercial</span>
-            </div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('medical')">
-                <div class="circle-img">⚕️</div>
-                <span>Medical</span>
-            </div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('property')">
-                <div class="circle-img">🏡</div>
-                <span>Property</span>
-            </div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('portfolio')">
-                <div class="circle-img">🌐</div>
-                <span>My CV Web</span>
-            </div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('letters')"><div class="circle-img">✏️</div><span>Letterheads</span></div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('invoices')"><div class="circle-img">📊</div><span>Accounts</span></div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('hr_notices')"><div class="circle-img">💼</div><span>HR & Letters</span></div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('transport')"><div class="circle-img">🏍️</div><span>Transport</span></div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('commercial')"><div class="circle-img">📄</div><span>Commercial</span></div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('medical')"><div class="circle-img">⚕️</div><span>Medical</span></div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('property')"><div class="circle-img">🏡</div><span>Property</span></div>
+            <a class="circle-item" href="https://instant-cv-six.vercel.app" target="_blank"><div class="circle-img">🌐</div><span>My CV Web</span></a>
         </div>
     </div>
 
     <div class="main-container">
         <div>
-            <h2 class="section-title">
-                <span id="section-heading-text">Featured Top Generators</span>
-                <span onclick="DocuHubApp.toggleViewAll()" id="view-all-toggle">View All Generators 🔄</span>
-            </h2>
+            <h2 class="section-title"><span id="section-heading">Master Document Suite</span></h2>
             <div class="grid" id="templates-grid"></div>
         </div>
 
         <div class="sidebar">
             <div class="sidebar-box">
-                <h3>Newsletter Signup</h3>
-                <p style="font-size: 11px; color: #666; margin-bottom: 10px;">Get updates on new templates and letterheads.</p>
-                <input type="email" class="newsletter-input" placeholder="Your email address">
-                <button class="newsletter-btn" onclick="alert('Subscribed successfully!')">Sign Up</button>
-            </div>
-
-            <div class="sidebar-box">
-                <h3>Quick Categories</h3>
-                <div class="mini-circles">
-                    <div class="mini-circle-item" onclick="DocuHubApp.filterCategory('letterheads')">
-                        <div class="placeholder-mc">📄</div>
-                        <span>Letterheads</span>
-                    </div>
-                    <div class="mini-circle-item" onclick="DocuHubApp.filterCategory('accounts')">
-                        <div class="placeholder-mc">💰</div>
-                        <span>Salary</span>
-                    </div>
-                    <div class="mini-circle-item" onclick="DocuHubApp.filterCategory('portfolio')">
-                        <div class="placeholder-mc">🌐</div>
-                        <span>Live CV</span>
-                    </div>
-                    <div class="mini-circle-item" onclick="DocuHubApp.filterCategory('commercial')">
-                        <div class="placeholder-mc">🧾</div>
-                        <span>Invoices</span>
-                    </div>
-                </div>
+                <h3>Document Modules</h3>
+                <ul>
+                    <li onclick="DocuHubApp.filterCategory('letters')">• Letterheads</li>
+                    <li onclick="DocuHubApp.filterCategory('invoices')">• Accounts & Billing</li>
+                    <li onclick="DocuHubApp.filterCategory('hr_notices')">• HR Letters & Notices</li>
+                    <li onclick="DocuHubApp.filterCategory('hr_agreements')">• HR Forms & Agreements</li>
+                    <li onclick="DocuHubApp.filterCategory('hr_records')">• HR Registers & Records</li>
+                    <li onclick="DocuHubApp.filterCategory('transport')">• Transport Documents</li>
+                    <li onclick="DocuHubApp.filterCategory('commercial')">• Commercial & Trade</li>
+                    <li onclick="DocuHubApp.filterCategory('medical')">• Medical Records</li>
+                    <li onclick="DocuHubApp.filterCategory('property')">• Property Documents</li>
+                    <li onclick="DocuHubApp.filterCategory('agreements')">• Types of Agreements</li>
+                    <li onclick="DocuHubApp.filterCategory('sale_purchase')">• Sale & Purchase</li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>From DocuHub</h4>
-                <ul>
-                    <li><a onclick="DocuHubApp.showInfoModal('Corporate Letterheads', 'DocuHub offers enterprise-grade stationery formats.')">Corporate Letterheads</a></li>
-                    <li><a onclick="DocuHubApp.showInfoModal('Professional Document Hub', 'A centralized corporate document suite.')">Professional Document Hub</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>About</h4>
-                <ul>
-                    <li><a onclick="DocuHubApp.showInfoModal('About DocuHub', 'DocuHub is a professional document platform.')">About DocuHub</a></li>
-                    <li><a onclick="DocuHubApp.showInfoModal('Contact Support', 'Email: support@docuhub.com')">Contact Support</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Policies</h4>
-                <ul>
-                    <li><a onclick="DocuHubApp.showInfoModal('Privacy Policy', 'Secure browser session processing.')">Privacy Policy</a></li>
-                    <li><a onclick="DocuHubApp.showInfoModal('Terms of Use', 'Standard compliance rules.')">Terms of Use</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Follow Us</h4>
-                <div class="social-links">
-                    <a onclick="DocuHubApp.showInfoModal('Facebook', 'Community link')" class="social-icon-btn">f</a>
-                    <a onclick="DocuHubApp.showInfoModal('Twitter', 'Twitter handle')" class="social-icon-btn">𝕏</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="footer-brand"><span>D</span> DocuHub</div>
-            <div class="footer-copy">&copy; 2026 DOCUHUB. ALL RIGHTS RESERVED.</div>
-        </div>
-    </footer>
-
-    <!-- Info Modal -->
-    <div id="info-modal" onclick="if(event.target.id === 'info-modal') DocuHubApp.closeInfoModal();">
-        <div class="info-modal-content">
-            <h3 id="info-modal-title">Title</h3>
-            <p id="info-modal-body">Content goes here...</p>
-            <button class="info-modal-close" onclick="DocuHubApp.closeInfoModal()">OK</button>
-        </div>
-    </div>
-
-    <!-- Modal Workspace -->
+    <!-- Workspace Modal -->
     <div id="workspace-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modal-title">Generator</h2>
+                <h2 id="modal-title">Dynamic Editable Workspace</h2>
                 <button class="close-btn" onclick="DocuHubApp.closeModal()">&times;</button>
             </div>
-            
-            <div class="word-toolbar">
-                <div>
-                    <span><strong>Font:</strong></span>
-                    <select id="font-family-select" onchange="DocuHubApp.changeFont(this.value)">
-                        <option value="Calibri, sans-serif">Calibri</option>
-                        <option value="Arial, sans-serif">Arial</option>
-                        <option value="'Segoe UI', Tahoma, sans-serif">Segoe UI</option>
-                        <option value="Georgia, serif">Georgia</option>
-                        <option value="'Times New Roman', serif">Times New Roman</option>
-                    </select>
-                </div>
-                <div>
-                    <span><strong>Design Theme:</strong></span>
-                    <select id="theme-style-select" onchange="DocuHubApp.changeTheme(this.value)">
-                        <option value="default">Standard Professional</option>
-                        <option value="editorial">1. Editorial Minimalist</option>
-                        <option value="geometric">2. Dynamic Geometric</option>
-                        <option value="organic">3. Warm Organic</option>
-                        <option value="darkmode">4. Corporate Neon Dark Mode</option>
-                    </select>
-                </div>
-            </div>
-
             <div class="modal-body">
                 <div class="form-section">
-                    <h4>Parameters & Inputs</h4>
+                    <h4 style="font-size:11px; margin-bottom:10px; color:#1e4d3b; border-bottom:1px solid #1e4d3b; padding-bottom:3px;">EDIT DETAILS & FORMULA AMOUNTS</h4>
                     <div id="modal-form-fields"></div>
                 </div>
                 <div class="preview-section">
-                    <h4>Live Preview</h4>
-                    <div class="preview-box" id="modal-live-preview"></div>
+                    <div class="document-paper" id="modal-live-preview"></div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button class="btn-outline" onclick="DocuHubApp.closeModal()">Close</button>
-                <button class="btn-primary" onclick="window.print()">Print / Export PDF</button>
+                <button class="btn-primary" onclick="window.print()">Print / Save as PDF</button>
             </div>
         </div>
     </div>
 
     <script>
-        const database = [
-            // 1. LETTERHEADS CATEGORY
-            {
-                id: "lh-1", category: "letterheads", featured: true, shape: "square", title: "Editorial Minimalist Letterhead", desc: "Clean top header with high-end corporate typography, border accents, and structured body layout.",
-                fields: [
-                    {id:"logo",label:"Logo URL (Optional)",val:""},
-                    {id:"comp",label:"Company Name",val:"BURQUE CORPORATION PVT LTD"},
-                    {id:"phone",label:"Phone",val:"+92 21 00000000"},
-                    {id:"email",label:"Email",val:"info@burque.com"},
-                    {id:"addr",label:"Address",val:"Head Office, Karachi, Pakistan"},
-                    {id:"ref",label:"Reference No.",val:"BCL/HR/2026/001"},
-                    {id:"subject",label:"Subject",val:"OFFICIAL CORPORATE CORRESPONDENCE"},
-                    {id:"body",label:"Letter Content",val:"Dear Team,\n\nThis is to formally communicate administrative updates regarding operational workflows and compliance standards."}
-                ],
-                render: f => `
-                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #222; padding-bottom:12px; margin-bottom:15px;">
-                        <div style="display:flex; align-items:center; gap:12px;">
-                            ${f.logo ? `<img src="${f.logo}" style="width:45px; height:45px; object-fit:contain;" alt="Logo"/>` : ''}
-                            <div>
-                                <h2 style="font-size:16px; font-family:'Georgia',serif; color:#111;">${f.comp || '[Company Name]'}</h2>
-                                <p style="font-size:10px; color:#555;">${f.addr || '[Address]'}</p>
-                            </div>
-                        </div>
-                        <div style="text-align:right; font-size:10px; color:#555;">
-                            <p><strong>Ref:</strong> ${f.ref || 'BCL/2026/001'}</p>
-                            <p>Phone: ${f.phone || '+00 000 0000000'}</p>
-                            <p>Email: ${f.email || 'info@company.com'}</p>
-                        </div>
-                    </div>
-                    <p style="font-size:11px; margin-bottom:8px;">Date: <strong>${new Date().toLocaleDateString()}</strong></p>
-                    <p style="font-size:11px; margin-bottom:12px; font-weight:bold; text-decoration:underline;">SUBJECT: ${f.subject || '[Subject]'}</p>
-                    <p style="font-size:11px; line-height:1.7; min-height:150px; white-space:pre-line;">${f.body || '[Type your letter here...]'}</p>
-                    <br><br>
-                    <div style="display:flex; justify-content:space-between; margin-top:30px; font-size:11px;">
-                        <div><strong>Prepared By:</strong> Administration</div>
-                        <div><strong>Authorized Signatory:</strong> ___________________</div>
-                    </div>
-                `
-            },
-            {
-                id: "lh-2", category: "letterheads", featured: true, shape: "circle", title: "Dynamic Geometric Tech Letterhead", desc: "Modern corporate letterhead featuring top accent bar, sleek contact info, and agency look.",
-                fields: [
-                    {id:"logo",label:"Logo URL (Optional)",val:""},
-                    {id:"comp",label:"Agency Name",val:"DOCUHUB TECH SOLUTIONS"},
-                    {id:"tag",label:"Tagline",val:"Enterprise Software & Digital Infrastructure"},
-                    {id:"phone",label:"Phone",val:"+92 300 0000000"},
-                    {id:"email",label:"Email",val:"support@docuhub.com"},
-                    {id:"body",label:"Content",val:"Dear Client,\n\nWe acknowledge receipt of your requirements for system integration and documentation structuring."}
-                ],
-                render: f => `
-                    <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:3px solid #3182ce; padding-bottom:10px; margin-bottom:15px;">
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            ${f.logo ? `<img src="${f.logo}" style="width:40px; height:40px; object-fit:contain;" alt="Logo"/>` : ''}
-                            <div>
-                                <h2 style="font-size:15px; color:#2b6cb0; font-weight:bold;">${f.comp || '[Agency Name]'}</h2>
-                                <p style="font-size:10px; color:#718096;">${f.tag || '[Digital Solutions]'}</p>
-                            </div>
-                        </div>
-                        <div style="font-size:10px; color:#4a5568; text-align:right;"><p>Date: ${new Date().toLocaleDateString()}</p></div>
-                    </div>
-                    <p style="font-size:11px; line-height:1.7; min-height:150px; white-space:pre-line;">${f.body || '[Content here...]'}</p>
-                    <div style="margin-top:30px; border-top:1px solid #cbd5e0; padding-top:8px; display:flex; justify-content:space-between; font-size:10px; color:#4a5568;">
-                        <span>📞 ${f.phone || 'Phone'}</span><span>✉ ${f.email || 'Email'}</span>
-                    </div>
-                `
-            },
+        const rawList = [
+            // 1. LETTERS
+            { cat: "letters", title: "Appointment / Offer Letter", desc: "Letter for new hires", type: "letter", rec: "[Employee Name]", sub: "OFFER OF APPOINTMENT", body: "We are pleased to offer you employment for the designated position. Your salary and benefits will be as mutually agreed upon." },
+            { cat: "letters", title: "Confirmation Letter", desc: "Probation completion notice", type: "letter", rec: "[Employee Name]", sub: "EMPLOYMENT CONFIRMATION", body: "We are pleased to inform you that you have successfully completed your probation period and your employment is confirmed." },
+            { cat: "letters", title: "Increment / Promotion Letter", desc: "Salary hike letter", type: "letter", rec: "[Employee Name]", sub: "REVISION OF COMPENSATION", body: "In recognition of your performance, management has approved a salary revision effective from the current month." },
+            { cat: "letters", title: "Experience / Service Certificate", desc: "Work tenure certificate", type: "letter", rec: "[Employee Name]", sub: "WORK EXPERIENCE CERTIFICATE", body: "This is to certify that [Employee Name] served our organization with dedication and professional conduct." },
+            { cat: "letters", title: "Demand / Dunning Letter", desc: "Payment reminder", type: "letter", rec: "[Client Name]", sub: "OVERDUE PAYMENT REMINDER", body: "This is a reminder regarding your overdue account balance. Please arrange payment at your earliest convenience." },
+            { cat: "letters", title: "Bank Confirmation Letter", desc: "Bank verification letter", type: "letter", rec: "[Bank Name]", sub: "BANK ACCOUNT VERIFICATION", body: "We confirm that our account is active and maintained under standard operating guidelines." },
+            { cat: "letters", title: "Resignation / Termination Letter", desc: "Separation letter", type: "letter", rec: "[Employee Name]", sub: "SERVICE SEPARATION NOTICE", body: "This document serves as formal acknowledgement of employment conclusion effective today." },
 
-            // 2. ACCOUNTS CATEGORY
-            {
-                id: "acc-1", category: "accounts", featured: true, shape: "square", title: "Salary Slip & Payroll Statement", desc: "Official monthly salary statement with earnings, deductions, and net payable calculations.",
+            // 2. INVOICES (AUTO-CALCULATING)
+            { 
+                cat: "invoices", title: "Standard Sales Invoice", desc: "Auto-calculates quantity × rate + tax", type: "invoice", rec: "[Client Name]", sub: "COMMERCIAL SALES INVOICE",
                 fields: [
-                    {id:"emp",label:"Employee Name",val:"Shahrukh Siddiqui"},
-                    {id:"desig",label:"Designation",val:"Senior Accountant"},
-                    {id:"basic",label:"Basic Salary (PKR)",val:"68,000"},
-                    {id:"allow",label:"Allowances (PKR)",val:"12,000"},
-                    {id:"ded",label:"Deductions (PKR)",val:"3,000"}
-                ],
-                render: f => {
-                    let basic = parseFloat(f.basic) || 68000;
-                    let allow = parseFloat(f.allow) || 12000;
-                    let ded = parseFloat(f.ded) || 3000;
-                    let net = basic + allow - ded;
-                    return `
-                        <div style="text-align:center; border-bottom:2px solid #1e4d3b; padding-bottom:8px; margin-bottom:15px;">
-                            <h2 style="font-size:15px; color:#1e4d3b;">TAJ AL HUDA - PAYROLL DIVISION</h2>
-                            <p style="font-size:10px; color:#555;">Monthly Salary Disbursement Slip</p>
-                        </div>
-                        <p style="font-size:11px; margin-bottom:5px;"><strong>Employee:</strong> ${f.emp || 'Shahrukh Siddiqui'}</p>
-                        <p style="font-size:11px; margin-bottom:15px;"><strong>Designation:</strong> ${f.desig || 'Senior Accountant'}</p>
-                        <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:15px;">
-                            <tr style="background:#f0eee6;"><th style="border:1px solid #d5d1c8; padding:6px; text-align:left;">Earnings</th><th style="border:1px solid #d5d1c8; padding:6px; text-align:right;">Amount (PKR)</th></tr>
-                            <tr><td style="border:1px solid #d5d1c8; padding:6px;">Basic Pay</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">${basic.toLocaleString()}</td></tr>
-                            <tr><td style="border:1px solid #d5d1c8; padding:6px;">Allowances / Bonus</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">${allow.toLocaleString()}</td></tr>
-                            <tr><td style="border:1px solid #d5d1c8; padding:6px;">Less: Deductions / Tax</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">-${ded.toLocaleString()}</td></tr>
-                            <tr style="background:#faf9f5; font-weight:bold;"><td style="border:1px solid #d5d1c8; padding:6px;">Net Payable Salary</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">PKR ${net.toLocaleString()} /-</td></tr>
-                        </table>
-                        <br>
-                        <div style="display:flex; justify-content:space-between; margin-top:40px; font-size:11px;">
-                            <div><strong>Employee Signature:</strong> _________</div>
-                            <div><strong>Accounts Head:</strong> _________</div>
-                        </div>
-                    `;
-                }
+                    {id:"item", label:"Item Description", val:"Product / Goods Description"},
+                    {id:"qty", label:"Quantity (Qty)", val:"5"},
+                    {id:"rate", label:"Unit Rate", val:"10000"},
+                    {id:"tax", label:"Tax / GST (%)", val:"10"}
+                ]
             },
-            {
-                id: "acc-2", category: "accounts", featured: false, shape: "circle", title: "Daily Sales & Ledger Summary", desc: "Daily financial tracking sheet for business transactions and cash balance reconciliation.",
+            { 
+                cat: "invoices", title: "Proforma Invoice", desc: "Preliminary auto-calculating estimate", type: "invoice", rec: "[Client Name]", sub: "PROFORMA ESTIMATE",
                 fields: [
-                    {id:"date",label:"Statement Date",val:"October 12, 2026"},
-                    {id:"opening",label:"Opening Balance (PKR)",val:"150,000"},
-                    {id:"cashin",label:"Total Cash Received (PKR)",val:"85,000"},
-                    {id:"cashout",label:"Total Expenses Paid (PKR)",val:"32,000"}
-                ],
-                render: f => `
-                    <div style="text-align:center; border-bottom:2px solid #222; padding-bottom:8px; margin-bottom:15px;">
-                        <h2 style="font-size:15px;">FINANCIAL LEDGER & CASH BOOK</h2>
-                        <p style="font-size:10px; color:#555;">Daily Reconciliation Report</p>
-                    </div>
-                    <p style="font-size:11px; margin-bottom:10px;"><strong>Date:</strong> ${f.date || 'Today'}</p>
-                    <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:15px;">
-                        <tr style="background:#f0eee6;"><th style="border:1px solid #ccc; padding:6px;">Particulars</th><th style="border:1px solid #ccc; padding:6px; text-align:right;">Amount (PKR)</th></tr>
-                        <tr><td style="border:1px solid #ccc; padding:6px;">Opening Cash Balance</td><td style="border:1px solid #ccc; padding:6px; text-align:right;">${f.opening || '150,000'}</td></tr>
-                        <tr><td style="border:1px solid #ccc; padding:6px;">Add: Cash Receipts</td><td style="border:1px solid #ccc; padding:6px; text-align:right;">${f.cashin || '85,000'}</td></tr>
-                        <tr><td style="border:1px solid #ccc; padding:6px;">Less: Cash Payments / Expenses</td><td style="border:1px solid #ccc; padding:6px; text-align:right;">-${f.cashout || '32,000'}</td></tr>
-                    </table>
-                    <br><div style="text-align:right; font-size:11px;"><strong>Verified by Finance Manager</strong><br><br>___________________</div>
-                `
+                    {id:"item", label:"Service / Item", val:"Consultancy & Design Services"},
+                    {id:"qty", label:"Hours / Qty", val:"10"},
+                    {id:"rate", label:"Rate per Unit", val:"5000"},
+                    {id:"tax", label:"Tax / GST (%)", val:"5"}
+                ]
             },
+            { 
+                cat: "invoices", title: "Tax / GST Invoice", desc: "GST compliant invoice", type: "invoice", rec: "[Client Name]", sub: "OFFICIAL TAX INVOICE",
+                fields: [
+                    {id:"item", label:"Taxable Items", val:"Commercial Goods Supply"},
+                    {id:"qty", label:"Quantity", val:"10"},
+                    {id:"rate", label:"Rate per Unit", val:"8000"},
+                    {id:"tax", label:"GST (%)", val:"18"}
+                ]
+            },
+            { cat: "invoices", title: "Commercial Invoice", desc: "Trade billing invoice", type: "letter", rec: "[Client Name]", sub: "COMMERCIAL TRADE INVOICE", body: "Commercial billing invoice for trade items supplied as per order." },
+            { cat: "invoices", title: "Credit Note / Debit Note", desc: "Adjustment note", type: "letter", rec: "[Client Name]", sub: "CREDIT / DEBIT ADJUSTMENT NOTE", body: "Adjustment amount credited/debited to your ledger account." },
+            { cat: "invoices", title: "Recurring Invoice", desc: "Subscription invoice", type: "letter", rec: "[Client Name]", sub: "RECURRING SUBSCRIPTION INVOICE", body: "Monthly software and service subscription fee bill." },
 
-            // 3. HR & LETTERS CATEGORY
-            {
-                id: "hr-1", category: "hr", featured: true, shape: "circle", title: "Employment Offer Letter", desc: "Comprehensive corporate offer letter with salary breakdown, probation terms, and acceptance signature blocks.",
-                fields: [
-                    {id:"logo",label:"Logo URL (Optional)",val:""},
-                    {id:"comp",label:"Company Name",val:"TAJ AL HUDA"},
-                    {id:"cand",label:"Candidate Name",val:"Shahrukh"},
-                    {id:"pos",label:"Position / Designation",val:"Senior Accountant / Audit"},
-                    {id:"sal",label:"Gross Monthly Salary (PKR)",val:"55,000"},
-                    {id:"date",label:"Joining Date",val:"01 November 2026"}
-                ],
-                render: f => `
-                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #1a365d; padding-bottom:12px; margin-bottom:18px;">
-                        <div style="display:flex; align-items:center; gap:12px;">
-                            ${f.logo ? `<img src="${f.logo}" style="width:45px; height:45px; object-fit:contain;" alt="Logo"/>` : ''}
-                            <div>
-                                <h2 style="font-size:16px; color:#1a365d; font-weight:bold;">${f.comp || 'TAJ AL HUDA'}</h2>
-                                <p style="font-size:10px; color:#555;">Corporate Head Office & HR Department</p>
-                            </div>
-                        </div>
-                        <div style="text-align:right; font-size:10px; color:#555;">
-                            <p><strong>Ref:</strong> TAH/HR/OFFER/2026/09</p>
-                            <p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
-                        </div>
-                    </div>
-                    <div style="font-size:11.5px; margin-bottom:15px;">
-                        <p><strong>To:</strong> ${f.cand || 'Shahrukh'}</p>
-                        <p><strong>Location:</strong> Karachi, Pakistan</p>
-                    </div>
-                    <div style="font-size:13px; font-weight:bold; color:#1a365d; margin-bottom:15px; text-decoration:underline;">SUBJECT: FORMAL OFFER OF EMPLOYMENT</div>
-                    <div style="font-size:11.5px; line-height:1.7; text-align:justify;">
-                        <p style="margin-bottom:10px;">Dear <strong>${f.cand || 'Shahrukh'}</strong>,</p>
-                        <p style="margin-bottom:10px;">We are pleased to offer you professional employment at <strong>${f.comp || 'Taj Al Huda'}</strong> effective from <strong>${f.date || '01 November 2026'}</strong>, under the designation of <strong>${f.pos || 'Audit'}</strong>.</p>
-                        <table style="width:100%; border-collapse:collapse; margin:12px 0; font-size:11.5px;">
-                            <tr style="background:#edf2f7; color:#1a365d;"><th style="border:1px solid #cbd5e0; padding:8px; text-align:left;">Particulars</th><th style="border:1px solid #cbd5e0; padding:8px; text-align:right;">Amount (PKR)</th></tr>
-                            <tr><td style="border:1px solid #cbd5e0; padding:8px;">Gross Monthly Salary</td><td style="border:1px solid #cbd5e0; padding:8px; text-align:right;">PKR ${f.sal || '55,000'}/-</td></tr>
-                            <tr><td style="border:1px solid #cbd5e0; padding:8px;">Probationary Period</td><td style="border:1px solid #cbd5e0; padding:8px; text-align:right;">3 Months</td></tr>
-                        </table>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; margin-top:45px; font-size:11.5px;">
-                        <div style="width:40%; text-align:center;"><div style="border-top:1px solid #2d3748; padding-top:5px; font-weight:bold;">Authorized HR Management</div></div>
-                        <div style="width:40%; text-align:center;"><div style="border-top:1px solid #2d3748; padding-top:5px; font-weight:bold;">Candidate Acceptance</div></div>
-                    </div>
-                `
-            },
-            {
-                id: "hr-2", category: "hr", featured: false, shape: "square", title: "Experience & Service Certificate", desc: "Formal relieving and work experience certificate issued by corporate employer.",
-                fields: [
-                    {id:"name",label:"Employee Name",val:"Shahrukh Siddiqui"},
-                    {id:"desig",label:"Designation",val:"Senior Accountant"},
-                    {id:"tenure",label:"Tenure Duration",val:"2024 to 2026"}
-                ],
-                render: f => `
-                    <div style="text-align:center; border-bottom:2px solid #1e4d3b; padding-bottom:10px; margin-bottom:15px;">
-                        <h2 style="font-size:15px; color:#1e4d3b;">EXPERIENCE & SERVICE CERTIFICATE</h2>
-                        <p style="font-size:10px; color:#555;">To Whom It May Concern</p>
-                    </div>
-                    <p style="font-size:11.5px; line-height:1.7; text-align:justify; margin-bottom:15px;">
-                        This is to certify that <strong>${f.name || 'Shahrukh Siddiqui'}</strong> worked with our organization as <strong>${f.desig || 'Senior Accountant'}</strong> during the period from <strong>${f.tenure || '2024 to 2026'}</strong>. During their tenure, their performance, professional conduct, and dedication were found exemplary. We wish them success in future endeavors.
-                    </p>
-                    <br><br><div style="text-align:right; font-size:11px;"><strong>Director Human Resources</strong><br><br>___________________</div>
-                `
-            },
+            // 3. LEDGERS
+            { cat: "ledgers", title: "General Ledger (GL)", desc: "Main accounting ledger", type: "letter", rec: "[Accountant Desk]", sub: "GENERAL LEDGER STATEMENT", body: "Account statement log showing debits, credits, and net closing balance." },
+            { cat: "ledgers", title: "Accounts Receivable Ledger (AR Ledger)", desc: "Customer dues ledger", type: "letter", rec: "[Client Name]", sub: "AR LEDGER STATEMENT", body: "Outstanding dues statement for customer account." },
+            { cat: "ledgers", title: "Accounts Payable Ledger (AP Ledger)", desc: "Vendor dues ledger", type: "letter", rec: "[Vendor Name]", sub: "AP LEDGER STATEMENT", body: "Vendor payables balance summary statement." },
+            { cat: "ledgers", title: "Cash Ledger / Cash Book", desc: "Physical cash book", type: "letter", rec: "[Cashier Desk]", sub: "DAILY CASH BOOK LOG", body: "Daily petty cash disbursements and balance closing log." },
+            { cat: "ledgers", title: "Bank Ledger / Bank Book", desc: "Bank record book", type: "letter", rec: "[Bank Division]", sub: "BANK RECONCILIATION LOG", body: "Bank ledger transactions and balance reconciliation statement." },
+            { cat: "ledgers", title: "Inventory / Stock Ledger", desc: "Stock tracking book", type: "letter", rec: "[Store Manager]", sub: "INVENTORY STOCK LEDGER", body: "Stock tracking sheet showing opening, additions, issues, and closing balance." },
 
-            // 4. TRANSPORT CATEGORY
-            {
-                id: "tr-1", category: "transport", featured: true, shape: "square", title: "Motorcycle Fuel & Maintenance Log", desc: "Detailed tracking sheet for daily 70cc motorcycle commute, oil changes, and fuel consumption.",
-                fields: [
-                    {id:"bike",label:"Vehicle / Model",val:"Union Star 70cc (Hyundai 10W-40)"},
-                    {id:"km",label:"Monthly Mileage (Km)",val:"950 km"},
-                    {id:"fuel",label:"Fuel Consumed (Litres)",val:"38 Litres"},
-                    {id:"note",label:"Maintenance Note",val:"Oil changed at 900 km interval. Spark plug checked."}
-                ],
-                render: f => `
-                    <div style="border-bottom:2px solid #1e4d3b; padding-bottom:8px; margin-bottom:15px; text-align:center;">
-                        <h2 style="font-size:15px; color:#1e4d3b;">VEHICLE OPERATIONAL & MAINTENANCE LOG</h2>
-                        <p style="font-size:10px; color:#555;">Daily Commute & Engine Maintenance Record</p>
-                    </div>
-                    <p style="font-size:11px; margin-bottom:8px;"><strong>Vehicle:</strong> ${f.bike || 'Union Star 70cc'}</p>
-                    <p style="font-size:11px; margin-bottom:12px;"><strong>Total Mileage Covered:</strong> ${f.km || '950 km'}</p>
-                    <p style="font-size:11px; margin-bottom:15px;"><strong>Fuel Consumption:</strong> ${f.fuel || '38 Litres'}</p>
-                    <div style="background:#f9fafb; border:1px solid #d5d1c8; padding:10px; border-radius:4px; font-size:11px; margin-bottom:15px;">
-                        <strong>Service & Maintenance Remarks:</strong><br>${f.note || 'Regular oil check performed daily.'}
-                    </div>
-                    <br><div style="text-align:right; font-size:11px;"><strong>Verified By Owner / Rider</strong><br><br>___________________</div>
-                `
-            },
+            // 4. HR LETTERS & NOTICES
+            { cat: "hr_notices", title: "Offer / Appointment Letter", desc: "HR Offer Letter", type: "letter", rec: "[Employee Name]", sub: "OFFER LETTER", body: "We offer you employment as per the discussed terms and conditions." },
+            { cat: "hr_notices", title: "Probation Confirmation Letter", desc: "HR Probation Letter", type: "letter", rec: "[Employee Name]", sub: "PROBATION CONFIRMATION", body: "Your probation period has been completed successfully. Position confirmed." },
+            { cat: "hr_notices", title: "Increment / Promotion Letter", desc: "HR Hike Letter", type: "letter", rec: "[Employee Name]", sub: "SALARY REVISION", body: "Your compensation package has been revised as per management decision." },
+            { cat: "hr_notices", title: "Transfer / Relocation Letter", desc: "Internal Transfer", type: "letter", rec: "[Employee Name]", sub: "TRANSFER NOTICE", body: "You are hereby transferred to the designated branch office location." },
+            { cat: "hr_notices", title: "Warning / Show Cause Notice", desc: "Disciplinary Notice", type: "letter", rec: "[Employee Name]", sub: "SHOW CAUSE NOTICE", body: "Please submit a written explanation regarding recent conduct issues." },
+            { cat: "hr_notices", title: "Experience / Service Certificate", desc: "Work Certificate", type: "letter", rec: "[Employee Name]", sub: "SERVICE CERTIFICATE", body: "This certifies that [Employee Name] worked with our organization." },
+            { cat: "hr_notices", title: "Relief / Experience Letter", desc: "F&F Letter", type: "letter", rec: "[Employee Name]", sub: "RELIEVING LETTER", body: "Relieving letter issued along with full and final settlement clearance." },
+            { cat: "hr_notices", title: "Resignation Acceptance Letter", desc: "Acceptance Letter", type: "letter", rec: "[Employee Name]", sub: "RESIGNATION ACCEPTANCE", body: "Your resignation has been accepted by management." },
+            { cat: "hr_notices", title: "Termination / Dismissal Letter", desc: "Dismissal Letter", type: "letter", rec: "[Employee Name]", sub: "TERMINATION NOTICE", body: "Your service contract is terminated effective immediately." },
 
-            // 5. COMMERCIAL CATEGORY
-            {
-                id: "com-1", category: "commercial", featured: true, shape: "circle", title: "Commercial Sales & Invoice Slip", desc: "Standard business invoice format for tracking sales items, pricing packages, and client billings.",
-                fields: [
-                    {id:"client",label:"Client / Customer Name",val:"Muhammad Sharif"},
-                    {id:"item",label:"Product / Service Description",val:"Custom Jewelry Locket / Fabric Package"},
-                    {id:"price",label:"Total Amount (PKR)",val:"14,500"}
-                ],
-                render: f => `
-                    <div style="display:flex; justify-content:space-between; border-bottom:2px solid #333; padding-bottom:8px; margin-bottom:15px;">
-                        <div><h2 style="font-size:15px;">DOCUHUB COMMERCIAL INVOICE</h2><p style="font-size:10px; color:#555;">Sales & Supply Record</p></div>
-                        <div style="text-align:right; font-size:10px;"><p>Date: ${new Date().toLocaleDateString()}</p><p>Invoice #: INV-2026-88</p></div>
-                    </div>
-                    <p style="font-size:11px; margin-bottom:8px;"><strong>Billed To:</strong> ${f.client || 'Muhammad Sharif'}</p>
-                    <p style="font-size:11px; margin-bottom:15px;"><strong>Description:</strong> ${f.item || 'Custom Product Package'}</p>
-                    <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:15px;">
-                        <tr style="background:#f0eee6;"><th style="border:1px solid #ccc; padding:6px; text-align:left;">Item</th><th style="border:1px solid #ccc; padding:6px; text-align:right;">Total (PKR)</th></tr>
-                        <tr><td style="border:1px solid #ccc; padding:6px;">${f.item || 'Standard Package'}</td><td style="border:1px solid #ccc; padding:6px; text-align:right;">PKR ${f.price || '14,500'}/-</td></tr>
-                    </table>
-                    <br><div style="display:flex; justify-content:space-between; font-size:11px;"><div>Status: <span style="color:green; font-weight:bold;">PAID</span></div><div>Authorized Signature: _________</div></div>
-                `
-            },
+            // 5. HR FORMS & AGREEMENTS
+            { cat: "hr_agreements", title: "Employee Application Form / CV Format", desc: "Application Sheet", type: "letter", rec: "[Applicant Name]", sub: "APPLICATION FORM", body: "Candidate Intake Details and Qualification Data Sheet." },
+            { cat: "hr_agreements", title: "Employment / Service Agreement (Contract)", desc: "Employment Contract", type: "letter", rec: "[Employee Name]", sub: "EMPLOYMENT CONTRACT", body: "Terms of employment binding both the company and the employee." },
+            { cat: "hr_agreements", title: "Non-Disclosure Agreement (NDA)", desc: "Confidentiality NDA", type: "letter", rec: "[Party Name]", sub: "NON-DISCLOSURE AGREEMENT", body: "Agreement regarding strict confidentiality of company information." },
+            { cat: "hr_agreements", title: "Employee Personal Information Sheet", desc: "Data Sheet", type: "letter", rec: "[Employee Name]", sub: "PERSONAL DATA SHEET", body: "Personal details, CNIC, and emergency contact record sheet." },
+            { cat: "hr_agreements", title: "Leave Application Form", desc: "Leave Form", type: "letter", rec: "[Employee Name]", sub: "LEAVE APPLICATION", body: "Application for leave request for the specified duration." },
+            { cat: "hr_agreements", title: "Loan / Advance Request Form", desc: "Loan Request", type: "letter", rec: "[Employee Name]", sub: "LOAN ADVANCE REQUEST", body: "Request for advance salary or personal loan disbursement." },
+            { cat: "hr_agreements", title: "Performance Appraisal Form", desc: "Appraisal Sheet", type: "letter", rec: "[Employee Name]", sub: "PERFORMANCE APPRAISAL", body: "Annual performance evaluation and goal review sheet." },
+            { cat: "hr_agreements", title: "Exit Interview Form", desc: "Exit Questionnaire", type: "letter", rec: "[Employee Name]", sub: "EXIT INTERVIEW RECORD", body: "Employee exit feedback and departure questionnaire." },
 
-            // 6. MEDICAL CATEGORY
-            {
-                id: "med-1", category: "medical", featured: true, shape: "square", title: "Medical Prescription & Clinic Slip", desc: "Standard medical practitioner prescription format with diagnosis and medication guidance.",
+            // 6. HR REGISTERS
+            { cat: "hr_records", title: "Employee Master Register / Directory", desc: "Employee Directory", type: "letter", rec: "[HR Division]", sub: "EMPLOYEE MASTER DIRECTORY", body: "Master directory listing active organization staff members." },
+            { cat: "hr_records", title: "Attendance & Time-In Register", desc: "Attendance Log", type: "letter", rec: "[Admin Desk]", sub: "ATTENDANCE REGISTER LOG", body: "Monthly staff attendance log and arrival record." },
+            { cat: "hr_records", title: "Leave Record Register", desc: "Leave Tracker", type: "letter", rec: "[Employee Name]", sub: "LEAVE BALANCE REGISTER", body: "Annual leave balance and usage log." },
+            { cat: "hr_records", title: "Overtime (OT) Log Register", desc: "OT Tracker", type: "letter", rec: "[Supervisor]", sub: "OVERTIME LOG REGISTER", body: "Extra hours and overtime calculation register." },
+            { 
+                cat: "hr_records", title: "Monthly Payroll & Salary Sheet", desc: "Auto-calculates basic + allowances - deductions", type: "payroll", rec: "[Employee Name]", sub: "MONTHLY SALARY SLIP",
                 fields: [
-                    {id:"doc",label:"Doctor Name",val:"Dr. Ayesha Khan, MBBS"},
-                    {id:"pat",label:"Patient Name",val:"Ali Ahmed"},
-                    {id:"rx",label:"Prescription / Medication Notes",val:"1. Tab Panadol 500mg - Twice daily\n2. Cap Augmentin 625mg - Every 12 hours"}
-                ],
-                render: f => `
-                    <div style="border-bottom:2px solid #2b6cb0; padding-bottom:8px; margin-bottom:15px; display:flex; justify-content:space-between;">
-                        <div><h2 style="color:#2b6cb0; font-size:14px;">${f.doc || 'Dr. Doctor Name'}</h2><p style="font-size:10px; color:#555;">General Physician & Consultant</p></div>
-                        <div style="text-align:right; font-size:10px;"><p>Date: ${new Date().toLocaleDateString()}</p></div>
-                    </div>
-                    <p style="font-size:11px; margin-bottom:10px;"><strong>Patient Name:</strong> ${f.pat || 'Patient'}</p>
-                    <p style="font-size:12px; font-weight:bold; color:#2b6cb0; margin-bottom:5px;">Rx / Medications:</p>
-                    <p style="font-size:11.5px; line-height:1.7; min-height:150px; white-space:pre-line; background:#f9fafb; padding:10px; border:1px solid #e2e8f0;">${f.rx || 'Medication details...'}</p>
-                    <br><div style="text-align:right; font-size:11px;"><strong>Doctor Signature:</strong> _________</div>
-                `
+                    {id:"basic", label:"Basic Salary", val:"50000"},
+                    {id:"allow", label:"Allowances", val:"10000"},
+                    {id:"ded", label:"Deductions / Advance (-)", val:"2000"}
+                ]
             },
+            { cat: "hr_records", title: "Full & Final (F&F) Settlement Sheet", desc: "Settlement Ledger", type: "letter", rec: "[Employee Name]", sub: "FULL & FINAL SETTLEMENT", body: "Final accounts and dues clearance statement for departing staff." },
 
-            // 7. PROPERTY CATEGORY
-            {
-                id: "prop-1", category: "property", featured: true, shape: "circle", title: "Property Rent & Lease Agreement Note", desc: "Official rental agreement receipt or terms summary for property management.",
-                fields: [
-                    {id:"landlord",label:"Landlord Name",val:"Muhammad Tariq"},
-                    {id:"tenant",label:"Tenant Name",val:"Shahrukh Siddiqui"},
-                    {id:"rent",label:"Monthly Rent (PKR)",val:"35,000"},
-                    {id:"property",label:"Property Address",val:"Apartment #402, Block 6, Gulshan-e-Iqbal, Karachi"}
-                ],
-                render: f => `
-                    <div style="text-align:center; border-bottom:2px solid #1e4d3b; padding-bottom:8px; margin-bottom:15px;">
-                        <h2 style="font-size:15px; color:#1e4d3b;">PROPERTY RENT & LEASE AGREEMENT</h2>
-                        <p style="font-size:10px; color:#555;">Official Tenancy Note</p>
-                    </div>
-                    <p style="font-size:11px; margin-bottom:8px;"><strong>Property Address:</strong> ${f.property || 'Karachi'}</p>
-                    <p style="font-size:11px; margin-bottom:8px;"><strong>Landlord:</strong> ${f.landlord || 'Landlord'}</p>
-                    <p style="font-size:11px; margin-bottom:12px;"><strong>Tenant:</strong> ${f.tenant || 'Tenant'}</p>
-                    <p style="font-size:11.5px; margin-bottom:15px;"><strong>Monthly Rent Agreed:</strong> PKR ${f.rent || '35,000'}/- payable in advance by 5th of each month.</p>
-                    <br>
-                    <div style="display:flex; justify-content:space-between; font-size:11px;">
-                        <div>Landlord Signature: _________</div>
-                        <div>Tenant Signature: _________</div>
-                    </div>
-                `
-            },
+            // 7. TRANSPORT DOCUMENTS
+            { cat: "transport", title: "Vehicle Ownership Transfer Application", desc: "Transfer Form", type: "letter", rec: "[Excise Authority]", sub: "VEHICLE TRANSFER APPLICATION", body: "Application for transfer of vehicle ownership." },
+            { cat: "transport", title: "Vehicle Authority Letter", desc: "Authority Letter", type: "letter", rec: "[Driver / Rider Name]", sub: "VEHICLE AUTHORITY LETTER", body: "Authorization granted to operate vehicle for company official duty." },
+            { cat: "transport", title: "No Objection Certificate (NOC)", desc: "Vehicle NOC", type: "letter", rec: "[Owner / Rider Name]", sub: "NO OBJECTION CERTIFICATE (NOC)", body: "NOC regarding daily commute and official usage of vehicle." },
+            { cat: "transport", title: "Insurance Claim Letter", desc: "Claim Form", type: "letter", rec: "[Insurance Co.]", sub: "INSURANCE CLAIM FORM", body: "Submission of claim for vehicle repairs under active insurance policy." },
+            { cat: "transport", title: "Vehicle Lease Agreement", desc: "Lease Document", type: "letter", rec: "[Lessor / Lessee]", sub: "VEHICLE LEASE AGREEMENT", body: "Terms of lease for commercial or official vehicle." },
+            { cat: "transport", title: "Vehicle Sale & Purchase Agreement", desc: "Bike/Car Deed", type: "letter", rec: "[Buyer & Seller]", sub: "VEHICLE SALE DEED", body: "Sale deed for vehicle at agreed consideration price." },
+            { cat: "transport", title: "Vehicle Purchase Invoice", desc: "Purchase Invoice", type: "letter", rec: "[Auto Dealer]", sub: "VEHICLE PURCHASE INVOICE", body: "Invoice receipt for vehicle purchase transaction." },
+            { cat: "transport", title: "Token Tax Challan", desc: "Tax Challan Sheet", type: "letter", rec: "[Tax Authority]", sub: "TOKEN TAX RECEIPT", body: "Token tax clearance sheet for vehicle." },
+            { cat: "transport", title: "Vehicle Maintenance & Service Log", desc: "Oil & Service Log", type: "letter", rec: "[Maintenance Log]", sub: "MAINTENANCE SERVICE LOG", body: "Oil change and service history tracking log." },
+            { cat: "transport", title: "Fuel Consumption & Mileage Log", desc: "Fuel Tracking", type: "letter", rec: "[Rider Log]", sub: "FUEL CONSUMPTION LOG", body: "Fuel refill tracking and mileage calculation log." },
+            { cat: "transport", title: "Trip Log Sheet", desc: "Daily Trip Log", type: "letter", rec: "[Driver Log]", sub: "DAILY TRIP LOG", body: "Daily route and mileage tracking log sheet." },
+            { cat: "transport", title: "Spare Parts Inventory Register", desc: "Parts Register", type: "letter", rec: "[Store Keeper]", sub: "SPARE PARTS REGISTER", body: "Inventory register for vehicle spare parts." },
 
-            // 8. PORTFOLIO CATEGORY
-            {
-                id: "cv-link-card", category: "portfolio", featured: true, shape: "circle", title: "Professional Online CV Portal", desc: "Direct live card link to your personal interactive CV web application hosted on Vercel.",
-                fields: [{id:"msg",label:"Status Note",val:"Live Portfolio Active"}],
-                render: f => `<div style="text-align:center; padding: 30px;"><h2>🌐 Personal Live CV Web Application</h2><p style="margin: 15px 0; color:#555;">Aapki CV website ka direct link neeche diye gaye button par click karke khul sakta hai:</p><a href="https://instant-cv-six.vercel.app/" target="_blank" style="display:inline-block; background:#1e4d3b; color:#fff; padding:12px 25px; border-radius:6px; text-decoration:none; font-weight:bold; margin-top:10px;">Visit My CV Web &rarr;</a></div>`
-            }
+            // 8. COMMERCIAL & TRADE
+            { cat: "commercial", title: "Commercial Invoice", desc: "Trade Invoice", type: "letter", rec: "[Client Name]", sub: "COMMERCIAL INVOICE", body: "Trade invoice for goods supplied." },
+            { cat: "commercial", title: "Proforma Invoice", desc: "Trade Proforma", type: "letter", rec: "[Client Name]", sub: "PROFORMA INVOICE", body: "Proforma trade estimate quote." },
+            { cat: "commercial", title: "Tax / Sales Invoice", desc: "Tax Sales Invoice", type: "letter", rec: "[Client Name]", sub: "TAX SALES INVOICE", body: "Tax sales invoice as per regulation." },
+            { cat: "commercial", title: "Credit Note / Debit Note", desc: "Commercial Note", type: "letter", rec: "[Client Name]", sub: "CREDIT NOTE", body: "Balance credit note adjustment." },
+            { cat: "commercial", title: "Delivery Challan / Dispatch Note", desc: "Delivery Note", type: "letter", rec: "[Consignee]", sub: "DELIVERY CHALLAN", body: "Delivery challan for goods dispatched." },
+            { cat: "commercial", title: "Purchase Order (PO)", desc: "Official PO", type: "letter", rec: "[Vendor Name]", sub: "PURCHASE ORDER", body: "Purchase order for material supply." },
+            { cat: "commercial", title: "Goods Received Note (GRN)", desc: "GRN Receipt", type: "letter", rec: "[Store]", sub: "GOODS RECEIVED NOTE", body: "GRN acknowledging materials received." },
+            { cat: "commercial", title: "Quotation / Estimate Template", desc: "Price Estimate", type: "letter", rec: "[Client Name]", sub: "PRICE QUOTATION", body: "Quotation for requested products/services." },
+            { cat: "commercial", title: "Bill of Lading / Shipping Bill", desc: "Shipping Document", type: "letter", rec: "[Shipping Carrier]", sub: "BILL OF LADING", body: "Freight cargo shipping manifest." },
+            { cat: "commercial", title: "Letter of Credit (LC) Application Form", desc: "LC Form", type: "letter", rec: "[Bank Division]", sub: "LC APPLICATION FORM", body: "Application for issuing Letter of Credit." },
+
+            // 9. MEDICAL DOCUMENTS (WITH DOCTOR SUGGESTIONS / CHECKUP FIELDS)
+            { cat: "medical", title: "Prescription Slip", desc: "Rx Slip", type: "medical_checkup", rec: "[Patient Name]", sub: "MEDICAL PRESCRIPTION SLIP", body: "Patient examined thoroughly. Vitals stable.", suggestion: "1. Tab Panadol 500mg (Twice daily after meals)\n2. Cap Augmentin 625mg (Every 12 hours for 5 days)\n3. Drink plenty of warm water and take complete rest." },
+            { cat: "medical", title: "Patient Case Sheet", desc: "Case History Sheet", type: "medical_checkup", rec: "[Patient Name]", sub: "PATIENT CASE SHEET", body: "Presented with complaints of mild fever and body fatigue.", suggestion: "1. Complete Blood Count (CBC) test recommended.\n2. Avoid oily and spicy foods.\n3. Follow up after 3 days with lab reports." },
+            { cat: "medical", title: "Medical History Record", desc: "Medical History", type: "medical_checkup", rec: "[Patient Name]", sub: "MEDICAL HISTORY RECORD", body: "No prior chronic illnesses noted during clinical assessment.", suggestion: "1. Maintain regular daily exercise and balanced diet.\n2. Annual health screening advised." },
+            { cat: "medical", title: "Lab Test Requisition Form", desc: "Lab Form", type: "letter", rec: "[Laboratory]", sub: "LAB TEST REQUISITION", body: "Requisition form for diagnostic lab tests as prescribed." },
+            { cat: "medical", title: "Diagnostic Test Report", desc: "Test Report", type: "letter", rec: "[Patient Name]", sub: "DIAGNOSTIC REPORT", body: "Diagnostic test results and clinical findings report." },
+            { cat: "medical", title: "Medical Fitness Certificate", desc: "Fitness Certificate", type: "medical_checkup", rec: "[Candidate Name]", sub: "MEDICAL FITNESS CERTIFICATE", body: "Candidate examined and found medically fit for employment duties.", suggestion: "1. Fit for active physical and office duties.\n2. Periodic health checkup recommended annually." },
+            { cat: "medical", title: "Medical Death Certificate", desc: "Death Certificate Form", type: "letter", rec: "[Hospital Records]", sub: "MEDICAL DEATH CERTIFICATE", body: "Official medical death recording form." },
+            { cat: "medical", title: "Discharge Summary", desc: "Hospital Discharge", type: "medical_checkup", rec: "[Patient Name]", sub: "PATIENT DISCHARGE SUMMARY", body: "Patient admitted for observation and treated successfully.", suggestion: "1. Take prescribed medications on time.\n2. Avoid heavy weight lifting for 2 weeks." },
+            { cat: "medical", title: "Hospital Admission Form", desc: "Admission Form", type: "letter", rec: "[Hospital Desk]", sub: "ADMISSION FORM", body: "Patient hospital admission registration form." },
+            { cat: "medical", title: "Medical Invoice", desc: "Hospital Billing", type: "letter", rec: "[Patient Name]", sub: "MEDICAL BILLING INVOICE", body: "Consultation and procedure charges statement." },
+
+            // 10. PROPERTY DOCUMENTS
+            { cat: "property", title: "Sale / Purchase Agreement (Bayana / Sale Deed)", desc: "Property Deed", type: "letter", rec: "[Buyer & Seller]", sub: "PROPERTY BAYANA DEED", body: "Earnest money agreement for property transaction." },
+            { cat: "property", title: "Lease / Tenancy Agreement (Rent Deed)", desc: "Rent Agreement", type: "letter", rec: "[Tenant Name]", sub: "TENANCY AGREEMENT", body: "Monthly tenancy terms for property premises." },
+            { cat: "property", title: "No Objection Certificate (NOC)", desc: "Property NOC", type: "letter", rec: "[Society Authority]", sub: "PROPERTY NOC CERTIFICATE", body: "NOC issued for property transfer/utility connection." },
+            { cat: "property", title: "Property Allotment Letter", desc: "Allotment Deed", type: "letter", rec: "[Allottee Name]", sub: "PROPERTY ALLOTMENT LETTER", body: "Property unit allotment letter under scheme terms." },
+            { cat: "property", title: "Transfer Letter / Mutation Order (Intqal)", desc: "Property Mutation", type: "letter", rec: "[Land Office]", sub: "PROPERTY TRANSFER ORDER", body: "Property title mutation order document." },
+            { cat: "property", title: "General / Special Power of Attorney", desc: "Power of Attorney", type: "letter", rec: "[Attorney Name]", sub: "POWER OF ATTORNEY DEED", body: "Legal power granted for property management." },
+            { cat: "property", title: "Property Valuation Certificate", desc: "Valuation Report", type: "letter", rec: "[Valuer Office]", sub: "PROPERTY VALUATION REPORT", body: "Market valuation report for specified property." },
+            { cat: "property", title: "Maintenance & Utility Bill Ledger", desc: "Maintenance Record", type: "letter", rec: "[Resident Ledger]", sub: "UTILITY BILL LEDGER", body: "Monthly society maintenance and bill clearance log." },
+
+            // 11. TYPES OF AGREEMENTS
+            { cat: "agreements", title: "Employment / Service Agreement", desc: "Service Contract", type: "letter", rec: "[Party Name]", sub: "SERVICE AGREEMENT", body: "Service contract terms binding both parties." },
+            { cat: "agreements", title: "Non-Disclosure Agreement (NDA)", desc: "Confidentiality Deed", type: "letter", rec: "[Party Name]", sub: "NON-DISCLOSURE AGREEMENT", body: "Confidential information clause binding." },
+            { cat: "agreements", title: "Partnership / Joint Venture Agreement", desc: "JV Contract", type: "letter", rec: "[Partners]", sub: "JOINT VENTURE AGREEMENT", body: "Joint venture partnership terms and liability sharing." },
+            { cat: "agreements", title: "Lease / Tenancy Agreement (Rent Deed)", desc: "Tenancy Deed", type: "letter", rec: "[Tenant Name]", sub: "RENT DEED AGREEMENT", body: "Tenancy contract for premises usage." },
+            { cat: "agreements", title: "Sales / Purchase Agreement", desc: "Sale Agreement", type: "letter", rec: "[Buyer & Seller]", sub: "SALE AGREEMENT DEED", body: "Commercial sale deed agreement." },
+            { cat: "agreements", title: "Service Level Agreement (SLA)", desc: "SLA Deed", type: "letter", rec: "[Client Name]", sub: "SERVICE LEVEL AGREEMENT", body: "Uptime and response SLA terms defined." },
+            { cat: "agreements", title: "Loan / Financial Agreement", desc: "Loan Agreement", type: "letter", rec: "[Borrower Name]", sub: "LOAN FINANCIAL AGREEMENT", body: "Financial repayment schedule contract." },
+            { cat: "agreements", title: "Vendor / Supplier Agreement", desc: "Vendor Contract", type: "letter", rec: "[Supplier Name]", sub: "VENDOR SUPPLY AGREEMENT", body: "Material supply contract terms." },
+
+            // 12. SALE & PURCHASE
+            { cat: "sale_purchase", title: "Sale / Purchase Agreement", desc: "Agreement Deed", type: "letter", rec: "[Buyer Name]", sub: "SALE & PURCHASE AGREEMENT", body: "Agreement deed for commercial purchase." },
+            { cat: "sale_purchase", title: "Proforma Invoice", desc: "Preliminary Bill", type: "letter", rec: "[Buyer Name]", sub: "PROFORMA INVOICE", body: "Proforma estimate bill." },
+            { cat: "sale_purchase", title: "Commercial / Sales Invoice", desc: "Sales Bill", type: "letter", rec: "[Buyer Name]", sub: "COMMERCIAL SALES INVOICE", body: "Final sales invoice receipt." },
+            { cat: "sale_purchase", title: "Purchase Order (PO)", desc: "Order Sheet", type: "letter", rec: "[Vendor Name]", sub: "PURCHASE ORDER", body: "Official PO for material procurement." },
+            { cat: "sale_purchase", title: "Delivery Challan / Dispatch Note", desc: "Dispatch Sheet", type: "letter", rec: "[Receiver Name]", sub: "DELIVERY CHALLAN", body: "Goods dispatch receipt." },
+            { cat: "sale_purchase", title: "Goods Received Note (GRN)", desc: "Receipt Sheet", type: "letter", rec: "[Store Keeper]", sub: "GOODS RECEIVED NOTE", body: "Goods received and verified." },
+            { cat: "sale_purchase", title: "Bill of Sale / Receipt", desc: "Payment Receipt", type: "letter", rec: "[Buyer Name]", sub: "BILL OF SALE RECEIPT", body: "Payment received in full." },
+            { cat: "sale_purchase", title: "Credit Note / Debit Note", desc: "Adjustment Deed", type: "letter", rec: "[Client Name]", sub: "CREDIT / DEBIT NOTE", body: "Balance adjustment entry." }
         ];
+
+        // Compile Database with Generic Headers
+        const database = rawList.map((item, index) => {
+            let baseFields = [
+                { id: "comp", label: "Company / Clinic Name", val: "YOUR CLINIC / HOSPITAL NAME" },
+                { id: "addr", label: "Address / Location", val: "123 Medical Center, City, Country" },
+                { id: "ref", label: "Reference / Doc No", val: "REF-2026-" + (100 + index) },
+                { id: "date", label: "Date", val: "DD/MM/YYYY" },
+                { id: "rec", label: "Patient / Client Name", val: item.rec },
+                { id: "sub", label: "Subject / Title", val: item.sub }
+            ];
+
+            if(item.type === 'invoice') {
+                baseFields = baseFields.concat(item.fields);
+            } else if(item.type === 'payroll') {
+                baseFields = baseFields.concat(item.fields);
+            } else if(item.type === 'medical_checkup') {
+                baseFields.push({ id: "body", label: "Clinical Examination Notes", val: item.body });
+                baseFields.push({ id: "suggestion", label: "Doctor Suggestions & Prescription Advice", val: item.suggestion });
+            } else {
+                baseFields.push({ id: "body", label: "Document Body Text (Editable)", val: item.body });
+            }
+
+            return {
+                id: "doc_" + index,
+                category: item.cat,
+                title: item.title,
+                desc: item.desc,
+                type: item.type,
+                fields: baseFields,
+                render: function(f) {
+                    if(this.type === 'invoice') {
+                        let qty = parseFloat(f.qty) || 0;
+                        let rate = parseFloat(f.rate) || 0;
+                        let subtotal = qty * rate;
+                        let taxRate = parseFloat(f.tax) || 0;
+                        let taxAmount = (subtotal * taxRate) / 100;
+                        let grandTotal = subtotal + taxAmount;
+
+                        return `
+                            <div>
+                                <div class="doc-header">
+                                    <div class="company-title">${f.comp}</div>
+                                    <div class="company-info">${f.addr}<br>Accounts Division</div>
+                                </div>
+                                <div class="doc-meta">
+                                    <div><strong>Ref No:</strong> ${f.ref}</div>
+                                    <div><strong>Date:</strong> ${f.date}</div>
+                                </div>
+                                <p style="margin-bottom:6px;"><strong>Billed To:</strong> ${f.rec}</p>
+                                <div class="doc-subject">${f.sub}</div>
+                                <table class="doc-table">
+                                    <thead><tr><th>Description</th><th>Qty</th><th>Rate</th><th>Total</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>${f.item}</td><td>${qty}</td><td>${rate.toLocaleString()}</td><td>${subtotal.toLocaleString()}</td></tr>
+                                    </tbody>
+                                </table>
+                                <div style="text-align:right; font-size:9.5px; line-height:1.2; margin-top:6px;">
+                                    <div>Subtotal: <strong>${subtotal.toLocaleString()}</strong></div>
+                                    <div>Tax (${taxRate}%): <strong>${taxAmount.toLocaleString()}</strong></div>
+                                    <div style="font-size:10.5px; color:#1e4d3b; margin-top:2px;"><strong>Grand Total: ${grandTotal.toLocaleString()}</strong></div>
+                                </div>
+                            </div>
+                            <div class="doc-footer">
+                                <div class="sig-box"><div class="sig-line"></div><div class="sig-title">CLIENT SIGNATURE</div></div>
+                                <div class="sig-box"><div class="sig-line"></div><div class="sig-title">AUTHORIZED SIGNATORY</div></div>
+                            </div>
+                        `;
+                    } else if(this.type === 'payroll') {
+                        let basic = parseFloat(f.basic) || 0;
+                        let allow = parseFloat(f.allow) || 0;
+                        let ded = parseFloat(f.ded) || 0;
+                        let netPay = (basic + allow) - ded;
+
+                        return `
+                            <div>
+                                <div class="doc-header">
+                                    <div class="company-title">${f.comp}</div>
+                                    <div class="company-info">${f.addr}<br>HR & Payroll Department</div>
+                                </div>
+                                <div class="doc-meta">
+                                    <div><strong>Ref No:</strong> ${f.ref}</div>
+                                    <div><strong>Date:</strong> ${f.date}</div>
+                                </div>
+                                <p style="margin-bottom:6px;"><strong>Employee:</strong> ${f.rec}</p>
+                                <div class="doc-subject">${f.sub}</div>
+                                <table class="doc-table">
+                                    <thead><tr><th>Particulars</th><th>Amount</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Basic Salary</td><td>${basic.toLocaleString()}</td></tr>
+                                        <tr><td>Allowances</td><td>${allow.toLocaleString()}</td></tr>
+                                        <tr><td>Deductions (-)</td><td>(${ded.toLocaleString()})</td></tr>
+                                    </tbody>
+                                </table>
+                                <div style="text-align:right; font-size:10.5px; color:#1e4d3b; margin-top:6px;">
+                                    <strong>Net Payable Salary: ${netPay.toLocaleString()}</strong>
+                                </div>
+                            </div>
+                            <div class="doc-footer">
+                                <div class="sig-box"><div class="sig-line"></div><div class="sig-title">EMPLOYEE SIGNATURE</div></div>
+                                <div class="sig-box"><div class="sig-line"></div><div class="sig-title">HR HEAD</div></div>
+                            </div>
+                        `;
+                    } else if(this.type === 'medical_checkup') {
+                        return `
+                            <div>
+                                <div class="doc-header">
+                                    <div class="company-title">${f.comp}</div>
+                                    <div class="company-info">${f.addr}<br>Medical Department</div>
+                                </div>
+                                <div class="doc-meta">
+                                    <div><strong>Ref No:</strong> ${f.ref}</div>
+                                    <div><strong>Date:</strong> ${f.date}</div>
+                                </div>
+                                <p style="margin-bottom:4px;"><strong>Patient Name:</strong> ${f.rec}</p>
+                                <div class="doc-subject">${f.sub}</div>
+                                <div class="doc-body" style="margin-bottom:4px;"><strong>Examination Findings:</strong>\n${f.body}</div>
+                                <div class="doc-body" style="background:#f9f8f5; padding:6px; border-left:3px solid #1e4d3b;"><strong>Doctor Suggestions & Advice:</strong>\n${f.suggestion}</div>
+                            </div>
+                            <div class="doc-footer">
+                                <div class="sig-box"><div class="sig-line"></div><div class="sig-title">PATIENT SIGNATURE</div></div>
+                                <div class="sig-box"><div class="sig-line"></div><div class="sig-title">DOCTOR SIGNATURE</div></div>
+                            </div>
+                        `;
+                    } else {
+                        return `
+                            <div>
+                                <div class="doc-header">
+                                    <div class="company-title">${f.comp}</div>
+                                    <div class="company-info">${f.addr}<br>Corporate Operations</div>
+                                </div>
+                                <div class="doc-meta">
+                                    <div><strong>Ref No:</strong> ${f.ref}</div>
+                                    <div><strong>Date:</strong> ${f.date}</div>
+                                </div>
+                                <p style="margin-bottom:4px;"><strong>To:</strong> ${f.rec}</p>
+                                <div class="doc-subject">${f.sub}</div>
+                                <div class="doc-body">${f.body}</div>
+                            </div>
+                            <div class="doc-footer">
+                                <div class="sig-box"><div class="sig-line"></div><div class="sig-title">RECIPIENT SIGNATURE</div></div>
+                                <div class="sig-box"><div class="sig-line"></div><div class="sig-title">AUTHORIZED SIGNATORY</div></div>
+                            </div>
+                        `;
+                    }
+                }
+            };
+        });
 
         const DocuHubApp = {
             currentCategory: 'all',
             searchQuery: '',
-            showAll: false,
             activeTemplate: null,
             currentValues: {},
 
@@ -642,12 +506,11 @@
 
             filterCategory(cat) {
                 this.currentCategory = cat;
-                this.showAll = true;
                 document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
-                
-                event && event.target && event.target.tagName === 'A' && event.target.classList.add('active');
-                
-                document.getElementById('section-heading-text').innerText = cat.toUpperCase() + " GENERATORS";
+                if(event && event.target && event.target.tagName === 'A') {
+                    event.target.classList.add('active');
+                }
+                document.getElementById('section-heading').innerText = (cat === 'all' ? "Master Document Suite" : cat.toUpperCase().replace('_', ' ') + " SECTION");
                 this.renderTemplates();
             },
 
@@ -656,28 +519,21 @@
                 this.renderTemplates();
             },
 
-            toggleViewAll() {
-                this.showAll = !this.showAll;
-                document.getElementById('section-heading-text').innerText = this.showAll ? "All Available Generators" : "Featured Top Generators";
-                this.renderTemplates();
-            },
-
             renderTemplates() {
                 const grid = document.getElementById('templates-grid');
                 let list = database.filter(t => {
                     let matchCat = (this.currentCategory === 'all' || t.category === this.currentCategory);
                     let matchSearch = t.title.toLowerCase().includes(this.searchQuery) || t.desc.toLowerCase().includes(this.searchQuery);
-                    let matchFeatured = this.showAll || t.featured;
-                    return matchCat && matchSearch && matchFeatured;
+                    return matchCat && matchSearch;
                 });
 
                 if(list.length === 0) {
-                    grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; padding: 30px; color:#777;">No matching generators found in this category.</p>`;
+                    grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; padding: 20px; color:#777;">No documents found.</p>`;
                     return;
                 }
 
                 grid.innerHTML = list.map(t => `
-                    <div class="card ${t.shape === 'circle' ? 'shape-circle-card' : ''}">
+                    <div class="card">
                         <div>
                             <h3>${t.title}</h3>
                             <p>${t.desc}</p>
@@ -705,7 +561,7 @@
                 container.innerHTML = this.activeTemplate.fields.map(f => `
                     <div class="form-group">
                         <label>${f.label}</label>
-                        ${f.val.length > 50 ? 
+                        ${f.id === 'body' || f.id === 'suggestion' ? 
                             `<textarea oninput="DocuHubApp.updateField('${f.id}', this.value)">${f.val}</textarea>` : 
                             `<input type="text" value="${f.val}" oninput="DocuHubApp.updateField('${f.id}', this.value)">`
                         }
@@ -723,34 +579,8 @@
                 preview.innerHTML = this.activeTemplate.render(this.currentValues);
             },
 
-            changeFont(font) {
-                document.getElementById('modal-live-preview').style.fontFamily = font;
-            },
-
-            changeTheme(theme) {
-                let prev = document.getElementById('modal-live-preview');
-                prev.className = "preview-box";
-                if(theme !== 'default') {
-                    prev.classList.add('theme-' + theme);
-                }
-            },
-
             closeModal() {
                 document.getElementById('workspace-modal').style.display = 'none';
-            },
-
-            showHome() {
-                this.filterCategory('all');
-            },
-
-            showInfoModal(title, text) {
-                document.getElementById('info-modal-title').innerText = title;
-                document.getElementById('info-modal-body').innerText = text;
-                document.getElementById('info-modal').style.display = 'flex';
-            },
-
-            closeInfoModal() {
-                document.getElementById('info-modal').style.display = 'none';
             }
         };
 
