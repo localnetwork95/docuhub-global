@@ -90,7 +90,7 @@
 
         /* Modal Workspace styling */
         #workspace-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: #fff; width: 100%; max-width: 1050px; max-height: 92vh; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+        .modal-content { background: #fff; width: 100%; max-width: 1100px; max-height: 92vh; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
         .modal-header { padding: 15px 25px; background: #f0eee6; border-bottom: 1px solid #e6e2d8; display: flex; justify-content: space-between; align-items: center; }
         .modal-header h2 { font-size: 16px; color: #1e4d3b; font-family: 'Georgia', serif; }
         .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #1e4d3b; }
@@ -105,7 +105,7 @@
         .form-group label { display: block; font-size: 10px; font-weight: 700; color: #555; margin-bottom: 3px; text-transform: uppercase; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 7px 10px; border: 1px solid #d5d1c8; border-radius: 4px; font-size: 12px; outline: none; background: #faf9f5; }
         
-        .preview-box { background: #ffffff; border: 1px solid #d5d1c8; padding: 30px; border-radius: 4px; min-height: 450px; max-height: 520px; overflow-y: auto; font-size: 12px; line-height: 1.6; color: #222; font-family: 'Calibri', sans-serif; }
+        .preview-box { background: #ffffff; border: 1px solid #d5d1c8; padding: 30px; border-radius: 4px; min-height: 480px; max-height: 560px; overflow-y: auto; font-size: 12px; line-height: 1.6; color: #222; font-family: 'Calibri', sans-serif; }
 
         .theme-editorial { background: #ffffff !important; color: #111111 !important; border: 2px solid #111111 !important; font-family: 'Georgia', serif !important; }
         .theme-geometric { background: linear-gradient(135deg, #f9fafb 0%, #edf2f7) !important; color: #1a202c !important; border-left: 6px solid #3182ce !important; }
@@ -124,6 +124,17 @@
         .info-modal-content h3 { font-size: 16px; color: #1e4d3b; margin-bottom: 12px; font-family: 'Georgia', serif; border-bottom: 1px solid #e6e2d8; padding-bottom: 6px; }
         .info-modal-content p { font-size: 12px; color: #444; line-height: 1.6; margin-bottom: 20px; }
         .info-modal-close { background: #1e4d3b; color: white; border: none; padding: 8px 16px; font-size: 11px; font-weight: 600; border-radius: 4px; cursor: pointer; display: block; margin-left: auto; }
+
+        /* Print / PDF Media Query - Hide website UI, show only clean printable A4 */
+        @media print {
+            body { background: none; padding: 0; }
+            header, .hero-banner, .main-container, footer, #workspace-modal .modal-header, #workspace-modal .word-toolbar, #workspace-modal .modal-footer, .form-section { display: none !important; }
+            #workspace-modal { display: block !important; position: static !important; background: none !important; padding: 0 !important; }
+            .modal-content { box-shadow: none !important; max-width: 100% !important; max-height: none !important; border: none !important; }
+            .modal-body { display: block !important; padding: 0 !important; }
+            .preview-section { width: 100% !important; }
+            .preview-box { border: none !important; padding: 0 !important; max-height: none !important; overflow: visible !important; }
+        }
     </style>
 </head>
 <body>
@@ -243,7 +254,7 @@
                 <h4>About</h4>
                 <ul>
                     <li><a onclick="DocuHubApp.showInfoModal('About DocuHub', 'DocuHub is a next-generation professional document and stationery suite.')">About DocuHub</a></li>
-                    <li><a onclick="DocuHubApp.showInfoModal('Contact Support', 'Email us at support@docuhub.internal.')">Contact Support</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Contact Support', 'Email us at support@docuhub.com.')">Contact Support</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -337,276 +348,352 @@
             },
             {
                 id: "lh-1", category: "letterheads", featured: true, shape: "square", title: "Editorial Minimalist Letterhead", desc: "Clean top header with high-end corporate typography, border accents, and structured body layout.",
-                fields: [{id:"comp",label:"Company Name",val:""},{id:"phone",label:"Phone",val:""},{id:"email",label:"Email",val:""},{id:"addr",label:"Address",val:""},{id:"subject",label:"Subject",val:""},{id:"body",label:"Letter Content",val:""}],
-                render: f => `<div style="display:flex; justify-content:space-between; border-bottom:2px solid #222; padding-bottom:10px; margin-bottom:15px;"><div><h2 style="font-size:15px; font-family:'Georgia',serif;">${f.comp || '[Company Name]'}</h2><p style="font-size:10px; color:#555;">${f.addr || '[Address]'}</p></div><div style="text-align:right; font-size:10px; color:#555;"><p>Phone: ${f.phone || '+00 000 0000000'}</p><p>Email: ${f.email || 'info@company.com'}</p></div></div><p style="font-size:11px; margin-bottom:10px;">Date: <strong>${new Date().toLocaleDateString()}</strong></p><p style="font-size:11px; margin-bottom:10px;"><strong>Subject: ${f.subject || '[Subject]'}</strong></p><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Type your letter here...]'}</p><br><br><strong>Authorized Signatory</strong>`
+                fields: [
+                    {id:"logo",label:"Company Logo URL (Optional)",val:""},
+                    {id:"comp",label:"Company Name",val:"BURQUE CORPORATION PVT LTD"},
+                    {id:"phone",label:"Phone",val:"+92 21 00000000"},
+                    {id:"email",label:"Email",val:"info@burque.com"},
+                    {id:"addr",label:"Address",val:"Head Office, Karachi, Pakistan"},
+                    {id:"ref",label:"Reference No.",val:"BCL/HR/2026/001"},
+                    {id:"subject",label:"Subject",val:"OFFICIAL CORPORATE CORRESPONDENCE"},
+                    {id:"body",label:"Letter Content",val:"Dear Team,\n\nThis is to formally communicate the administrative updates regarding our operational workflows and compliance standards for the current financial quarter.\n\nKindly ensure strict adherence to all designated reporting protocols and timelines."}
+                ],
+                render: f => `
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #222; padding-bottom:12px; margin-bottom:15px;">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            ${f.logo ? `<img src="${f.logo}" style="width:45px; height:45px; object-fit:contain;" alt="Logo"/>` : ''}
+                            <div>
+                                <h2 style="font-size:16px; font-family:'Georgia',serif; color:#111;">${f.comp || '[Company Name]'}</h2>
+                                <p style="font-size:10px; color:#555;">${f.addr || '[Address]'}</p>
+                            </div>
+                        </div>
+                        <div style="text-align:right; font-size:10px; color:#555;">
+                            <p><strong>Ref:</strong> ${f.ref || 'BCL/2026/001'}</p>
+                            <p>Phone: ${f.phone || '+00 000 0000000'}</p>
+                            <p>Email: ${f.email || 'info@company.com'}</p>
+                        </div>
+                    </div>
+                    <p style="font-size:11px; margin-bottom:8px;">Date: <strong>${new Date().toLocaleDateString()}</strong></p>
+                    <p style="font-size:11px; margin-bottom:12px; font-weight:bold; text-decoration:underline;">SUBJECT: ${f.subject || '[Subject]'}</p>
+                    <p style="font-size:11px; line-height:1.7; min-height:150px; white-space:pre-line;">${f.body || '[Type your letter here...]'}</p>
+                    <br><br>
+                    <div style="display:flex; justify-content:space-between; margin-top:30px; font-size:11px;">
+                        <div><strong>Prepared By:</strong> Administration</div>
+                        <div><strong>Authorized Signatory:</strong> ___________________</div>
+                    </div>
+                `
             },
             {
                 id: "lh-2", category: "letterheads", featured: true, shape: "circle", title: "Dynamic Geometric Tech Letterhead", desc: "Modern corporate letterhead featuring bottom/top accent bar, sleek contact info, and agency look.",
-                fields: [{id:"comp",label:"Agency Name",val:""},{id:"tag",label:"Tagline",val:""},{id:"phone",label:"Phone",val:""},{id:"email",label:"Email",val:""},{id:"body",label:"Content",val:""}],
-                render: f => `<div style="text-align:center; border-bottom:3px solid #3182ce; padding-bottom:10px; margin-bottom:15px;"><h2 style="font-size:16px; color:#2b6cb0;">${f.comp || '[Agency Name]'}</h2><p style="font-size:10px; color:#718096;">${f.tag || '[Digital Solutions]'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content here...]'}</p><div style="margin-top:30px; border-top:1px solid #cbd5e0; padding-top:8px; display:flex; justify-content:space-between; font-size:10px; color:#4a5568;"><span>📞 ${f.phone || 'Phone'}</span><span>✉ ${f.email || 'Email'}</span></div>`
+                fields: [
+                    {id:"logo",label:"Logo URL (Optional)",val:""},
+                    {id:"comp",label:"Agency Name",val:"DOCUHUB TECH SOLUTIONS"},
+                    {id:"tag",label:"Tagline",val:"Enterprise Software & Digital Infrastructure"},
+                    {id:"phone",label:"Phone",val:"+92 300 0000000"},
+                    {id:"email",label:"Email",val:"support@docuhub.com"},
+                    {id:"body",label:"Content",val:"Dear Client,\n\nWe acknowledge receipt of your requirements for system integration and documentation structuring. Our technical team has initiated the evaluation phase."}
+                ],
+                render: f => `
+                    <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:3px solid #3182ce; padding-bottom:10px; margin-bottom:15px;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            ${f.logo ? `<img src="${f.logo}" style="width:40px; height:40px; object-fit:contain;" alt="Logo"/>` : ''}
+                            <div>
+                                <h2 style="font-size:15px; color:#2b6cb0; font-weight:bold;">${f.comp || '[Agency Name]'}</h2>
+                                <p style="font-size:10px; color:#718096;">${f.tag || '[Digital Solutions]'}</p>
+                            </div>
+                        </div>
+                        <div style="font-size:10px; color:#4a5568; text-align:right;">
+                            <p>Date: ${new Date().toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                    <p style="font-size:11px; line-height:1.7; min-height:150px; white-space:pre-line;">${f.body || '[Content here...]'}</p>
+                    <div style="margin-top:30px; border-top:1px solid #cbd5e0; padding-top:8px; display:flex; justify-content:space-between; font-size:10px; color:#4a5568;">
+                        <span>📞 ${f.phone || 'Phone'}</span><span>✉ ${f.email || 'Email'}</span>
+                    </div>
+                `
             },
             {
                 id: "lh-3", category: "letterheads", featured: true, shape: "square", title: "Warm Organic Creative Letterhead", desc: "Soft earth-toned stationery layout suited for wellness studios, boutiques, and creative consultancies.",
-                fields: [{id:"comp",label:"Studio Name",val:""},{id:"addr",label:"Address",val:""},{id:"body",label:"Letter Body",val:""}],
-                render: f => `<div style="background:#fdfbf7; border-left:4px solid #8c6d62; padding-left:12px; margin-bottom:15px;"><h2 style="font-size:15px; color:#8c6d62;">${f.comp || '[Studio Name]'}</h2><p style="font-size:10px; color:#777;">${f.addr || '[Address]'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Body here...]'}</p><br><br><strong>Management</strong>`
+                fields: [
+                    {id:"logo",label:"Logo URL (Optional)",val:""},
+                    {id:"comp",label:"Studio Name",val:"AURA CREATIVE STUDIO"},
+                    {id:"addr",label:"Address",val:"Clifton Block 4, Karachi"},
+                    {id:"body",label:"Letter Body",val:"Dear Partner,\n\nWe are delighted to present our conceptual design drafts and layout architectures for your upcoming product portfolio."}
+                ],
+                render: f => `
+                    <div style="background:#fdfbf7; border-left:4px solid #8c6d62; padding:10px 12px; margin-bottom:15px; display:flex; align-items:center; gap:10px;">
+                        ${f.logo ? `<img src="${f.logo}" style="width:38px; height:38px; object-fit:contain;" alt="Logo"/>` : ''}
+                        <div>
+                            <h2 style="font-size:14px; color:#8c6d62; font-weight:bold;">${f.comp || '[Studio Name]'}</h2>
+                            <p style="font-size:10px; color:#777;">${f.addr || '[Address]'}</p>
+                        </div>
+                    </div>
+                    <p style="font-size:11px; line-height:1.7; min-height:150px; white-space:pre-line;">${f.body || '[Body here...]'}</p>
+                    <br><br>
+                    <div style="text-align:right; font-size:11px;"><strong>Creative Director</strong></div>
+                `
             },
             {
-                id: "lh-4", category: "letterheads", featured: false, shape: "square", title: "Chartered Accountants Letterhead", desc: "Formal financial and tax consultant letter format with registration lines.",
-                fields: [{id:"firm",label:"Firm Name",val:""},{id:"num",label:"License No",val:""},{id:"body",label:"Letter Content",val:""}],
-                render: f => `<div style="border-bottom:1px double #333; padding-bottom:8px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2>${f.firm || '[Accounting Firm]'}</h2><span style="font-size:10px;">Reg: ${f.num || '000'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Managing Partner</strong>`
+                id: "lh-4", category: "accounts", featured: true, shape: "square", title: "Salary Slip & Payroll Statement", desc: "Official monthly salary statement with earnings, deductions, and net payable calculations.",
+                fields: [
+                    {id:"emp",label:"Employee Name",val:"Shahrukh Siddiqui"},
+                    {id:"desig",label:"Designation",val:"Senior Accountant"},
+                    {id:"basic",label:"Basic Salary (PKR)",val:"68,000"},
+                    {id:"allow",label:"Allowances (PKR)",val:"12,000"},
+                    {id:"ded",label:"Deductions (PKR)",val:"3,000"}
+                ],
+                render: f => {
+                    let basic = parseFloat(f.basic) || 68000;
+                    let allow = parseFloat(f.allow) || 12000;
+                    let ded = parseFloat(f.ded) || 3000;
+                    let net = basic + allow - ded;
+                    return `
+                        <div style="text-align:center; border-bottom:2px solid #1e4d3b; padding-bottom:8px; margin-bottom:15px;">
+                            <h2 style="font-size:15px; color:#1e4d3b;">TAJ AL HUDA - PAYROLL DIVISION</h2>
+                            <p style="font-size:10px; color:#555;">Monthly Salary Disbursement Slip (${new Date().toLocaleString('default', { month: 'long', year: 'numeric' })} )</p>
+                        </div>
+                        <p style="font-size:11px; margin-bottom:5px;"><strong>Employee:</strong> ${f.emp || 'Shahrukh Siddiqui'}</p>
+                        <p style="font-size:11px; margin-bottom:15px;"><strong>Designation:</strong> ${f.desig || 'Senior Accountant'}</p>
+                        <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:15px;">
+                            <tr style="background:#f0eee6;"><th style="border:1px solid #d5d1c8; padding:6px; text-align:left;">Earnings</th><th style="border:1px solid #d5d1c8; padding:6px; text-align:right;">Amount (PKR)</th></tr>
+                            <tr><td style="border:1px solid #d5d1c8; padding:6px;">Basic Pay</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">${basic.toLocaleString()}</td></tr>
+                            <tr><td style="border:1px solid #d5d1c8; padding:6px;">Allowances / Bonus</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">${allow.toLocaleString()}</td></tr>
+                            <tr><td style="border:1px solid #d5d1c8; padding:6px;">Less: Deductions / Tax</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">-${ded.toLocaleString()}</td></tr>
+                            <tr style="background:#faf9f5; font-weight:bold;"><td style="border:1px solid #d5d1c8; padding:6px;">Net Payable Salary</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">PKR ${net.toLocaleString()} /-</td></tr>
+                        </table>
+                        <br>
+                        <div style="display:flex; justify-content:space-between; margin-top:40px; font-size:11px;">
+                            <div><strong>Employee Signature:</strong> _________</div>
+                            <div><strong>Accounts Head:</strong> _________</div>
+                        </div>
+                    `;
+                }
             },
             {
-                id: "lh-5", category: "letterheads", featured: false, shape: "circle", title: "Construction & Engineering Letterhead", desc: "Industrial layout built for contractors, builders, and heavy engineering works.",
-                fields: [{id:"comp",label:"Company Name",val:""},{id:"phone",label:"Helpline",val:""},{id:"body",label:"Content",val:""}],
-                render: f => `<div style="background:#2d3748; color:#fff; padding:10px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2 style="font-size:14px;">${f.comp || '[Construction]'}</h2><span style="font-size:10px;">${f.phone || 'Helpline'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Project Director</strong>`
+                id: "hr-1", category: "hr", featured: true, shape: "circle", title: "Employment Offer Letter", desc: "Comprehensive corporate offer letter with salary breakdown, probation terms, and acceptance signature blocks.",
+                fields: [
+                    {id:"logo",label:"Logo URL (Optional)",val:""},
+                    {id:"comp",label:"Company Name",val:"BURQUE CORPORATION PVT LTD"},
+                    {id:"cand",label:"Candidate Name",val:"Shahrukh Siddiqui"},
+                    {id:"pos",label:"Position",val:"Internal Audit / Senior Accountant"},
+                    {id:"sal",label:"Gross Monthly Salary (PKR)",val:"68,000"},
+                    {id:"date",label:"Joining Date",val:"01 November 2026"}
+                ],
+                render: f => `
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #1a365d; padding-bottom:10px; margin-bottom:15px;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            ${f.logo ? `<img src="${f.logo}" style="width:40px; height:40px; object-fit:contain;" alt="Logo"/>` : ''}
+                            <div>
+                                <h2 style="font-size:15px; color:#1a365d;">${f.comp || 'BURQUE CORPORATION PVT LTD'}</h2>
+                                <p style="font-size:10px; color:#666;">Human Resources Department</p>
+                            </div>
+                        </div>
+                        <div style="text-align:right; font-size:10px; color:#555;">
+                            <p>Ref: BCL/HR/OFFER/2026</p>
+                            <p>Date: ${new Date().toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                    <p style="font-size:11px; font-weight:bold; margin-bottom:10px;">To: ${f.cand || 'Shahrukh Siddiqui'}</p>
+                    <p style="font-size:12px; font-weight:bold; color:#1a365d; margin-bottom:12px; text-decoration:underline;">SUBJECT: OFFER OF EMPLOYMENT</p>
+                    <div style="font-size:11px; line-height:1.6;">
+                        <p style="margin-bottom:8px;">Dear <strong>${f.cand || 'Shahrukh Siddiqui'}</strong>,</p>
+                        <p style="margin-bottom:8px;">We are pleased to offer you formal employment at <strong>${f.comp || 'Burque Corporation'}</strong> starting from <strong>${f.date || '01 November 2026'}</strong> for the position of <strong>${f.pos || 'Internal Audit'}</strong>.</p>
+                        <p style="margin-bottom:8px;">Your gross monthly compensation will be <strong>PKR ${f.sal || '68,000'}/-</strong> subject to standard statutory deductions and company policies.</p>
+                        <p style="margin-bottom:8px;"><strong>Terms & Conditions:</strong></p>
+                        <ul style="margin-left:18px; margin-bottom:10px;">
+                            <li>Initial probation period shall be 3 months from the date of joining.</li>
+                            <li>All operational records and internal audit data shall remain strictly confidential.</li>
+                        </ul>
+                        <p>Please sign and return the duplicate of this letter as confirmation of your acceptance.</p>
+                    </div>
+                    <br>
+                    <div style="display:flex; justify-content:space-between; margin-top:35px; font-size:11px;">
+                        <div><strong>Authorized HR Head</strong><br><br>___________________</div>
+                        <div><strong>Candidate Acceptance</strong><br><br>___________________</div>
+                    </div>
+                `
             },
             {
-                id: "lh-6", category: "letterheads", featured: false, shape: "square", title: "Executive Law Firm Letterhead", desc: "Classic formal letter format for legal notices, agreements, and advocates.",
-                fields: [{id:"adv",label:"Advocate Name",val:""},{id:"addr",label:"Chamber Address",val:""},{id:"body",label:"Notice Content",val:""}],
-                render: f => `<div style="text-align:center; margin-bottom:20px; border-bottom:1px solid #444; padding-bottom:8px;"><h2 style="font-size:15px;">${f.adv || '[Advocate Name]'}</h2><p style="font-size:10px; color:#555;">${f.addr || '[Chamber]'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><div style="text-align:right;"><strong>Advocate High Court</strong></div>`
+                id: "tr-1", category: "transport", featured: true, shape: "square", title: "Motorcycle Fuel & Maintenance Log", desc: "Detailed tracking sheet for daily 70cc motorcycle commute, oil changes, and fuel consumption.",
+                fields: [
+                    {id:"bike",label:"Vehicle / Model",val:"Union Star 70cc (Hyundai 10W-40)"},
+                    {id:"km",label:"Monthly Mileage (Km)",val:"950 km"},
+                    {id:"fuel",label:"Fuel Consumed (Litres)",val:"38 Litres"},
+                    {id:"note",label:"Maintenance Note",val:"Oil changed at 900 km interval. Spark plug checked."}
+                ],
+                render: f => `
+                    <div style="border-bottom:2px solid #1e4d3b; padding-bottom:8px; margin-bottom:15px; text-align:center;">
+                        <h2 style="font-size:15px; color:#1e4d3b;">VEHICLE OPERATIONAL & MAINTENANCE LOG</h2>
+                        <p style="font-size:10px; color:#555;">Daily Commute & Engine Maintenance Record</p>
+                    </div>
+                    <p style="font-size:11px; margin-bottom:8px;"><strong>Vehicle:</strong> ${f.bike || 'Union Star 70cc'}</p>
+                    <p style="font-size:11px; margin-bottom:12px;"><strong>Total Mileage Covered:</strong> ${f.km || '950 km'}</p>
+                    <p style="font-size:11px; margin-bottom:15px;"><strong>Fuel Consumption:</strong> ${f.fuel || '38 Litres'}</p>
+                    <div style="background:#f9fafb; border:1px solid #d5d1c8; padding:10px; border-radius:4px; font-size:11px; margin-bottom:15px;">
+                        <strong>Service & Maintenance Remarks:</strong><br>
+                        ${f.note || 'Regular oil dipstick check performed daily prior to starting commute.'}
+                    </div>
+                    <br>
+                    <div style="text-align:right; font-size:11px;"><strong>Verified By Owner / Rider</strong><br><br>___________________</div>
+                `
             },
             {
-                id: "lh-7", category: "letterheads", featured: false, shape: "circle", title: "Medical Clinic & Hospital Letterhead", desc: "Clean professional medical stationery for prescriptions, referrals, and reports.",
-                fields: [{id:"doc",label:"Doctor Name",val:""},{id:"spec",label:"Specialization",val:""},{id:"body",label:"Prescription",val:""}],
-                render: f => `<div style="border-bottom:2px solid #2b6cb0; padding-bottom:8px; margin-bottom:15px; display:flex; justify-content:space-between;"><div><h2 style="color:#2b6cb0; font-size:14px;">${f.doc || '[Doctor Name]'}</h2><p style="font-size:10px; color:#555;">${f.spec || '[Specialization]'}</p></div></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Rx Notes]'}</p><br><br><strong>Signature: _________</strong>`
-            },
-            {
-                id: "lh-8", category: "letterheads", featured: false, shape: "square", title: "Real Estate Agency Letterhead", desc: "High-end corporate layout for property dealers and realtors.",
-                fields: [{id:"agency",label:"Agency Name",val:""},{id:"phone",label:"Contact",val:""},{id:"body",label:"Content",val:""}],
-                render: f => `<div style="background:#1e4d3b; color:#fff; padding:10px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2 style="font-size:14px;">${f.agency || '[Real Estate]'}</h2><span style="font-size:10px;">${f.phone || 'Contact'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Director</strong>`
-            },
-            {
-                id: "lh-9", category: "letterheads", featured: false, shape: "circle", title: "Education & Institute Letterhead", desc: "Academic institution stationery for schools and colleges.",
-                fields: [{id:"inst",label:"Institution Name",val:""},{id:"loc",label:"Location",val:""},{id:"body",label:"Circular",val:""}],
-                render: f => `<div style="text-align:center; border-bottom:3px double #1e4d3b; padding-bottom:8px; margin-bottom:15px;"><h2 style="color:#1e4d3b; font-size:15px;">${f.inst || '[Institute Name]'}</h2><p style="font-size:10px; color:#666;">${f.loc || '[Location]'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Circular]'}</p><br><br><strong>Principal</strong>`
-            },
-            {
-                id: "lh-10", category: "letterheads", featured: false, shape: "square", title: "Logistics & Transport Letterhead", desc: "Courier, cargo, and freight corporate stationery.",
-                fields: [{id:"log",label:"Company Name",val:""},{id:"trk",label:"Branch",val:""},{id:"body",label:"Dispatch Note",val:""}],
-                render: f => `<div style="border-left:5px solid #d69e2e; padding-left:10px; margin-bottom:15px;"><h2 style="font-size:14px; color:#b7791f;">${f.log || '[Logistics]'}</h2><p style="font-size:10px; color:#666;">${f.trk || '[Branch]'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Manager</strong>`
-            },
-            {
-                id: "lh-11", category: "letterheads", featured: false, shape: "circle", title: "Hotel & Hospitality Letterhead", desc: "Luxury resort and hotel formal guest communication stationery.",
-                fields: [{id:"hotel",label:"Hotel Name",val:""},{id:"city",label:"City",val:""},{id:"body",label:"Confirmation",val:""}],
-                render: f => `<div style="text-align:center; border-bottom:1px solid #d4af37; padding-bottom:8px; margin-bottom:15px;"><h2 style="color:#b8860b; font-size:15px;">★ ${f.hotel || '[Hotel]'} ★</h2><p style="font-size:10px; color:#555;">${f.city || '[City]'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Front Desk</strong>`
-            },
-            {
-                id: "lh-12", category: "letterheads", featured: false, shape: "square", title: "IT Software House Letterhead", desc: "Sleek developer and software solutions corporate letterhead.",
-                fields: [{id:"soft",label:"Software Company",val:""},{id:"web",label:"Website",val:""},{id:"body",label:"Quotation",val:""}],
-                render: f => `<div style="display:flex; justify-content:space-between; background:#edf2f7; padding:10px; border-radius:4px; margin-bottom:15px;"><h2 style="font-size:14px; color:#2d3748;">${f.soft || '[Software House]'}</h2><span style="font-size:10px; color:#3182ce;">${f.web || 'www.web.com'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>CTO</strong>`
-            },
-            {
-                id: "lh-13", category: "letterheads", featured: false, shape: "circle", title: "Security Services Letterhead", desc: "Guards and security asset protection company layout.",
-                fields: [{id:"sec",label:"Agency Name",val:""},{id:"hotline",label:"Helpline",val:""},{id:"body",label:"Deployment",val:""}],
-                render: f => `<div style="border-top:2px solid #742a2a; border-bottom:2px solid #742a2a; padding:6px 0; margin-bottom:15px; text-align:center;"><h2 style="font-size:14px; color:#742a2a;">${f.sec || '[Security]'}</h2><p style="font-size:10px;">${f.hotline || 'Helpline'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>CSO</strong>`
-            },
-            {
-                id: "lh-14", category: "letterheads", featured: false, shape: "square", title: "Event Management Letterhead", desc: "Stylish layout for decorators, event planners, and caterers.",
-                fields: [{id:"event",label:"Planner Name",val:""},{id:"phone",label:"Contact",val:""},{id:"body",label:"Package",val:""}],
-                render: f => `<div style="text-align:center; margin-bottom:15px;"><h2 style="font-size:15px; color:#d53f8c;">✨ ${f.event || '[Events]'} ✨</h2><p style="font-size:10px; color:#666;">${f.phone || 'Contact'}</p><hr style="border:0; border-top:1px solid #f687b3; margin-top:6px;"></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Director</strong>`
-            },
-            {
-                id: "lh-15", category: "letterheads", featured: false, shape: "circle", title: "Pharmacy & Medical Store Letterhead", desc: "Wholesale and retail medicine distributor letterhead.",
-                fields: [{id:"pharm",label:"Pharmacy Name",val:""},{id:"lic",label:"License No",val:""},{id:"body",label:"Order Note",val:""}],
-                render: f => `<div style="border-bottom:2px solid #38a169; padding-bottom:8px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2 style="color:#38a169; font-size:14px;">${f.pharm || '[Pharmacy]'}</h2><span style="font-size:10px;">${f.lic || 'License'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Pharmacist</strong>`
-            },
-            {
-                id: "lh-16", category: "letterheads", featured: false, shape: "square", title: "Advertising Agency Letterhead", desc: "Creative media production and digital marketing layout.",
-                fields: [{id:"media",label:"Agency Name",val:""},{id:"email",label:"Email",val:""},{id:"body",label:"Proposal",val:""}],
-                render: f => `<div style="background:#2b6cb0; color:#fff; padding:10px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2 style="font-size:14px;">${f.media || '[Media]'}</h2><span style="font-size:10px;">${f.email || 'Email'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Creative Director</strong>`
-            },
-            {
-                id: "lh-17", category: "letterheads", featured: false, shape: "circle", title: "General Trading & Export Letterhead", desc: "Import, export, and wholesale corporate letterhead.",
-                fields: [{id:"trade",label:"Company Name",val:""},{id:"ntn",label:"NTN",val:""},{id:"body",label:"Terms",val:""}],
-                render: f => `<div style="border-bottom:1px solid #333; padding-bottom:8px; margin-bottom:15px;"><h2 style="font-size:15px;">${f.trade || '[Trading]'}</h2><p style="font-size:10px; color:#555;">NTN: ${f.ntn || 'NTN'}</p></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Manager</strong>`
-            },
-            {
-                id: "lh-18", category: "letterheads", featured: false, shape: "square", title: "Automotive Workshop Letterhead", desc: "Car service center and auto parts dealer letterhead format.",
-                fields: [{id:"auto",label:"Workshop Name",val:""},{id:"phone",label:"Phone",val:""},{id:"body",label:"Job Card",val:""}],
-                render: f => `<div style="background:#dd6b20; color:#fff; padding:10px; margin-bottom:15px; display:flex; justify-content:space-between;"><h2 style="font-size:14px;">${f.auto || '[Workshop]'}</h2><span style="font-size:10px;">${f.phone || 'Phone'}</span></div><p style="font-size:11px; line-height:1.7; min-height:160px; white-space:pre-line;">${f.body || '[Content]'}</p><br><br><strong>Supervisor</strong>`
-            },
-            {
-                id: "acc-1", category: "accounts", featured: true, shape: "square", title: "Monthly Salary Slip", desc: "Detailed monthly earnings, allowances, tax deductions, and net take-home salary.",
-                fields: [{id:"comp",label:"Company",val:""},{id:"emp",label:"Employee",val:""},{id:"desig",label:"Designation",val:""},{id:"month",label:"Month",val:""},{id:"basic",label:"Basic Salary",val:""},{id:"allow",label:"Allowances",val:""},{id:"ded",label:"Deductions",val:""}],
-                render: f => `<h3>${f.comp || '[Company]'}</h3><p style="text-align:center; font-size:10px;">Salary Statement - ${f.month || '[Month]'}</p><hr><p><strong>Employee:</strong> ${f.emp || '[Name]'} (${f.desig || '[Designation]'})</p><p>Basic: PKR ${f.basic || '0'}</p><p>Allowances: PKR ${f.allow || '0'}</p><p>Deductions: PKR ${f.ded || '0'}</p><hr><h3>Net Payable: PKR ${((Number(f.basic)||0)+(Number(f.allow)||0)-(Number(f.ded)||0))}</h3>`
-            },
-            {
-                id: "hr-4", category: "hr", featured: true, shape: "circle", title: "Employment Offer Letter", desc: "Comprehensive corporate appointment offer with salary breakdown.",
-                fields: [{id:"cand",label:"Candidate",val:""},{id:"desig",label:"Position",val:""},{id:"comp",label:"Company",val:""},{id:"sal",label:"Salary",val:""}],
-                render: f => `<h3>EMPLOYMENT OFFER</h3><p>Dear <strong>${f.cand || '[Candidate]'}</strong>, we offer you <strong>${f.desig || '[Position]'}</strong> at <strong>${f.comp || '[Company]'}</strong> with salary <strong>PKR ${f.sal || '0'}</strong>.</p><br><br><strong>HR Head</strong>`
-            },
-            {
-                id: "tr-1", category: "transport", featured: true, shape: "square", title: "Vehicle Transfer Application", desc: "Formal application letter to Excise & Taxation Department.",
-                fields: [{id:"seller",label:"Seller",val:""},{id:"buyer",label:"Buyer",val:""},{id:"reg",label:"Reg No",val:""},{id:"eng",label:"Engine No",val:""},{id:"chs",label:"Chassis No",val:""}],
-                render: f => `<h3>VEHICLE TRANSFER</h3><p>To Excise. Transfer Reg <strong>${f.reg || '[Reg]'}</strong> from <strong>${f.seller || '[Seller]'}</strong> to <strong>${f.buyer || '[Buyer]'}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><span>Seller Sign</span><span>Buyer Sign</span></div>`
-            },
-            {
-                id: "com-1", category: "commercial", featured: true, shape: "circle", title: "Official Cash Memo", desc: "Detailed cash transaction memo for wholesale/retail sales.",
-                fields: [{id:"biz",label:"Business",val:""},{id:"cust",label:"Customer",val:""},{id:"item",label:"Item",val:""},{id:"amt",label:"Amount",val:""}],
-                render: f => `<h3>${f.biz || '[Business]'}</h3><h3>CASH MEMO</h3><p>Customer: ${f.cust || '[Customer]'}</p><p>Item: ${f.item || '[Item]'}</p><h3>Total: PKR ${f.amt || '0'}</h3><br><br><strong>Cashier</strong>`
-            },
-            {
-                id: "med-1", category: "medical", featured: true, shape: "square", title: "Medical Fitness Certificate", desc: "Standard medical fitness certificate by registered practitioner.",
-                fields: [{id:"doc",label:"Doctor",val:""},{id:"clinic",label:"Clinic",val:""},{id:"pat",label:"Patient",val:""},{id:"find",label:"Findings",val:""}],
-                render: f => `<h3>${f.clinic || '[Clinic]'}</h3><p style="text-align:center; font-size:10px;">${f.doc || '[Doctor]'}</p><hr><h3>FITNESS CERTIFICATE</h3><p>Examined <strong>${f.pat || '[Patient]'}</strong>. Findings: ${f.find || '[Findings]'}. Certified FIT.</p><br><br><strong>Doctor Stamp</strong>`
-            },
-            {
-                id: "prop-1", category: "property", featured: true, shape: "circle", title: "House Rent Agreement", desc: "Residential tenancy contract with security deposit and terms.",
-                fields: [{id:"land",label:"Landlord",val:""},{id:"tenant",label:"Tenant",val:""},{id:"addr",label:"Address",val:""},{id:"rent",label:"Rent",val:""}],
-                render: f => `<h3>RENT AGREEMENT</h3><p>Landlord <strong>${f.land || '[Landlord]'}</strong> lets property at <strong>${f.addr || '[Address]'}</strong> to <strong>${f.tenant || '[Tenant]'}</strong> for PKR <strong>${f.rent || '0'}</strong>.</p><br><br><div style="display:flex; justify-content:space-between;"><span>Landlord</span><span>Tenant</span></div>`
+                id: "com-1", category: "commercial", featured: true, shape: "circle", title: "Commercial Sales & Invoice Slip", desc: "Standard business invoice format for tracking sales items, pricing packages, and client billings.",
+                fields: [
+                    {id:"client",label:"Client / Customer Name",val:"Muhammad Sharif"},
+                    {id:"item",label:"Product / Service Description",val:"Custom Jewelry Locket / Fabric Package"},
+                    {id:"price",label:"Total Amount (PKR)",val:"14,500"}
+                ],
+                render: f => `
+                    <div style="display:flex; justify-content:space-between; border-bottom:2px solid #333; padding-bottom:8px; margin-bottom:15px;">
+                        <div>
+                            <h2 style="font-size:15px;">DOCUHUB COMMERCIAL INVOICE</h2>
+                            <p style="font-size:10px; color:#555;">Sales & Supply Record</p>
+                        </div>
+                        <div style="text-align:right; font-size:10px;">
+                            <p>Date: ${new Date().toLocaleDateString()}</p>
+                            <p>Invoice #: INV-2026-88</p>
+                        </div>
+                    </div>
+                    <p style="font-size:11px; margin-bottom:8px;"><strong>Billed To:</strong> ${f.client || 'Muhammad Sharif'}</p>
+                    <p style="font-size:11px; margin-bottom:15px;"><strong>Description:</strong> ${f.item || 'Custom Product Package'}</p>
+                    <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:15px;">
+                        <tr style="background:#f0eee6;"><th style="border:1px solid #ccc; padding:6px; text-align:left;">Item</th><th style="border:1px solid #ccc; padding:6px; text-align:right;">Total (PKR)</th></tr>
+                        <tr><td style="border:1px solid #ccc; padding:6px;">${f.item || 'Standard Package'}</td><td style="border:1px solid #ccc; padding:6px; text-align:right;">PKR ${f.price || '14,500'}/-</td></tr>
+                    </table>
+                    <br>
+                    <div style="display:flex; justify-content:space-between; font-size:11px;">
+                        <div>Status: <span style="color:green; font-weight:bold;">PAID / VERIFIED</span></div>
+                        <div>Authorized Signature: _________</div>
+                    </div>
+                `
             }
         ];
 
         const DocuHubApp = {
-            isShowingAll: false,
-            currentData: database.filter(i => i.featured),
+            currentCategory: 'all',
+            searchQuery: '',
+            showAll: false,
             activeTemplate: null,
+            currentValues: {},
 
             init() {
-                this.renderGrid(this.currentData);
-            },
-
-            renderGrid(data) {
-                const grid = document.getElementById('templates-grid');
-                if(!grid) return;
-                grid.innerHTML = '';
-                data.forEach((item, index) => {
-                    const card = document.createElement('div');
-                    card.className = `card ${item.shape === 'circle' ? 'shape-circle-card' : ''}`;
-                    if(item.id === 'cv-link-card') {
-                        card.innerHTML = `
-                            <div>
-                                <h3>${index + 1}. ${item.title}</h3>
-                                <p>${item.desc}</p>
-                            </div>
-                            <a href="https://instant-cv-six.vercel.app/" target="_blank" style="background:#1e4d3b; color:#ffffff; padding:7px 14px; font-weight:600; font-size:11px; border-radius:4px; text-decoration:none; display:inline-block; text-align:center; width:fit-content; margin: 0 auto;">Open Live CV &rarr;</a>
-                        `;
-                    } else {
-                        card.innerHTML = `
-                            <div>
-                                <h3>${index + 1}. ${item.title}</h3>
-                                <p>${item.desc}</p>
-                            </div>
-                            <button onclick="DocuHubApp.openModal('${item.id}')">Open Generator &rarr;</button>
-                        `;
-                    }
-                    grid.appendChild(card);
-                });
-            },
-
-            toggleViewAll() {
-                this.isShowingAll = !this.isShowingAll;
-                const headingText = document.getElementById('section-heading-text');
-                const toggleBtn = document.getElementById('view-all-toggle');
-                
-                if(this.isShowingAll) {
-                    headingText.innerText = "All Available Suite Generators";
-                    toggleBtn.innerText = "Show Featured Only 🔼";
-                    this.currentData = [...database];
-                } else {
-                    headingText.innerText = "Featured Top Generators";
-                    toggleBtn.innerText = "View All Generators 🔄";
-                    this.currentData = database.filter(i => i.featured);
-                }
-                this.renderGrid(this.currentData);
+                this.renderTemplates();
             },
 
             filterCategory(cat) {
+                this.currentCategory = cat;
+                this.showAll = true;
                 document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
-                const navAll = document.getElementById('nav-all');
-                if(cat === 'all' && navAll) navAll.classList.add('active');
-
-                if(cat === 'all') {
-                    this.currentData = this.isShowingAll ? [...database] : database.filter(i => i.featured);
-                } else {
-                    this.currentData = database.filter(i => i.category === cat);
-                }
-                this.renderGrid(this.currentData);
+                if(cat === 'all') document.getElementById('nav-all').classList.add('active');
+                document.getElementById('section-heading-text').innerText = cat.toUpperCase() + " GENERATORS";
+                this.renderTemplates();
             },
 
-            handleSearch(keyword) {
-                const term = keyword.toLowerCase();
-                const source = this.isShowingAll ? database : database.filter(i => i.featured);
-                if(!term) {
-                    this.renderGrid(source);
+            handleSearch(query) {
+                this.searchQuery = query.toLowerCase();
+                this.renderTemplates();
+            },
+
+            toggleViewAll() {
+                this.showAll = !this.showAll;
+                document.getElementById('section-heading-text').innerText = this.showAll ? "All Available Generators" : "Featured Top Generators";
+                this.renderTemplates();
+            },
+
+            renderTemplates() {
+                const grid = document.getElementById('templates-grid');
+                let list = database.filter(t => {
+                    let matchCat = (this.currentCategory === 'all' || t.category === this.currentCategory);
+                    let matchSearch = t.title.toLowerCase().includes(this.searchQuery) || t.desc.toLowerCase().includes(this.searchQuery);
+                    let matchFeatured = this.showAll || t.featured;
+                    return matchCat && matchSearch && matchFeatured;
+                });
+
+                if(list.length === 0) {
+                    grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; padding: 30px; color:#777;">No matching generators found.</p>`;
                     return;
                 }
-                const filtered = source.filter(i => i.title.toLowerCase().includes(term) || i.desc.toLowerCase().includes(term));
-                this.renderGrid(filtered);
+
+                grid.innerHTML = list.map(t => `
+                    <div class="card ${t.shape === 'circle' ? 'shape-circle-card' : ''}">
+                        <div>
+                            <h3>${t.title}</h3>
+                            <p>${t.desc}</p>
+                        </div>
+                        <button onclick="DocuHubApp.openModal('${t.id}')">Launch Generator &rarr;</button>
+                    </div>
+                `).join('');
             },
 
             openModal(id) {
-                this.activeTemplate = database.find(i => i.id === id);
-                if(!this.activeTemplate) return;
+                let t = database.find(item => item.id === id);
+                if(!t) return;
+                this.activeTemplate = t;
+                this.currentValues = {};
+                t.fields.forEach(f => this.currentValues[f.id] = f.val);
 
-                document.getElementById('modal-title').innerText = this.activeTemplate.title;
-                const formContainer = document.getElementById('modal-form-fields');
-                formContainer.innerHTML = '';
-
-                this.activeTemplate.fields.forEach(field => {
-                    const group = document.createElement('div');
-                    group.className = 'form-group';
-                    group.innerHTML = `
-                        <label>${field.label}</label>
-                        <input type="text" id="field-${field.id}" value="${field.val}" placeholder="Enter ${field.label}" oninput="DocuHubApp.updatePreview()">
-                    `;
-                    formContainer.appendChild(group);
-                });
-
-                document.getElementById('theme-style-select').value = 'default';
-                document.getElementById('font-family-select').value = 'Calibri, sans-serif';
-
-                this.updatePreview();
+                document.getElementById('modal-title').innerText = t.title;
                 document.getElementById('workspace-modal').style.display = 'flex';
+                this.renderFormFields();
+                this.updatePreview();
+            },
+
+            renderFormFields() {
+                const container = document.getElementById('modal-form-fields');
+                container.innerHTML = this.activeTemplate.fields.map(f => `
+                    <div class="form-group">
+                        <label>${f.label}</label>
+                        ${f.val.length > 50 ? 
+                            `<textarea oninput="DocuHubApp.updateField('${f.id}', this.value)">${f.val}</textarea>` : 
+                            `<input type="text" value="${f.val}" oninput="DocuHubApp.updateField('${f.id}', this.value)">`
+                        }
+                    </div>
+                `).join('');
+            },
+
+            updateField(id, val) {
+                this.currentValues[id] = val;
+                this.updatePreview();
             },
 
             updatePreview() {
-                if(!this.activeTemplate) return;
-                const values = {};
-                this.activeTemplate.fields.forEach(field => {
-                    const input = document.getElementById(`field-${field.id}`);
-                    values[field.id] = input ? input.value : '';
-                });
-                const previewBox = document.getElementById('modal-live-preview');
-                previewBox.innerHTML = this.activeTemplate.render(values);
+                const preview = document.getElementById('modal-live-preview');
+                preview.innerHTML = this.activeTemplate.render(this.currentValues);
             },
 
-            changeFont(fontFamily) {
-                const previewBox = document.getElementById('modal-live-preview');
-                if(previewBox) previewBox.style.fontFamily = fontFamily;
+            changeFont(font) {
+                document.getElementById('modal-live-preview').style.fontFamily = font;
             },
 
-            changeTheme(themeName) {
-                const previewBox = document.getElementById('modal-live-preview');
-                if(!previewBox) return;
-                previewBox.classList.remove('theme-editorial', 'theme-geometric', 'theme-organic', 'theme-darkmode');
-                if(themeName !== 'default') previewBox.classList.add(`theme-${themeName}`);
+            changeTheme(theme) {
+                let prev = document.getElementById('modal-live-preview');
+                prev.className = "preview-box";
+                if(theme !== 'default') {
+                    prev.classList.add('theme-' + theme);
+                }
             },
 
             closeModal() {
                 document.getElementById('workspace-modal').style.display = 'none';
-                this.activeTemplate = null;
-            },
-
-            showInfoModal(title, content) {
-                document.getElementById('info-modal-title').innerText = title;
-                document.getElementById('info-modal-body').innerText = content;
-                document.getElementById('info-modal').style.display = 'flex';
-            },
-
-            closeInfoModal() {
-                document.getElementById('info-modal').style.display = 'none';
             },
 
             showHome() {
                 this.filterCategory('all');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            },
+
+            showInfoModal(title, text) {
+                document.getElementById('info-modal-title').innerText = title;
+                document.getElementById('info-modal-body').innerText = text;
+                document.getElementById('info-modales') || (document.getElementById('info-modal').style.display = 'flex');
+            },
+
+            closeInfoModal() {
+                document.getElementById('info-modal').style.display = 'none';
             }
         };
 
-        window.onload = () => {
-            DocuHubApp.init();
-        };
+        window.onload = () => DocuHubApp.init();
     </script>
 </body>
 </html>
