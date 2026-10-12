@@ -125,7 +125,7 @@
         .info-modal-content p { font-size: 12px; color: #444; line-height: 1.6; margin-bottom: 20px; }
         .info-modal-close { background: #1e4d3b; color: white; border: none; padding: 8px 16px; font-size: 11px; font-weight: 600; border-radius: 4px; cursor: pointer; display: block; margin-left: auto; }
 
-        /* Print / PDF Media Query - Hide website UI, show only clean printable A4 */
+        /* Print / PDF Media Query */
         @media print {
             body { background: none; padding: 0; }
             header, .hero-banner, .main-container, footer, #workspace-modal .modal-header, #workspace-modal .word-toolbar, #workspace-modal .modal-footer, .form-section { display: none !important; }
@@ -246,39 +246,35 @@
             <div class="footer-col">
                 <h4>From DocuHub</h4>
                 <ul>
-                    <li><a onclick="DocuHubApp.showInfoModal('Corporate Letterheads', 'DocuHub offers enterprise-grade stationery and letterhead formats to build clean, professional corporate identity instantly.')">Corporate Letterheads</a></li>
-                    <li><a onclick="DocuHubApp.showInfoModal('Professional Document Hub', 'A centralized suite housing corporate letterheads, resumes, contracts, and financial statements.')">Professional Document Hub</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Corporate Letterheads', 'DocuHub offers enterprise-grade stationery and letterhead formats.')">Corporate Letterheads</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Professional Document Hub', 'A centralized suite housing corporate documents.')">Professional Document Hub</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>About</h4>
                 <ul>
-                    <li><a onclick="DocuHubApp.showInfoModal('About DocuHub', 'DocuHub is a next-generation professional document and stationery suite.')">About DocuHub</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('About DocuHub', 'DocuHub is a next-generation professional document suite.')">About DocuHub</a></li>
                     <li><a onclick="DocuHubApp.showInfoModal('Contact Support', 'Email us at support@docuhub.com.')">Contact Support</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Policies</h4>
                 <ul>
-                    <li><a onclick="DocuHubApp.showInfoModal('Privacy Policy', 'All document entries are processed securely in your browser session.')">Privacy Policy</a></li>
-                    <li><a onclick="DocuHubApp.showInfoModal('Terms of Use', 'Users agree to utilize generated stationery in accordance with professional standards.')">Terms of Use</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Privacy Policy', 'All document entries are secure.')">Privacy Policy</a></li>
+                    <li><a onclick="DocuHubApp.showInfoModal('Terms of Use', 'Standard professional compliance.')">Terms of Use</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Follow Us</h4>
                 <div class="social-links">
-                    <a onclick="DocuHubApp.showInfoModal('Facebook', 'Join our professional community.')" class="social-icon-btn">f</a>
-                    <a onclick="DocuHubApp.showInfoModal('Twitter', 'Follow @DocuHubOfficial')" class="social-icon-btn">𝕏</a>
+                    <a onclick="DocuHubApp.showInfoModal('Facebook', 'Join community.')" class="social-icon-btn">f</a>
+                    <a onclick="DocuHubApp.showInfoModal('Twitter', 'Follow us.')" class="social-icon-btn">𝕏</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="footer-brand">
-                <span>D</span> DocuHub
-            </div>
-            <div class="footer-copy">
-                &copy; 2026 DOCUHUB. ALL RIGHTS RESERVED.
-            </div>
+            <div class="footer-brand"><span>D</span> DocuHub</div>
+            <div class="footer-copy">&copy; 2026 DOCUHUB. ALL RIGHTS RESERVED.</div>
         </div>
     </footer>
 
@@ -347,224 +343,78 @@
                 render: f => `<div style="text-align:center; padding: 30px;"><h2>🌐 Personal Live CV Web Application</h2><p style="margin: 15px 0; color:#555;">Aapki CV website ka direct link neeche diye gaye button par click karke khul sakta hai:</p><a href="https://instant-cv-six.vercel.app/" target="_blank" style="display:inline-block; background:#1e4d3b; color:#fff; padding:12px 25px; border-radius:6px; text-decoration:none; font-weight:bold; margin-top:10px;">Visit My CV Web &rarr;</a></div>`
             },
             {
-                id: "lh-1", category: "letterheads", featured: true, shape: "square", title: "Editorial Minimalist Letterhead", desc: "Clean top header with high-end corporate typography, border accents, and structured body layout.",
-                fields: [
-                    {id:"logo",label:"Company Logo URL (Optional)",val:""},
-                    {id:"comp",label:"Company Name",val:"BURQUE CORPORATION PVT LTD"},
-                    {id:"phone",label:"Phone",val:"+92 21 00000000"},
-                    {id:"email",label:"Email",val:"info@burque.com"},
-                    {id:"addr",label:"Address",val:"Head Office, Karachi, Pakistan"},
-                    {id:"ref",label:"Reference No.",val:"BCL/HR/2026/001"},
-                    {id:"subject",label:"Subject",val:"OFFICIAL CORPORATE CORRESPONDENCE"},
-                    {id:"body",label:"Letter Content",val:"Dear Team,\n\nThis is to formally communicate the administrative updates regarding our operational workflows and compliance standards for the current financial quarter.\n\nKindly ensure strict adherence to all designated reporting protocols and timelines."}
-                ],
-                render: f => `
-                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #222; padding-bottom:12px; margin-bottom:15px;">
-                        <div style="display:flex; align-items:center; gap:12px;">
-                            ${f.logo ? `<img src="${f.logo}" style="width:45px; height:45px; object-fit:contain;" alt="Logo"/>` : ''}
-                            <div>
-                                <h2 style="font-size:16px; font-family:'Georgia',serif; color:#111;">${f.comp || '[Company Name]'}</h2>
-                                <p style="font-size:10px; color:#555;">${f.addr || '[Address]'}</p>
-                            </div>
-                        </div>
-                        <div style="text-align:right; font-size:10px; color:#555;">
-                            <p><strong>Ref:</strong> ${f.ref || 'BCL/2026/001'}</p>
-                            <p>Phone: ${f.phone || '+00 000 0000000'}</p>
-                            <p>Email: ${f.email || 'info@company.com'}</p>
-                        </div>
-                    </div>
-                    <p style="font-size:11px; margin-bottom:8px;">Date: <strong>${new Date().toLocaleDateString()}</strong></p>
-                    <p style="font-size:11px; margin-bottom:12px; font-weight:bold; text-decoration:underline;">SUBJECT: ${f.subject || '[Subject]'}</p>
-                    <p style="font-size:11px; line-height:1.7; min-height:150px; white-space:pre-line;">${f.body || '[Type your letter here...]'}</p>
-                    <br><br>
-                    <div style="display:flex; justify-content:space-between; margin-top:30px; font-size:11px;">
-                        <div><strong>Prepared By:</strong> Administration</div>
-                        <div><strong>Authorized Signatory:</strong> ___________________</div>
-                    </div>
-                `
-            },
-            {
-                id: "lh-2", category: "letterheads", featured: true, shape: "circle", title: "Dynamic Geometric Tech Letterhead", desc: "Modern corporate letterhead featuring bottom/top accent bar, sleek contact info, and agency look.",
-                fields: [
-                    {id:"logo",label:"Logo URL (Optional)",val:""},
-                    {id:"comp",label:"Agency Name",val:"DOCUHUB TECH SOLUTIONS"},
-                    {id:"tag",label:"Tagline",val:"Enterprise Software & Digital Infrastructure"},
-                    {id:"phone",label:"Phone",val:"+92 300 0000000"},
-                    {id:"email",label:"Email",val:"support@docuhub.com"},
-                    {id:"body",label:"Content",val:"Dear Client,\n\nWe acknowledge receipt of your requirements for system integration and documentation structuring. Our technical team has initiated the evaluation phase."}
-                ],
-                render: f => `
-                    <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:3px solid #3182ce; padding-bottom:10px; margin-bottom:15px;">
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            ${f.logo ? `<img src="${f.logo}" style="width:40px; height:40px; object-fit:contain;" alt="Logo"/>` : ''}
-                            <div>
-                                <h2 style="font-size:15px; color:#2b6cb0; font-weight:bold;">${f.comp || '[Agency Name]'}</h2>
-                                <p style="font-size:10px; color:#718096;">${f.tag || '[Digital Solutions]'}</p>
-                            </div>
-                        </div>
-                        <div style="font-size:10px; color:#4a5568; text-align:right;">
-                            <p>Date: ${new Date().toLocaleDateString()}</p>
-                        </div>
-                    </div>
-                    <p style="font-size:11px; line-height:1.7; min-height:150px; white-space:pre-line;">${f.body || '[Content here...]'}</p>
-                    <div style="margin-top:30px; border-top:1px solid #cbd5e0; padding-top:8px; display:flex; justify-content:space-between; font-size:10px; color:#4a5568;">
-                        <span>📞 ${f.phone || 'Phone'}</span><span>✉ ${f.email || 'Email'}</span>
-                    </div>
-                `
-            },
-            {
-                id: "lh-3", category: "letterheads", featured: true, shape: "square", title: "Warm Organic Creative Letterhead", desc: "Soft earth-toned stationery layout suited for wellness studios, boutiques, and creative consultancies.",
-                fields: [
-                    {id:"logo",label:"Logo URL (Optional)",val:""},
-                    {id:"comp",label:"Studio Name",val:"AURA CREATIVE STUDIO"},
-                    {id:"addr",label:"Address",val:"Clifton Block 4, Karachi"},
-                    {id:"body",label:"Letter Body",val:"Dear Partner,\n\nWe are delighted to present our conceptual design drafts and layout architectures for your upcoming product portfolio."}
-                ],
-                render: f => `
-                    <div style="background:#fdfbf7; border-left:4px solid #8c6d62; padding:10px 12px; margin-bottom:15px; display:flex; align-items:center; gap:10px;">
-                        ${f.logo ? `<img src="${f.logo}" style="width:38px; height:38px; object-fit:contain;" alt="Logo"/>` : ''}
-                        <div>
-                            <h2 style="font-size:14px; color:#8c6d62; font-weight:bold;">${f.comp || '[Studio Name]'}</h2>
-                            <p style="font-size:10px; color:#777;">${f.addr || '[Address]'}</p>
-                        </div>
-                    </div>
-                    <p style="font-size:11px; line-height:1.7; min-height:150px; white-space:pre-line;">${f.body || '[Body here...]'}</p>
-                    <br><br>
-                    <div style="text-align:right; font-size:11px;"><strong>Creative Director</strong></div>
-                `
-            },
-            {
-                id: "lh-4", category: "accounts", featured: true, shape: "square", title: "Salary Slip & Payroll Statement", desc: "Official monthly salary statement with earnings, deductions, and net payable calculations.",
-                fields: [
-                    {id:"emp",label:"Employee Name",val:"Shahrukh Siddiqui"},
-                    {id:"desig",label:"Designation",val:"Senior Accountant"},
-                    {id:"basic",label:"Basic Salary (PKR)",val:"68,000"},
-                    {id:"allow",label:"Allowances (PKR)",val:"12,000"},
-                    {id:"ded",label:"Deductions (PKR)",val:"3,000"}
-                ],
-                render: f => {
-                    let basic = parseFloat(f.basic) || 68000;
-                    let allow = parseFloat(f.allow) || 12000;
-                    let ded = parseFloat(f.ded) || 3000;
-                    let net = basic + allow - ded;
-                    return `
-                        <div style="text-align:center; border-bottom:2px solid #1e4d3b; padding-bottom:8px; margin-bottom:15px;">
-                            <h2 style="font-size:15px; color:#1e4d3b;">TAJ AL HUDA - PAYROLL DIVISION</h2>
-                            <p style="font-size:10px; color:#555;">Monthly Salary Disbursement Slip (${new Date().toLocaleString('default', { month: 'long', year: 'numeric' })} )</p>
-                        </div>
-                        <p style="font-size:11px; margin-bottom:5px;"><strong>Employee:</strong> ${f.emp || 'Shahrukh Siddiqui'}</p>
-                        <p style="font-size:11px; margin-bottom:15px;"><strong>Designation:</strong> ${f.desig || 'Senior Accountant'}</p>
-                        <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:15px;">
-                            <tr style="background:#f0eee6;"><th style="border:1px solid #d5d1c8; padding:6px; text-align:left;">Earnings</th><th style="border:1px solid #d5d1c8; padding:6px; text-align:right;">Amount (PKR)</th></tr>
-                            <tr><td style="border:1px solid #d5d1c8; padding:6px;">Basic Pay</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">${basic.toLocaleString()}</td></tr>
-                            <tr><td style="border:1px solid #d5d1c8; padding:6px;">Allowances / Bonus</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">${allow.toLocaleString()}</td></tr>
-                            <tr><td style="border:1px solid #d5d1c8; padding:6px;">Less: Deductions / Tax</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">-${ded.toLocaleString()}</td></tr>
-                            <tr style="background:#faf9f5; font-weight:bold;"><td style="border:1px solid #d5d1c8; padding:6px;">Net Payable Salary</td><td style="border:1px solid #d5d1c8; padding:6px; text-align:right;">PKR ${net.toLocaleString()} /-</td></tr>
-                        </table>
-                        <br>
-                        <div style="display:flex; justify-content:space-between; margin-top:40px; font-size:11px;">
-                            <div><strong>Employee Signature:</strong> _________</div>
-                            <div><strong>Accounts Head:</strong> _________</div>
-                        </div>
-                    `;
-                }
-            },
-            {
                 id: "hr-1", category: "hr", featured: true, shape: "circle", title: "Employment Offer Letter", desc: "Comprehensive corporate offer letter with salary breakdown, probation terms, and acceptance signature blocks.",
                 fields: [
                     {id:"logo",label:"Logo URL (Optional)",val:""},
-                    {id:"comp",label:"Company Name",val:"BURQUE CORPORATION PVT LTD"},
-                    {id:"cand",label:"Candidate Name",val:"Shahrukh Siddiqui"},
-                    {id:"pos",label:"Position",val:"Internal Audit / Senior Accountant"},
-                    {id:"sal",label:"Gross Monthly Salary (PKR)",val:"68,000"},
+                    {id:"comp",label:"Company Name",val:"TAJ AL HUDA"},
+                    {id:"cand",label:"Candidate Name",val:"Shahrukh"},
+                    {id:"pos",label:"Position / Designation",val:"Audit"},
+                    {id:"sal",label:"Gross Monthly Salary (PKR)",val:"55,000"},
                     {id:"date",label:"Joining Date",val:"01 November 2026"}
                 ],
                 render: f => `
-                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #1a365d; padding-bottom:10px; margin-bottom:15px;">
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            ${f.logo ? `<img src="${f.logo}" style="width:40px; height:40px; object-fit:contain;" alt="Logo"/>` : ''}
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #1a365d; padding-bottom:12px; margin-bottom:18px;">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            ${f.logo ? `<img src="${f.logo}" style="width:45px; height:45px; object-fit:contain;" alt="Logo"/>` : ''}
                             <div>
-                                <h2 style="font-size:15px; color:#1a365d;">${f.comp || 'BURQUE CORPORATION PVT LTD'}</h2>
-                                <p style="font-size:10px; color:#666;">Human Resources Department</p>
+                                <h2 style="font-size:16px; color:#1a365d; font-weight:bold;">${f.comp || 'TAJ AL HUDA'}</h2>
+                                <p style="font-size:10px; color:#555;">Corporate Head Office & Audit Division</p>
                             </div>
                         </div>
                         <div style="text-align:right; font-size:10px; color:#555;">
-                            <p>Ref: BCL/HR/OFFER/2026</p>
-                            <p>Date: ${new Date().toLocaleDateString()}</p>
+                            <p><strong>Ref:</strong> TAH/HR/OFFER/2026/09</p>
+                            <p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
                         </div>
                     </div>
-                    <p style="font-size:11px; font-weight:bold; margin-bottom:10px;">To: ${f.cand || 'Shahrukh Siddiqui'}</p>
-                    <p style="font-size:12px; font-weight:bold; color:#1a365d; margin-bottom:12px; text-decoration:underline;">SUBJECT: OFFER OF EMPLOYMENT</p>
-                    <div style="font-size:11px; line-height:1.6;">
-                        <p style="margin-bottom:8px;">Dear <strong>${f.cand || 'Shahrukh Siddiqui'}</strong>,</p>
-                        <p style="margin-bottom:8px;">We are pleased to offer you formal employment at <strong>${f.comp || 'Burque Corporation'}</strong> starting from <strong>${f.date || '01 November 2026'}</strong> for the position of <strong>${f.pos || 'Internal Audit'}</strong>.</p>
-                        <p style="margin-bottom:8px;">Your gross monthly compensation will be <strong>PKR ${f.sal || '68,000'}/-</strong> subject to standard statutory deductions and company policies.</p>
-                        <p style="margin-bottom:8px;"><strong>Terms & Conditions:</strong></p>
-                        <ul style="margin-left:18px; margin-bottom:10px;">
-                            <li>Initial probation period shall be 3 months from the date of joining.</li>
-                            <li>All operational records and internal audit data shall remain strictly confidential.</li>
+
+                    <div style="font-size:11.5px; margin-bottom:15px;">
+                        <p><strong>To:</strong> ${f.cand || 'Shahrukh'}</p>
+                        <p><strong>Location:</strong> Karachi, Pakistan</p>
+                    </div>
+
+                    <div style="font-size:13px; font-weight:bold; color:#1a365d; margin-bottom:15px; text-decoration:underline;">SUBJECT: FORMAL OFFER OF EMPLOYMENT</div>
+
+                    <div style="font-size:11.5px; line-height:1.7; text-align:justify;">
+                        <p style="margin-bottom:10px;">Dear <strong>${f.cand || 'Shahrukh'}</strong>,</p>
+                        
+                        <p style="margin-bottom:10px;">We are pleased to offer you professional employment at <strong>${f.comp || 'Taj Al Huda'}</strong> effective from <strong>${f.date || '01 November 2026'}</strong>, under the designation of <strong>${f.pos || 'Audit'}</strong>. Your credentials and analytical capabilities align well with our organizational standards.</p>
+
+                        <p style="margin-bottom:10px;">The key terms and compensation details of your appointment are outlined below:</p>
+
+                        <table style="width:100%; border-collapse:collapse; margin:12px 0; font-size:11.5px;">
+                            <tr style="background:#edf2f7; color:#1a365d;">
+                                <th style="border:1px solid #cbd5e0; padding:8px; text-align:left;">Compensation Particulars</th>
+                                <th style="border:1px solid #cbd5e0; padding:8px; text-align:right;">Amount (PKR)</th>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #cbd5e0; padding:8px;">Gross Monthly Salary</td>
+                                <td style="border:1px solid #cbd5e0; padding:8px; text-align:right;">PKR ${f.sal || '55,000'}/-</td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #cbd5e0; padding:8px;">Probationary Period</td>
+                                <td style="border:1px solid #cbd5e0; padding:8px; text-align:right;">3 Months</td>
+                            </tr>
+                        </table>
+
+                        <p style="margin-bottom:8px;"><strong>Employment Terms & Conditions:</strong></p>
+                        <ul style="margin-left:20px; margin-bottom:12px;">
+                            <li><strong>Working Hours:</strong> Standard corporate office hours and schedule as designated by department management.</li>
+                            <li><strong>Confidentiality:</strong> All internal financial statements, audit records, and proprietary data must remain strictly confidential.</li>
+                            <li><strong>Notice Period:</strong> During probation, either party may terminate agreement with 14 days' written notice.</li>
                         </ul>
-                        <p>Please sign and return the duplicate of this letter as confirmation of your acceptance.</p>
+
+                        <p style="margin-bottom:15px;">Please sign and return a duplicate copy of this letter as an expression of your formal acceptance within three working days.</p>
                     </div>
-                    <br>
-                    <div style="display:flex; justify-content:space-between; margin-top:35px; font-size:11px;">
-                        <div><strong>Authorized HR Head</strong><br><br>___________________</div>
-                        <div><strong>Candidate Acceptance</strong><br><br>___________________</div>
-                    </div>
-                `
-            },
-            {
-                id: "tr-1", category: "transport", featured: true, shape: "square", title: "Motorcycle Fuel & Maintenance Log", desc: "Detailed tracking sheet for daily 70cc motorcycle commute, oil changes, and fuel consumption.",
-                fields: [
-                    {id:"bike",label:"Vehicle / Model",val:"Union Star 70cc (Hyundai 10W-40)"},
-                    {id:"km",label:"Monthly Mileage (Km)",val:"950 km"},
-                    {id:"fuel",label:"Fuel Consumed (Litres)",val:"38 Litres"},
-                    {id:"note",label:"Maintenance Note",val:"Oil changed at 900 km interval. Spark plug checked."}
-                ],
-                render: f => `
-                    <div style="border-bottom:2px solid #1e4d3b; padding-bottom:8px; margin-bottom:15px; text-align:center;">
-                        <h2 style="font-size:15px; color:#1e4d3b;">VEHICLE OPERATIONAL & MAINTENANCE LOG</h2>
-                        <p style="font-size:10px; color:#555;">Daily Commute & Engine Maintenance Record</p>
-                    </div>
-                    <p style="font-size:11px; margin-bottom:8px;"><strong>Vehicle:</strong> ${f.bike || 'Union Star 70cc'}</p>
-                    <p style="font-size:11px; margin-bottom:12px;"><strong>Total Mileage Covered:</strong> ${f.km || '950 km'}</p>
-                    <p style="font-size:11px; margin-bottom:15px;"><strong>Fuel Consumption:</strong> ${f.fuel || '38 Litres'}</p>
-                    <div style="background:#f9fafb; border:1px solid #d5d1c8; padding:10px; border-radius:4px; font-size:11px; margin-bottom:15px;">
-                        <strong>Service & Maintenance Remarks:</strong><br>
-                        ${f.note || 'Regular oil dipstick check performed daily prior to starting commute.'}
-                    </div>
-                    <br>
-                    <div style="text-align:right; font-size:11px;"><strong>Verified By Owner / Rider</strong><br><br>___________________</div>
-                `
-            },
-            {
-                id: "com-1", category: "commercial", featured: true, shape: "circle", title: "Commercial Sales & Invoice Slip", desc: "Standard business invoice format for tracking sales items, pricing packages, and client billings.",
-                fields: [
-                    {id:"client",label:"Client / Customer Name",val:"Muhammad Sharif"},
-                    {id:"item",label:"Product / Service Description",val:"Custom Jewelry Locket / Fabric Package"},
-                    {id:"price",label:"Total Amount (PKR)",val:"14,500"}
-                ],
-                render: f => `
-                    <div style="display:flex; justify-content:space-between; border-bottom:2px solid #333; padding-bottom:8px; margin-bottom:15px;">
-                        <div>
-                            <h2 style="font-size:15px;">DOCUHUB COMMERCIAL INVOICE</h2>
-                            <p style="font-size:10px; color:#555;">Sales & Supply Record</p>
+
+                    <div style="display:flex; justify-content:space-between; margin-top:45px; font-size:11.5px; page-break-inside: avoid;">
+                        <div style="width: 40%; text-align: center;">
+                            <div style="border-top: 1px solid #2d3748; padding-top: 5px; font-weight: bold;">Authorized HR Management</div>
+                            <p style="font-size:10px; color:#666;">Taj Al Huda</p>
                         </div>
-                        <div style="text-align:right; font-size:10px;">
-                            <p>Date: ${new Date().toLocaleDateString()}</p>
-                            <p>Invoice #: INV-2026-88</p>
+                        <div style="width: 40%; text-align: center;">
+                            <div style="border-top: 1px solid #2d3748; padding-top: 5px; font-weight: bold;">Candidate Acceptance</div>
+                            <p style="font-size:10px; color:#666;">Signature & Date</p>
                         </div>
-                    </div>
-                    <p style="font-size:11px; margin-bottom:8px;"><strong>Billed To:</strong> ${f.client || 'Muhammad Sharif'}</p>
-                    <p style="font-size:11px; margin-bottom:15px;"><strong>Description:</strong> ${f.item || 'Custom Product Package'}</p>
-                    <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:15px;">
-                        <tr style="background:#f0eee6;"><th style="border:1px solid #ccc; padding:6px; text-align:left;">Item</th><th style="border:1px solid #ccc; padding:6px; text-align:right;">Total (PKR)</th></tr>
-                        <tr><td style="border:1px solid #ccc; padding:6px;">${f.item || 'Standard Package'}</td><td style="border:1px solid #ccc; padding:6px; text-align:right;">PKR ${f.price || '14,500'}/-</td></tr>
-                    </table>
-                    <br>
-                    <div style="display:flex; justify-content:space-between; font-size:11px;">
-                        <div>Status: <span style="color:green; font-weight:bold;">PAID / VERIFIED</span></div>
-                        <div>Authorized Signature: _________</div>
                     </div>
                 `
             }
@@ -685,7 +535,7 @@
             showInfoModal(title, text) {
                 document.getElementById('info-modal-title').innerText = title;
                 document.getElementById('info-modal-body').innerText = text;
-                document.getElementById('info-modales') || (document.getElementById('info-modal').style.display = 'flex');
+                document.getElementById('info-modal').style.display = 'flex';
             },
 
             closeInfoModal() {
