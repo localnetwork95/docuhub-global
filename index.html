@@ -82,6 +82,11 @@
         .remove-line-btn { color: #9b4a3c; }
         .invoice-adjustments { border-top: 1px solid #e4e9e4; padding-top: 12px; margin-top: 5px; }
         .invoice-adjustments h4 { margin-bottom: 8px; }
+        .invoice-toggle { display:flex; align-items:center; gap:9px; margin:0; color:#36493d; font-size:11px; font-weight:600; cursor:pointer; }
+        .invoice-toggle input { width:15px; height:15px; accent-color:#1e4d3b; }
+        .optional-calc { padding:8px 9px; margin:5px 0; border:1px solid #e5ebe5; border-radius:6px; background:#fff; }
+        .optional-calc > input { margin-top:7px; }
+        .optional-hint { color:#7b887d; font-size:9px; font-weight:400; }
         .invoice-totals { width: min(100%, 390px); margin: 16px 0 0 auto; font-size: 11px; }
         .invoice-totals > div { display: flex; justify-content: space-between; gap: 20px; padding: 5px 0; border-bottom: 1px solid #edf0ec; }
         .invoice-grand-total { margin-top: 4px; padding: 9px 0 !important; border-top: 2px solid #1e4d3b; border-bottom: 2px solid #1e4d3b !important; color: #1e4d3b; font-size: 14px; }
@@ -396,6 +401,50 @@
             { cat: "sale_purchase", title: "Credit Note / Debit Note", desc: "Adjustment Deed", type: "invoice", rec: "", sub: "CREDIT / DEBIT NOTE", body: "This balance adjustment entry rectifies commercial ledger accounts for returned merchandise or billing corrections.\n\nVerified by accounts.", suggestion: "1. Ledger account adjusted.\n2. Verified by accounts." }
         ];
 
+        const DOCUMENT_COPY = {
+            "letters|Appointment / Offer Letter": { body: `We are pleased to offer you the position described in this letter. The appointment details, proposed start date, compensation, probation period, and work location are recorded above for your review. Please confirm acceptance by signing and returning a copy to Human Resources.`, suggestion: `1. Confirm the start date and compensation before signing.\n2. Provide the identity, education, and payroll documents requested by HR.` },
+            "letters|Confirmation Letter": { body: `This letter confirms that your probation review has been completed and your employment is continuing in the position stated above, effective on the confirmation date. Any updated compensation or employment terms are listed in this document.`, suggestion: `1. Retain this confirmation with your employment records.\n2. Contact HR if your title, department, or pay details need correction.` },
+            "letters|Increment / Promotion Letter": { body: `Management has approved the role and compensation change recorded above. The revised position and salary take effect on the stated effective date and will be reflected in payroll from the applicable pay period.`, suggestion: `1. Review the revised title and monthly salary before acknowledging.\n2. HR and Payroll should update the employee record for the effective period.` },
+            "letters|Experience / Service Certificate": { body: `This certificate records the employee's role and service period with the organization. It is issued at the employee's request as confirmation of the employment information entered above.`, suggestion: `1. Verify the employee name, job title, and service dates before issuing.\n2. Add the authorized signatory's name and contact details if required.` },
+            "letters|Demand / Dunning Letter": { body: `Our records show that the referenced invoice remains unpaid after its due date. Please review the outstanding amount and payment deadline shown above, and contact Accounts promptly if you have already paid or believe the balance needs reconciliation.`, suggestion: `1. Match the balance against the original invoice and receipts.\n2. Record any payment arrangement or dispute before sending.` },
+            "letters|Bank Confirmation Letter": { body: `This letter confirms the business banking details entered above for the stated verification purpose. It is issued at the account holder's request and should be checked against the bank's current records before being provided to a third party.`, suggestion: `1. Verify the account title, account number, IBAN, branch, and bank name.\n2. Obtain approval from an authorized company signatory.` },
+            "letters|Resignation / Termination Letter": { body: `This notice records the employment separation and last working day stated above. The employee and organization should coordinate notice obligations, handover, return of property, access closure, and final settlement through the relevant departments.`, suggestion: `1. Confirm the separation date and notice status with HR.\n2. Complete the asset, access, and finance clearance checklist.` },
+            "invoices|Standard Sales Invoice": { body: `This sales invoice itemizes the goods or services supplied and the amount payable. Check each description, quantity, unit rate, and any selected adjustment before issuing the final copy.`, suggestion: `1. Reference the accepted order or sales agreement.\n2. Record the payment method and due date where applicable.` },
+            "invoices|Proforma Invoice": { body: `This proforma invoice is a preliminary estimate prepared before final supply or billing. It summarizes the proposed items, quantities, prices, and any optional charges or taxes selected for this estimate.`, suggestion: `1. State the estimate validity period in the payment terms.\n2. Issue a final invoice when the supply or service is confirmed.` },
+            "invoices|Tax / GST Invoice": { body: `This invoice records the taxable supply, including item descriptions, quantities, unit values, and the tax treatment selected for each line. Enter the supplier and recipient registration details and applicable tax references before issuing.`, suggestion: `1. Confirm tax registration and rates for the transaction and jurisdiction.\n2. Keep the invoice number and original transaction reference with the accounts record.` },
+            "invoices|Commercial Invoice": { body: `This commercial invoice records the goods supplied and the agreed transaction value for the buyer. Add the purchase order, delivery address, origin, carrier, and trade terms when they apply to the shipment.`, suggestion: `1. Match item descriptions and quantities to the dispatch documents.\n2. Confirm currency, delivery terms, and buyer details before release.` },
+            "invoices|Credit Note / Debit Note": { body: `Use this adjustment document to record a decrease or increase against an earlier invoice. Identify the original invoice and state the reason and corrected values so both parties can reconcile their accounts.`, suggestion: `1. Link the note to the original invoice and transaction.\n2. Confirm the adjustment direction and tax treatment before posting.` },
+            "invoices|Recurring Invoice": { body: `This invoice covers the recurring service or subscription for the billing period entered in the document. Review the subscription items, billing cycle, and payment due date before sending it to the customer.`, suggestion: `1. Check the billing period and current subscription status.\n2. Stop or amend future billing when the service is cancelled or changed.` },
+            "ledgers|General Ledger (GL)": { body: `Use this ledger to record journal references, account descriptions, debit entries, credit entries, and the resulting running balance for the selected period. Each line should be traceable to its supporting voucher or source record.`, suggestion: `1. Reconcile opening and closing balances to the trial balance.\n2. Attach or reference supporting vouchers for each posting.` },
+            "ledgers|Accounts Receivable Ledger (AR Ledger)": { body: `This customer ledger tracks invoices, credit notes, receipts, and the balance due by customer. Use the transaction reference and date to support follow-up and aging review.`, suggestion: `1. Reconcile customer balances to the control account.\n2. Record disputes, receipts, and agreed payment dates against the relevant entry.` },
+            "ledgers|Accounts Payable Ledger (AP Ledger)": { body: `This supplier ledger tracks bills, debit or credit adjustments, payments, and outstanding amounts. The due date and supporting supplier reference help Accounts plan settlements and resolve differences.`, suggestion: `1. Match supplier bills to purchase orders and receipt records.\n2. Reconcile the ledger with supplier statements before payment.` },
+            "ledgers|Cash Ledger / Cash Book": { body: `This cash book records cash received and cash paid during the period, with each movement linked to a receipt, voucher, or approved expense. The running balance should agree with the physical cash count.`, suggestion: `1. Count and reconcile cash at the end of each day or shift.\n2. Keep receipts and payment vouchers in sequence.` },
+            "ledgers|Bank Ledger / Bank Book": { body: `This bank ledger records deposits, withdrawals, transfers, bank charges, and other statement movements for the selected account. Use the bank reference to support reconciliation of the book balance to the statement.`, suggestion: `1. Reconcile outstanding deposits and payments to the bank statement.\n2. Record bank fees and corrections with their source references.` },
+            "ledgers|Inventory / Stock Ledger": { body: `This stock ledger records receipts and issues by item, reference, and date, then updates the running quantity on hand. Use consistent item codes and units to make stock counts and reorder decisions reliable.`, suggestion: `1. Reconcile the closing quantities to a physical count.\n2. Record returns, damaged stock, and adjustments with approval references.` },
+            "hr_notices|Offer / Appointment Letter": { body: `We are pleased to offer you the position and employment terms recorded in this letter. The role, department, reporting line, start date, compensation, and any probation period should be reviewed before acceptance.`, suggestion: `1. Confirm the role, start date, salary, and probation details.\n2. Return the signed acceptance and requested onboarding documents to HR.` },
+            "hr_notices|Probation Confirmation Letter": { body: `Following the probation review, your employment is confirmed in the role stated above from the effective date shown. Any revised compensation, benefits, or reporting details are recorded in this notice.`, suggestion: `1. File this notice in the employee record.\n2. Update payroll and benefits from the effective date.` },
+            "hr_notices|Increment / Promotion Letter": { body: `This notice records the approved change to the employee's position and compensation. The revised title, salary, and effective date should be entered accurately so HR and Payroll can update their records.`, suggestion: `1. Confirm the revised compensation with the employee and approver.\n2. Apply the change from the stated payroll period.` },
+            "hr_notices|Transfer / Relocation Letter": { body: `This notice confirms the employee's transfer to the department, reporting line, or work location shown above. The effective date and any relocation arrangements should be agreed with the employee and receiving manager.`, suggestion: `1. Confirm the transfer date and receiving manager.\n2. Coordinate equipment, access, travel, and payroll changes with the relevant teams.` },
+            "hr_notices|Warning / Show Cause Notice": { body: `This notice sets out the reported concern, relevant dates, and policy reference for the employee's response. The employee should be given a clear opportunity to provide their account by the response deadline stated above.`, suggestion: `1. Record verified facts and provide the employee a copy of relevant material.\n2. Keep the response and review outcome with the confidential HR case record.` },
+            "hr_notices|Experience / Service Certificate": { body: `This certificate confirms the employee's service period and position as recorded above. It is issued for employment verification at the employee's request.`, suggestion: `1. Verify names, title, and dates against the personnel record.\n2. Obtain the authorized HR signatory's approval.` },
+            "hr_notices|Relief / Experience Letter": { body: `This letter confirms that the employee has been relieved from the role on the last working day shown above after completing the recorded handover and clearance steps.`, suggestion: `1. Confirm the last working day and clearance status.\n2. Provide the signed copy to the employee and retain a copy in the HR file.` },
+            "hr_notices|Resignation Acceptance Letter": { body: `The organization acknowledges and accepts the employee's resignation effective on the date recorded above. Notice obligations, handover, final pay, and return of company property should be completed through the exit process.`, suggestion: `1. Confirm the notice period and approved last working day.\n2. Begin asset, access, and final settlement clearance.` },
+            "hr_notices|Termination / Dismissal Letter": { body: `This letter records the employment decision and effective separation date stated above. The employee should receive the applicable explanation, final-pay information, and instructions for returning company property and completing clearance.`, suggestion: `1. Confirm the decision and dates with the authorized reviewer.\n2. Record delivery of the notice and complete final settlement.` },
+            "hr_agreements|Employee Application Form / CV Format": { body: `Complete this application with accurate contact details, education, work history, skills, and references. The information will be used by the recruitment team to assess the application and contact the candidate.`, suggestion: `1. Attach the requested certificates and supporting records.\n2. Review contact details and confirm the information is accurate.` },
+            "hr_agreements|Employment / Service Agreement (Contract)": { body: `This agreement records the position, duties, work location, compensation, schedule, benefits, start date, and other employment terms agreed by the parties. Read each term and complete any schedules before signing.`, suggestion: `1. Confirm that all referenced policies and schedules are attached.\n2. Provide a signed copy to each party and retain it securely.` },
+            "hr_agreements|Non-Disclosure Agreement (NDA)": { body: `This agreement identifies the parties, the permitted purpose for sharing confidential information, and the handling obligations that apply to that information. Complete the term, exclusions, return or destruction process, and governing-law details before signature.`, suggestion: `1. Limit access to people who need the information for the stated purpose.\n2. Record the effective date and each party's authorized signatory.` },
+            "hr_agreements|Employee Personal Information Sheet": { body: `Use this form to collect the employee's identity, contact, emergency, payroll, and next-of-kin details for employment administration. Share the information only with authorized staff who need it for their work.`, suggestion: `1. Ask the employee to verify the details and update them when they change.\n2. Store the completed sheet in the restricted personnel record.` },
+            "hr_agreements|Leave Application Form": { body: `The employee requests leave for the dates and leave type entered above and identifies any work handover or coverage plan. The designated approver should record the decision before the leave begins.`, suggestion: `1. Confirm the leave balance and requested dates.\n2. Record approval or rejection and notify the employee and team.` },
+            "hr_agreements|Loan / Advance Request Form": { body: `The employee requests the advance or loan amount recorded above and provides the proposed repayment period. The displayed installment is an estimate based on the entered principal, rate, and term; record the approved repayment terms before processing.`, suggestion: `1. Confirm the approved amount, rate, and payroll deduction schedule.\n2. Obtain employee acknowledgment and authorized finance approval.` },
+            "hr_agreements|Performance Appraisal Form": { body: `Use this review to document objectives, results, strengths, development needs, and the employee's comments for the stated review period. The manager and employee should discuss the assessment and agree on next steps.`, suggestion: `1. Base ratings on documented expectations and examples.\n2. Record agreed goals, support, and follow-up dates.` },
+            "hr_agreements|Exit Interview Form": { body: `This interview records the employee's feedback, reason for leaving, and any handover or clearance matters. Explain how the information will be used and keep the completed record with restricted HR files.`, suggestion: `1. Record feedback neutrally and distinguish facts from opinions.\n2. Track any unresolved handover or clearance actions to completion.` },
+            "hr_records|Employee Master Register / Directory": { body: `Maintain one current row for each employee, using a unique employee ID and verified contact, department, position, and joining details. Update status changes promptly and limit access to authorized HR staff.`, suggestion: `1. Check for duplicate employee IDs before adding a record.\n2. Review the directory on a regular schedule and protect personal data.` },
+            "hr_records|Attendance & Time-In Register": { body: `Record each employee's shift, start time, end time, and any attendance exception for the selected period. The hours column is calculated from the recorded times and can be reconciled with approved schedules.`, suggestion: `1. Confirm entries with the employee or approved timekeeping source.\n2. Send verified totals to Payroll before the cutoff.` },
+            "hr_records|Leave Record Register": { body: `Track each approved leave period by employee, leave type, dates, days used, and decision status. The requested calendar days are calculated from the entered start and end dates.`, suggestion: `1. Reconcile balances with approved applications and policy entitlements.\n2. Update the employee record after each approved leave.` },
+            "hr_records|Overtime (OT) Log Register": { body: `Record approved overtime by employee, date, hours, and rate. The amount column calculates hours multiplied by the entered rate for review before payroll processing.`, suggestion: `1. Confirm prior approval and the applicable overtime rate.\n2. Reconcile approved amounts to the payroll period.` },
+            "hr_records|Monthly Payroll & Salary Sheet": { body: `This payslip summarizes basic pay, allowances, overtime, bonus, withholding, and other deductions for the stated period. Gross and net pay update from the figures entered in the payroll fields.`, suggestion: `1. Verify attendance, pay changes, deductions, and tax inputs before release.\n2. Distribute payslips securely and retain payroll records under company policy.` },
+            "hr_records|Full & Final (F&F) Settlement Sheet": { body: `Use the settlement rows to list each final payment and deduction, including unpaid salary, approved leave encashment, advances, and outstanding recoveries. The net amount for each row is calculated from additions less deductions.`, suggestion: `1. Reconcile the calculation with payroll and department clearances.\n2. Obtain the required approvals and employee acknowledgment before payment.` }
+        };
         function getTemplateExtras(item) {
             const title = item.title.toLowerCase();
             const fields = [];
@@ -415,9 +464,6 @@
                 add('taxPeriod', 'Tax Period');
                 add('hsCode', 'HS Code / Product Code');
                 add('unitOfMeasure', 'Unit of Measure');
-                add('withholdingTaxRate', 'Withholding Tax (%)', 'number');
-                add('extraTaxRate', 'Extra Tax (%)', 'number');
-                add('furtherTaxRate', 'Further Tax (%)', 'number');
                 add('fbrInvoiceNo', 'Fiscal / Electronic Invoice No.');
                 add('posRegistrationNo', 'POS / E-Invoicing Registration No.');
                 add('sroReference', 'SRO / Exemption Reference');
@@ -543,7 +589,20 @@
                 else if (title.includes('bill of lading')) table('Cargo Details', [['package','Packages'],['description','Cargo Description'],['weight','Gross Weight'],['marks','Marks / Numbers'],['container','Container / Seal No.']]);
                 else if (title.includes('letter of credit')) table('LC Goods / Documents', [['item','Goods / Document'],['description','Description'],['quantity','Quantity'],['value','Value','number'],['notes','Notes']]);
             }
-            if (item.cat === 'letters' || item.cat === 'hr_notices' || item.cat === 'hr_agreements' || item.cat === 'hr_records') {
+            if (item.cat === 'letters' && title.includes('bank confirmation')) {
+                add('bankName', 'Bank Name');
+                add('bankBranch', 'Branch / Branch Code');
+                add('bankAccountTitle', 'Account Title');
+                add('bankAccountNo', 'Account Number');
+                add('bankIban', 'IBAN');
+                add('bankPurpose', 'Confirmation Purpose');
+            }
+            if (item.cat === 'letters' && title.includes('dunning')) {
+                add('originalInvoiceNo', 'Original Invoice Number');
+                add('invoiceDueDate', 'Original Due Date', 'date');
+                add('outstandingAmount', 'Outstanding Amount', 'number');
+                add('paymentDeadline', 'Requested Payment Date', 'date');
+            }            if (item.cat === 'letters' || item.cat === 'hr_notices' || item.cat === 'hr_agreements' || item.cat === 'hr_records') {
                 if (title.includes('increment') || title.includes('salary revision')) {
                     add('currentSalary', 'Current Monthly Salary', 'number');
                     add('revisedSalary', 'Revised Monthly Salary', 'number');
@@ -640,12 +699,14 @@
         }
         // Compile Database with Proper Margin Alignment & Natural Inline Footer Spacing
         const database = rawList.map((item, index) => {
+            const tailoredCopy = DOCUMENT_COPY[`${item.cat}|${item.title}`];
+            if (tailoredCopy) item = { ...item, ...tailoredCopy };
             let baseFields = [
                 { id: "comp", label: item.cat === "medical" ? "Clinic / Hospital / Laboratory" : item.cat === "transport" ? "Transport Company / Fleet" : item.type === "invoice" ? "Seller / Business Name" : "Company / Organization Name", val: "" },
                 { id: "addr", label: item.cat === "medical" ? "Facility Address" : item.cat === "transport" ? "Company / Depot Address" : "Office / Business Address", val: "" },
                 { id: "ref", label: item.type === "invoice" ? "Invoice / Document No." : "Reference / Document No.", val: "" },
                 { id: "date", label: item.cat === "medical" ? "Report / Visit Date" : "Issue / Record Date", val: "", type: "date" },
-                { id: "rec", label: item.cat === "medical" ? "Patient Name" : item.cat === "hr_notices" || item.cat === "hr_records" || item.cat === "hr_agreements" ? "Employee Name" : item.type === "invoice" ? "Buyer / Customer Name" : "Recipient / Counterparty Name", val: item.rec },
+                { id: "rec", label: item.cat === "medical" ? "Patient Name" : item.cat === "hr_notices" || item.cat === "hr_records" || item.cat === "hr_agreements" ? "Employee Name" : item.cat === "letters" ? (item.title.includes("Bank Confirmation") ? "Bank / Institution Name" : item.title.includes("Dunning") ? "Customer / Debtor Name" : "Employee Name") : item.type === "invoice" ? "Buyer / Customer Name" : "Recipient / Counterparty Name", val: item.rec },
                 { id: "sub", label: "Document Title / Subject", val: item.sub }
             ];
 
@@ -767,26 +828,26 @@
                     } else if(this.type === 'invoice') {
                         const lines = DocuHubApp.lineItems.length ? DocuHubApp.lineItems : [{ item: f.item || '', qty: f.qty || 0, rate: f.rate || 0 }];
                         const subtotal = lines.reduce((sum, line) => sum + (parseFloat(line.qty) || 0) * (parseFloat(line.rate) || 0), 0);
-                        const discount = Math.max(0, parseFloat(f.discount) || 0);
-                        const additionalCharges = Math.max(0, parseFloat(f.additionalCharges) || 0);
+                        const discount = DocuHubApp.invoiceOptions.discount ? Math.max(0, parseFloat(f.discount) || 0) : 0;
+                        const additionalCharges = DocuHubApp.invoiceOptions.additionalCharges ? Math.max(0, parseFloat(f.additionalCharges) || 0) : 0;
                         const taxableAmount = Math.max(0, subtotal + additionalCharges - discount);
-                        const taxRate = Math.max(0, parseFloat(f.tax) || 0);
+                        const taxRate = DocuHubApp.invoiceOptions.tax ? Math.max(0, parseFloat(f.tax) || 0) : 0;
                         const itemTaxes = lines.map(line => {
                             const lineSubtotal = (parseFloat(line.qty) || 0) * (parseFloat(line.rate) || 0);
                             const allocation = subtotal > 0 ? lineSubtotal / subtotal : 0;
                             const lineTaxBase = Math.max(0, lineSubtotal + (additionalCharges - discount) * allocation);
-                            const lineRate = String(line.tax || '').trim() === '' ? taxRate : Math.max(0, parseFloat(line.tax) || 0);
+                            const lineRate = !DocuHubApp.invoiceOptions.tax ? 0 : (String(line.tax || '').trim() === '' ? taxRate : Math.max(0, parseFloat(line.tax) || 0));
                             return { rate: lineRate, amount: lineTaxBase * lineRate / 100 };
                         });
                         const taxAmount = itemTaxes.reduce((sum, itemTax) => sum + itemTax.amount, 0) + (subtotal === 0 ? taxableAmount * taxRate / 100 : 0);
-                        const extraTaxRate = Math.max(0, parseFloat(f.extra_extraTaxRate) || 0);
-                        const furtherTaxRate = Math.max(0, parseFloat(f.extra_furtherTaxRate) || 0);
-                        const withholdingRate = Math.max(0, parseFloat(f.extra_withholdingTaxRate) || 0);
+                        const extraTaxRate = DocuHubApp.invoiceOptions.extraTaxRate ? Math.max(0, parseFloat(f.extra_extraTaxRate) || 0) : 0;
+                        const furtherTaxRate = DocuHubApp.invoiceOptions.furtherTaxRate ? Math.max(0, parseFloat(f.extra_furtherTaxRate) || 0) : 0;
+                        const withholdingRate = DocuHubApp.invoiceOptions.withholdingTaxRate ? Math.max(0, parseFloat(f.extra_withholdingTaxRate) || 0) : 0;
                         const extraTaxAmount = taxableAmount * extraTaxRate / 100;
                         const furtherTaxAmount = taxableAmount * furtherTaxRate / 100;
                         const withholdingAmount = taxableAmount * withholdingRate / 100;
                         const grandTotal = Math.max(0, taxableAmount + taxAmount + extraTaxAmount + furtherTaxAmount - withholdingAmount);
-                        const amountPaid = Math.max(0, parseFloat(f.amountPaid) || 0);
+                        const amountPaid = DocuHubApp.invoiceOptions.amountPaid ? Math.max(0, parseFloat(f.amountPaid) || 0) : 0;
                         const balanceDue = Math.max(0, grandTotal - amountPaid);
                         const overpayment = Math.max(0, amountPaid - grandTotal);
                         const currency = String(f.extra_currency || "").trim(); const money = amount => `${currency ? currency + " " : ""}${amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -794,7 +855,8 @@
                             const qty = parseFloat(line.qty) || 0;
                             const rate = parseFloat(line.rate) || 0;
                             const tax = itemTaxes[index] || { rate: taxRate, amount: 0 };
-                            return `<tr><td>${DocuHubApp.escapeHtml(line.item || '')}</td><td>${qty}</td><td>${money(rate)}</td><td>${tax.rate}%</td><td>${money(tax.amount)}</td><td>${money(qty * rate)}</td></tr>`;
+                            const taxCells = DocuHubApp.invoiceOptions.tax ? `<td>${tax.rate}%</td><td>${money(tax.amount)}</td>` : '';
+                            return `<tr><td>${DocuHubApp.escapeHtml(line.item || '')}</td><td>${qty}</td><td>${money(rate)}</td>${taxCells}<td>${money(qty * rate)}</td></tr>`;
                         }).join('');
 
                         return `
@@ -812,21 +874,21 @@
                                     <div class="doc-subject">${f.sub}</div>
                                     ${detailsMarkup}
                                     <table class="doc-table">
-                                        <thead><tr><th>Description</th><th>Qty</th><th>Rate</th><th>Tax %</th><th>Tax</th><th>Amount</th></tr></thead>
+                                        <thead><tr><th>Description</th><th>Qty</th><th>Rate</th>${DocuHubApp.invoiceOptions.tax ? "<th>Tax %</th><th>Tax</th>" : ""}<th>Amount</th></tr></thead>
                                         <tbody>${rows}</tbody>
                                     </table>
                                     ${f.body ? `<div class="doc-body" style="margin-top:16px;">${f.body}</div>` : ""}
                                     <div class="invoice-totals">
                                         <div><span>Subtotal</span><strong>${money(subtotal)}</strong></div>
-                                        <div><span>Additional charges</span><strong>${money(additionalCharges)}</strong></div>
-                                        <div><span>Discount</span><strong>− ${money(discount)}</strong></div>
-                                        <div><span>Taxable amount</span><strong>${money(taxableAmount)}</strong></div>
-                                        <div><span>Tax / GST (${taxRate}%)</span><strong>${money(taxAmount)}</strong></div>
-                                        <div><span>Extra tax (${extraTaxRate}%)</span><strong>${money(extraTaxAmount)}</strong></div>
-                                        <div><span>Further tax (${furtherTaxRate}%)</span><strong>${money(furtherTaxAmount)}</strong></div>
-                                        <div><span>Withholding tax (${withholdingRate}%)</span><strong>− ${money(withholdingAmount)}</strong></div>
+                                        ${DocuHubApp.invoiceOptions.additionalCharges ? `<div><span>Additional charges</span><strong>${money(additionalCharges)}</strong></div>` : ''}
+                                        ${DocuHubApp.invoiceOptions.discount ? `<div><span>Discount</span><strong>− ${money(discount)}</strong></div>` : ''}
+                                        <div><span>${(DocuHubApp.invoiceOptions.tax || DocuHubApp.invoiceOptions.extraTaxRate || DocuHubApp.invoiceOptions.furtherTaxRate || DocuHubApp.invoiceOptions.withholdingTaxRate) ? "Taxable amount" : "Adjusted subtotal"}</span><strong>${money(taxableAmount)}</strong></div>
+                                        ${DocuHubApp.invoiceOptions.tax ? `<div><span>Tax / GST (${taxRate}%)</span><strong>${money(taxAmount)}</strong></div>` : ''}
+                                        ${DocuHubApp.invoiceOptions.extraTaxRate ? `<div><span>Extra tax (${extraTaxRate}%)</span><strong>${money(extraTaxAmount)}</strong></div>` : ''}
+                                        ${DocuHubApp.invoiceOptions.furtherTaxRate ? `<div><span>Further tax (${furtherTaxRate}%)</span><strong>${money(furtherTaxAmount)}</strong></div>` : ''}
+                                        ${DocuHubApp.invoiceOptions.withholdingTaxRate ? `<div><span>Withholding tax (${withholdingRate}%)</span><strong>− ${money(withholdingAmount)}</strong></div>` : ''}
                                         <div class="invoice-grand-total"><span>Grand total</span><strong>${money(grandTotal)}</strong></div>
-                                        <div><span>Amount paid</span><strong>${money(amountPaid)}</strong></div>
+                                        ${DocuHubApp.invoiceOptions.amountPaid ? `<div><span>Amount paid</span><strong>${money(amountPaid)}</strong></div>` : ''}
                                         <div class="invoice-balance"><span>${overpayment ? 'Credit / overpayment' : 'Balance due'}</span><strong>${money(overpayment || balanceDue)}</strong></div>
                                     </div>
                                     <div style="margin-top:18px; font-size:11px; color:#555;"><strong>Notes:</strong> ${f.suggestion}</div>
@@ -946,11 +1008,16 @@
                 this.currentValues = {};
                 t.fields.forEach(f => this.currentValues[f.id] = (f.id === "date" && !f.val) ? new Date().toLocaleDateString("en-CA") : f.val);
                 this.lineItems = t.type === 'invoice' ? [{ item: this.currentValues.item || '', qty: this.currentValues.qty || '', rate: this.currentValues.rate || '' }] : [];
+                this.invoiceOptions = { tax: false, discount: false, additionalCharges: false, amountPaid: false, extraTaxRate: false, furtherTaxRate: false, withholdingTaxRate: false };
                 this.tableRows = t.tableSchema ? [Object.fromEntries(t.tableSchema.columns.map(column => [column.id, ""]))] : [];
                 if (t.type === 'invoice') {
                     this.currentValues.discount = '0';
                     this.currentValues.additionalCharges = '0';
                     this.currentValues.amountPaid = '0';
+                    this.currentValues.tax = this.currentValues.tax || '0';
+                    this.currentValues.extra_extraTaxRate = '0';
+                    this.currentValues.extra_furtherTaxRate = '0';
+                    this.currentValues.extra_withholdingTaxRate = '0';
                 }
 
                 document.getElementById('modal-title').innerText = t.title;
@@ -962,7 +1029,7 @@
             renderFormFields() {
                 const container = document.getElementById('modal-form-fields');
                 const isInvoice = this.activeTemplate.type === 'invoice';
-                const fields = this.activeTemplate.fields.filter(f => !isInvoice || !['item', 'qty', 'rate'].includes(f.id));
+                const fields = this.activeTemplate.fields.filter(f => !isInvoice || !['item', 'qty', 'rate', 'tax'].includes(f.id));
                 container.innerHTML = fields.map(f => {
                     const value = this.currentValues[f.id] ?? f.val ?? '';
                     const safeValue = this.escapeHtml(value);
@@ -980,12 +1047,20 @@
                 }).join('') + (isInvoice ? this.renderInvoiceFields() : this.renderTableEditor());
             },
             renderInvoiceFields() {
+                const options = this.invoiceOptions;
+                const optionalControl = (key, label, fieldId) => `
+                    <div class="optional-calc">
+                        <label class="invoice-toggle"><input type="checkbox" ${options[key] ? 'checked' : ''} onchange="DocuHubApp.toggleInvoiceOption('${key}', this.checked)"><span>${label}</span></label>
+                        ${options[key] ? `<input type="number" min="0" step="0.01" value="${this.escapeHtml(this.currentValues[fieldId] ?? '')}" placeholder="0.00" oninput="DocuHubApp.updateField('${fieldId}', this.value)">` : ''}
+                    </div>
+                `;
                 const lineFields = this.lineItems.map((line, index) => `
                     <div class="invoice-line-editor">
                         <div class="invoice-line-heading"><strong>Item ${index + 1}</strong>${this.lineItems.length > 1 ? `<button type="button" class="remove-line-btn" onclick="DocuHubApp.removeInvoiceLine(${index})" aria-label="Remove item">Remove</button>` : ''}</div>
                         <label>Description</label>
                         <input type="text" value="${this.escapeHtml(line.item)}" placeholder="Product or service" oninput="DocuHubApp.updateInvoiceLine(${index}, 'item', this.value)">
-                        <div class="invoice-line-tax"><label>Tax rate % (optional)</label><input type="number" min="0" step="0.01" value="${this.escapeHtml(line.tax || '')}" placeholder="Use invoice default" oninput="DocuHubApp.updateInvoiceLine(${index}, 'tax', this.value)"></div><div class="invoice-line-numbers">
+                        ${options.tax ? `<div class="invoice-line-tax"><label>Item tax rate % (optional)</label><input type="number" min="0" step="0.01" value="${this.escapeHtml(line.tax || '')}" placeholder="Use invoice default" oninput="DocuHubApp.updateInvoiceLine(${index}, 'tax', this.value)"></div>` : ''}
+                        <div class="invoice-line-numbers">
                             <div><label>Quantity</label><input type="number" min="0" step="0.01" value="${this.escapeHtml(line.qty)}" oninput="DocuHubApp.updateInvoiceLine(${index}, 'qty', this.value)"></div>
                             <div><label>Rate per unit</label><input type="number" min="0" step="0.01" value="${this.escapeHtml(line.rate)}" oninput="DocuHubApp.updateInvoiceLine(${index}, 'rate', this.value)"></div>
                         </div>
@@ -997,15 +1072,24 @@
                         ${lineFields}
                         <button type="button" class="add-line-btn" onclick="DocuHubApp.addInvoiceLine()">＋ Add another item</button>
                         <div class="invoice-adjustments">
-                            <h4>Adjustments &amp; payment</h4>
-                            <div class="form-group"><label>Additional charges (add)</label><input type="number" min="0" step="0.01" value="${this.currentValues.additionalCharges}" oninput="DocuHubApp.updateField('additionalCharges', this.value)"></div>
-                            <div class="form-group"><label>Discount (less)</label><input type="number" min="0" step="0.01" value="${this.currentValues.discount}" oninput="DocuHubApp.updateField('discount', this.value)"></div>
-                            <div class="form-group"><label>Amount paid / advance</label><input type="number" min="0" step="0.01" value="${this.currentValues.amountPaid}" oninput="DocuHubApp.updateField('amountPaid', this.value)"></div>
+                            <h4>Optional calculations <span class="optional-hint">Select only what applies</span></h4>
+                            ${optionalControl('tax', 'Apply GST / sales tax', 'tax')}
+                            ${optionalControl('additionalCharges', 'Add extra charges', 'additionalCharges')}
+                            ${optionalControl('discount', 'Apply discount', 'discount')}
+                            ${optionalControl('extraTaxRate', 'Apply extra tax', 'extra_extraTaxRate')}
+                            ${optionalControl('furtherTaxRate', 'Apply further tax', 'extra_furtherTaxRate')}
+                            ${optionalControl('withholdingTaxRate', 'Deduct withholding tax', 'extra_withholdingTaxRate')}
+                            ${optionalControl('amountPaid', 'Enter amount paid / advance', 'amountPaid')}
                         </div>
                     </section>
                 `;
             },
 
+            toggleInvoiceOption(option, enabled) {
+                this.invoiceOptions[option] = enabled;
+                this.renderFormFields();
+                this.updatePreview();
+            },
             renderTableEditor() {
                 const schema = this.activeTemplate.tableSchema;
                 if (!schema) return '';
@@ -1123,6 +1207,11 @@
     </script>
 </body>
 </html>
+
+
+
+
+
 
 
 
