@@ -19,14 +19,18 @@
         nav ul li a { text-decoration: none; color: #1e4d3b; font-size: 10.5px; cursor: pointer; font-weight: 600; text-transform: uppercase; padding: 5px 8px; border-radius: 4px; transition: all 0.2s; }
         nav ul li a:hover, nav ul li a.active { background: #1e4d3b; color: #fff; }
 
-        .hero-banner { background: #1b4332; padding: 30px 20px; text-align: center; color: white; margin-bottom: 20px; box-shadow: inset 0 -5px 15px rgba(0,0,0,0.2); }
-        .hero-banner h2 { font-size: 22px; font-weight: 400; margin-bottom: 25px; font-family: 'Georgia', serif; letter-spacing: 0.5px; color: #ffffff; }
+        .hero-banner { background: radial-gradient(ellipse at 50% -25%, #35745a 0%, #1b4332 62%, #153a2c 100%); padding: 34px 24px 30px; text-align: center; color: white; margin-bottom: 20px; box-shadow: inset 0 -1px 0 rgba(255,255,255,.08); }
+        .hero-banner h2 { font-size: clamp(22px, 2.3vw, 30px); font-weight: 600; margin-bottom: 8px; font-family: 'Georgia', serif; letter-spacing: .1px; color: #ffffff; }
         
-        .circle-row { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
-        .circle-item { text-align: center; cursor: pointer; transition: transform 0.3s; width: 95px; text-decoration: none; display: block; }
-        .circle-item:hover { transform: translateY(-5px); }
-        .circle-img { width: 70px; height: 70px; border-radius: 50%; border: 3px solid #ffffff; background: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #1e4d3b; font-weight: bold; margin: 0 auto 8px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
-        .circle-item span { font-size: 11px; color: #ffffff; font-weight: 600; font-family: 'Segoe UI', sans-serif; display: block; line-height: 1.2; }
+        .circle-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; max-width: 1120px; margin: 0 auto; }
+        .circle-item { text-align: center; cursor: pointer; transition: transform .2s ease, opacity .2s ease; width: 112px; text-decoration: none; display: block; color: inherit; }
+        .circle-item:hover { transform: translateY(-4px); }
+        .circle-img { width: 62px; height: 62px; border-radius: 18px; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.12); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; color: #fff; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(0,0,0,.16); transition: background .2s ease, border-color .2s ease; }
+        .circle-item span { font-size: 11px; color: rgba(255,255,255,.9); font-weight: 600; font-family: Segoe UI, sans-serif; display: block; line-height: 1.3; }
+        .circle-img svg { width: 27px; height: 27px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .circle-item:hover .circle-img { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.5); }
+        .hero-subtitle { color: rgba(255,255,255,.72); font-size: 13px; margin: 0 0 24px; letter-spacing: .2px; }
+        @media (max-width: 600px) { .hero-banner { padding: 28px 14px 24px; } .circle-row { gap: 14px 8px; } .circle-item { width: 92px; } .circle-img { width: 56px; height: 56px; border-radius: 16px; } }
 
         .main-container { max-width: 1350px; margin: 20px auto; padding: 0 20px; display: grid; grid-template-columns: 3.2fr 1fr; gap: 20px; flex: 1; width: 100%; }
         @media(max-width: 900px) { .main-container { grid-template-columns: 1fr; } }
@@ -50,12 +54,12 @@
 
         /* Workspace Modal */
         #workspace-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); z-index: 2000; justify-content: center; align-items: center; padding: 15px; }
-        .modal-content { background: #fff; width: 100%; max-width: 1100px; height: 90vh; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .modal-content { background: #fff; width: min(96vw, 1500px); max-width: 1500px; height: 92vh; border-radius: 10px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 18px 55px rgba(0,0,0,0.28); }
         .modal-header { padding: 12px 20px; background: #1e4d3b; color: #fff; display: flex; justify-content: space-between; align-items: center; }
         .modal-header h2 { font-size: 14px; font-family: 'Georgia', serif; color: #fff; }
         .close-btn { background: none; border: none; font-size: 22px; cursor: pointer; color: #fff; }
 
-        .modal-body { padding: 15px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 15px; flex: 1; background: #f9f8f5; }
+        .modal-body { padding: 18px; overflow: hidden; display: grid; grid-template-columns: minmax(300px, .72fr) minmax(500px, 1.48fr); gap: 18px; flex: 1; background: #f3f5f2; min-height: 0; }
         @media(max-width: 800px) { .modal-body { grid-template-columns: 1fr; } }
 
         .form-section { background: #fff; padding: 12px; border-radius: 6px; border: 1px solid #e0ddd5; height: 100%; overflow-y: auto; }
@@ -63,52 +67,87 @@
         .form-group label { display: block; font-size: 9.5px; font-weight: 700; color: #1e4d3b; text-transform: uppercase; margin-bottom: 3px; }
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 11px; background: #fff; outline: none; }
         .form-group textarea { height: 75px; resize: vertical; }
+        .invoice-editor { margin-top: 14px; padding: 12px; border: 1px solid #dce5dd; border-radius: 8px; background: #fbfcfa; }
+        .invoice-editor h4 { margin: 0 0 10px; color: #1e4d3b; font-size: 12px; }
+        .invoice-line-editor { padding: 10px; margin-bottom: 9px; border: 1px solid #e4e9e4; border-radius: 7px; background: #fff; }
+        .invoice-line-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; color: #34483b; font-size: 11px; }
+        .invoice-line-editor label { display: block; margin: 4px 0 3px; color: #68756b; font-size: 9px; font-weight: 700; text-transform: uppercase; }
+        .invoice-line-editor input, .invoice-adjustments input { width: 100%; padding: 7px 8px; border: 1px solid #d6ded7; border-radius: 5px; font-size: 11px; }
+        .invoice-line-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .invoice-line-tax { margin: 7px 0; }
+        .invoice-line-tax label { display:block; margin-bottom:3px; color:#68756b; font-size:9px; font-weight:700; text-transform:uppercase; }
+        .invoice-line-tax input { width:100%; padding:7px 8px; border:1px solid #d6ded7; border-radius:5px; font-size:11px; }
+        .add-line-btn, .remove-line-btn { border: 0; background: transparent; color: #1e6a4c; font-size: 10px; font-weight: 700; cursor: pointer; }
+        .add-line-btn { padding: 4px 0 8px; }
+        .remove-line-btn { color: #9b4a3c; }
+        .invoice-adjustments { border-top: 1px solid #e4e9e4; padding-top: 12px; margin-top: 5px; }
+        .invoice-adjustments h4 { margin-bottom: 8px; }
+        .invoice-totals { width: min(100%, 390px); margin: 16px 0 0 auto; font-size: 11px; }
+        .invoice-totals > div { display: flex; justify-content: space-between; gap: 20px; padding: 5px 0; border-bottom: 1px solid #edf0ec; }
+        .invoice-grand-total { margin-top: 4px; padding: 9px 0 !important; border-top: 2px solid #1e4d3b; border-bottom: 2px solid #1e4d3b !important; color: #1e4d3b; font-size: 14px; }
+        .invoice-balance { font-weight: 700; color: #1e4d3b; }
+        .calculation-summary { width: min(100%, 390px); margin: 16px 0; padding: 13px 15px; border: 1px solid #dce5dd; border-radius: 8px; background: #f7f8f5; }
+        .calculation-summary h3 { margin: 0 0 8px; color: #1e4d3b; font-size: 12px; }
+        .calculation-summary > div { display:flex; justify-content:space-between; gap:15px; padding:5px 0; border-bottom:1px solid #e7ece7; font-size:10.5px; }
+        .calculation-summary > div:last-child { border-bottom:0; }        .doc-detail-table { margin: 14px 0; font-size: 10.5px; }
+        .doc-detail-table th { width: 34%; background: #f5f7f4; color: #4b5c50; font-weight: 700; }
+        .record-table-title { margin: 18px 0 7px; color: #1e4d3b; font-size: 12px; text-transform: uppercase; letter-spacing: .35px; }
+        .doc-record-table { font-size: 10px; }
+        .payroll-net th { color: #1e4d3b; font-size: 14px; border-top: 2px solid #1e4d3b; }
+        .table-editor-help { margin: -4px 0 10px; color: #738076; font-size: 10px; }
+        .data-entry-header, .data-entry-row { display: grid; grid-template-columns: repeat(var(--column-count), minmax(90px,1fr)); gap: 7px; min-width: max-content; }
+        .data-entry-header { padding: 5px 8px; color: #647166; font-size: 9px; font-weight: 700; text-transform: uppercase; }
+        .data-entry-row { position: relative; padding: 8px; margin-bottom: 8px; border: 1px solid #e3e9e3; border-radius: 7px; background: #fff; }
+        .data-entry-row label { display: block; margin-bottom: 3px; color: #68756b; font-size: 9px; font-weight: 700; }
+        .data-entry-row input { width: 100%; min-width: 90px; padding: 7px; border: 1px solid #d6ded7; border-radius: 5px; font-size: 10px; }
+        .data-entry-row .remove-line-btn { grid-column: 1 / -1; justify-self: end; }
+        .table-editor { overflow-x: auto; }
 
-        .preview-section { background: #666; padding: 15px; border-radius: 6px; height: 100%; overflow-y: auto; display: flex; justify-content: center; align-items: flex-start; }
+        .preview-section { background: #e2e6e1; padding: 20px; border: 1px solid #d6ddd6; border-radius: 8px; height: 100%; min-width: 0; overflow: auto; display: flex; justify-content: center; align-items: flex-start; }
         
         /* Document Paper Formatting - Proper Proportional Margins & Natural Flow */
-        .document-paper { background: #ffffff; width: 100%; max-width: 595px; min-height: 740px; padding: 45px 50px; border-radius: 2px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-size: 10.5px; line-height: 1.6; color: #222; font-family: 'Times New Roman', Times, serif; display: flex; flex-direction: column; justify-content: space-between; }
+        .document-paper { background: #fff; width: 100%; max-width: 794px; min-height: 1123px; padding: 76px 78px; border-radius: 2px; box-shadow: 0 8px 28px rgba(24,42,31,.18); font-size: 12.5px; line-height: 1.72; color: #202721; font-family: Georgia, 'Times New Roman', serif; display: flex; flex-direction: column; justify-content: space-between; flex-shrink: 0; }
         
-        .doc-header { border-bottom: 2px solid #1e4d3b; padding-bottom: 10px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-start; }
-        .doc-header .company-title { font-size: 16px; font-weight: bold; color: #1e4d3b; font-family: 'Georgia', serif; }
-        .doc-header .company-info { font-size: 8.5px; color: #555; text-align: right; line-height: 1.3; }
+        .doc-header { border-bottom: 2px solid #1e4d3b; padding-bottom: 15px; margin-bottom: 22px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .doc-header .company-title { font-size: 21px; font-weight: bold; color: #1e4d3b; font-family: 'Georgia', serif; }
+        .doc-header .company-info { font-size: 10px; color: #555; text-align: right; line-height: 1.3; }
 
-        .doc-meta { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 9.5px; color: #444; border-bottom: 1px dashed #ccc; padding-bottom: 8px; }
-        .doc-subject { font-size: 11.5px; font-weight: bold; text-decoration: underline; text-align: center; margin: 15px 0; text-transform: uppercase; color: #111; letter-spacing: 0.5px; }
+        .doc-meta { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 24px; font-size: 11px; color: #444; border-bottom: 1px dashed #ccc; padding-bottom: 8px; }
+        .doc-subject { font-size: 14px; font-weight: bold; text-decoration: underline; text-align: center; margin: 15px 0; text-transform: uppercase; color: #111; letter-spacing: 0.5px; }
         
-        .doc-content-area { display: flex; flex-direction: column; gap: 14px; margin-bottom: 25px; }
-        .doc-body { text-align: justify; white-space: pre-line; font-size: 10.5px; line-height: 1.6; color: #222; }
-        .doc-suggestion { background: #fdfdfb; padding: 10px 12px; border-left: 3px solid #1e4d3b; font-size: 9.5px; line-height: 1.5; color: #444; border-radius: 2px; margin-top: 10px; }
+        .doc-content-area { display: flex; flex-direction: column; gap: 18px; margin-bottom: 30px; }
+        .doc-body { text-align: justify; white-space: pre-line; font-size: 12px; line-height: 1.8; color: #222; }
+        .doc-suggestion { background: #f7f8f5; padding: 13px 15px; border-left: 3px solid #1e4d3b; font-size: 11px; line-height: 1.65; color: #444; border-radius: 2px; margin-top: 10px; }
         
-        .doc-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 9.5px; }
-        .doc-table th, .doc-table td { border: 1px solid #444; padding: 6px 9px; text-align: left; }
+        .doc-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 11px; }
+        .doc-table th, .doc-table td { border: 1px solid #65736a; padding: 9px 11px; text-align: left; }
         .doc-table th { background: #f0eee6; font-weight: bold; color: #1e4d3b; }
 
         /* Signature section shifted up naturally right after content */
         .doc-footer { border-top: 1px solid #1e4d3b; padding-top: 12px; display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; }
-        .sig-box { text-align: center; width: 150px; }
+        .sig-box { text-align: center; width: 190px; }
         .sig-line { border-bottom: 1px solid #333; margin-bottom: 4px; height: 25px; }
-        .sig-title { font-size: 8.5px; font-weight: bold; color: #333; letter-spacing: 0.5px; }
+        .sig-title { font-size: 10px; font-weight: bold; color: #333; letter-spacing: 0.5px; }
 
         .modal-footer { padding: 8px 20px; background: #fff; border-top: 1px solid #e0ddd5; display: flex; justify-content: flex-end; gap: 10px; }
         .btn-primary { background: #1e4d3b; border: none; color: #fff; padding: 6px 16px; font-size: 11px; cursor: pointer; border-radius: 4px; font-weight: bold; }
         .btn-outline { background: transparent; border: 1px solid #1e4d3b; color: #1e4d3b; padding: 6px 16px; font-size: 11px; cursor: pointer; border-radius: 4px; font-weight: bold; }
 
-        /* STRICT 1-PAGE HARD LOCK PRINT OVERRIDE */
+        @media (max-width: 950px) { .modal-body { grid-template-columns: minmax(250px, .8fr) minmax(0, 1.2fr); padding: 12px; gap: 12px; } .document-paper { min-height: 1000px; padding: 48px 44px; } }
+        @media (max-width: 700px) { #workspace-modal { padding: 0; align-items: stretch; } .modal-content { width: 100%; height: 100dvh; max-width: none; border-radius: 0; } .modal-body { display: flex; flex-direction: column; overflow-y: auto; } .form-section { height: auto; max-height: 42vh; flex: 0 0 auto; } .preview-section { min-height: 72vh; height: auto; } .document-paper { width: 100%; min-height: 842px; padding: 38px 30px; font-size: 11.5px; } .doc-header .company-title { font-size: 18px; } .doc-meta { flex-wrap: wrap; } }
         @media print {
-            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            body, html { width: 100% !important; height: 100% !important; background: #fff !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; }
-            body * { visibility: hidden !important; }
-            #workspace-modal, #workspace-modal * { visibility: visible !important; }
-            #workspace-modal { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; height: 100% !important; background: #fff !important; display: block !important; z-index: 999999 !important; padding: 0 !important; margin: 0 !important; }
-            .modal-content { box-shadow: none !important; border: none !important; width: 100% !important; height: 100% !important; max-width: 100% !important; background: #fff !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            html, body { width: auto !important; height: auto !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; background: #fff !important; }
+            body * { visibility: hidden !important; } #workspace-modal, #workspace-modal * { visibility: visible !important; }
+            #workspace-modal { position: absolute !important; inset: 0 !important; display: block !important; width: auto !important; height: auto !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important; overflow: visible !important; background: #fff !important; }
+            .modal-content { display: block !important; width: auto !important; max-width: none !important; height: auto !important; min-height: 0 !important; margin: 0 !important; overflow: visible !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
             .modal-header, .modal-footer, .form-section { display: none !important; }
-            .modal-body { display: block !important; padding: 0 !important; background: #fff !important; height: 100% !important; overflow: hidden !important; }
-            .preview-section { background: #fff !important; padding: 0 !important; width: 100% !important; height: 100% !important; display: flex !important; justify-content: center !important; align-items: center !important; overflow: hidden !important; }
-            .document-paper { box-shadow: none !important; border: none !important; width: 100% !important; max-width: 100% !important; min-height: 100% !important; padding: 45px 50px !important; margin: 0 !important; page-break-after: avoid !important; page-break-before: avoid !important; page-break-inside: avoid !important; }
-            @page { size: A4 portrait; margin: 0; }
-        }
-    </style>
+            .modal-body { display: block !important; width: auto !important; height: auto !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; background: #fff !important; }
+            .preview-section { display: block !important; width: auto !important; height: auto !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; border: 0 !important; background: #fff !important; }
+            .document-paper { display: flex !important; width: auto !important; max-width: none !important; min-height: 0 !important; height: auto !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; page-break-inside: auto !important; }
+            .doc-header, .doc-meta, .doc-subject, .doc-suggestion, .doc-footer, .sig-box { break-inside: avoid; page-break-inside: avoid; } .doc-table { break-inside: auto; page-break-inside: auto; } .doc-table thead { display: table-header-group; } .doc-table tr { break-inside: avoid; page-break-inside: avoid; }
+            @page { size: A4 portrait; margin: 18mm; }
+        }    </style>
 </head>
 <body>
 
@@ -135,15 +174,16 @@
 
     <div class="hero-banner">
         <h2>Professional Document & Letterhead Suite</h2>
+        <p class="hero-subtitle">Create polished business documents in minutes</p>
         <div class="circle-row">
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('letters')"><div class="circle-img">✏️</div><span>Letterheads</span></div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('invoices')"><div class="circle-img">📊</div><span>Accounts</span></div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('hr_notices')"><div class="circle-img">💼</div><span>HR & Letters</span></div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('transport')"><div class="circle-img">🏍️</div><span>Transport</span></div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('commercial')"><div class="circle-img">📄</div><span>Commercial</span></div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('medical')"><div class="circle-img">⚕️</div><span>Medical</span></div>
-            <div class="circle-item" onclick="DocuHubApp.filterCategory('property')"><div class="circle-img">🏡</div><span>Property</span></div>
-            <a class="circle-item" href="https://instant-cv-six.vercel.app" target="_blank"><div class="circle-img">🌐</div><span>My CV Web</span></a>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('letters')"><div class="circle-img"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="m20 4-11 11-4 1 1-4L17 1z"/><path d="M12 6 18 12"/><path d="M4 20h16"/></svg></div><span>Letterheads</span></div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('invoices')"><div class="circle-img"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 16v-4M12 16V8M17 16v-6"/></svg></div><span>Accounts</span></div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('hr_notices')"><div class="circle-img"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2"/></svg></div><span>HR &amp; Letters</span></div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('transport')"><div class="circle-img"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z"/><circle cx="7.5" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></div><span>Transport</span></div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('commercial')"><div class="circle-img"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v6h5M9 13h7M9 17h7"/></svg></div><span>Commercial</span></div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('medical')"><div class="circle-img"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z"/></svg></div><span>Medical</span></div>
+            <div class="circle-item" onclick="DocuHubApp.filterCategory('property')"><div class="circle-img"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 10v11h14V10M9 21v-7h6v7"/></svg></div><span>Property</span></div>
+            <a class="circle-item" href="https://instant-cv-six.vercel.app" target="_blank" rel="noopener noreferrer"><div class="circle-img"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div><span>My CV Web</span></a>
         </div>
     </div>
 
@@ -157,17 +197,17 @@
             <div class="sidebar-box">
                 <h3>Document Modules</h3>
                 <ul>
-                    <li onclick="DocuHubApp.filterCategory('letters')">• Letterheads</li>
-                    <li onclick="DocuHubApp.filterCategory('invoices')">• Accounts & Billing</li>
-                    <li onclick="DocuHubApp.filterCategory('hr_notices')">• HR Letters & Notices</li>
-                    <li onclick="DocuHubApp.filterCategory('hr_agreements')">• HR Forms & Agreements</li>
-                    <li onclick="DocuHubApp.filterCategory('hr_records')">• HR Registers & Records</li>
-                    <li onclick="DocuHubApp.filterCategory('transport')">• Transport Documents</li>
-                    <li onclick="DocuHubApp.filterCategory('commercial')">• Commercial & Trade</li>
-                    <li onclick="DocuHubApp.filterCategory('medical')">• Medical Records</li>
-                    <li onclick="DocuHubApp.filterCategory('property')">• Property Documents</li>
-                    <li onclick="DocuHubApp.filterCategory('agreements')">• Types of Agreements</li>
-                    <li onclick="DocuHubApp.filterCategory('sale_purchase')">• Sale & Purchase</li>
+                    <li onclick="DocuHubApp.filterCategory('letters')">Letterheads</li>
+                    <li onclick="DocuHubApp.filterCategory('invoices')">Accounts & Billing</li>
+                    <li onclick="DocuHubApp.filterCategory('hr_notices')">HR Letters & Notices</li>
+                    <li onclick="DocuHubApp.filterCategory('hr_agreements')">HR Forms & Agreements</li>
+                    <li onclick="DocuHubApp.filterCategory('hr_records')">HR Registers & Records</li>
+                    <li onclick="DocuHubApp.filterCategory('transport')">Transport Documents</li>
+                    <li onclick="DocuHubApp.filterCategory('commercial')">Commercial & Trade</li>
+                    <li onclick="DocuHubApp.filterCategory('medical')">Medical Records</li>
+                    <li onclick="DocuHubApp.filterCategory('property')">Property Documents</li>
+                    <li onclick="DocuHubApp.filterCategory('agreements')">Types of Agreements</li>
+                    <li onclick="DocuHubApp.filterCategory('sale_purchase')">Sale & Purchase</li>
                 </ul>
             </div>
         </div>
@@ -238,9 +278,9 @@
                 ],
                 suggestion: "1. Issued in compliance with federal sales tax regulations.\n2. Input tax adjustment applicable under registered NTN/STRN."
             },
-            { cat: "invoices", title: "Commercial Invoice", desc: "Trade billing invoice", type: "invoice_letter", rec: "", sub: "COMMERCIAL TRADE INVOICE", body: "This commercial invoice covers the detailed billing of trade merchandise and commercial supplies dispatched as per confirmed purchase orders. All item specifications, unit pricing, and quantity allocations have been thoroughly verified against dispatch notes.\n\nBuyers are requested to inspect shipments immediately upon arrival and report any discrepancies within the stipulated timeframe.", suggestion: "1. Trade terms applied as per active purchase contract.\n2. Goods inspected and dispatched in sound condition." },
-            { cat: "invoices", title: "Credit Note / Debit Note", desc: "Adjustment note", type: "invoice_letter", rec: "", sub: "CREDIT / DEBIT ADJUSTMENT NOTE", body: "This document serves as an official accounting adjustment note issued to rectify pricing discrepancies, return merchandise allowances, or ledger balance differences. The respective amount has been formally credited or debited to your commercial ledger account as per verified audit records.\n\nPlease retain this adjustment advice for your internal financial reconciliation and tax auditing purposes.", suggestion: "1. Ledger updated with corresponding adjustment entry.\n2. Verified by internal accounts audit desk." },
-            { cat: "invoices", title: "Recurring Invoice", desc: "Subscription invoice", type: "invoice_letter", rec: "", sub: "RECURRING SUBSCRIPTION INVOICE", body: "This is a recurring monthly subscription and service invoice covering ongoing enterprise software licensing, cloud hosting, and technical maintenance support. Prompt settlement ensures uninterrupted service continuity and system access.\n\nWe appreciate your continued partnership and automated subscription enrollment.", suggestion: "1. Automated recurring monthly billing cycle.\n2. Service continuity subject to timely payment clearance." },
+            { cat: "invoices", title: "Commercial Invoice", desc: "Trade billing invoice", type: "invoice", rec: "", sub: "COMMERCIAL TRADE INVOICE", body: "This commercial invoice covers the detailed billing of trade merchandise and commercial supplies dispatched as per confirmed purchase orders. All item specifications, unit pricing, and quantity allocations have been thoroughly verified against dispatch notes.\n\nBuyers are requested to inspect shipments immediately upon arrival and report any discrepancies within the stipulated timeframe.", suggestion: "1. Trade terms applied as per active purchase contract.\n2. Goods inspected and dispatched in sound condition." },
+            { cat: "invoices", title: "Credit Note / Debit Note", desc: "Adjustment note", type: "invoice", rec: "", sub: "CREDIT / DEBIT ADJUSTMENT NOTE", body: "This document serves as an official accounting adjustment note issued to rectify pricing discrepancies, return merchandise allowances, or ledger balance differences. The respective amount has been formally credited or debited to your commercial ledger account as per verified audit records.\n\nPlease retain this adjustment advice for your internal financial reconciliation and tax auditing purposes.", suggestion: "1. Ledger updated with corresponding adjustment entry.\n2. Verified by internal accounts audit desk." },
+            { cat: "invoices", title: "Recurring Invoice", desc: "Subscription invoice", type: "invoice", rec: "", sub: "RECURRING SUBSCRIPTION INVOICE", body: "This is a recurring monthly subscription and service invoice covering ongoing enterprise software licensing, cloud hosting, and technical maintenance support. Prompt settlement ensures uninterrupted service continuity and system access.\n\nWe appreciate your continued partnership and automated subscription enrollment.", suggestion: "1. Automated recurring monthly billing cycle.\n2. Service continuity subject to timely payment clearance." },
 
             // 3. LEDGERS
             { cat: "ledgers", title: "General Ledger (GL)", desc: "Main accounting ledger", type: "office_letter", rec: "", sub: "GENERAL LEDGER STATEMENT", body: "This comprehensive accounting statement log details all financial transactions, operational expenditures, revenue receipts, and net closing balances for the designated fiscal period.\n\nMaintained under double-entry bookkeeping standards, it ensures complete financial transparency and audit readiness.", suggestion: "1. Fully audited and verified by accounts manager.\n2. Prepared in accordance with standard accounting principles." },
@@ -302,10 +342,10 @@
             { cat: "transport", title: "Spare Parts Inventory Register", desc: "Parts Register", type: "transport_doc", rec: "", sub: "SPARE PARTS REGISTER", body: "This inventory register tracks stock levels of vehicle spare parts, tyres, lubricants, and repair tools maintained in the workshop store for prompt maintenance execution.\n\nStock reconciled monthly.", suggestion: "1. Physical count reconciled monthly.\n2. Reorder stock when minimum threshold is reached." },
 
             // 8. COMMERCIAL & TRADE
-            { cat: "commercial", title: "Commercial Invoice", desc: "Trade Invoice", type: "invoice_letter", rec: "", sub: "COMMERCIAL INVOICE", body: "This commercial trade invoice itemizes goods supplied under agreed commercial terms, detailing unit pricing, quantity dispatched, freight charges, and total payment due.\n\nRemit to corporate account.", suggestion: "1. Payment terms applied as per trade contract.\n2. Remit funds to designated corporate bank account." },
-            { cat: "commercial", title: "Proforma Invoice", desc: "Trade Proforma", type: "invoice_letter", rec: "", sub: "PROFORMA INVOICE", body: "This preliminary proforma estimate outlines projected costs for trade merchandise and commercial supplies prior to order finalization and formal dispatch.\n\nValid for 15 days.", suggestion: "1. Quotation valid for 15 days.\n2. Advance payment required for order confirmation." },
-            { cat: "commercial", title: "Tax / Sales Invoice", desc: "Tax Sales Invoice", type: "invoice_letter", rec: "", sub: "TAX SALES INVOICE", body: "This sales tax invoice is issued in strict adherence to taxation laws, detailing taxable supply values, sales tax percentages, and net payable amounts.\n\nCompliant with regulations.", suggestion: "1. Compliant with federal and provincial tax regulations.\n2. Required for tax credit claims." },
-            { cat: "commercial", title: "Credit Note / Debit Note", desc: "Commercial Note", type: "invoice_letter", rec: "", sub: "CREDIT NOTE", body: "This commercial adjustment note adjusts ledger balances due to returned merchandise, pricing corrections, or billing discrepancies.\n\nLedger updated accordingly.", suggestion: "1. Ledger updated accordingly.\n2. Retain for commercial auditing." },
+            { cat: "commercial", title: "Commercial Invoice", desc: "Trade Invoice", type: "invoice", rec: "", sub: "COMMERCIAL INVOICE", body: "This commercial trade invoice itemizes goods supplied under agreed commercial terms, detailing unit pricing, quantity dispatched, freight charges, and total payment due.\n\nRemit to corporate account.", suggestion: "1. Payment terms applied as per trade contract.\n2. Remit funds to designated corporate bank account." },
+            { cat: "commercial", title: "Proforma Invoice", desc: "Trade Proforma", type: "invoice", rec: "", sub: "PROFORMA INVOICE", body: "This preliminary proforma estimate outlines projected costs for trade merchandise and commercial supplies prior to order finalization and formal dispatch.\n\nValid for 15 days.", suggestion: "1. Quotation valid for 15 days.\n2. Advance payment required for order confirmation." },
+            { cat: "commercial", title: "Tax / Sales Invoice", desc: "Tax Sales Invoice", type: "invoice", rec: "", sub: "TAX SALES INVOICE", body: "This sales tax invoice is issued in strict adherence to taxation laws, detailing taxable supply values, sales tax percentages, and net payable amounts.\n\nCompliant with regulations.", suggestion: "1. Compliant with federal and provincial tax regulations.\n2. Required for tax credit claims." },
+            { cat: "commercial", title: "Credit Note / Debit Note", desc: "Commercial Note", type: "invoice", rec: "", sub: "CREDIT NOTE", body: "This commercial adjustment note adjusts ledger balances due to returned merchandise, pricing corrections, or billing discrepancies.\n\nLedger updated accordingly.", suggestion: "1. Ledger updated accordingly.\n2. Retain for commercial auditing." },
             { cat: "commercial", title: "Delivery Challan / Dispatch Note", desc: "Delivery Note", type: "office_letter", rec: "", sub: "DELIVERY CHALLAN", body: "This delivery challan accompanies dispatched merchandise, itemizing box quantities, product descriptions, and transport details for physical verification upon site delivery.\n\nInspect upon arrival.", suggestion: "1. Inspect goods thoroughly and sign upon receipt.\n2. Report transit damages immediately." },
             { cat: "commercial", title: "Purchase Order (PO)", desc: "Official PO", type: "office_letter", rec: "", sub: "PURCHASE ORDER", body: "This official purchase order authorizes the supplier to deliver specified commercial goods and quantities under agreed pricing and delivery timelines.\n\nConform to specs.", suggestion: "1. Supply must conform strictly to PO specifications.\n2. Quote PO number on all shipping documents." },
             { cat: "commercial", title: "Goods Received Note (GRN)", desc: "GRN Receipt", type: "office_letter", rec: "", sub: "GOODS RECEIVED NOTE", body: "This Goods Received Note formally acknowledges the receipt, physical inspection, and acceptance of delivered merchandise into warehouse inventory.\n\nInspected by store keeper.", suggestion: "1. Inspected by store keeper for quality and count.\n2. Serves as basis for accounts payable processing." },
@@ -323,7 +363,7 @@
             { cat: "medical", title: "Medical Death Certificate", desc: "Death Certificate Form", type: "office_letter", rec: "", sub: "MEDICAL DEATH CERTIFICATE", body: "This official medical death certification document records the date, time, location, and primary clinical cause of death as determined by the attending medical officer.\n\nIssued under hospital seal.", suggestion: "1. Required for legal registration and burial rites.\n2. Issued under official hospital seal." },
             { cat: "medical", title: "Discharge Summary", desc: "Hospital Discharge", type: "medical_checkup", rec: "", sub: "PATIENT DISCHARGE SUMMARY", body: "Patient admitted to hospital for observation and clinical treatment, responded well to medical therapy.\n\nDischarged in stable condition with detailed post-care instructions.", suggestion: "1. Take prescribed medications on time.\n2. Avoid heavy weight lifting for 2 weeks." },
             { cat: "medical", title: "Hospital Admission Form", desc: "Admission Form", type: "office_letter", rec: "", sub: "ADMISSION FORM", body: "This hospital admission registration form records patient personal data, emergency contacts, admitting physician, and ward allocation for inpatient treatment.\n\nBilling formalities completed.", suggestion: "1. Complete insurance and billing formalities at desk.\n2. Assigned to inpatient ward." },
-            { cat: "medical", title: "Medical Invoice", desc: "Hospital Billing", type: "invoice_letter", rec: "", sub: "MEDICAL BILLING INVOICE", body: "This medical billing invoice itemizes physician consultation charges, room rent, laboratory tests, and pharmaceutical dispensing costs incurred during hospital care.\n\nSettled in full.", suggestion: "1. Hospital charges settled in full.\n2. Insurance claim receipt provided." },
+            { cat: "medical", title: "Medical Invoice", desc: "Hospital Billing", type: "invoice", rec: "", sub: "MEDICAL BILLING INVOICE", body: "This medical billing invoice itemizes physician consultation charges, room rent, laboratory tests, and pharmaceutical dispensing costs incurred during hospital care.\n\nSettled in full.", suggestion: "1. Hospital charges settled in full.\n2. Insurance claim receipt provided." },
 
             // 10. PROPERTY DOCUMENTS
             { cat: "property", title: "Sale / Purchase Agreement (Bayana / Sale Deed)", desc: "Property Deed", type: "property_doc", rec: "", sub: "PROPERTY BAYANA DEED", body: "This earnest money and property sale agreement legally binds the buyer and seller for the commercial transaction of the specified real estate property at an agreed consideration price.\n\nOutlines advance token payment and final clearance deadlines.", suggestion: "1. Remaining balance to be paid within agreed timeframe.\n2. All property tax dues cleared by seller prior to registry." },
@@ -347,30 +387,298 @@
 
             // 12. SALE & PURCHASE
             { cat: "sale_purchase", title: "Sale / Purchase Agreement", desc: "Agreement Deed", type: "property_doc", rec: "", sub: "SALE & PURCHASE AGREEMENT", body: "This agreement deed finalizes commercial purchase terms, consideration amounts, and delivery schedules between procurement parties.\n\nExecuted before witnesses.", suggestion: "1. Purchase terms finalized.\n2. Executed before witnesses." },
-            { cat: "sale_purchase", title: "Proforma Invoice", desc: "Preliminary Bill", type: "invoice_letter", rec: "", sub: "PROFORMA INVOICE", body: "This preliminary proforma bill outlines estimated procurement costs and commercial terms prior to final sale execution.\n\nValid for 10 days.", suggestion: "1. Preliminary estimate bill.\n2. Valid for 10 days." },
-            { cat: "sale_purchase", title: "Commercial / Sales Invoice", desc: "Sales Bill", type: "invoice_letter", rec: "", sub: "COMMERCIAL SALES INVOICE", body: "This final sales invoice receipt itemizes purchased merchandise, unit rates, and total settled payment amounts.\n\nPaid in full.", suggestion: "1. Final sales receipt.\n2. Paid in full." },
+            { cat: "sale_purchase", title: "Proforma Invoice", desc: "Preliminary Bill", type: "invoice", rec: "", sub: "PROFORMA INVOICE", body: "This preliminary proforma bill outlines estimated procurement costs and commercial terms prior to final sale execution.\n\nValid for 10 days.", suggestion: "1. Preliminary estimate bill.\n2. Valid for 10 days." },
+            { cat: "sale_purchase", title: "Commercial / Sales Invoice", desc: "Sales Bill", type: "invoice", rec: "", sub: "COMMERCIAL SALES INVOICE", body: "This final sales invoice receipt itemizes purchased merchandise, unit rates, and total settled payment amounts.\n\nPaid in full.", suggestion: "1. Final sales receipt.\n2. Paid in full." },
             { cat: "sale_purchase", title: "Purchase Order (PO)", desc: "Order Sheet", type: "office_letter", rec: "", sub: "PURCHASE ORDER", body: "This official purchase order authorizes material procurement and commercial supply as per agreed specifications.\n\nPO issued to vendor.", suggestion: "1. Official PO issued to vendor.\n2. Delivery as per schedule." },
             { cat: "sale_purchase", title: "Delivery Challan / Dispatch Note", desc: "Dispatch Sheet", type: "office_letter", rec: "", sub: "DELIVERY CHALLAN", body: "This dispatch sheet accompanies sold merchandise, ensuring secure transport and physical verification upon delivery.\n\nDispatched safely.", suggestion: "1. Goods dispatched safely.\n2. Verify upon arrival." },
             { cat: "sale_purchase", title: "Goods Received Note (GRN)", desc: "Receipt Sheet", type: "office_letter", rec: "", sub: "GOODS RECEIVED NOTE", body: "This Goods Received Note verifies and acknowledges the physical receipt and quality inspection of purchased merchandise.\n\nApproved for payment.", suggestion: "1. Inspected and verified into stock.\n2. Approved for payment." },
-            { cat: "sale_purchase", title: "Bill of Sale / Receipt", desc: "Payment Receipt", type: "invoice_letter", rec: "", sub: "BILL OF SALE RECEIPT", body: "This bill of sale payment receipt confirms that full consideration amount has been received and title transferred.\n\nFinal receipt issued.", suggestion: "1. Payment received in full.\n2. Final receipt issued." },
-            { cat: "sale_purchase", title: "Credit Note / Debit Note", desc: "Adjustment Deed", type: "invoice_letter", rec: "", sub: "CREDIT / DEBIT NOTE", body: "This balance adjustment entry rectifies commercial ledger accounts for returned merchandise or billing corrections.\n\nVerified by accounts.", suggestion: "1. Ledger account adjusted.\n2. Verified by accounts." }
+            { cat: "sale_purchase", title: "Bill of Sale / Receipt", desc: "Payment Receipt", type: "invoice", rec: "", sub: "BILL OF SALE RECEIPT", body: "This bill of sale payment receipt confirms that full consideration amount has been received and title transferred.\n\nFinal receipt issued.", suggestion: "1. Payment received in full.\n2. Final receipt issued." },
+            { cat: "sale_purchase", title: "Credit Note / Debit Note", desc: "Adjustment Deed", type: "invoice", rec: "", sub: "CREDIT / DEBIT NOTE", body: "This balance adjustment entry rectifies commercial ledger accounts for returned merchandise or billing corrections.\n\nVerified by accounts.", suggestion: "1. Ledger account adjusted.\n2. Verified by accounts." }
         ];
 
+        function getTemplateExtras(item) {
+            const title = item.title.toLowerCase();
+            const fields = [];
+            let tableSchema = null;
+            const add = (id, label, type = 'text') => fields.push({ id: `extra_${id}`, label, type, val: '' });
+            const table = (name, columns) => { tableSchema = { name, columns: columns.map(([id, label, type = 'text']) => ({ id, label, type })) }; };
+
+            if (item.type === 'invoice') {
+                add('sellerTaxId', 'Seller NTN / STRN / Tax ID');
+                add('buyerAddress', 'Buyer / Recipient Address');
+                add('buyerTaxId', 'Buyer NTN / Tax ID');
+                add('dueDate', 'Payment Due Date', 'date');
+                add('currency', 'Currency Code');
+                add('paymentMethod', 'Payment Method');
+                add('paymentTerms', 'Payment Terms');
+                add('purchaseOrderRef', 'Purchase Order Reference');
+                add('taxPeriod', 'Tax Period');
+                add('hsCode', 'HS Code / Product Code');
+                add('unitOfMeasure', 'Unit of Measure');
+                add('withholdingTaxRate', 'Withholding Tax (%)', 'number');
+                add('extraTaxRate', 'Extra Tax (%)', 'number');
+                add('furtherTaxRate', 'Further Tax (%)', 'number');
+                add('fbrInvoiceNo', 'Fiscal / Electronic Invoice No.');
+                add('posRegistrationNo', 'POS / E-Invoicing Registration No.');
+                add('sroReference', 'SRO / Exemption Reference');
+                if (item.cat === 'medical') {
+                    add('patientId', 'Patient / Medical Record ID');
+                    add('clinician', 'Clinician / Billing Provider');
+                    add('licenseNo', 'Facility / Professional Registration No.');
+                    add('insurancePayer', 'Insurer / Payer');
+                    add('insuranceMember', 'Policy / Member No.');
+                    add('claimNo', 'Insurance Claim / Preauthorization No.');
+                }
+                if (item.cat === 'transport') {
+                    add('vehicleReg', 'Vehicle Registration No.');
+                    add('chassisNo', 'Chassis / VIN Number');
+                    add('engineNo', 'Engine Number');
+                }
+                if (item.cat === 'commercial' || item.cat === 'sale_purchase') {
+                    add('countryOfOrigin', 'Country of Origin');
+                    add('incoterms', 'Incoterms / Delivery Terms');
+                    add('deliveryAddress', 'Delivery Address', 'textarea');
+                    add('carrier', 'Carrier / Transporter');
+                }
+            }
+
+            if (item.type === 'property_doc' || item.cat === 'property') {
+                add('propertyAddress', 'Property Address / Location');
+                add('plotTitleNo', 'Plot / Title / Registry Number');
+                add('propertyArea', 'Property Area / Unit');
+                add('ownerSeller', 'Owner / Seller Name');
+                add('buyerTenant', 'Buyer / Tenant Name');
+                add('priceRent', 'Sale Price / Monthly Rent', 'number');
+                add('depositToken', 'Security Deposit / Token', 'number');
+                add('possessionDate', 'Possession / Handover Date', 'date');
+                add('termStart', 'Agreement Start Date', 'date');
+                add('termEnd', 'Agreement End Date', 'date');
+                add('utilityResponsibility', 'Utilities / Maintenance Responsibility', 'textarea');
+                add('jurisdiction', 'Jurisdiction / Governing Law');
+                add('witnesses', 'Witness Names & ID Numbers', 'textarea');
+                if (title.includes('maintenance') || title.includes('utility bill ledger')) table('Utility Bill Entries', [['period','Billing Period'],['utility','Utility / Provider'],['account','Account No.'],['opening','Opening Balance','number'],['charges','New Charges','number'],['paid','Amount Paid','number'],['balance','Balance Due','number']]);
+            } else if (item.cat === 'agreements') {
+                add('partyA', 'First Party / Organization');
+                add('partyB', 'Second Party / Counterparty');
+                add('effectiveDate', 'Effective Date', 'date');
+                add('endDate', 'End / Renewal Date', 'date');
+                add('agreementValue', 'Contract Value / Consideration', 'number');
+                add('paymentSchedule', 'Payment Schedule / Milestones', 'textarea');
+                add('deliverables', 'Scope / Deliverables', 'textarea');
+                add('terminationNotice', 'Termination / Notice Period');
+                add('confidentiality', 'Confidentiality / IP Terms', 'textarea');
+                add('governingLaw', 'Governing Law / Jurisdiction');
+                add('disputeResolution', 'Dispute Resolution');
+                add('witnesses', 'Witness Names & ID Numbers', 'textarea');
+            } else if (item.cat === 'medical' || item.type === 'medical_checkup') {
+                add('patientId', 'Patient / Medical Record ID');
+                add('dateOfBirth', 'Date of Birth', 'date');
+                add('sex', 'Sex');
+                add('patientContact', 'Patient Contact');
+                add('emergencyContact', 'Emergency Contact');
+                add('allergies', 'Allergies / Alerts', 'textarea');
+                add('encounterDate', 'Encounter / Specimen Date', 'date');
+                add('clinician', 'Clinician / Reporting Professional');
+                add('licenseNo', 'Professional Registration / License No.');
+                add('vitals', 'Vitals (as applicable)', 'textarea');
+                add('diagnosis', 'Diagnosis / Clinical Impression', 'textarea');
+                add('followUp', 'Follow-up / Referral Plan', 'textarea');
+                add('consent', 'Consent / Guardian Details');
+                if (title.includes('prescription')) table('Prescription Items', [['medicine','Medicine / Brand'],['strength','Strength'],['dose','Dose'],['frequency','Frequency'],['duration','Duration'],['instructions','Instructions']]);
+                else if (title.includes('lab') || title.includes('diagnostic')) {
+                    table('Tests / Results', [['test','Test / Investigation'],['specimen','Specimen'],['result','Result'],['reference','Reference Range'],['status','Flag / Status']]);
+                }
+            } else if (item.cat === 'transport' || item.type === 'transport_doc') {
+                add('vehicleReg', 'Vehicle Registration No.');
+                add('vehicleMakeModel', 'Vehicle Make / Model / Year');
+                add('chassisNo', 'Chassis / VIN Number');
+                add('engineNo', 'Engine Number');
+                add('driverName', 'Driver Name');
+                add('driverLicense', 'Driver License No.');
+                add('routeFrom', 'Origin / From');
+                add('routeTo', 'Destination / To');
+                add('cargoPurpose', 'Cargo / Trip Purpose', 'textarea');
+                add('tripDate', 'Trip / Service Date', 'date');
+                add('odometer', 'Odometer Reading');
+                add('policyNo', 'Insurance Policy No.');
+                add('vehicleCondition', 'Vehicle Condition / Inspection Notes', 'textarea');
+                add('openingStock', 'Opening Stock Balance', 'number');
+                if (title.includes('maintenance')) table('Maintenance Entries', [['date','Date','date'],['odometer','Odometer'],['service','Service / Work'],['parts','Parts / Fluids'],['cost','Cost','number'],['technician','Technician']]);
+                else if (title.includes('fuel')) table('Fuel Entries', [['date','Date','date'],['odometer','Odometer'],['litres','Fuel Quantity'],['cost','Cost','number'],['station','Station'],['driver','Driver']]);
+                else if (title.includes('trip log')) table('Trip Entries', [['date','Date','date'],['from','From'],['to','To'],['odometer','Distance / Odometer'],['fuel','Fuel'],['driver','Driver']]);
+                else if (title.includes('spare parts')) table('Stock Entries', [['date','Date','date'],['part','Part / SKU'],['received','Received','number'],['issued','Issued','number'],['balance','Balance','number'],['remarks','Remarks']]);
+            } else if (item.cat === 'ledgers') {
+                add('accountName', 'Account Name');
+                add('accountCode', 'Account Code');
+                add('periodFrom', 'Period From', 'date');
+                add('periodTo', 'Period To', 'date');
+                add('openingBalance', 'Opening Balance', 'number');
+                add('preparedBy', 'Prepared By');
+                add('reviewedBy', 'Reviewed / Approved By');
+                if (title.includes('inventory') || title.includes('stock')) table('Stock Entries', [['date','Date','date'],['reference','Reference / Voucher'],['description','Item / SKU'],['received','Received','number'],['issued','Issued','number'],['balance','Stock Balance','number']]);
+                else table('Ledger Entries', [['date','Date','date'],['reference','Reference / Voucher'],['description','Description'],['debit','Debit','number'],['credit','Credit','number'],['balance','Running Balance','number']]);
+            } else if (item.cat === 'hr_records') {
+                add('employeeId', 'Employee ID');
+                add('department', 'Department');
+                add('periodFrom', 'Period From', 'date');
+                add('periodTo', 'Period To', 'date');
+                add('supervisor', 'Supervisor / Approver');
+                if (title.includes('master register')) table('Employee Register', [['employeeId','Employee ID'],['name','Employee Name'],['designation','Position'],['department','Department'],['contact','Contact'],['joinDate','Joining Date','date'],['status','Status']]);
+                else if (title.includes('attendance')) table('Attendance Entries', [['date','Date','date'],['employee','Employee Name / ID'],['shift','Shift'],['timeIn','Time In','time'],['timeOut','Time Out','time'],['hours','Hours','number'],['remarks','Remarks']]);
+                else if (title.includes('leave record')) table('Leave Entries', [['employee','Employee Name / ID'],['leaveType','Leave Type'],['from','From','date'],['to','To','date'],['days','Days','number'],['status','Approval Status']]);
+                else if (title.includes('overtime')) table('Overtime Entries', [['date','Date','date'],['employee','Employee Name / ID'],['hours','Hours','number'],['rate','Rate','number'],['amount','Amount','number'],['approvedBy','Approved By']]);
+                else if (title.includes('settlement')) table('Settlement Components', [['component','Component'],['add','Addition','number'],['less','Deduction','number'],['amount','Net Amount','number'],['remarks','Notes']]);
+            } else if (item.cat === 'commercial' || item.cat === 'sale_purchase') {
+                add('supplierBuyerId', 'Supplier / Buyer Registration ID');
+                add('currency', 'Currency Code');
+                add('paymentTerms', 'Payment Terms');
+                add('deliveryDate', 'Delivery / Required By Date', 'date');
+                add('deliveryAddress', 'Delivery Address', 'textarea');
+                add('carrier', 'Carrier / Transporter');
+                add('originCountry', 'Country of Origin');
+                if (title.includes('delivery challan')) table('Dispatch Items', [['item','Description / SKU'],['qty','Quantity','number'],['unit','Unit'],['condition','Condition'],['remarks','Remarks']]);
+                else if (title.includes('purchase order')) table('Order Items', [['item','Item / SKU'],['qty','Quantity','number'],['unit','Unit'],['rate','Unit Price','number'],['amount','Line Total','number']]);
+                else if (title.includes('goods received')) table('Received Items', [['item','Item / SKU'],['ordered','Ordered Qty','number'],['received','Received Qty','number'],['condition','Condition'],['remarks','Remarks']]);
+                else if (title.includes('quotation')) table('Quoted Items', [['item','Description'],['qty','Quantity','number'],['unit','Unit'],['rate','Rate','number'],['amount','Amount','number']]);
+                else if (title.includes('bill of lading')) table('Cargo Details', [['package','Packages'],['description','Cargo Description'],['weight','Gross Weight'],['marks','Marks / Numbers'],['container','Container / Seal No.']]);
+                else if (title.includes('letter of credit')) table('LC Goods / Documents', [['item','Goods / Document'],['description','Description'],['quantity','Quantity'],['value','Value','number'],['notes','Notes']]);
+            }
+            if (item.cat === 'letters' || item.cat === 'hr_notices' || item.cat === 'hr_agreements' || item.cat === 'hr_records') {
+                if (title.includes('increment') || title.includes('salary revision')) {
+                    add('currentSalary', 'Current Monthly Salary', 'number');
+                    add('revisedSalary', 'Revised Monthly Salary', 'number');
+                    add('salaryEffectiveDate', 'Salary Change Effective Date', 'date');
+                }
+                if (title.includes('offer') || title.includes('appointment')) {
+                    add('designation', 'Job Title / Designation');
+                    add('joiningDate', 'Joining Date', 'date');
+                    add('probation', 'Probation Period');
+                    add('monthlySalary', 'Monthly Salary / Compensation', 'number');
+                    add('workLocation', 'Work Location');
+                }
+                if (title.includes('experience') || title.includes('relief')) {
+                    add('employmentStart', 'Employment Start Date', 'date');
+                    add('employmentEnd', 'Employment End Date', 'date');
+                    add('lastDesignation', 'Last Designation');
+                    add('employmentDepartment', 'Department');
+                }
+                if (title.includes('termination') || title.includes('resignation')) {
+                    add('noticeDate', 'Notice / Resignation Date', 'date');
+                    add('lastWorkingDay', 'Last Working Day', 'date');
+                    add('handover', 'Handover / Clearance Items', 'textarea');
+                }
+                if (title.includes('warning') || title.includes('show cause')) {
+                    add('incidentDate', 'Incident Date', 'date');
+                    add('policyClause', 'Policy / Clause Reference');
+                    add('responseDeadline', 'Response Deadline', 'date');
+                    add('employeeResponse', 'Employee Response', 'textarea');
+                }
+                if (title.includes('leave application')) {
+                    add('leaveType', 'Leave Type');
+                    add('leaveStart', 'Leave Start Date', 'date');
+                    add('leaveEnd', 'Leave End Date', 'date');
+                    add('coverage', 'Work Handover / Coverage', 'textarea');
+                    add('leaveApprover', 'Approver');
+                }
+            }
+            if (item.cat === 'hr_agreements') {
+                if (title.includes('application form') && !title.includes('leave')) {
+                    add('applicantEmail', 'Email Address', 'email');
+                    add('applicantPhone', 'Phone Number', 'tel');
+                    add('applicantAddress', 'Residential Address', 'textarea');
+                    add('education', 'Education / Qualifications', 'textarea');
+                    add('experience', 'Employment History', 'textarea');
+                    add('skillsReferences', 'Skills / References', 'textarea');
+                } else if (title.includes('personal information')) {
+                    add('dateOfBirth', 'Date of Birth', 'date');
+                    add('nationalId', 'National ID / CNIC');
+                    add('personalPhone', 'Phone Number', 'tel');
+                    add('personalEmail', 'Email Address', 'email');
+                    add('homeAddress', 'Residential Address', 'textarea');
+                    add('emergencyContact', 'Emergency Contact');
+                    add('nextOfKin', 'Next of Kin');
+                    add('bankAccount', 'Bank / Payroll Account');
+                } else if (title.includes('employment / service agreement')) {
+                    add('jobTitle', 'Position / Job Title');
+                    add('contractDepartment', 'Department');
+                    add('contractStart', 'Start Date', 'date');
+                    add('contractEnd', 'End Date', 'date');
+                    add('contractProbation', 'Probation Period');
+                    add('contractPay', 'Salary / Compensation', 'number');
+                    add('workHours', 'Working Hours / Schedule');
+                    add('benefits', 'Benefits / Allowances', 'textarea');
+                    add('noticePeriod', 'Notice Period');
+                } else if (title.includes('non-disclosure')) {
+                    add('disclosingParty', 'Disclosing Party');
+                    add('receivingParty', 'Receiving Party');
+                    add('ndaPurpose', 'Purpose / Confidential Information', 'textarea');
+                    add('ndaEffectiveDate', 'Effective Date', 'date');
+                    add('ndaTerm', 'Confidentiality Term');
+                    add('returnMaterials', 'Return / Destruction of Materials');
+                    add('ndaJurisdiction', 'Governing Law / Jurisdiction');
+                } else if (title.includes('performance appraisal')) {
+                    add('reviewPeriod', 'Review Period');
+                    add('goalsResults', 'Goals / Results', 'textarea');
+                    add('strengths', 'Strengths / Achievements', 'textarea');
+                    add('developmentPlan', 'Development Goals / Training', 'textarea');
+                    add('managerComments', 'Manager Comments', 'textarea');
+                    add('employeeComments', 'Employee Comments', 'textarea');
+                } else if (title.includes('exit interview')) {
+                    add('exitReason', 'Reason for Leaving', 'textarea');
+                    add('lastWorkingDay', 'Last Working Day', 'date');
+                    add('clearanceItems', 'Handover / Clearance Items', 'textarea');
+                    add('exitFeedback', 'Feedback / Suggestions', 'textarea');
+                }
+            }
+            if (title.includes('loan')) {
+                add('loanPrincipal', 'Loan Principal / Requested Amount', 'number');
+                add('annualRate', 'Annual Interest Rate (%)', 'number');
+                add('loanTermMonths', 'Repayment Term (Months)', 'number');
+                add('loanStartDate', 'Repayment Start Date', 'date');
+            }
+            return { fields: item.type === "payroll" ? [] : fields, tableSchema };
+        }
         // Compile Database with Proper Margin Alignment & Natural Inline Footer Spacing
         const database = rawList.map((item, index) => {
             let baseFields = [
-                { id: "comp", label: "Company / Organization Name", val: "" },
-                { id: "addr", label: "Office Address / Location", val: "" },
-                { id: "ref", label: "Reference / Doc No", val: "" },
-                { id: "date", label: "Date", val: "" },
-                { id: "rec", label: "Recipient / Client Name", val: item.rec },
-                { id: "sub", label: "Subject / Title", val: item.sub }
+                { id: "comp", label: item.cat === "medical" ? "Clinic / Hospital / Laboratory" : item.cat === "transport" ? "Transport Company / Fleet" : item.type === "invoice" ? "Seller / Business Name" : "Company / Organization Name", val: "" },
+                { id: "addr", label: item.cat === "medical" ? "Facility Address" : item.cat === "transport" ? "Company / Depot Address" : "Office / Business Address", val: "" },
+                { id: "ref", label: item.type === "invoice" ? "Invoice / Document No." : "Reference / Document No.", val: "" },
+                { id: "date", label: item.cat === "medical" ? "Report / Visit Date" : "Issue / Record Date", val: "", type: "date" },
+                { id: "rec", label: item.cat === "medical" ? "Patient Name" : item.cat === "hr_notices" || item.cat === "hr_records" || item.cat === "hr_agreements" ? "Employee Name" : item.type === "invoice" ? "Buyer / Customer Name" : "Recipient / Counterparty Name", val: item.rec },
+                { id: "sub", label: "Document Title / Subject", val: item.sub }
             ];
 
+            const extras = getTemplateExtras(item);
             if(item.type === 'invoice') {
-                baseFields = baseFields.concat(item.fields);
+                if (item.fields) {
+                    baseFields = baseFields.concat(item.fields);
+                } else {
+                    baseFields.push(
+                        { id: "item", label: "Item / Service", val: "" },
+                        { id: "qty", label: "Quantity", val: "1" },
+                        { id: "rate", label: "Rate per Unit", val: "" },
+                        { id: "tax", label: "Tax / GST (%)", val: "" }
+                    );
+                    if (item.body) baseFields.push({ id: "body", label: "Document Details / Terms", val: item.body });
+                }
                 baseFields.push({ id: "suggestion", label: "Accounts Terms & Notes", val: item.suggestion });
-            } else if(item.type === 'medical_checkup') {
+                if (item.type === "invoice") baseFields.push(...extras.fields);
+            } else if(item.type === 'payroll') {
+                baseFields.push(
+                    { id: "payPeriod", label: "Payroll Period", val: "" },
+                    { id: "payrollCurrency", label: "Currency Code", val: "" },
+                    { id: "employeeId", label: "Employee ID", val: "" },
+                    { id: "department", label: "Department", val: "" },
+                    { id: "designation", label: "Designation", val: "" },
+                    { id: "basicPay", label: "Basic Pay", val: "0", type: "number" },
+                    { id: "allowances", label: "Allowances", val: "0", type: "number" },
+                    { id: "overtimePay", label: "Overtime Pay", val: "0", type: "number" },
+                    { id: "bonus", label: "Bonus / Other Earnings", val: "0", type: "number" },
+                    { id: "deductions", label: "Other Deductions", val: "0", type: "number" },
+                    { id: "taxRate", label: "Withholding Tax (%)", val: "0", type: "number" },
+                    { id: "suggestion", label: "Payroll Notes", val: item.suggestion, type: "textarea" }
+                );            } else if(item.type === 'medical_checkup') {
                 baseFields.push({ id: "body", label: "Clinical Findings / Examination", val: item.body });
                 baseFields.push({ id: "suggestion", label: "Doctor Suggestions & Medical Advice", val: item.suggestion });
             } else if(item.type === 'transport_doc') {
@@ -387,24 +695,110 @@
                 baseFields.push({ id: "suggestion", label: "Office Instructions & Remarks", val: item.suggestion });
             }
 
-            return {
+            if (item.type !== "invoice") baseFields.push(...extras.fields);
+            const tailFields = baseFields.filter(field => field.id === "body" || field.id === "suggestion");
+            const mainFields = baseFields.filter(field => field.id !== "body" && field.id !== "suggestion");
+            baseFields.splice(0, baseFields.length, ...mainFields, ...tailFields);
+
+                        return {
                 id: "doc_" + index,
                 category: item.cat,
                 title: item.title,
                 desc: item.desc,
                 type: item.type,
                 fields: baseFields,
+                extraFields: extras.fields,
+                tableSchema: extras.tableSchema,
                 render: function(f) {
-                    if(this.type === 'invoice') {
-                        let qty = parseFloat(f.qty) || 0;
-                        let rate = parseFloat(f.rate) || 0;
-                        let subtotal = qty * rate;
-                        let taxRate = parseFloat(f.tax) || 0;
-                        let taxAmount = (subtotal * taxRate) / 100;
-                        let grandTotal = subtotal + taxAmount;
+                    const details = (this.extraFields || []).filter(field => String(f[field.id] || '').trim());
+                    const detailsMarkup = details.length ? `<table class="doc-table doc-detail-table"><tbody>${details.map(field => `<tr><th>${DocuHubApp.escapeHtml(field.label)}</th><td>${f[field.id]}</td></tr>`).join('')}</tbody></table>` : '';
+                    const schema = this.tableSchema;
+                    const savedRows = schema ? (DocuHubApp.tableRows || []).filter(row => schema.columns.some(column => String(row[column.id] || '').trim())) : [];
+                    const recordTableMarkup = schema && savedRows.length ? `<h3 class="record-table-title">${DocuHubApp.escapeHtml(schema.name)}</h3><table class="doc-table doc-record-table"><thead><tr>${schema.columns.map(column => `<th>${DocuHubApp.escapeHtml(column.label)}</th>`).join('')}</tr></thead><tbody>${savedRows.map(row => `<tr>${schema.columns.map(column => `<td>${DocuHubApp.escapeHtml(row[column.id] || '')}</td>`).join('')}</tr>`).join('')}</tbody></table>` : '';
+                    const loanPrincipal = Math.max(0, parseFloat(f.extra_loanPrincipal) || 0);
+                    const annualRate = Math.max(0, parseFloat(f.extra_annualRate) || 0);
+                    const loanMonths = Math.max(0, parseInt(f.extra_loanTermMonths, 10) || 0);
+                    const monthlyRate = annualRate / 1200;
+                    const monthlyInstallment = loanPrincipal && loanMonths ? (monthlyRate ? loanPrincipal * monthlyRate / (1 - Math.pow(1 + monthlyRate, -loanMonths)) : loanPrincipal / loanMonths) : 0;
+                    const totalRepayment = monthlyInstallment * loanMonths;
+                    const loanMarkup = loanPrincipal && loanMonths ? `<div class="calculation-summary"><h3>Repayment Estimate</h3><div><span>Estimated monthly installment</span><strong>${monthlyInstallment.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</strong></div><div><span>Total scheduled repayment</span><strong>${totalRepayment.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</strong></div><div><span>Estimated interest</span><strong>${Math.max(0,totalRepayment-loanPrincipal).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</strong></div></div>` : '';
+                    const currentSalary = Math.max(0, parseFloat(f.extra_currentSalary) || 0);
+                    const revisedSalary = Math.max(0, parseFloat(f.extra_revisedSalary) || 0);
+                    const salaryIncrease = Math.max(0, revisedSalary - currentSalary);
+                    const salaryIncreasePercent = currentSalary ? salaryIncrease / currentSalary * 100 : 0;
+                    const salaryMarkup = revisedSalary ? `<div class="calculation-summary"><h3>Salary Change</h3><div><span>Monthly increase</span><strong>${salaryIncrease.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</strong></div><div><span>Increase percentage</span><strong>${salaryIncreasePercent.toFixed(2)}%</strong></div></div>` : '';
+                    const leaveStart = f.extra_leaveStart ? Date.parse(f.extra_leaveStart) : NaN;
+                    const leaveEnd = f.extra_leaveEnd ? Date.parse(f.extra_leaveEnd) : NaN;
+                    const leaveDays = Number.isFinite(leaveStart) && Number.isFinite(leaveEnd) ? Math.max(0, Math.floor((leaveEnd - leaveStart) / 86400000) + 1) : 0;
+                    const leaveMarkup = leaveDays ? `<div class="calculation-summary"><h3>Leave Duration</h3><div><span>Calendar days requested</span><strong>${leaveDays}</strong></div></div>` : '';
+                    const lowerTitle = this.title.toLowerCase();
+                    const isAgreement = this.category === 'agreements' || /agreement|lease|rent deed|sale deed|bayana|power of attorney/.test(lowerTitle);
+                    const signatureLabels = isAgreement ? ['FIRST PARTY / OWNER', 'SECOND PARTY / COUNTERPARTY', 'WITNESS'] : this.category === 'transport' ? ['DRIVER / CUSTODIAN', 'TRANSPORT MANAGER'] : this.category === 'commercial' || this.category === 'sale_purchase' ? ['PREPARED / DISPATCHED BY', 'RECEIVED / ACCEPTED BY'] : this.category === 'hr_notices' || this.category === 'hr_agreements' ? ['EMPLOYEE / APPLICANT', 'HR / AUTHORIZED APPROVER'] : this.category === 'ledgers' || this.category === 'hr_records' ? ['PREPARED BY', 'REVIEWED / APPROVED BY'] : this.category === 'property' ? ['APPLICANT / OWNER', 'PROPERTY AUTHORITY'] : ['RECIPIENT / CLIENT', 'AUTHORIZED SIGNATORY'];
+                    const signatureMarkup = `<div class="doc-footer">${signatureLabels.map(label => `<div class="sig-box"><div class="sig-line"></div><div class="sig-title">${label}</div></div>`).join('')}</div>`;
+                    if(this.type === 'payroll') {
+                        const basicPay = Math.max(0, parseFloat(f.basicPay) || 0);
+                        const allowances = Math.max(0, parseFloat(f.allowances) || 0);
+                        const overtimePay = Math.max(0, parseFloat(f.overtimePay) || 0);
+                        const bonus = Math.max(0, parseFloat(f.bonus) || 0);
+                        const deductions = Math.max(0, parseFloat(f.deductions) || 0);
+                        const taxRate = Math.max(0, parseFloat(f.taxRate) || 0);
+                        const grossPay = basicPay + allowances + overtimePay + bonus;
+                        const taxWithheld = grossPay * taxRate / 100;
+                        const netPay = Math.max(0, grossPay - deductions - taxWithheld);
+                        const payCurrency = String(f.payrollCurrency || "").trim(); const money = amount => `${payCurrency ? payCurrency + " " : ""}${amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                        return `
+                            <div style="display:flex; flex-direction:column; justify-content:space-between; min-height:100%;">
+                                <div>
+                                    <div class="doc-header"><div class="company-title">${f.comp}</div><div class="company-info">${f.addr}<br>Payroll / Human Resources</div></div>
+                                    <div class="doc-meta"><div><strong>Pay Period:</strong> ${f.payPeriod}</div><div><strong>Issue Date:</strong> ${f.date}</div></div>
+                                    <div class="doc-subject">${f.sub}</div>
+                                    <table class="doc-table doc-detail-table"><tbody>
+                                        <tr><th>Employee</th><td>${f.rec}</td></tr><tr><th>Employee ID</th><td>${f.employeeId}</td></tr><tr><th>Department</th><td>${f.department}</td></tr><tr><th>Designation</th><td>${f.designation}</td></tr>
+                                    </tbody></table>
+                                    <table class="doc-table"><thead><tr><th>Pay Component</th><th>Amount</th></tr></thead><tbody>
+                                        <tr><td>Basic pay</td><td>${money(basicPay)}</td></tr><tr><td>Allowances</td><td>${money(allowances)}</td></tr><tr><td>Overtime pay</td><td>${money(overtimePay)}</td></tr><tr><td>Bonus / other earnings</td><td>${money(bonus)}</td></tr>
+                                        <tr><th>Gross earnings</th><th>${money(grossPay)}</th></tr><tr><td>Withholding tax (${taxRate}%)</td><td>− ${money(taxWithheld)}</td></tr><tr><td>Other deductions</td><td>− ${money(deductions)}</td></tr><tr class="payroll-net"><th>Net pay</th><th>${money(netPay)}</th></tr>
+                                    </tbody></table>
+                                    <div style="margin-top:18px;font-size:11px;color:#555;"><strong>Payroll notes:</strong> ${f.suggestion}</div>
+                                    <div class="doc-footer"><div class="sig-box"><div class="sig-line"></div><div class="sig-title">EMPLOYEE ACKNOWLEDGMENT</div></div><div class="sig-box"><div class="sig-line"></div><div class="sig-title">PAYROLL APPROVAL</div></div></div>
+                                </div>
+                            </div>
+                        `;
+                    } else if(this.type === 'invoice') {
+                        const lines = DocuHubApp.lineItems.length ? DocuHubApp.lineItems : [{ item: f.item || '', qty: f.qty || 0, rate: f.rate || 0 }];
+                        const subtotal = lines.reduce((sum, line) => sum + (parseFloat(line.qty) || 0) * (parseFloat(line.rate) || 0), 0);
+                        const discount = Math.max(0, parseFloat(f.discount) || 0);
+                        const additionalCharges = Math.max(0, parseFloat(f.additionalCharges) || 0);
+                        const taxableAmount = Math.max(0, subtotal + additionalCharges - discount);
+                        const taxRate = Math.max(0, parseFloat(f.tax) || 0);
+                        const itemTaxes = lines.map(line => {
+                            const lineSubtotal = (parseFloat(line.qty) || 0) * (parseFloat(line.rate) || 0);
+                            const allocation = subtotal > 0 ? lineSubtotal / subtotal : 0;
+                            const lineTaxBase = Math.max(0, lineSubtotal + (additionalCharges - discount) * allocation);
+                            const lineRate = String(line.tax || '').trim() === '' ? taxRate : Math.max(0, parseFloat(line.tax) || 0);
+                            return { rate: lineRate, amount: lineTaxBase * lineRate / 100 };
+                        });
+                        const taxAmount = itemTaxes.reduce((sum, itemTax) => sum + itemTax.amount, 0) + (subtotal === 0 ? taxableAmount * taxRate / 100 : 0);
+                        const extraTaxRate = Math.max(0, parseFloat(f.extra_extraTaxRate) || 0);
+                        const furtherTaxRate = Math.max(0, parseFloat(f.extra_furtherTaxRate) || 0);
+                        const withholdingRate = Math.max(0, parseFloat(f.extra_withholdingTaxRate) || 0);
+                        const extraTaxAmount = taxableAmount * extraTaxRate / 100;
+                        const furtherTaxAmount = taxableAmount * furtherTaxRate / 100;
+                        const withholdingAmount = taxableAmount * withholdingRate / 100;
+                        const grandTotal = Math.max(0, taxableAmount + taxAmount + extraTaxAmount + furtherTaxAmount - withholdingAmount);
+                        const amountPaid = Math.max(0, parseFloat(f.amountPaid) || 0);
+                        const balanceDue = Math.max(0, grandTotal - amountPaid);
+                        const overpayment = Math.max(0, amountPaid - grandTotal);
+                        const currency = String(f.extra_currency || "").trim(); const money = amount => `${currency ? currency + " " : ""}${amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                        const rows = lines.map((line, index) => {
+                            const qty = parseFloat(line.qty) || 0;
+                            const rate = parseFloat(line.rate) || 0;
+                            const tax = itemTaxes[index] || { rate: taxRate, amount: 0 };
+                            return `<tr><td>${DocuHubApp.escapeHtml(line.item || '')}</td><td>${qty}</td><td>${money(rate)}</td><td>${tax.rate}%</td><td>${money(tax.amount)}</td><td>${money(qty * rate)}</td></tr>`;
+                        }).join('');
 
                         return `
-                            <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%;">
+                            <div style="display:flex; flex-direction:column; justify-content:space-between; min-height:100%;">
                                 <div>
                                     <div class="doc-header">
                                         <div class="company-title">${f.comp}</div>
@@ -416,26 +810,33 @@
                                     </div>
                                     <p style="margin-bottom:10px;"><strong>Billed To:</strong> ${f.rec}</p>
                                     <div class="doc-subject">${f.sub}</div>
+                                    ${detailsMarkup}
                                     <table class="doc-table">
-                                        <thead><tr><th>Description</th><th>Qty</th><th>Rate</th><th>Total</th></tr></thead>
-                                        <tbody>
-                                            <tr><td>${f.item}</td><td>${qty}</td><td>${rate.toLocaleString()}</td><td>${subtotal.toLocaleString()}</td></tr>
-                                        </tbody>
+                                        <thead><tr><th>Description</th><th>Qty</th><th>Rate</th><th>Tax %</th><th>Tax</th><th>Amount</th></tr></thead>
+                                        <tbody>${rows}</tbody>
                                     </table>
-                                    <div style="text-align:right; font-size:10px; line-height:1.5; margin-top:10px;">
-                                        <div>Subtotal: <strong>${subtotal.toLocaleString()}</strong></div>
-                                        <div>Tax (${taxRate}%): <strong>${taxAmount.toLocaleString()}</strong></div>
-                                        <div style="font-size:11.5px; color:#1e4d3b; margin-top:4px;"><strong>Grand Total: ${grandTotal.toLocaleString()}</strong></div>
+                                    ${f.body ? `<div class="doc-body" style="margin-top:16px;">${f.body}</div>` : ""}
+                                    <div class="invoice-totals">
+                                        <div><span>Subtotal</span><strong>${money(subtotal)}</strong></div>
+                                        <div><span>Additional charges</span><strong>${money(additionalCharges)}</strong></div>
+                                        <div><span>Discount</span><strong>− ${money(discount)}</strong></div>
+                                        <div><span>Taxable amount</span><strong>${money(taxableAmount)}</strong></div>
+                                        <div><span>Tax / GST (${taxRate}%)</span><strong>${money(taxAmount)}</strong></div>
+                                        <div><span>Extra tax (${extraTaxRate}%)</span><strong>${money(extraTaxAmount)}</strong></div>
+                                        <div><span>Further tax (${furtherTaxRate}%)</span><strong>${money(furtherTaxAmount)}</strong></div>
+                                        <div><span>Withholding tax (${withholdingRate}%)</span><strong>− ${money(withholdingAmount)}</strong></div>
+                                        <div class="invoice-grand-total"><span>Grand total</span><strong>${money(grandTotal)}</strong></div>
+                                        <div><span>Amount paid</span><strong>${money(amountPaid)}</strong></div>
+                                        <div class="invoice-balance"><span>${overpayment ? 'Credit / overpayment' : 'Balance due'}</span><strong>${money(overpayment || balanceDue)}</strong></div>
                                     </div>
-                                    <div style="margin-top:14px; font-size:10px; color:#555;"><strong>Notes:</strong> ${f.suggestion}</div>
+                                    <div style="margin-top:18px; font-size:11px; color:#555;"><strong>Notes:</strong> ${f.suggestion}</div>
                                 </div>
                                 <div class="doc-footer">
                                     <div class="sig-box"><div class="sig-line"></div><div class="sig-title">CLIENT SIGNATURE</div></div>
                                     <div class="sig-box"><div class="sig-line"></div><div class="sig-title">AUTHORIZED SIGNATORY</div></div>
                                 </div>
                             </div>
-                        `;
-                    } else if(this.type === 'medical_checkup') {
+                        `;                    } else if(this.type === 'medical_checkup') {
                         return `
                             <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%;">
                                 <div>
@@ -449,6 +850,7 @@
                                     </div>
                                     <p style="margin-bottom:8px;"><strong>Patient Name:</strong> ${f.rec}</p>
                                     <div class="doc-subject">${f.sub}</div>
+                                    ${detailsMarkup}${recordTableMarkup}${loanMarkup}${salaryMarkup}${leaveMarkup}
                                     <div class="doc-content-area">
                                         <div class="doc-body" style="margin-bottom:12px;"><strong>Examination Findings:</strong>\n${f.body}</div>
                                         <div class="doc-suggestion"><strong>Doctor Suggestions & Advice:</strong>\n${f.suggestion}</div>
@@ -474,15 +876,13 @@
                                     </div>
                                     <p style="margin-bottom:8px;"><strong>To:</strong> ${f.rec}</p>
                                     <div class="doc-subject">${f.sub}</div>
+                                    ${detailsMarkup}${recordTableMarkup}${loanMarkup}${salaryMarkup}${leaveMarkup}
                                     <div class="doc-content-area">
                                         <div class="doc-body" style="margin-bottom:12px;">${f.body}</div>
                                         <div class="doc-suggestion"><strong>Suggestions & Instructions:</strong>\n${f.suggestion}</div>
                                     </div>
                                 </div>
-                                <div class="doc-footer">
-                                    <div class="sig-box"><div class="sig-line"></div><div class="sig-title">RECIPIENT SIGNATURE</div></div>
-                                    <div class="sig-box"><div class="sig-line"></div><div class="sig-title">AUTHORIZED SIGNATORY</div></div>
-                                </div>
+                                ${signatureMarkup}
                             </div>
                         `;
                     }
@@ -544,7 +944,14 @@
                 if(!t) return;
                 this.activeTemplate = t;
                 this.currentValues = {};
-                t.fields.forEach(f => this.currentValues[f.id] = f.val);
+                t.fields.forEach(f => this.currentValues[f.id] = (f.id === "date" && !f.val) ? new Date().toLocaleDateString("en-CA") : f.val);
+                this.lineItems = t.type === 'invoice' ? [{ item: this.currentValues.item || '', qty: this.currentValues.qty || '', rate: this.currentValues.rate || '' }] : [];
+                this.tableRows = t.tableSchema ? [Object.fromEntries(t.tableSchema.columns.map(column => [column.id, ""]))] : [];
+                if (t.type === 'invoice') {
+                    this.currentValues.discount = '0';
+                    this.currentValues.additionalCharges = '0';
+                    this.currentValues.amountPaid = '0';
+                }
 
                 document.getElementById('modal-title').innerText = t.title;
                 document.getElementById('workspace-modal').style.display = 'flex';
@@ -554,17 +961,142 @@
 
             renderFormFields() {
                 const container = document.getElementById('modal-form-fields');
-                container.innerHTML = this.activeTemplate.fields.map(f => `
-                    <div class="form-group">
-                        <label>${f.label}</label>
-                        ${f.id === 'body' || f.id === 'suggestion' ? 
-                            `<textarea oninput="DocuHubApp.updateField('${f.id}', this.value)">${f.val}</textarea>` : 
-                            `<input type="text" value="${f.val}" oninput="DocuHubApp.updateField('${f.id}', this.value)">`
-                        }
+                const isInvoice = this.activeTemplate.type === 'invoice';
+                const fields = this.activeTemplate.fields.filter(f => !isInvoice || !['item', 'qty', 'rate'].includes(f.id));
+                container.innerHTML = fields.map(f => {
+                    const value = this.currentValues[f.id] ?? f.val ?? '';
+                    const safeValue = this.escapeHtml(value);
+                    const isTextarea = f.type === 'textarea' || f.id === 'body' || f.id === 'suggestion';
+                    const inputType = ['number', 'date', 'email', 'tel'].includes(f.type) ? f.type : (f.id === 'tax' ? 'number' : 'text');
+                    return `
+                        <div class="form-group">
+                            <label>${f.label}</label>
+                            ${isTextarea ?
+                                `<textarea oninput="DocuHubApp.updateField('${f.id}', this.value)">${safeValue}</textarea>` :
+                                `<input type="${inputType}" ${inputType === 'number' ? 'min="0" step="0.01"' : ''} value="${safeValue}" oninput="DocuHubApp.updateField('${f.id}', this.value)">`
+                            }
+                        </div>
+                    `;
+                }).join('') + (isInvoice ? this.renderInvoiceFields() : this.renderTableEditor());
+            },
+            renderInvoiceFields() {
+                const lineFields = this.lineItems.map((line, index) => `
+                    <div class="invoice-line-editor">
+                        <div class="invoice-line-heading"><strong>Item ${index + 1}</strong>${this.lineItems.length > 1 ? `<button type="button" class="remove-line-btn" onclick="DocuHubApp.removeInvoiceLine(${index})" aria-label="Remove item">Remove</button>` : ''}</div>
+                        <label>Description</label>
+                        <input type="text" value="${this.escapeHtml(line.item)}" placeholder="Product or service" oninput="DocuHubApp.updateInvoiceLine(${index}, 'item', this.value)">
+                        <div class="invoice-line-tax"><label>Tax rate % (optional)</label><input type="number" min="0" step="0.01" value="${this.escapeHtml(line.tax || '')}" placeholder="Use invoice default" oninput="DocuHubApp.updateInvoiceLine(${index}, 'tax', this.value)"></div><div class="invoice-line-numbers">
+                            <div><label>Quantity</label><input type="number" min="0" step="0.01" value="${this.escapeHtml(line.qty)}" oninput="DocuHubApp.updateInvoiceLine(${index}, 'qty', this.value)"></div>
+                            <div><label>Rate per unit</label><input type="number" min="0" step="0.01" value="${this.escapeHtml(line.rate)}" oninput="DocuHubApp.updateInvoiceLine(${index}, 'rate', this.value)"></div>
+                        </div>
                     </div>
                 `).join('');
+                return `
+                    <section class="invoice-editor">
+                        <h4>Invoice items</h4>
+                        ${lineFields}
+                        <button type="button" class="add-line-btn" onclick="DocuHubApp.addInvoiceLine()">＋ Add another item</button>
+                        <div class="invoice-adjustments">
+                            <h4>Adjustments &amp; payment</h4>
+                            <div class="form-group"><label>Additional charges (add)</label><input type="number" min="0" step="0.01" value="${this.currentValues.additionalCharges}" oninput="DocuHubApp.updateField('additionalCharges', this.value)"></div>
+                            <div class="form-group"><label>Discount (less)</label><input type="number" min="0" step="0.01" value="${this.currentValues.discount}" oninput="DocuHubApp.updateField('discount', this.value)"></div>
+                            <div class="form-group"><label>Amount paid / advance</label><input type="number" min="0" step="0.01" value="${this.currentValues.amountPaid}" oninput="DocuHubApp.updateField('amountPaid', this.value)"></div>
+                        </div>
+                    </section>
+                `;
             },
 
+            renderTableEditor() {
+                const schema = this.activeTemplate.tableSchema;
+                if (!schema) return '';
+                const headers = schema.columns.map(column => `<span>${this.escapeHtml(column.label)}</span>`).join('');
+                const rows = this.tableRows.map((row, rowIndex) => `
+                    <div class="data-entry-row" style="--column-count:${schema.columns.length}">
+                        ${schema.columns.map(column => `<div><label>${this.escapeHtml(column.label)}</label><input type="${column.type || 'text'}" value="${this.escapeHtml(row[column.id] || '')}" ${(column.id === 'balance' && (this.activeTemplate.category === 'ledgers' || this.activeTemplate.title.toLowerCase().includes('spare parts') || schema.columns.some(c => c.id === 'opening'))) || ((column.id === 'amount') && (schema.columns.some(c => c.id === 'qty') || schema.columns.some(c => c.id === 'hours') || schema.columns.some(c => c.id === 'add'))) || (column.id === 'hours' && schema.columns.some(c => c.id === 'timeIn')) || (column.id === 'days' && schema.columns.some(c => c.id === 'from')) ? 'readonly' : ''} oninput="DocuHubApp.updateTableCell(${rowIndex}, '${column.id}', this.value)"></div>`).join('')}
+                        <button type="button" class="remove-line-btn" onclick="DocuHubApp.removeTableRow(${rowIndex})">Remove row</button>
+                    </div>
+                `).join('');
+                return `<section class="invoice-editor table-editor"><h4>${this.escapeHtml(schema.name)}</h4><p class="table-editor-help">Add the rows you need. Blank rows are left out of the document.</p><div class="data-entry-header" style="--column-count:${schema.columns.length}">${headers}</div>${rows}<button type="button" class="add-line-btn" onclick="DocuHubApp.addTableRow()">＋ Add row</button></section>`;
+            },
+
+            updateTableCell(rowIndex, columnId, value) {
+                if (!this.tableRows[rowIndex]) return;
+                this.tableRows[rowIndex][columnId] = value;
+                const schema = this.activeTemplate.tableSchema;
+                if (schema.columns.some(column => column.id === 'qty') && schema.columns.some(column => column.id === 'rate') && schema.columns.some(column => column.id === 'amount')) {
+                    const row = this.tableRows[rowIndex];
+                    row.amount = String((parseFloat(row.qty) || 0) * (parseFloat(row.rate) || 0));
+                }
+                if (schema.columns.some(column => column.id === 'hours') && schema.columns.some(column => column.id === 'rate') && schema.columns.some(column => column.id === 'amount')) {
+                    const row = this.tableRows[rowIndex];
+                    row.amount = String((parseFloat(row.hours) || 0) * (parseFloat(row.rate) || 0));
+                }
+                if (this.activeTemplate.category === 'ledgers') {
+                    if (schema.columns.some(column => column.id === 'received') && schema.columns.some(column => column.id === 'issued')) {
+                        let running = parseFloat(this.currentValues.extra_openingBalance) || 0;
+                        this.tableRows.forEach(entry => { running += (parseFloat(entry.received) || 0) - (parseFloat(entry.issued) || 0); entry.balance = String(running); });
+                    } else {
+                        let running = parseFloat(this.currentValues.extra_openingBalance) || 0;
+                        this.tableRows.forEach(entry => { running += (parseFloat(entry.debit) || 0) - (parseFloat(entry.credit) || 0); entry.balance = String(running); });
+                    }
+                }
+                if (schema.columns.some(column => column.id === 'timeIn') && schema.columns.some(column => column.id === 'timeOut') && schema.columns.some(column => column.id === 'hours')) {
+                    const row = this.tableRows[rowIndex];
+                    const start = Date.parse(`1970-01-01T${row.timeIn}`);
+                    const end = Date.parse(`1970-01-01T${row.timeOut}`);
+                    if (Number.isFinite(start) && Number.isFinite(end)) row.hours = String(Math.round((((end - start + 86400000) % 86400000) / 3600000) * 100) / 100);
+                }
+                if (schema.columns.some(column => column.id === 'from') && schema.columns.some(column => column.id === 'to') && schema.columns.some(column => column.id === 'days')) {
+                    const row = this.tableRows[rowIndex];
+                    if (row.from && row.to) row.days = String(Math.max(0, Math.floor((Date.parse(row.to) - Date.parse(row.from)) / 86400000) + 1));
+                }
+                if (schema.columns.some(column => column.id === 'add') && schema.columns.some(column => column.id === 'less') && schema.columns.some(column => column.id === 'amount')) {
+                    const row = this.tableRows[rowIndex];
+                    row.amount = String((parseFloat(row.add) || 0) - (parseFloat(row.less) || 0));
+                }
+                if (schema.columns.some(column => column.id === 'opening') && schema.columns.some(column => column.id === 'charges') && schema.columns.some(column => column.id === 'paid') && schema.columns.some(column => column.id === 'balance')) {
+                    const row = this.tableRows[rowIndex];
+                    row.balance = String((parseFloat(row.opening) || 0) + (parseFloat(row.charges) || 0) - (parseFloat(row.paid) || 0));
+                }
+                if (this.activeTemplate.title.toLowerCase().includes('spare parts')) {
+                    let balance = parseFloat(this.currentValues.extra_openingStock) || 0;
+                    this.tableRows.forEach(entry => { balance += (parseFloat(entry.received) || 0) - (parseFloat(entry.issued) || 0); entry.balance = String(balance); });
+                }
+
+                this.updatePreview();
+            },
+
+            addTableRow() {
+                const columns = this.activeTemplate.tableSchema.columns;
+                this.tableRows.push(Object.fromEntries(columns.map(column => [column.id, ''])));
+                this.renderFormFields();
+                this.updatePreview();
+            },
+
+            removeTableRow(rowIndex) {
+                if (this.tableRows.length <= 1) return;
+                this.tableRows.splice(rowIndex, 1);
+                this.renderFormFields();
+                this.updatePreview();
+            },
+            updateInvoiceLine(index, field, value) {
+                if (!this.lineItems[index]) return;
+                this.lineItems[index][field] = value;
+                this.updatePreview();
+            },
+
+            addInvoiceLine() {
+                this.lineItems.push({ item: '', qty: '1', rate: '' });
+                this.renderFormFields();
+                this.updatePreview();
+            },
+
+            removeInvoiceLine(index) {
+                if (this.lineItems.length <= 1) return;
+                this.lineItems.splice(index, 1);
+                this.renderFormFields();
+                this.updatePreview();
+            },
             updateField(id, val) {
                 this.currentValues[id] = val;
                 this.updatePreview();
@@ -572,7 +1104,14 @@
 
             updatePreview() {
                 const preview = document.getElementById('modal-live-preview');
-                preview.innerHTML = this.activeTemplate.render(this.currentValues);
+                const safeValues = Object.fromEntries(Object.entries(this.currentValues).map(([key, value]) => [key, this.escapeHtml(value)]));
+                preview.innerHTML = this.activeTemplate.render(safeValues);
+            },
+
+            escapeHtml(value) {
+                return String(value ?? '').replace(/[&<>"']/g, char => ({
+                    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+                })[char]);
             },
 
             closeModal() {
@@ -584,3 +1123,31 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
